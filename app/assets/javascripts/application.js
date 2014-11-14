@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
+//= require raphael
+//= require metisMenu
+//= require morrisjs
+//= require_tree ../../../lib/assets/javascripts
 //= require_tree .

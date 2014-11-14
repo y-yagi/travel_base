@@ -1,4 +1,7 @@
+ruby '2.1.4'
+
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'active_decorator'
 gem 'coffee-rails', '~> 4.0.0'
@@ -9,10 +12,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'paranoia', '~> 2.0'
 gem 'pg'
-gem 'rails', '4.2.0.beta2'
+gem 'rails', '4.2.0.beta4'
+gem 'rails-assets-bootstrap'
+gem 'rails-assets-metisMenu'
+gem 'rails-assets-morrisjs'
 gem 'redis'
 gem 'sass-rails', '~> 5.0.0.beta1'
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
@@ -20,7 +25,7 @@ group :development do
 end
 
 group :development, :test do
-#  gem 'web-console', '~> 2.0.0.beta4'
+  gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-nav'

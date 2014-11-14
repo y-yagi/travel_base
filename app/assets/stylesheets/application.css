@@ -11,5 +11,9 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
+ *= require metisMenu
+ *= require morrisjs
+ *= require_tree ../../../lib/assets/stylesheets
  *= require_self
  */
