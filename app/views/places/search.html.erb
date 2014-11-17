@@ -8,11 +8,11 @@
 <% @places.each do |place| %>
   <%= form_for(@place) do |f| %>
     名称: <%= get_place_name_from_geocode_result(place) %><br>
-    住所: <%= place.formatted_address %><br>
+    住所: <%= get_address_form_geocode_result(place) %><br>
     緯度経度： <%= place.geometry['location']['lat'] %> <%= place.geometry['location']['lng'] %>
     <br>
     <%= f.hidden_field :name, value: get_place_name_from_geocode_result(place) %>
-    <%= f.hidden_field :address, value: place.formatted_address %>
+    <%= f.hidden_field :address, value: get_address_form_geocode_result(place) %>
     <%= f.hidden_field :latitude, value: place.geometry['location']['lat'] %>
     <%= f.hidden_field :longitude, value: place.geometry['location']['lng'] %>
     <%= f.submit 'このデータを登録する' %>

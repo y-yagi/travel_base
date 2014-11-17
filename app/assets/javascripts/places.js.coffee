@@ -1,0 +1,2 @@
+$ ->
+  $('#placesTable').DataTable()
