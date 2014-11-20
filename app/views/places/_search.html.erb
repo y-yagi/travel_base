@@ -1,21 +1,45 @@
-<h2>検索フォーム</h2>
-<%= form_for(search_places_path, method: :get) do |f| %>
-  <%= text_field nil, :query %>
-  <%= f.submit '検索' %>
+<%= form_for(new_place_path, method: :get) do |f| %>
+  <div class="form-group">
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: '行きたい場所の名前'  %>
+  </div>
+  <%= f.submit class: "btn btn-default", value: '検索' %>
 <% end %>
 <br><br>
 
-<% @places.each do |place| %>
-  <%= form_for(@place) do |f| %>
-    名称: <%= get_place_name_from_geocode_result(place) %><br>
-    住所: <%= get_address_form_geocode_result(place) %><br>
-    緯度経度： <%= place.geometry['location']['lat'] %> <%= place.geometry['location']['lng'] %>
-    <br>
-    <%= f.hidden_field :name, value: get_place_name_from_geocode_result(place) %>
-    <%= f.hidden_field :address, value: get_address_form_geocode_result(place) %>
-    <%= f.hidden_field :latitude, value: place.geometry['location']['lat'] %>
-    <%= f.hidden_field :longitude, value: place.geometry['location']['lng'] %>
-    <%= f.submit 'このデータを登録する' %>
-    <br><br>
+<% if params[:query] %>
+  <% if @places.count == 0 %>
+    <p class="text-info">名前に一致するスポットはありませんでした</p>
+  <% else %>
+    <p class="text-info">名前に一致するスポットは<%= @places.count %>件ありました！</p>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover dataTable no-footer" id="placesTable" aria-describedby="placesTable_info">
+        <thead>
+          <tr role="row">
+            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 106px;">名前</th>
+            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 300px;">住所</th>
+            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>
+            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @places.each do |place| %>
+          <tr>
+            <%= form_for(@place) do |f| %>
+              <% address = get_address_form_geocode_result(place) %>
+              <% name = get_place_name_from_geocode_result(place) %>
+              <td class=" "><%= name %></td>
+              <td class=" "><%= address %></td>
+              <td class=" "><%= link_to 'この場所を地図で見る', googlemap_link(address), target: '_blank'  %></td>
+              <td class="center "><%= f.submit 'この場所を登録する', class: 'btn btn-default' %></td>
+              <%= f.hidden_field :name, value: name %>
+              <%= f.hidden_field :address, value: address  %>
+              <%= f.hidden_field :latitude, value: place.geometry['location']['lat'] %>
+              <%= f.hidden_field :longitude, value: place.geometry['location']['lng'] %>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   <% end %>
 <% end %>

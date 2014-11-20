@@ -1,14 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
-  def search
-    @places = []
-    if params[:query]
-      @places = Geocoder.search(params[:query])
-      @place = Place.new
-    end
-  end
-
   def index
     @places = Place.all
   end
@@ -18,7 +10,8 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
-    @places = []
+
+    @places = params[:query].present? ? Geocoder.search(params[:query]) : []
   end
 
   def edit

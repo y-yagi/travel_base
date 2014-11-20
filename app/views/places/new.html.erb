@@ -1,26 +1,30 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">場所登録</h1>
-  </div>
-  <!-- /.col-lg-12 -->
-</div>
-<div role="tabpanel">
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="tabs">
-    <li role="presentation" class="active"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">名称から住所を検索する</a></li>
-    <li role="presentation"><a href="#form" aria-controls="form" role="tab" data-toggle="tab">名称・住所を登録する</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="search">
-      <%= render 'search' %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="form">
-      <%= render 'form' %>
-    </div>
-  </div>
-
+   </div>
 </div>
 
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#search" data-toggle="tab" aria-expanded="false">住所を検索して登録する</a></li>
+          <li class=""><a href="#form" data-toggle="tab" aria-expanded="true">名称・住所を登録する</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="search">
+            <hr>
+            <%= render 'search' %>
+          </div>
+          <div class="tab-pane fade" id="form">
+            <hr>
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
