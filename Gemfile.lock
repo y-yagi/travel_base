@@ -72,6 +72,9 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     debug_inspector (0.0.2)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     elasticsearch (1.0.6)
       elasticsearch-api (= 1.0.6)
       elasticsearch-transport (= 1.0.6)
@@ -189,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   active_decorator
   coffee-rails (~> 4.0.0)
+  dotenv-rails
   elasticsearch-model
   elasticsearch-rails
   geocoder

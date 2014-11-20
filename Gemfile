@@ -5,6 +5,7 @@ source 'https://rails-assets.org'
 
 gem 'active_decorator'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'dotenv-rails'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'geocoder'
