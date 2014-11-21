@@ -1,10 +1,11 @@
 class Place < ActiveRecord::Base
+  include Elasticsearch::Model
 
   class << self
     def build(params)
-      @place = Place.new(params)
-      set_geoinfo(@place) if params[:latitude].blank?
-      @place
+      place = new(params)
+      set_geoinfo(place) if params[:latitude].blank?
+      place
     end
 
     def set_geoinfo(place)

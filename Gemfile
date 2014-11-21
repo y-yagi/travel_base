@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 gem 'active_decorator'
+gem 'arel', github: 'rails/arel'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'dotenv-rails'
 gem 'elasticsearch-model'

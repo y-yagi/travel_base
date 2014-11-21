@@ -13,16 +13,26 @@
       <!-- /input-group -->
       </li>
       <li>
-      <a href="#"><i class="fa fa-map-marker fa-fw"></i> 場所<span class="fa arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li>
-          <%= link_to '一覧', places_path %>
-        </li>
-        <li>
-          <%= link_to '登録', new_place_path %>
-        </li>
-      </ul>
-      <!-- /.nav-second-level -->
+        <a href="#"><i class="fa fa-map-marker fa-fw"></i> 場所<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level place">
+          <li>
+            <%= link_to '一覧', places_path %>
+          </li>
+          <li>
+            <%= link_to '登録', new_place_path %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-calendar fa-fw"></i> 旅行計画<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level travel">
+          <li>
+            <%= link_to '一覧', travels_path %>
+          </li>
+          <li>
+            <%= link_to '登録', new_travel_path %>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

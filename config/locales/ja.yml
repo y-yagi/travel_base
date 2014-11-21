@@ -202,3 +202,12 @@ ja:
         address: 住所
         memo: メモ
         website: ウェブページ
+
+  activerecord:
+    models:
+      travel: 旅行計画
+    attributes:
+      travel:
+        name: 名称
+        memo: メモ
+        shcedule: スケジュール

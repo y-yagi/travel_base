@@ -1,0 +1,28 @@
+<%= form_for(@travel) do |f| %>
+  <% if @travel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+      <ul>
+        <% @travel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag(I18n.t :shcedule, scope: [:activerecord, :attributes, :travel]) %><br>
+    <%= f.date_select :start_date, {start_year: Time.now.year - 1, end_year:  Time.now.year + 2}, { class: "form-control-select" } %>
+    〜
+    <%= f.date_select :end_date, {start_year: Time.now.year - 1, end_year:  Time.now.year + 2}, { class: "form-control-select" } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :memo %><br>
+    <%= f.text_area :memo, class: "form-control" %>
+  </div>
+  <%= f.submit class: "btn btn-default", value: '登録' %>
+<% end %>
