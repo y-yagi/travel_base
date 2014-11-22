@@ -1,28 +1,23 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:show, :edit, :update, :destroy]
+  before_action :set_travel, only: [:edit, :update, :destroy]
 
-  # GET /travels
-  # GET /travels.json
   def index
     @travels = Travel.all
   end
 
-  # GET /travels/1
-  # GET /travels/1.json
   def show
+    # TODO: limit by user
+    @places = Place.pluck(:name, :id)
+    @travel = Travel.schedules.find(params[:id])
   end
 
-  # GET /travels/new
   def new
     @travel = Travel.new
   end
 
-  # GET /travels/1/edit
   def edit
   end
 
-  # POST /travels
-  # POST /travels.json
   def create
     @travel = Travel.build(travel_params)
 
@@ -37,8 +32,6 @@ class TravelsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /travels/1
-  # PATCH/PUT /travels/1.json
   def update
     respond_to do |format|
       if @travel.update(travel_params)
@@ -51,8 +44,6 @@ class TravelsController < ApplicationController
     end
   end
 
-  # DELETE /travels/1
-  # DELETE /travels/1.json
   def destroy
     @travel.destroy
     respond_to do |format|
@@ -62,12 +53,10 @@ class TravelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_travel
       @travel = Travel.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
       params.require(:travel).permit(:name, :memo, :start_date, :end_date, :deleted_at, :user_id)
     end

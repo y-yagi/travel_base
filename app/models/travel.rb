@@ -1,5 +1,10 @@
 class Travel < ActiveRecord::Base
+  include Elasticsearch::Model
   has_many :travel_dates
+
+  scope :schedules, -> do
+    eager_load(:travel_dates, travel_dates: :schedules).merge(Schedule.order(:start_time))
+  end
 
   class << self
     def build(params)

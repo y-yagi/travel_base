@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  memo: MyText
+  start_time: 2014-11-21 13:42:36
+  end_time: 2014-11-21 13:42:36
+  travel_date_id: 1
+  place_id: 1
+
+two:
+  memo: MyText
+  start_time: 2014-11-21 13:42:36
+  end_time: 2014-11-21 13:42:36
+  travel_date_id: 1
+  place_id: 1

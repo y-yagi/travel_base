@@ -1,34 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= @travel.name %></h1>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @travel.name %>
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="form-group">
+          <%= form_tag(schedules_path) do %>
+            日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
+              {}, { class: "form-control-select" } %>&emsp;&emsp;
+            時間: <%= time_select :schedule, :start_time, { default: { hour: 8, min: 0 } }, { class: "form-control-select" } %> 〜
+            <%= time_select :schedule, :end_time, { default: { hour: 20, min: 0 } }, { class: "form-control-select" } %>&emsp;&emsp;
+            場所: <%= select :schedule, :place_id, options_for_select(@places),
+              {}, { class: "form-control-select" } %>&emsp;&emsp;
+            <%= submit_tag :add_schedule,  class: "btn btn-info", value: '登録' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">日程</div>
+      <div class="panel-body">
+        <ul class="nav nav-tabs">
+          <% @travel.travel_dates.each_with_index do |d, i| %>
+            <li class=""><a href="#<%= i + 1%>_day" data-toggle="tab" aria-expanded="false"><%= i + 1%>日目</a></li>
+          <% end %>
+        </ul>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @travel.memo %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @travel.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @travel.end_date %>
-</p>
-
-<p>
-  <strong>Deleted at:</strong>
-  <%= @travel.deleted_at %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @travel.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_travel_path(@travel) %> |
-<%= link_to 'Back', travels_path %>
+        <div class="tab-content">
+          <% @travel.travel_dates.each_with_index do |travel_date, i| %>
+            <div class="tab-pane" id="<%= i + 1%>_day">
+            <hr>
+            <p class="text-info"><%= I18n.l(travel_date.date, format: :long) %> </p>
+            <ul class="timeline">
+              <% travel_date.schedules.each_with_index do |schedule, i| %>
+                <% schedule.extend(ScheduleDecorator) %>
+                <% if i % 2 == 0 %>
+                  <li>
+                <% else %>
+                  <li class="timeline-inverted">
+                <% end %>
+                <div class="timeline-badge info"><i class="fa fa-map-marker"></i>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 class="timeline-title"><%= schedule.place.name %></h4>
+                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                  </div>
+                  <div class="timeline-body">
+                    <p><%= schedule.memo %>
+                    <hr>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-gear"></i>  <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">編集</a></li>
+                        <li><a href="#">削除</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

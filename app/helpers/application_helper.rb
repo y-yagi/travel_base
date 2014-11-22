@@ -11,4 +11,8 @@ module ApplicationHelper
   def googlemap_link(address)
     URI.encode("https://maps.google.co.jp/maps?q=#{address}")
   end
+
+  def default_schedule_start_time
+
+  end
 end

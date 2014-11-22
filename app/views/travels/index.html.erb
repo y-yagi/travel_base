@@ -30,6 +30,7 @@
                 <td class=" "><%= travel.schedule %></td>
                 <td class="center "><%= travel.memo %></td>
                 <td class="center ">
+                  <%= link_to '詳細', travel_path(travel), class: 'btn btn-default' %>
                   <%= link_to '編集', edit_travel_path(travel), class: 'btn btn-default' %>
                   <%= link_to '削除', travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, class: 'btn btn-danger' %></td>
               </tr>
