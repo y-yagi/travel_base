@@ -36,7 +36,10 @@
           <% @travel.travel_dates.each_with_index do |travel_date, i| %>
             <div class="tab-pane" id="<%= i + 1%>_day">
             <hr>
-            <p class="text-info"><%= I18n.l(travel_date.date, format: :long) %> </p>
+            <h4>
+              <%= I18n.l(travel_date.date, format: :long) %>
+              <small><%= link_to '地図で見る', map_show_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+            </h4>
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>
                 <% schedule.extend(ScheduleDecorator) %>

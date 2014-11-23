@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/show'
+
   root 'index#index'
 
   resources :travels
