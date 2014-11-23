@@ -157,6 +157,8 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-footnotes (4.1.4)
+      rails (>= 3.2)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
     rake (10.3.2)
@@ -215,6 +217,7 @@ DEPENDENCIES
   rails-assets-bootstrap
   rails-assets-metisMenu
   rails-assets-morrisjs
+  rails-footnotes (~> 4.0)
   redis
   sass-rails (~> 5.0.0.beta1)
   spring
