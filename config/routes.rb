@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'map/show'
+  get 'map/schedule'
+  get 'map/places'
 
   root 'index#index'
 

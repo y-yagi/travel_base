@@ -38,7 +38,7 @@
             <hr>
             <h4>
               <%= I18n.l(travel_date.date, format: :long) %>
-              <small><%= link_to '地図で見る', map_show_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+              <small><%= link_to '地図で見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
             </h4>
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>

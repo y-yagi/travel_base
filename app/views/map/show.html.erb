@@ -22,15 +22,15 @@
 
      function initialize() {
        var mapOptions = {
-         zoom: 12,
-         center: new google.maps.LatLng(<%= @first_place.latitude %>,  <%= @first_place.longitude %>),
+         zoom: <%= @zoom || 12 %>,
+         center: new google.maps.LatLng(<%= @places.first.latitude %>,  <%= @places.first.longitude %>),
          mapTypeId: google.maps.MapTypeId.ROADMAP
        };
        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
       var data = new Array();
-      <% @trave_date.schedules.each do |d| %>
-          data.push({position: new google.maps.LatLng(<%= d.place.latitude %>, <%= d.place.longitude %>), content: '<%= d.place.name %>'});
+      <% @places.each do |p| %>
+          data.push({position: new google.maps.LatLng(<%= p.latitude %>, <%= p.longitude %>), content: '<%= p.name %>'});
       <% end %>
 
       for (i = 0, l = data.length; i < l; i++) {

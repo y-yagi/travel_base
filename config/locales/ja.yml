@@ -196,17 +196,13 @@ ja:
   activerecord:
     models:
       place: 場所
+      travel: 旅行計画
     attributes:
       place:
         name: 名称
         address: 住所
         memo: メモ
         website: ウェブページ
-
-  activerecord:
-    models:
-      travel: 旅行計画
-    attributes:
       travel:
         name: 名称
         memo: メモ
