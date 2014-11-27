@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121044236) do
+ActiveRecord::Schema.define(version: 20141129033824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "photo_service_user_infos", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "service_type"
+    t.string   "photo_service_user_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "photo_service_user_infos", ["user_id"], name: "index_photo_service_user_infos_on_user_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
