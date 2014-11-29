@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'lib/assets/stylesheets/thumbnail-gallery', media: 'all' %>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header"><%= @album.name %></h1>
+    </div>
+    <% @photos.each do |photo| %>
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <a class="thumbnail" href="<%= photo.content.src %>" target="_blank">
+          <img class="img-responsive" src="<%= photo.media.thumbnails.last.url %>" alt="<%= photo.title %>">
+        </a>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'photos/index'
+
   get 'map/schedule'
   get 'map/places'
 

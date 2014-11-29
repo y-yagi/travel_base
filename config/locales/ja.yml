@@ -196,7 +196,7 @@ ja:
   activerecord:
     models:
       place: 場所
-      travel: 旅行計画
+      travel: 旅行
     attributes:
       place:
         name: 名称
