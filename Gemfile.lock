@@ -1,70 +1,44 @@
-GIT
-  remote: git://github.com/rails/arel.git
-  revision: a04851702b0e8e694a92139c3ee9f3b1622f3f5d
+GEM
+  remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
-    arel (6.0.0.beta2)
-
-GIT
-  remote: git://github.com/rails/rails.git
-  revision: ee80e22f03b36f5e2c35288226c66a44e2e722e2
-  specs:
-    actionmailer (4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activejob (= 4.2.0.beta4)
+    actionmailer (4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activejob (= 4.2.0.rc1)
       mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
-    actionpack (4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      rack (~> 1.6.0.beta)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      rack (~> 1.6.0.beta2)
       rack-test (~> 0.6.2)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    actionview (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    actionview (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    activejob (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    active_decorator (0.3.4)
+    activejob (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       globalid (>= 0.3.0)
-    activemodel (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    activemodel (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       builder (~> 3.1)
-    activerecord (4.2.0.beta4)
-      activemodel (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      arel (>= 6.0.0.beta2, < 6.1)
-    activesupport (4.2.0.beta4)
+    activerecord (4.2.0.rc1)
+      activemodel (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      arel (~> 6.0)
+    activesupport (4.2.0.rc1)
       i18n (>= 0.7.0.beta1, < 0.8)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    rails (4.2.0.beta4)
-      actionmailer (= 4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activejob (= 4.2.0.beta4)
-      activemodel (= 4.2.0.beta4)
-      activerecord (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.0.beta4)
-      sprockets-rails (~> 3.0.0.beta1)
-    railties (4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
-
-GEM
-  remote: https://rubygems.org/
-  remote: https://rails-assets.org/
-  specs:
-    active_decorator (0.3.4)
+    arel (6.0.0)
     binding_of_caller (0.7.3.pre1)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -124,7 +98,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nokogiri (1.6.4.1)
+    nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     paranoia (2.0.2)
       activerecord (~> 4.0)
@@ -141,9 +115,20 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
-    rack (1.6.0.beta)
+    rack (1.6.0.beta2)
     rack-test (0.6.2)
       rack (>= 1.0)
+    rails (4.2.0.rc1)
+      actionmailer (= 4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activejob (= 4.2.0.rc1)
+      activemodel (= 4.2.0.rc1)
+      activerecord (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.2.0.rc1)
+      sprockets-rails
     rails-assets-DataTables (1.10.4)
       rails-assets-jquery (>= 1.7.0)
     rails-assets-bootstrap (3.3.1)
@@ -159,7 +144,7 @@ GEM
     rails-assets-raphael (2.1.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.4)
+    rails-dom-testing (1.0.5)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -167,7 +152,12 @@ GEM
       rails (>= 3.2)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
-    rake (10.3.2)
+    railties (4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (10.4.0)
     redis (3.1.0)
     sass (3.4.8)
     sass-rails (5.0.0.beta1)
@@ -182,10 +172,10 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (3.0.0.beta1)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (~> 2.8)
+    sprockets-rails (2.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -205,7 +195,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_decorator
-  arel!
   coffee-rails (~> 4.0.0)
   dotenv-rails
   elasticsearch-model
@@ -219,7 +208,7 @@ DEPENDENCIES
   pry-nav
   pry-rails
   quiet_assets
-  rails!
+  rails (= 4.2.0.rc1)
   rails-assets-DataTables
   rails-assets-bootstrap
   rails-assets-metisMenu
