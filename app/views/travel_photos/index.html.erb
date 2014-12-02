@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Travel Photos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Travel</th>
+      <th>Photo service user info</th>
+      <th>Photo service album</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @travel_photos.each do |travel_photo| %>
+      <tr>
+        <td><%= travel_photo.travel %></td>
+        <td><%= travel_photo.photo_service_user_info %></td>
+        <td><%= travel_photo.photo_service_album_id %></td>
+        <td><%= link_to 'Show', travel_photo %></td>
+        <td><%= link_to 'Edit', edit_travel_photo_path(travel_photo) %></td>
+        <td><%= link_to 'Destroy', travel_photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Travel photo', new_travel_photo_path %>

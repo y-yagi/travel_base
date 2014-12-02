@@ -1,9 +1,10 @@
 class Travel < ActiveRecord::Base
   include Elasticsearch::Model
   has_many :travel_dates
+  has_many :travel_photos
 
   scope :schedules, -> do
-    eager_load(:travel_dates, travel_dates: :schedules, travel_dates: { schedules: :place })
+    eager_load(:travel_dates, :travel_photos, travel_dates: :schedules, travel_dates: { schedules: :place })
       .merge(Schedule.order(:start_time))
   end
 

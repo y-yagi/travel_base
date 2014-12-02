@@ -1,5 +1,5 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:edit, :update, :destroy]
+  before_action :set_travel, only: [:edit, :update, :destroy, :edit_photo]
 
   def index
     @travels = Travel.all
@@ -16,6 +16,15 @@ class TravelsController < ApplicationController
   end
 
   def edit
+  end
+
+  def edit_photo
+    # TODO: user
+    user = PhotoServiceUserInfo.first
+    client = PhotoServiceInfoWrapper.get_client(user)
+    entries = client.album.list.entries
+    @album_list = entries.map { |a| [a.name, a.id] }
+    @travel_photo = @travel.travel_photos.build { |f| f.photo_service_user_info_id = user.id }
   end
 
   def create

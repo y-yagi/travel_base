@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  travel_id: 
+  photo_service_user_info_id: 
+  photo_service_album_id: MyString
+
+two:
+  name: MyString
+  travel_id: 
+  photo_service_user_info_id: 
+  photo_service_album_id: MyString

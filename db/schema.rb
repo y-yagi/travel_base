@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129033824) do
+ActiveRecord::Schema.define(version: 20141201235632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20141129033824) do
 
   add_index "travel_dates", ["travel_id"], name: "index_travel_dates_on_travel_id", using: :btree
 
+  create_table "travel_photos", force: true do |t|
+    t.string   "name"
+    t.integer  "travel_id"
+    t.integer  "photo_service_user_info_id"
+    t.string   "photo_service_album_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "travel_photos", ["photo_service_user_info_id"], name: "index_travel_photos_on_photo_service_user_info_id", using: :btree
+  add_index "travel_photos", ["travel_id"], name: "index_travel_photos_on_travel_id", using: :btree
+
   create_table "travels", force: true do |t|
     t.string   "name"
     t.text     "memo"
@@ -87,4 +99,6 @@ ActiveRecord::Schema.define(version: 20141129033824) do
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "travel_photos", "photo_service_user_infos"
+  add_foreign_key "travel_photos", "travels"
 end

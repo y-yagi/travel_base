@@ -8,4 +8,10 @@ module TravelDecorator
     travel_dates.each { |d| list[I18n.l(d.date, format: :long)] = d.id }
     options_for_select(list)
   end
+
+  def photo_list_for_select
+    list = {}
+    travel_photos.each { |p| list[p.name] = travel_photo_path(p) }
+    options_for_select(list)
+  end
 end

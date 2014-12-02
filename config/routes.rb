@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  get 'photos/index'
+  root 'index#index'
 
   get 'map/schedule'
   get 'map/places'
 
-  root 'index#index'
-
-  resources :travels
+  resources :travels do
+    member do
+      get 'edit_photo'
+    end
+  end
+  resources :travel_photos
   resources :schedules
   resources :users
   resources :places do
