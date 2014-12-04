@@ -1,4 +1,4 @@
 class TravelDate < ActiveRecord::Base
-  belongs_to :travel, dependent: :destroy
-  has_many :schedules
+  belongs_to :travel
+  has_many :schedules, dependent: :destroy
 end

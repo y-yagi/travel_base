@@ -48,9 +48,8 @@
             <li class=""><a href="#<%= i + 1%>_day" data-toggle="tab" aria-expanded="false"><%= i + 1%>日目</a></li>
           <% end %>
         </ul>
-
         <div class="tab-content">
-          <% @travel.travel_dates.each_with_index do |travel_date, i| %>
+        <% @travel.travel_dates.each_with_index do |travel_date, i| %>
             <div class="tab-pane" id="<%= i + 1%>_day">
             <hr>
             <h4>
