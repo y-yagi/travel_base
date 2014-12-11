@@ -1,6 +1,6 @@
 <%= form_for(new_place_path, method: :get) do |f| %>
   <div class="form-group">
-    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: '行きたい場所の名前'  %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: '行きたい場所の名称'  %>
   </div>
   <%= f.submit class: "btn btn-default", value: '検索' %>
 <% end %>
@@ -8,14 +8,14 @@
 
 <% if params[:query] %>
   <% if @places.count == 0 %>
-    <p class="text-info">名前に一致するスポットはありませんでした</p>
+    <p class="text-info">名称に一致するスポットはありませんでした</p>
   <% else %>
-    <p class="text-info">名前に一致するスポットは<%= @places.count %>件ありました！</p>
+    <p class="text-info">名称に一致するスポットは<%= @places.count %>件ありました！</p>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover dataTable no-footer" id="placesTable" aria-describedby="placesTable_info">
         <thead>
           <tr role="row">
-            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 106px;">名前</th>
+            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 106px;">名称</th>
             <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 300px;">住所</th>
             <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>
             <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>

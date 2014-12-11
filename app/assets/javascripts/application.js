@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap-css
 //= require raphael
 //= require metisMenu
 //= require morrisjs
