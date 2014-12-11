@@ -6,10 +6,10 @@ class CreateTravels < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.datetime :deleted_at
-      t.integer :user_id
+      t.integer :owner_id
 
       t.timestamps null: false
     end
-    add_index :travels, [:deleted_at, :user_id]
+    add_index :travels, [:deleted_at, :owner_id]
   end
 end

@@ -18,7 +18,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.build(place_params)
+    @place = Place.build(place_params, current_user)
     respond_to do |format|
       if @place.save
         flash[:info] ='Place was successfully created.'

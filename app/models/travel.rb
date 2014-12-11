@@ -2,6 +2,8 @@ class Travel < ActiveRecord::Base
   include Elasticsearch::Model
   has_many :travel_dates, dependent: :destroy
   has_many :travel_photos, dependent: :destroy
+  has_many :travel_member, dependent: :destroy
+  has_one :owner, through: :user
 
   scope :schedules, -> do
     eager_load(:travel_dates, :travel_photos, travel_dates: :schedules, travel_dates: { schedules: :place })
