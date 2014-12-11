@@ -7,7 +7,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :website
-      t.datetime :deleted_at, null: false
+      t.datetime :deleted_at
       t.integer :user_id, null: false
       t.integer :status, default: 0
 
