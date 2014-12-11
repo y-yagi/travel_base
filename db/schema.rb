@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210235103) do
+ActiveRecord::Schema.define(version: 20141201235632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,16 +64,6 @@ ActiveRecord::Schema.define(version: 20141210235103) do
 
   add_index "travel_dates", ["travel_id"], name: "index_travel_dates_on_travel_id", using: :btree
 
-  create_table "travel_members", force: true do |t|
-    t.integer  "travel_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "travel_members", ["travel_id"], name: "index_travel_members_on_travel_id", using: :btree
-  add_index "travel_members", ["user_id"], name: "index_travel_members_on_user_id", using: :btree
-
   create_table "travel_photos", force: true do |t|
     t.string   "name",                       null: false
     t.integer  "travel_id"
@@ -93,11 +83,13 @@ ActiveRecord::Schema.define(version: 20141210235103) do
     t.date     "end_date"
     t.datetime "deleted_at"
     t.integer  "owner_id",   null: false
+    t.integer  "members",                 array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "travels", ["deleted_at", "owner_id"], name: "index_travels_on_deleted_at_and_owner_id", using: :btree
+  add_index "travels", ["members"], name: "index_travels_on_members", using: :gin
 
   create_table "users", force: true do |t|
     t.string   "uid",        null: false
@@ -111,8 +103,6 @@ ActiveRecord::Schema.define(version: 20141210235103) do
 
   add_index "users", ["deleted_at", "uid", "provider"], name: "index_users_on_deleted_at_and_uid_and_provider", using: :btree
 
-  add_foreign_key "travel_members", "travels"
-  add_foreign_key "travel_members", "users"
   add_foreign_key "travel_photos", "photo_service_user_infos"
   add_foreign_key "travel_photos", "travels"
 end

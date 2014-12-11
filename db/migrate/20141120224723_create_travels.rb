@@ -7,9 +7,11 @@ class CreateTravels < ActiveRecord::Migration
       t.date :end_date
       t.datetime :deleted_at
       t.integer :owner_id, null: false
+      t.integer :members, array: true
 
       t.timestamps null: false
     end
     add_index :travels, [:deleted_at, :owner_id]
+    add_index :travels, :members, using: :gin
   end
 end
