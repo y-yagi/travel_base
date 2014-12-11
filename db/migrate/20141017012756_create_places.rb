@@ -1,18 +1,18 @@
 class CreatePlaces < ActiveRecord::Migration
   def change
     create_table :places do |t|
-      t.string :name
-      t.string :address
+      t.string :name, null: false
+      t.string :address, null: false
       t.text :memo
       t.float :latitude
       t.float :longitude
       t.string :website
-      t.datetime :deleted_at
-      t.integer :user_id
+      t.datetime :deleted_at, null: false
+      t.integer :user_id, null: false
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end
-    add_index :places, :deleted_at
-    add_index :places, :user_id
+    add_index :places, [:deleted_at, :user_id, :status]
   end
 end

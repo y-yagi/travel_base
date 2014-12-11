@@ -1,7 +1,7 @@
 class CreateTravelPhotos < ActiveRecord::Migration
   def change
     create_table :travel_photos do |t|
-      t.string :name
+      t.string :name, null: false
       t.references :travel, index: true
       t.references :photo_service_user_info, index: true
       t.string :photo_service_album_id
