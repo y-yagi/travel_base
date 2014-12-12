@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.all
+    @places = Place.mine(current_user)
   end
 
   def show

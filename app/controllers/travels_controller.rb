@@ -28,7 +28,7 @@ class TravelsController < ApplicationController
   end
 
   def create
-    @travel = Travel.build(travel_params)
+    @travel = Travel.build(travel_params, current_user)
 
     respond_to do |format|
       if @travel.save

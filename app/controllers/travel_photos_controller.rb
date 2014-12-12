@@ -6,7 +6,7 @@ class TravelPhotosController < ApplicationController
   end
 
   def show
-    # TODO: user
+    # TODO: check travel member
     client = PhotoServiceInfoWrapper.get_client(@travel_photo.photo_service_user_info)
     album_list = client.album.list
     @album = album_list.entries.find { |e| e.id == @travel_photo.photo_service_album_id }
