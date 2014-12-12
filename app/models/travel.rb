@@ -50,4 +50,9 @@ class Travel < ActiveRecord::Base
       self.travel_dates.build({date: d}) unless old_date_range.include?(d)
     end
   end
+
+  def travel_member?(user_id)
+    return false unless members
+    members.include?(user_id)
+  end
 end

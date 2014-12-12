@@ -128,6 +128,7 @@ GEM
     paranoia (2.0.2)
       activerecord (~> 4.0)
     pg (0.17.1)
+    pg_array_parser (0.0.9)
     picasa (0.7.2)
       httparty
     pry (0.10.1)
@@ -233,6 +234,7 @@ DEPENDENCIES
   omniauth-twitter
   paranoia (~> 2.0)
   pg
+  pg_array_parser
   picasa
   pry-nav
   pry-rails
