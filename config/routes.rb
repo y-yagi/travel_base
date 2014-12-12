@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'
   get '/login', to: 'sessions#new'
   get 'map/schedule'
   get 'map/places'

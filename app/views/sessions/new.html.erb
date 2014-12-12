@@ -7,6 +7,9 @@
       </div>
       <div class="panel-body">
         <fieldset>
+          <% unless Rails.env.production? %>
+          <a href="/auth/developer" class="btn btn-lg btn-success btn-block"><i class="fa fa-edit fa-fw"></i> Developのアカウントでログインする</a><br>
+          <% end %>
           <a href="/auth/twitter" class="btn btn-lg btn-success btn-block"><i class="fa fa-twitter fa-fw"></i> Twitterのアカウントでログインする</a><br>
           <a href="/auth/github" class="btn btn-lg btn-success btn-block"><i class="fa fa-github fa-fw"></i> Githubのアカウントでログインする</a><br>
           <a href="/auth/google" class="btn btn-lg btn-success btn-block"><i class="fa fa-google-plus fa-fw"></i> Googleのアカウントでログインする</a><br>
