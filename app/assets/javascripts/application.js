@@ -18,4 +18,4 @@
 //= require morrisjs
 //= require DataTables
 //= require_tree ../../../lib/assets/javascripts
-//= require_tree .
+//= require_directory .

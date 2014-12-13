@@ -74,6 +74,9 @@ GEM
     geocoder (1.2.6)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    gon (4.0.2)
+      actionpack (>= 2.3.0)
+      json
     hashie (3.3.2)
     hike (1.2.3)
     httparty (0.13.3)
@@ -229,6 +232,7 @@ DEPENDENCIES
   elasticsearch-model
   elasticsearch-rails
   geocoder
+  gon
   jbuilder (~> 2.0)
   jquery-rails
   omniauth
