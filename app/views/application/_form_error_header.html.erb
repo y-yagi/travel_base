@@ -1,0 +1,12 @@
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    入力内容にエラーがあります
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% error_messages.each do |message| %>
+        <li class="text-danger"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

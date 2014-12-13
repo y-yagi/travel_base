@@ -13,6 +13,10 @@
 #
 
 class User < ActiveRecord::Base
+  validates :uid, presence: true
+  validates :name, presence: true
+  validates :provider, presence: true
+
   class << self
     def find_or_create_from_auth_hash(auth)
       find_by(provider: auth['provider'], uid: auth['uid']) ||

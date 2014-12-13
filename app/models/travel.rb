@@ -28,6 +28,13 @@ class Travel < ActiveRecord::Base
 
   before_save :adjust_travel_dates
 
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :owner_id, presence: true
+  validates_with TravelDateValidator
+
+
   class << self
     def build(params, user)
       travel = new(params)
