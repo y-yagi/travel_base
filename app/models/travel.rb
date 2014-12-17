@@ -25,6 +25,9 @@ class Travel < ActiveRecord::Base
       .merge(TravelDate.order(:date)).merge(Schedule.order(:start_time))
   end
   scope :mine, ->(user) { where(owner_id: user.id) }
+  scope :belong, ->(user) do
+    where('members @> ARRAY[?]::integer[]', [user.id])
+  end
 
   before_save :adjust_travel_dates
 
@@ -39,6 +42,7 @@ class Travel < ActiveRecord::Base
     def build(params, user)
       travel = new(params)
       travel.owner_id = user.id
+      travel.members = [user.id]
       travel
     end
   end

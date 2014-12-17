@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def setup
-    @travels = Travel.mine(current_user).all
+    @travels = Travel.belong(current_user).all
   end
 end
