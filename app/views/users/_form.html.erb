@@ -1,37 +1,27 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <%= render partial: 'form_error_header', locals: { error_messages: @user.errors.full_messages } %>
+  <% end %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %><br>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <hr>
+  <%= f.fields_for(:photo_service_user_info) do |f_photo| %>
+    <div class="form-group">
+      <%= f_photo.label :service_type %><br>
+      <%= f_photo.select :service_type, PhotoServiceUserInfo.service_types.keys, class: "form-control", prompt: 'Please select' %>
+    </div>
+    <div class="form-group">
+      <%= f_photo.label :photo_service_user_id %><br>
+      <%= f_photo.text_field :photo_service_user_id, class: "form-control" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :uid %><br>
-    <%= f.text_field :uid %>
-  </div>
-  <div class="field">
-    <%= f.label :provider %><br>
-    <%= f.text_field :provider %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :deleted_at %><br>
-    <%= f.datetime_select :deleted_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "btn btn-default", value: '更新', data: { disable_with: "Please wait..." } %>
 <% end %>

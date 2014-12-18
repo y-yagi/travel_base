@@ -13,9 +13,13 @@
 #
 
 class User < ActiveRecord::Base
+  has_one :photo_service_user_info
+
   validates :uid, presence: true
   validates :name, presence: true
   validates :provider, presence: true
+
+  accepts_nested_attributes_for :photo_service_user_info
 
   class << self
     def find_or_create_from_auth_hash(auth)

@@ -207,3 +207,9 @@ ja:
         name: 名称
         memo: メモ
         shcedule: スケジュール
+      user:
+        name: ユーザ名
+        email: メールアドレス
+      photo_service_user_info:
+        photo_service_user_id: ユーザID
+        service_type: サービス名
