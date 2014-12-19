@@ -11,7 +11,7 @@ module TravelDecorator
 
   def photo_list_for_select
     list = {}
-    travel_photos.each { |p| list[p.name] = travel_photo_path(p) }
+    travel_photos.each { |p| list[p.name] = travel_photo_path(p.travel, p) }
     options_for_select(list)
   end
 end

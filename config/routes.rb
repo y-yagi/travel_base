@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'map/schedule'
   get 'map/places'
 
-  resources :travels
-  resources :travel_photos
+  resources :travels do
+    resources :travel_photos, as: 'photos', path: 'photos'
+  end
   resources :schedules do
     member do
       patch 'update_memo'
