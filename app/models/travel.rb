@@ -62,7 +62,7 @@ class Travel < ActiveRecord::Base
     end
   end
 
-  def travel_member?(user_id)
+  def member?(user_id)
     return false unless members
     members.include?(user_id)
   end

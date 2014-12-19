@@ -55,7 +55,7 @@ class PlacesController < ApplicationController
 
   private
     def set_place
-      @place = Place.find(params[:id])
+      @place = Place.mine(current_user).find(params[:id])
     end
 
     def place_params

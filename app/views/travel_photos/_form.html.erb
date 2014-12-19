@@ -1,29 +1,17 @@
 <%= form_for(@travel_photo) do |f| %>
   <% if @travel_photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@travel_photo.errors.count, "error") %> prohibited this travel_photo from being saved:</h2>
-
-      <ul>
-      <% @travel_photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render partial: 'form_error_header', locals: { error_messages: @travel_photo.errors.full_messages } %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :travel_id %><br>
-    <%= f.text_field :travel_id %>
-  </div>
-  <div class="field">
-    <%= f.label :photo_service_user_info_id %><br>
-    <%= f.text_field :photo_service_user_info_id %>
-  </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :photo_service_album_id %><br>
-    <%= f.text_field :photo_service_album_id %>
+    <%= f.select :photo_service_album_id, @album_list, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
+  <%= f.hidden_field :travel_id %>
+  <%= f.hidden_field :photo_service_user_info_id %>
+  <%= f.submit class: "btn btn-default", value: '登録' %>
 <% end %>

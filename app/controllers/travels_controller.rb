@@ -6,9 +6,8 @@ class TravelsController < ApplicationController
   end
 
   def show
-    # TODO: limit by user
-    @places = Place.pluck(:name, :id)
-    @travel = Travel.schedules.find(params[:id])
+    @places = Place.mine(current_user).pluck(:name, :id)
+    @travel = Travel.schedules.mine(current_user).find(params[:id])
   end
 
   def new
@@ -18,52 +17,35 @@ class TravelsController < ApplicationController
   def edit
   end
 
-  def edit_photo
-    # TODO: user
-    user = PhotoServiceUserInfo.first
-    client = PhotoServiceInfoWrapper.get_client(user)
-    entries = client.album.list.entries
-    @album_list = entries.map { |a| [a.name, a.id] }
-    @travel_photo = @travel.travel_photos.build { |f| f.photo_service_user_info_id = user.id }
-  end
-
   def create
     @travel = Travel.build(travel_params, current_user)
 
-    respond_to do |format|
-      if @travel.save
-        format.html { redirect_to @travel, notice: 'Travel was successfully created.' }
-        format.json { render :show, status: :created, location: @travel }
-      else
-        format.html { render :new }
-        format.json { render json: @travel.errors, status: :unprocessable_entity }
-      end
+    if @travel.save
+      flash[:info] ='旅行情報を作成しました'
+      redirect_to @travel
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @travel.update(travel_params)
-        format.html { redirect_to @travel, notice: 'Travel was successfully updated.' }
-        format.json { render :show, status: :ok, location: @travel }
-      else
-        format.html { render :edit }
-        format.json { render json: @travel.errors, status: :unprocessable_entity }
-      end
+    if @travel.update(travel_params)
+      flash[:info] ='旅行情報を更新しました'
+      redirect_to @travel
+    else
+      render :edit
     end
   end
 
   def destroy
     @travel.destroy
-    respond_to do |format|
-      format.html { redirect_to travels_url, notice: 'Travel was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:info] ='旅行情報を削除しました'
+    redirect_to travels_url
   end
 
   private
     def set_travel
-      @travel = Travel.find(params[:id])
+      @travel = Travel.mine(current_user).find(params[:id])
     end
 
     def travel_params

@@ -5,70 +5,62 @@ class TravelPhotosController < ApplicationController
     @travel_photos = TravelPhoto.all
   end
 
+  def new
+    setup_photo_service_info
+    @travel = Travel.mine(current_user).find(params[:travel_id])
+    @travel_photo = @travel.travel_photos.build do |f|
+      f.photo_service_user_info_id = @photo_service_user_info.id
+    end
+  end
+
   def show
-    # TODO: check travel member
+    return redirect_to root_path unless @travel_photo.travel.member?(current_user.id)
+
     client = PhotoServiceInfoWrapper.get_client(@travel_photo.photo_service_user_info)
     album_list = client.album.list
     @album = album_list.entries.find { |e| e.id == @travel_photo.photo_service_album_id }
     @photos = client.album.show(@album.id).entries
   end
 
-  def new
-    @travel_photo = TravelPhoto.new
-  end
-
-  # GET /travel_photos/1/edit
-  def edit
-  end
-
-  # POST /travel_photos
-  # POST /travel_photos.json
   def create
+    setup_photo_service_info
     @travel_photo = TravelPhoto.new(travel_photo_params)
-
-    respond_to do |format|
-      if @travel_photo.save
-        format.html { redirect_to @travel_photo, notice: 'Travel photo was successfully created.' }
-        format.json { render :show, status: :created, location: @travel_photo }
-      else
-        format.html { render :new }
-        format.json { render json: @travel_photo.errors, status: :unprocessable_entity }
-      end
+    if @travel_photo.save
+      flash[:info] ='写真データを紐付けしました'
+      redirect_to @travel_photo.travel
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /travel_photos/1
-  # PATCH/PUT /travel_photos/1.json
   def update
-    respond_to do |format|
-      if @travel_photo.update(travel_photo_params)
-        format.html { redirect_to @travel_photo, notice: 'Travel photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @travel_photo }
-      else
-        format.html { render :edit }
-        format.json { render json: @travel_photo.errors, status: :unprocessable_entity }
-      end
+    if @travel_photo.update(travel_photo_params)
+      flash[:info] ='写真データの紐付け更新しました'
+      redirect_to @travel_photo.travel
+    else
+      render :update
     end
   end
 
-  # DELETE /travel_photos/1
-  # DELETE /travel_photos/1.json
   def destroy
     @travel_photo.destroy
-    respond_to do |format|
-      format.html { redirect_to travel_photos_url, notice: 'Travel photo was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:info] ='写真データの紐付けを削除しました'
+    redirect_to @travel_photo.travel
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_travel_photo
       @travel_photo = TravelPhoto.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def travel_photo_params
       params.require(:travel_photo).permit(:travel_id, :photo_service_user_info_id, :photo_service_album_id, :name)
+    end
+
+    def setup_photo_service_info
+      @photo_service_user_info = current_user.photo_service_user_info
+      client = PhotoServiceInfoWrapper.get_client(@photo_service_user_info)
+      entries = client.album.list.entries
+      @album_list = entries.map { |a| [a.name, a.id] }
     end
 end

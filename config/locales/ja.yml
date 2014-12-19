@@ -213,3 +213,6 @@ ja:
       photo_service_user_info:
         photo_service_user_id: ユーザID
         service_type: サービス名
+      travel_photo:
+        name: 名称
+        photo_service_album_id: アルバム名

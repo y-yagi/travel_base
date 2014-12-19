@@ -32,7 +32,7 @@
   <div class="col-lg-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= link_to '写真データを紐付ける', edit_photo_travel_path(@travel), class: 'btn btn-default' %>&emsp;&emsp;
+        <%= link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id), class: 'btn btn-default' %>&emsp;&emsp;
         写真を見る : <%= select :travel_photo, :id, @travel.photo_list_for_select,
           { prompt: 'Please select' },
           { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" } %>

@@ -8,11 +8,7 @@ Rails.application.routes.draw do
   get 'map/schedule'
   get 'map/places'
 
-  resources :travels do
-    member do
-      get 'edit_photo'
-    end
-  end
+  resources :travels
   resources :travel_photos
   resources :schedules do
     member do

@@ -2,7 +2,6 @@
   <% if @travel.errors.any? %>
     <%= render partial: 'form_error_header', locals: { error_messages: @travel.errors.full_messages } %>
   <% end %>
-
   <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name, class: "form-control" %>
