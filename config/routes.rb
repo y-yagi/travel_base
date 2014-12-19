@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     end
   end
   resources :travel_photos
-  resources :schedules
+  resources :schedules do
+    member do
+      patch 'update_memo'
+    end
+  end
   resources :users
   resources :places do
     collection do

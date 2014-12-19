@@ -1,3 +1,4 @@
+<% @need_pages_js = true %>
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header"><%= @travel.name %>
@@ -54,7 +55,7 @@
             <hr>
             <h4>
               <%= I18n.l(travel_date.date, format: :long) %>
-              <small><%= link_to '地図で見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+              <small><%= link_to '行く場所を地図で見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
             </h4>
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>
@@ -72,15 +73,15 @@
                     <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
                   </div>
                   <div class="timeline-body">
-                    <p><%= schedule.memo %>
+                    <% memo = schedule.try(:memo) || 'メモを編集' %>
+                    <a href="#" class="schedule-memo" data-type="textarea" data-pk="<%= schedule.id %>" data-url="<%= update_memo_schedule_path(schedule) %>" data-title="Enter memo"><%= memo %></a>
                     <hr>
                     <div class="btn-group">
                       <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-gear"></i>  <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">編集</a></li>
-                        <li><a href="#">削除</a></li>
+                        <li><%= link_to '削除', schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } %></li>
                       </ul>
                     </div>
                   </div>

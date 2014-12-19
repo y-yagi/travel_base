@@ -1,12 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_chedule, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @chedules = Schedule.all
-  end
-
-  def show
-  end
+  before_action :set_schedule, only: [:show, :edit, :update, :update_memo, :destroy]
 
   def new
     @schedule = Schedule.new
@@ -17,38 +10,32 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.build(set_date_info(schedule_params))
-    respond_to do |format|
-      if @schedule.save
-        flash[:info] ='Schedule was successfully created.'
-        format.html { redirect_to travel_path(@schedule.travel_date.travel) }
-        format.json { render :show, status: :created, location: @schedule }
-      else
-        format.html { render :new }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
+    if @schedule.save
+      flash[:info] ='Schedule was successfully created.'
+      redirect_to travel_path(@schedule.travel_date.travel)
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @schedule.update(schedule_params)
-        flash[:info] ='Schedule was successfully updated.'
-        format.html { redirect_to travel_path(@schedule.travel_date.travel) }
-        format.json { render :show, status: :ok, location: @schedule }
-      else
-        format.html { render :edit }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
+    if @schedule.update(schedule_params)
+      flash[:info] ='Schedule was successfully updated.'
+      redirect_to travel_path(@schedule.travel_date.travel)
+    else
+      render :edit
     end
+  end
+
+  def update_memo
+    @schedule.update!(memo: params[:value])
+    head :ok
   end
 
   def destroy
     @schedule.destroy
-    respond_to do |format|
-      flash[:info] ='Schedule was successfully destroyed.'
-      format.html { redirect_to travel_path(@schedule.travel_date.travel) }
-      format.json { head :no_content }
-    end
+    flash[:info] ='Schedule was successfully destroyed.'
+    redirect_to travel_path(@schedule.travel_date.travel)
   end
 
   private
@@ -68,7 +55,6 @@ class SchedulesController < ApplicationController
       _params['end_time(1i)'] = travel_date.year.to_s
       _params['end_time(2i)'] = travel_date.month.to_s
       _params['end_time(3i)'] = travel_date.day.to_s
-
       _params
     end
 end

@@ -13,7 +13,7 @@
 #
 
 class Schedule < ActiveRecord::Base
-  belongs_to :travel_date, dependent: :destroy
+  belongs_to :travel_date
   belongs_to :place
 
   validates :travel_date_id, presence: true
