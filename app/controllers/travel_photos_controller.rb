@@ -2,7 +2,8 @@ class TravelPhotosController < ApplicationController
   before_action :set_travel_photo, only: [:show, :edit, :update, :destroy]
 
   def index
-    @travel_photos = TravelPhoto.all
+    @travel = Travel.mine(current_user).find(params[:travel_id])
+    @travel_photos = @travel.travel_photos
   end
 
   def new

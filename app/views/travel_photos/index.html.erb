@@ -1,31 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Travel Photos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Travel</th>
-      <th>Photo service user info</th>
-      <th>Photo service album</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travel_photos.each do |travel_photo| %>
-      <tr>
-        <td><%= travel_photo.travel %></td>
-        <td><%= travel_photo.photo_service_user_info %></td>
-        <td><%= travel_photo.photo_service_album_id %></td>
-        <td><%= link_to 'Show', travel_photo %></td>
-        <td><%= link_to 'Edit', edit_travel_photo_path(travel_photo) %></td>
-        <td><%= link_to 'Destroy', travel_photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Travel photo', new_travel_photo_path %>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">写真データ管理
+      <%= link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id), class: 'btn btn-default pull-right'%>
+    </h1>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="placesTable" aria-describedby="placesTable_info">
+              <thead>
+                <tr role="row">
+                  <th class="sorting" tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 60px;">名前</th>
+                  <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 70px;"> </th></tr>
+              </thead>
+              <tbody>
+              <% @travel_photos.each do |travel_photo| %>
+                <td class=" "><%= travel_photo.name %></td>
+                <td class="center ">
+                  <%= link_to '編集', edit_travel_photo_path(@travel, travel_photo), class: 'btn btn-default' %>
+                  <%= link_to '削除', travel_photo_path(@travel, travel_photo), method: :delete, data: { confirm: '紐付けを解除します。宜しいですか?' }, class: 'btn btn-danger' %></td>
+              </tr>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
