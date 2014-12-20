@@ -15,7 +15,7 @@
   <%= f.fields_for(:photo_service_user_info) do |f_photo| %>
     <div class="form-group">
       <%= f_photo.label :service_type %><br>
-      <%= f_photo.select :service_type, PhotoServiceUserInfo.service_types.keys, class: "form-control", prompt: 'Please select' %>
+      <%= f_photo.select :service_type, PhotoServiceUserInfo.service_types.keys, {}, { class: "form-control-select", prompt: 'Please select' } %>
     </div>
     <div class="form-group">
       <%= f_photo.label :photo_service_user_id %><br>
