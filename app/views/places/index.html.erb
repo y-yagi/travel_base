@@ -29,7 +29,7 @@
               <% @places.each do |place| %>
                 <tr class="gradeA">
                 <td class=" "><%= place.name %></td>
-                <td class=" "><%= place.address %></td>
+                <td class=" "><%= link_to place.address, googlemap_link(place.address), target: '_blank' %></td>
                 <td class="center "><%= place.memo %></td>
                 <td class="center ">
                   <%= link_to '編集', edit_place_path(place), class: 'btn btn-default' %>
