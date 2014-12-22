@@ -20,7 +20,7 @@ gem 'paranoia', '~> 2.0'
 gem 'picasa'
 gem 'pg'
 gem 'pg_array_parser'
-gem 'rails', '4.2.0.rc3'
+gem 'rails', '4.2.0'
 gem 'rails-assets-bootstrap-css'
 gem 'rails-assets-DataTables'
 gem 'rails-assets-metisMenu'
@@ -34,7 +34,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'web-console', '~> 2.0.0.beta4'
+  gem 'web-console', '~> 2.0.0'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-nav'
