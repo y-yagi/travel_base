@@ -21,6 +21,8 @@ class Place < ActiveRecord::Base
 
   scope :mine, ->(user) { where(user_id: user.id) }
 
+  enum status: [ :not_gone, :already_went ]
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :address, presence: true
   validates :user_id, presence: true

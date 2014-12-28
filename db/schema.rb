@@ -15,9 +15,8 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
-  create_table "photo_service_user_infos", force: true do |t|
+  create_table "photo_service_user_infos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "service_type",          null: false
     t.string   "photo_service_user_id", null: false
@@ -27,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   add_index "photo_service_user_infos", ["user_id"], name: "index_photo_service_user_infos_on_user_id", using: :btree
 
-  create_table "places", force: true do |t|
+  create_table "places", force: :cascade do |t|
     t.string   "name",                   null: false
     t.string   "address",                null: false
     t.text     "memo"
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   add_index "places", ["deleted_at", "user_id", "status"], name: "index_places_on_deleted_at_and_user_id_and_status", using: :btree
 
-  create_table "schedules", force: true do |t|
+  create_table "schedules", force: :cascade do |t|
     t.text     "memo"
     t.datetime "start_time",     null: false
     t.datetime "end_time",       null: false
@@ -55,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   add_index "schedules", ["travel_date_id"], name: "index_schedules_on_travel_date_id", using: :btree
 
-  create_table "travel_dates", force: true do |t|
+  create_table "travel_dates", force: :cascade do |t|
     t.date     "date",       null: false
     t.integer  "travel_id",  null: false
     t.datetime "created_at", null: false
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   add_index "travel_dates", ["travel_id"], name: "index_travel_dates_on_travel_id", using: :btree
 
-  create_table "travel_photos", force: true do |t|
+  create_table "travel_photos", force: :cascade do |t|
     t.string   "name",                       null: false
     t.integer  "travel_id"
     t.integer  "photo_service_user_info_id"
@@ -76,7 +75,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
   add_index "travel_photos", ["photo_service_user_info_id"], name: "index_travel_photos_on_photo_service_user_info_id", using: :btree
   add_index "travel_photos", ["travel_id"], name: "index_travel_photos_on_travel_id", using: :btree
 
-  create_table "travels", force: true do |t|
+  create_table "travels", force: :cascade do |t|
     t.string   "name",       null: false
     t.text     "memo"
     t.date     "start_date"
@@ -91,7 +90,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
   add_index "travels", ["deleted_at", "owner_id"], name: "index_travels_on_deleted_at_and_owner_id", using: :btree
   add_index "travels", ["members"], name: "index_travels_on_members", using: :gin
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "uid",        null: false
     t.string   "provider",   null: false
     t.string   "name",       null: false

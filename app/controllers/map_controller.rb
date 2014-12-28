@@ -12,7 +12,7 @@ class MapController < ApplicationController
   end
 
   def places
-    places = Place.mine(current_user).all
+    places = Place.mine(current_user).not_gone
     gon.places  = places.map{ |p| { name: p.name, latitude: p.latitude, longitude: p.longitude } }
     gon.zoom = 7
     render :show

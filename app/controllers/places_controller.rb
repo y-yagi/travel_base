@@ -2,7 +2,11 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.mine(current_user)
+    @places = if params[:already]
+                Place.mine(current_user).already_went
+              else
+                Place.mine(current_user).not_gone
+              end
   end
 
   def show
@@ -59,6 +63,7 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:name, :address, :memo, :latitude, :longitude, :website, :deleted_at, :user_id)
+      params.require(:place).permit(:name, :address,
+        :memo, :latitude, :longitude, :website, :deleted_at, :user_id, :status)
     end
 end
