@@ -48,8 +48,6 @@ class Travel < ActiveRecord::Base
   end
 
   def adjust_travel_dates
-    return if start_date > end_date # TODO: これはvalidationでチェックする
-
     new_date_range = (start_date..end_date)
     unless travel_dates.empty?
       travel_dates.each do |travel_date|
