@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
         u.provider = auth['provider']
         u.uid = auth['uid']
         u.email = auth['info']['email']
-        u.name = auth['info']['name'].present? || auth['info']['nickname']
+        u.name = auth['info']['name'].present? ?
+          auth['info']['name'] || auth['info']['nickname']
       end
     end
   end
