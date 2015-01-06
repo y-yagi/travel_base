@@ -18,8 +18,8 @@
           <%= form_tag(schedules_path) do %>
             日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
               {}, { class: "form-control-select" } %>&emsp;&emsp;
-            時間: <%= time_select :schedule, :start_time, { default: { hour: 8, min: 0 } }, { class: "form-control-select" } %> 〜
-            <%= time_select :schedule, :end_time, { default: { hour: 20, min: 0 } }, { class: "form-control-select" } %>&emsp;&emsp;
+            時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
+            <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;&emsp;
             場所: <%= select :schedule, :place_id, options_for_select(@places),
               {}, { class: "form-control-select" } %>&emsp;&emsp;
             <%= submit_tag :add_schedule,  class: "btn btn-info", value: '登録' %>
