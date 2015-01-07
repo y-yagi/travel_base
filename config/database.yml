@@ -78,6 +78,5 @@ test:
 #
 production:
   <<: *default
-  database: travel_base
-  username: travel_base
-  password: <%= ENV['TRAVEL_BASE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  database: wikin
