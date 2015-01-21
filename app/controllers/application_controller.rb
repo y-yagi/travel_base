@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :check_logged_in, :setup
+  force_ssl if: :ssl_configured?
 
   helper_method :current_user
 
@@ -20,5 +21,10 @@ class ApplicationController < ActionController::Base
 
   def setup
     @travels = Travel.belong(current_user).all
+  end
+
+
+  def ssl_configured?
+    Rails.env.production?
   end
 end
