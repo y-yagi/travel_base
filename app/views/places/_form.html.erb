@@ -4,11 +4,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
+    <%= f.label :name %><span class="text-primary p-lg">(必須)</span><br>
     <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><br>
+    <%= f.label :address %><span><span class="text-primary p-lg">(必須)</span><br>
     <%= f.text_field :address, class: "form-control" %>
   </div>
   <div class="form-group">
@@ -19,5 +19,9 @@
     <%= f.label :website %><br>
     <%= f.text_field :website, class: "form-control" %>
   </div>
-  <%= f.submit class: "btn btn-default", value: '登録', data: { disable_with: "Please wait..." } %>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
 <% end %>

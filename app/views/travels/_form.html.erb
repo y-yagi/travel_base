@@ -16,5 +16,9 @@
     <%= f.label :memo %><br>
     <%= f.text_area :memo, class: "form-control" %>
   </div>
-  <%= f.submit class: "btn btn-default", value: '登録' %>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
 <% end %>

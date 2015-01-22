@@ -1,24 +1,55 @@
-<div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand" href="<%= root_url %>">Travel Base</a>
-</div>
+          <header class="header sticky"><!--Adding class "sticky" to header enables its pinning to top on scroll. Please note in a "boxed" mode header doesn't stick to the top.-->
+            <div class="inner">
+              <div class="container group">
+                <!--Logo-->
+                <a class="logo" href="<%= root_path %>">Travel Base</a>
+                <!--Site Navigation-->
+                <div class="navigation">
+                  <!--Menu-->
+                  <nav class="menu">
+                    <ul>
+                      <li class="<%= 'active' if current_menu?('index') %>"><%= link_to 'HOME', root_path %></li>
 
-<ul class="nav navbar-top-links navbar-right">
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-    </a>
-    <ul class="dropdown-menu dropdown-user">
-      <li><a href="<%= edit_user_path(current_user) %>"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-      <li class="divider"></li>
-      <li><a href="<%= logout_path %>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-      </li>
-    </ul>
-  </li>
-</ul>
+                      <li class="<%= 'active' if current_menu?('places') %>"><a href="#">行きたい所</a>
+                        <ul class="submenu">
+                          <li><%= link_to '新規登録', new_place_path %></li>
+                          <li><%= link_to '登録済み一覧', places_path %></li>
+                        </ul>
+                      </li>
+                      <li class="<%= 'active' if current_menu?('travels') %>"><a href="#">旅行計画</a>
+                        <ul class="submenu">
+                          <li><%= link_to '新規作成', new_travel_path %></li>
+                          <li><a href="<%= travels_path %>">一覧<i class="fa fa-angle-right"></i></a>
+                            <ul class="sub-submenu">
+                              <% @travels.each do |travel| %>
+                                <li>
+                                  <%= link_to travel.name, travel_path(travel) %>
+                                </li>
+                              <% end %>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                  <!--Search-->
+                  <div class="search"><i class="icon icon-search"></i></div>
+                </div>
 
+                <!--Tools-->
+                <div class="tools group">
+                  <%= link_to '登録情報', edit_user_path(current_user), class: 'pull-left' %>
+                  <%= link_to 'ログアウト', logout_path, class: 'pull-left' %>
+                </div><!--Tools Close-->
+
+              </div>
+            </div>
+
+            <!--Quick Search-->
+            <form class="quick-search" method="get" autocomplete="off">
+              <div class="overlay"></div>
+              <input class="search-field" type="text" placeholder="Search">
+              <span>Press enter to search</span>
+            </form>
+
+          </header><!--Header Close-->

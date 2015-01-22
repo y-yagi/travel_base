@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TravelBase</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag "pages/#{params[:controller]}" if @need_pages_js %>
-  <%= csrf_meta_tags %>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TravelBase</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "pages/#{controller_name}" if @need_pages_js %>
 
-<body>
-  <div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-      <%= render 'navbar_header' %>
-      <%= render 'navbar_side' %>
-    </nav>
-    <div id="page-wrapper">
-      <%= render 'flash' %>
-      <%= yield %>
-    </div> <!-- /#page-wrapper -->
-  <div>
-</body>
+    <% if controller_name == 'map' %>
+      <%= include_gon %>
+      <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+      <%= javascript_include_tag 'pages/map' %>
+    <% end %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="parallax animated fadeIn">
+    <div class="off-canvas-wrap" data-offcanvas>
+    	<div class="inner-wrap">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <%= render 'navbar_header' %>
+        </nav>
+        <div class="site-layout">
+          <div class="page">
+            <%= render 'flash' %>
+
+            <%= yield %>
+
+            <section class="info-box primary">
+              <div class="container">
+                <div class="row"></div>
+              </div>
+            </section>
+          <div>
+        <div>
+      <div>
+    <div>
+  </body>
 
 </html>

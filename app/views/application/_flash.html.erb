@@ -1,8 +1,12 @@
 <% flash.each do |type, msg| %>
-  <div class="row">
-      <div class="alert alert-<%= type %>">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= msg.html_safe %>
+  <section class="info-box <%= type %> space-bottom alert">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8"><h3 class="light-weight light-color"><%= msg.html_safe %></h3></div>
+        <div class="col-lg-4">
+          <button type="button" class="btn btn-transparent btn-<%= type %>" data-dismiss="info-box">×</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 <% end %>

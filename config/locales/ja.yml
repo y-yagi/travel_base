@@ -199,12 +199,12 @@ ja:
       travel: 旅行
     attributes:
       place:
-        name: 名称
+        name: 名前
         address: 住所
         memo: メモ
-        website: ウェブページ
+        website: HP
       travel:
-        name: 名称
+        name: 名前
         memo: メモ
         shcedule: スケジュール
       user:
@@ -214,5 +214,5 @@ ja:
         photo_service_user_id: ユーザID
         service_type: サービス名
       travel_photo:
-        name: 名称
+        name: 名前
         photo_service_album_id: アルバム名

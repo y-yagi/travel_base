@@ -1,5 +1,5 @@
 Geocoder.configure(
-  timeout:  3,
+  timeout:  5,
   lookup: :google,
   language: :ja,
   use_https: true,

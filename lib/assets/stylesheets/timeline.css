@@ -178,3 +178,25 @@
         border-left-width: 0;
     }
 }
+
+.timeline-heading .delete {
+  display: block;
+  width: 30px;
+  color: #000000;
+  position: absolute;
+  background: #ffffff;
+  text-align: center;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.header .tools .cart-btn .cart-dropdown .item .delete:hover {
+  background: #448956;
+  color: #fff;
+}

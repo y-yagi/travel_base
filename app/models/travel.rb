@@ -64,4 +64,8 @@ class Travel < ActiveRecord::Base
     return false unless members
     members.include?(user_id)
   end
+
+  def past?
+    Time.now.to_date > end_date
+  end
 end

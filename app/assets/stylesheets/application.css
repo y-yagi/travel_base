@@ -12,9 +12,6 @@
  *
  *= require_tree .
  *= require bootstrap-css
- *= require metisMenu
- *= require morrisjs
- *= DataTables
  *= require_tree ../../../lib/assets/stylesheets
  *= require_self
  */

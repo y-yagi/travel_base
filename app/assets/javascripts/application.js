@@ -13,9 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-css
-//= require raphael
-//= require metisMenu
-//= require morrisjs
-//= require DataTables
 //= require_tree ../../../lib/assets/javascripts
 //= require_directory .

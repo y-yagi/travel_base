@@ -1,63 +1,77 @@
 <% @need_pages_js = true %>
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header"><%= @travel.name %>
-      <span class="pull-right">
-        <%= link_to '編集', edit_travel_path(@travel), class: 'btn btn-default' %>
-        <%= link_to '削除', @travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, class: 'btn btn-danger' %></td>
-      </span>
-    </h1>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="form-group">
-          <%= form_tag(schedules_path) do %>
-            日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
-              {}, { class: "form-control-select" } %>&emsp;&emsp;
-            時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
-            <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;&emsp;
-            場所: <%= select :schedule, :place_id, options_for_select(@places),
-              {}, { class: "form-control-select" } %>&emsp;&emsp;
-            <%= submit_tag :add_schedule,  class: "btn btn-info", value: '登録' %>
-          <% end %>
-        </div>
+<section class="page-block double-padding-top double-space-bottom">
+	<div class="container-fluid">
+  	<div class="page-heading center">
+      <h2><%= @travel.name %></h2>
+      <h3><%= @travel.memo %><span></span></h3>
+  	</div>
+    <div class="row double-space-top">
+      <div class="col-md-8 col-md-offset-2">
+        <% unless @travel.past? %>
+          <% # add schedule panel %>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#manage-photo" href="#add-schedule" class="collapsed">
+                  予定を追加する
+                </a>
+              </h4>
+            </div>
+            <div id="add-schedule" class="panel-collapse collapse" style="height: 0px;">
+              <div class="panel-body">
+                <div class="form-group">
+                  <%= form_tag(schedules_path) do %>
+                    日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
+                      {}, { class: "form-control-select" } %>&emsp;&emsp;
+                    時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
+                    <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;&emsp;
+                    場所: <%= select :schedule, :place_id, options_for_select(@places),
+                      {}, { class: "form-control-select" } %>&emsp;&emsp;
+                    <%= submit_tag :add_schedule,  class: "btn btn-primary", value: '登録' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <% # add photo panel %>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#manage-photo" class="collapsed">
+                  写真管理
+                </a>
+              </h4>
+            </div>
+            <div id="manage-photo" class="panel-collapse collapse" style="height: 0px;">
+              <div class="panel-body">
+                <%= link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id) %>&emsp;&emsp;
+                写真を見る : <%= select :travel_photo, :id, @travel.photo_list_for_select,
+                  { prompt: 'Please select' },
+                  { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" } %>
+                &emsp;&emsp;
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id), class: 'btn btn-default' %>&emsp;&emsp;
-        写真を見る : <%= select :travel_photo, :id, @travel.photo_list_for_select,
-          { prompt: 'Please select' },
-          { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" } %>
-        &emsp;&emsp;
-        <%= link_to '写真データの管理をする', travel_photos_path(travel_id: @travel.id), class: 'btn btn-default' %>&emsp;&emsp;
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">日程</div>
-      <div class="panel-body">
-        <ul class="nav nav-tabs">
+    <div class="row double-space-top">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="tab-content">
+        <ul class="nav-tabs left" role="tablist">
           <% @travel.travel_dates.each_with_index do |d, i| %>
-            <li class=""><a href="#<%= i + 1%>_day" data-toggle="tab" aria-expanded="false"><%= i + 1%>日目</a></li>
+            <li class="<%= 'active' if i == 0 %>"><a href="#<%= i + 1%>_day" role="tab" data-toggle="tab"><%= i + 1%>日目</a></li>
           <% end %>
         </ul>
-        <div class="tab-content">
         <% @travel.travel_dates.each_with_index do |travel_date, i| %>
-            <div class="tab-pane" id="<%= i + 1%>_day">
+          <div class="tab-pane <%= "fade in active" if i == 0 %>" id="<%= i + 1%>_day">
             <hr>
             <h4>
               <%= I18n.l(travel_date.date, format: :long) %>
-              <small><%= link_to '行く場所を地図で見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+              <% if travel_date.schedules.present? %>
+                <small><%= link_to '行く場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+              <% end %>
             </h4>
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>
@@ -67,25 +81,21 @@
                 <% else %>
                   <li class="timeline-inverted">
                 <% end %>
-                <div class="timeline-badge info"><i class="fa fa-map-marker"></i>
+                <div class="timeline-badge success"><i class="fa fa-map-marker"></i>
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
                     <h4 class="timeline-title"><%= schedule.place.name %></h4>
                     <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                    <div class="delete">
+                      <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                        <i class="fa fa-trash-o"></i>
+                      <% end %>
+                    </div>
                   </div>
                   <div class="timeline-body">
                     <% memo = schedule.try(:memo) || 'メモを編集' %>
                     <a href="#" class="schedule-memo" data-type="textarea" data-pk="<%= schedule.id %>" data-url="<%= update_memo_schedule_path(schedule) %>" data-title="Enter memo"><%= memo %></a>
-                    <hr>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-gear"></i>  <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><%= link_to '削除', schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } %></li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
                 </li>
@@ -96,5 +106,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+	</div>
+</section><!--Section Close-->
+

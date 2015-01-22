@@ -2,7 +2,8 @@ class TravelsController < ApplicationController
   before_action :set_travel, only: [:edit, :update, :destroy, :edit_photo]
 
   def index
-    @travels = Travel.all
+    # TODO: user
+    @travels = Travel.order('start_date DESC')
   end
 
   def show

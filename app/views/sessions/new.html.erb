@@ -1,19 +1,22 @@
-<div class="container">
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <div class="login-panel panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Please Sign In</h3>
-      </div>
-      <div class="panel-body">
-        <fieldset>
-          <% unless Rails.env.production? %>
-          <a href="/auth/developer" class="btn btn-lg btn-success btn-block"><i class="fa fa-edit fa-fw"></i> Developのアカウントでログインする</a><br>
-          <% end %>
-          <a href="/auth/twitter" class="btn btn-lg btn-success btn-block"><i class="fa fa-twitter fa-fw"></i> Twitterのアカウントでログインする</a><br>
-          <a href="/auth/google_oauth2" class="btn btn-lg btn-success btn-block"><i class="fa fa-google-plus fa-fw"></i> Googleのアカウントでログインする</a><br>
-        </fieldset>
-      </div>
-    </div>
-  </div>
-</div>
+<div style="background-image:url(<%= image_path('specialty-page/banner.jpg') %>);" class="specialty-page-bg"></div>
+<section class="specialty-page">
+	<div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 social-sugnup">
+        <div class="page-heading">
+          <h2>Login</h2>
+          <p>以下のサービスのアカウントでログイン出来ます</p>
+        </div>
+        <% unless Rails.env.production? %>
+          <a class="google" href="/auth/developer">Develop</a>
+        <% end %>
+        <a class="google" href="/auth/google_oauth2">Google</a>
+        <a class="twitter" href="/auth/twitter">Twitter</a>
+       	<a class="facebook" href="/auth/facebook">Facebook</a>
+     </div>
+   </div>
+   <p class="helper-text">By signing up, you agree to the <a class="helper-text" href="#">Privacy Policy &amp; Terms of Service</a></p>
+ </div>
+</section>
+
+

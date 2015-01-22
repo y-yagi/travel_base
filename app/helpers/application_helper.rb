@@ -13,7 +13,7 @@ module ApplicationHelper
     URI.encode("https://maps.google.co.jp/maps?q=#{address}")
   end
 
-  def default_schedule_start_time
-
+  def current_menu?(name)
+    controller_name == name
   end
 end

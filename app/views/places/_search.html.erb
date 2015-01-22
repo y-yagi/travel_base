@@ -1,34 +1,35 @@
-<%= form_for(new_place_path, method: :get) do |f| %>
-  <div class="form-group">
-    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: '行きたい場所の名称'  %>
+<%= form_for(new_place_path, method: :get, html: { class: 'sp-form' } ) do |f| %>
+  <div class="col-sm-12 form-group">
+    <%= text_field_tag :query, params[:query], class: "form-control input-lg", placeholder: 'Search', id: 'search' %>
   </div>
-  <%= f.submit class: "btn btn-default", value: '検索' %>
+  <%= f.submit class: "btn btn-md btn-center btn-primary", value: '検索' %>
 <% end %>
 <br><br>
 
 <% if params[:query] %>
   <% if @places.count == 0 %>
-    <p class="text-info">名称に一致するスポットはありませんでした</p>
+    <p class="text-center text-primary">名称に一致するスポットはありませんでした</p>
   <% else %>
-    <p class="text-info">名称に一致するスポットは<%= @places.count %>件ありました！</p>
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover dataTable no-footer" id="placesTable" aria-describedby="placesTable_info">
-        <thead>
-          <tr role="row">
-            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 106px;">名称</th>
-            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 300px;">住所</th>
-            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>
-            <th tabindex="0" aria-controls="placesTable" rowspan="1" colspan="1" aria-label="activate to sort column ascending" style="width: 50px;"> </th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @places.each do |place| %>
+    <p class="text-center text-primary">名称に一致するスポットは<%= @places.count %>件ありました</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>名称</th>
+          <th>住所</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @places.each_with_index do |place, i| %>
           <tr>
             <%= form_for(@place) do |f| %>
               <% address = get_address_form_geocode_result(place) %>
               <% name = get_place_name_from_geocode_result(place) %>
-              <td class=" "><%= name %></td>
-              <td class=" "><%= address %></td>
+              <td><%= i + 1 %></td>
+              <td><%= name %></td>
+              <td><%= address %></td>
               <td class=" "><%= link_to 'この場所を地図で見る', googlemap_link(address), target: '_blank'  %></td>
               <td class="center "><%= f.submit 'この場所を登録する', class: 'btn btn-default' %></td>
               <%= f.hidden_field :name, value: name %>
@@ -38,8 +39,7 @@
             <% end %>
           </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   <% end %>
 <% end %>
