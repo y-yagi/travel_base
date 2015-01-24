@@ -5,14 +5,14 @@
       <h2 class="post-title"><%= @album.name %></h2>
       <div class="row lightGallery">
         <% @photos.each do |photo| %>
-        	<div class="col-md-6 col-sm-6" data-src="<%= photo.content.src %>" data-title="<%= photo.title %>">
+        	<div class="col-md-3 col-sm-3" data-src="<%= photo.content.src %>" data-title="<%= photo.title %>">
           	<div class="thumbnail-zoom">
             	<div class="overlay"></div>
               <div class="figcap">
                 <i class="fa fa-search-plus"></i>
                 <p><%= photo.title %></p>
               </div>
-              <img src="<%= photo.content.src %>" alt="<%= photo.title %>"/>
+              <img src="<%= photo.media.thumbnails.last.url %>" alt="<%= photo.title %>"/>
             </div>
           </div>
         <% end %>

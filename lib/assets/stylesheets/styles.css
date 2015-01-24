@@ -18662,7 +18662,7 @@ meta.foundation-data-attribute-namespace {
 .thumbnail-link {
   display: block;
   position: relative;
-  max-width: 360px;
+  max-width: 288px;
   margin: 0 auto 30px auto;
   cursor: pointer;
   overflow: hidden;
