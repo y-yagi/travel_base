@@ -31,11 +31,14 @@
         		<div class="col-sm-6 col-xs-6 group">
               <div class="details">
                 <h4><%= link_to place.name , map_place_path(place.id), target: '_blank' %></h4>
-                <%= place.address %>
+                <%= place.address %><br>
+                <% place.urls.each_with_index do |url, i| %>
+                  <%= link_to "参考URL#{i + 1}", url, target: '_blank' %>
+                <% end %>
               </div>
         		</div>
             <div class="col-xs-3 hidden-xs">
-              <%= place.memo %>
+              <%= simple_format(place.memo) %>
             </div>
             <div class="col-sm-3 col-xs-6">
               <%= link_to '編集', edit_place_path(place), class: 'btn btn-primary' %><br>

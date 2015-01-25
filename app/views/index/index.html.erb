@@ -9,16 +9,16 @@
             <div class="page-heading center">
               <h2>行きたい場所</h2>
             </div>
-            <h4>最近登録した場所</h4>
-            <ul class="featured-list">
-              <% if @places.present? %>
+            <% if @places.present? %>
+              <h4>最近登録した場所</h4>
+              <ul class="featured-list">
                 <% @places.each do |place| %>
                   <li><%= link_to place.name , map_place_path(place.id), target: '_blank' %></li>
                 <% end %>
-              <% else %>
+              </ul>
+            <% else %>
                 <p>まだ行きたい場所は登録されていません。</p>
-              <% end %>
-            </ul>
+            <% end %>
             <%= link_to '新しい行きたい場所を登録する', new_place_path %>
           </div>
           <div class="col-sm-6">

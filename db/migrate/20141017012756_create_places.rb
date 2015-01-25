@@ -6,7 +6,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.text :memo
       t.float :latitude
       t.float :longitude
-      t.string :website
+      t.string :urls, array: :true
       t.datetime :deleted_at
       t.integer :user_id, null: false
       t.integer :status, default: 0

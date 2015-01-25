@@ -39,6 +39,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    array_form_helper (0.0.1)
+      actionpack (>= 4.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -234,6 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_decorator
+  array_form_helper
   coffee-rails
   dotenv-rails
   elasticsearch-model

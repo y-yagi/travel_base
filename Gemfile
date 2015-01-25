@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 gem 'active_decorator'
+gem 'array_form_helper'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'elasticsearch-model'
