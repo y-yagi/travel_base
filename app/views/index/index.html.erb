@@ -13,7 +13,7 @@
             <ul class="featured-list">
               <% if @places.present? %>
                 <% @places.each do |place| %>
-                  <li><%= link_to(place.name, place) %></li>
+                  <li><%= link_to place.name , map_place_path(place.id), target: '_blank' %></li>
                 <% end %>
               <% else %>
                 <p>まだ行きたい場所は登録されていません。</p>

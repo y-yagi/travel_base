@@ -21,7 +21,11 @@
         <br>
         <% @places.each do |place| %>
         <div class="item">
-        	<div class="delete"><%= link_to '☓', place, method: :delete, data: { confirm: '削除します。宜しいですか?' } %></div>
+          <div class="delete">
+            <%= link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
+          </div>
 
         	<div class="row">
         		<div class="col-sm-6 col-xs-6 group">
