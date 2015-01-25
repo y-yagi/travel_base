@@ -10,7 +10,7 @@
                     <ul>
                       <li class="<%= 'active' if current_menu?('index') %>"><%= link_to 'HOME', root_path %></li>
 
-                      <li class="<%= 'active' if current_menu?('places') %>"><a href="#">行きたい所</a>
+                      <li class="<%= 'active' if current_menu?('places') %>"><a href="#">行きたい場所</a>
                         <ul class="submenu">
                           <li><%= link_to '新規登録', new_place_path %></li>
                           <li><%= link_to '登録済み一覧', places_path %></li>
