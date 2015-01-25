@@ -3,6 +3,10 @@ module TravelDecorator
     start_date.to_s + " ~ " + end_date.to_s
   end
 
+  def formatted_schedule
+    I18n.l(start_date, format: :long)  + " 〜 " + I18n.l(end_date, format: :long)
+  end
+
   def schedule_list_for_select
     list = {}
     travel_dates.each { |d| list[I18n.l(d.date, format: :long)] = d.id }

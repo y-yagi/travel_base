@@ -1,13 +1,15 @@
 class TravelPhotosController < ApplicationController
   before_action :set_travel_photo, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @travel = Travel.mine(current_user).find(params[:travel_id])
-    @travel_photos = @travel.travel_photos
-  end
-
   def new
-    setup_photo_service_info
+    @photo_service_user_info = current_user.photo_service_user_info
+    unless @photo_service_user_info
+      flash[:info] ='写真サービスの設定を実施して下さい'
+      return redirect_to edit_user_path(current_user)
+    end
+
+    setup_album_list(@photo_service_user_info)
+
     @travel = Travel.mine(current_user).find(params[:travel_id])
     @travel_photo = @travel.travel_photos.build do |f|
       f.photo_service_user_info_id = @photo_service_user_info.id
@@ -24,7 +26,8 @@ class TravelPhotosController < ApplicationController
   end
 
   def create
-    setup_photo_service_info
+    @photo_service_user_info = current_user.photo_service_user_info
+    setup_album_list(@photo_service_user_info)
     @travel_photo = TravelPhoto.new(travel_photo_params)
     if @travel_photo.save
       flash[:info] ='写真データを紐付けしました'
@@ -58,9 +61,8 @@ class TravelPhotosController < ApplicationController
       params.require(:travel_photo).permit(:travel_id, :photo_service_user_info_id, :photo_service_album_id, :name)
     end
 
-    def setup_photo_service_info
-      @photo_service_user_info = current_user.photo_service_user_info
-      client = PhotoServiceInfoWrapper.get_client(@photo_service_user_info)
+    def setup_album_list(photo_service_user_info)
+      client = PhotoServiceInfoWrapper.get_client(photo_service_user_info)
       entries = client.album.list.entries
       @album_list = entries.map { |a| [a.name, a.id] }
     end

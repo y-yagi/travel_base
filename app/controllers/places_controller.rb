@@ -3,9 +3,9 @@ class PlacesController < ApplicationController
 
   def index
     @places = if params[:already]
-                Place.mine(current_user).already_went
+                Place.mine(current_user).order('updated_at DESC').already_went
               else
-                Place.mine(current_user).not_gone
+                Place.mine(current_user).order('updated_at DESC').not_gone
               end
   end
 

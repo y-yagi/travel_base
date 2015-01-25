@@ -13,5 +13,9 @@
   </div>
   <%= f.hidden_field :travel_id %>
   <%= f.hidden_field :photo_service_user_info_id %>
-  <%= f.submit class: "btn btn-default", value: '登録' %>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
 <% end %>

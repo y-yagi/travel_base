@@ -3,15 +3,6 @@
     <%= render partial: 'form_error_header', locals: { error_messages: @user.errors.full_messages } %>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, class: "form-control" %>
-  </div>
-  <hr>
   <%= f.fields_for(:photo_service_user_info) do |f_photo| %>
     <div class="form-group">
       <%= f_photo.label :service_type %><br>
@@ -23,5 +14,9 @@
     </div>
   <% end %>
 
-  <%= f.submit class: "btn btn-default", value: '更新', data: { disable_with: "Please wait..." } %>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '更新', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
 <% end %>

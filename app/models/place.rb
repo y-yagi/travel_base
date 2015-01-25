@@ -26,14 +26,14 @@ class Place < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 255 }
   validates :address, presence: true
   validates :user_id, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  validates :latitude, presence: true, if: -> { address.present? }
+  validates :longitude, presence: true, if: -> { address.present? }
 
   class << self
     def build(params, user)
       place = new(params)
       place.user_id = user.id
-      set_geoinfo(place) if params[:latitude].blank?
+      set_geoinfo(place) if params[:latitude].blank? && params[:address].present?
       place
     end
 

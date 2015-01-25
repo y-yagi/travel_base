@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
-  get 'map/schedule'
-  get 'map/places'
+  namespace :map do
+    get 'schedule'
+    get 'places'
+    get 'place/:id', action: :place, as: :place
+  end
 
   resources :travels do
     resources :travel_photos, as: 'photos', path: 'photos'
