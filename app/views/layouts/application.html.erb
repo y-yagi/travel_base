@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TravelBase</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag "pages/#{controller_name}" if @need_pages_js %>
-
-    <% if @need_gon %>
-      <%= include_gon %>
-    <% end %>
 
     <% if controller_name == 'map' %>
       <%= include_gon %>
       <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
       <%= javascript_include_tag 'pages/map' %>
+    <% else %>
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_include_tag "pages/#{controller_name}" if @need_pages_js %>
     <% end %>
+
+    <% if @need_gon %>
+      <%= include_gon %>
+    <% end %>
+
+
     <%= csrf_meta_tags %>
   </head>
 

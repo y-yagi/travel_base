@@ -18,4 +18,11 @@ class MapController < ApplicationController
     gon.zoom = 7
     render :show
   end
+
+  def place
+    place = Place.mine(current_user).find(params[:id])
+    gon.places  = [{ name: place.name, latitude: place.latitude, longitude: place.longitude }]
+    gon.zoom = 12
+    render :show
+  end
 end

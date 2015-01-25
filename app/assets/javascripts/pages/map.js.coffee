@@ -5,11 +5,11 @@ attachMessage = (marker, msg) ->
   )
 
 initialize = () ->
-  mapOptions = {
-    zoom: gon.zoom,
-    center: new google.maps.LatLng(gon.places[0]['latitude'], gon.places[0]['longitude']),
+  mapOptions =
+    zoom: gon.zoom
+    center: new google.maps.LatLng(gon.places[0]['latitude'], gon.places[0]['longitude'])
     mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
+
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
 
   data = new Array()
