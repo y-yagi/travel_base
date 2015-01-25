@@ -12,6 +12,10 @@
     <%= f.text_field :address, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :urls %><br>
+    <%= f.array_url_field :urls, class: "form-control form-array", array_size: 2 %>
+  </div>
+  <div class="form-group">
     <%= f.label :memo %><br>
     <%= f.text_area :memo, class: "form-control" %>
   </div>

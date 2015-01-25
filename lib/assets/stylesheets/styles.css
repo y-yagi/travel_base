@@ -14274,13 +14274,6 @@ meta.foundation-data-attribute-namespace {
 .shopping-cart .item .details {
   float: left;
 }
-.shopping-cart .item .details a {
-  color: #000000;
-  text-decoration: none;
-}
-.shopping-cart .item .details a:hover {
-  color: #448956;
-}
 .shopping-cart .item .price {
   width: 100%;
   font-size: 1.875em;

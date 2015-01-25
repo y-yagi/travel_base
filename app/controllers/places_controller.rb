@@ -64,6 +64,6 @@ class PlacesController < ApplicationController
 
     def place_params
       params.require(:place).permit(:name, :address,
-        :memo, :latitude, :longitude, :website, :deleted_at, :user_id, :status)
+        :memo, :latitude, :longitude, :website, urls: [])
     end
 end
