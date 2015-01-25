@@ -1,3 +1,40 @@
-<div class="heading">
-  <h2>Comming Soon !!!!</h2>
-</div>
+<% @need_pages_js = true, @need_gon = true %>
+<section class="double-padding-top">
+  <div class="container">
+    <div class="row double-space-top">
+    	<div class="col-lg-12">
+        <h3 class="heading center">Travel Base<span></span></h3>
+      	<div class="row">
+          <div class="col-sm-6">
+            <div class="page-heading center">
+              <h2>行きたい所</h2>
+            </div>
+            <h4>最近登録した場所</h4>
+            <ul class="featured-list">
+              <% if @places.present? %>
+                <% @places.each do |place| %>
+                  <li><%= link_to(place.name, place) %></li>
+                <% end %>
+              <% else %>
+                <p>まだ行きたい所は登録されていません。</p>
+              <% end %>
+            </ul>
+            <%= link_to '新しい行きたい所を登録する', new_place_path %>
+          </div>
+          <div class="col-sm-6">
+            <div class="page-heading center">
+              <h2>旅行計画</h2>
+            </div>
+            <% if @travels.present? %>
+              <% first_travel = @travels.first %>
+              <p class="p-lg">次の旅行は<br><a href=<%= travel_path(first_travel) %>><%= first_travel.name %>(<%= first_travel.formatted_schedule %>)</a><br>です。</p>
+            <% else %>
+              <p class="p-lg">旅行の予定はありません。<a href="<%= new_travel_path %>" title="Inline Link">旅行の予定を作成する</a>。
+            <% end %>
+            <div id='calendar'></div>
+          </div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</section>

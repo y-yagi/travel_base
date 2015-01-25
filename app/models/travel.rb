@@ -28,6 +28,9 @@ class Travel < ActiveRecord::Base
   scope :belong, ->(user) do
     where('members @> ARRAY[?]::integer[]', [user.id])
   end
+  scope :future, -> do
+    where('end_date > ?', Time.now.to_date)
+  end
 
   before_save :adjust_travel_dates
 

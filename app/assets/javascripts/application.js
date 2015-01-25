@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-css
+//= require moment.min
 //= require_tree ../../../lib/assets/javascripts
 //= require_directory .
