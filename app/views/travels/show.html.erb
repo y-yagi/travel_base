@@ -18,21 +18,21 @@
             </div>
             <div id="add-schedule" class="panel-collapse collapse" style="height: 0px;">
               <div class="panel-body">
-                <div class="form-group">
-                  <%= form_tag(schedules_path) do %>
-                    日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
-                      {}, { class: "form-control-select" } %>&emsp;
-                    時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
-                    <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;
-                  <% end %>
-                </div>
-                <div class="form-group">
-                    場所: <%= select :schedule, :place_id, options_for_select(@places),
-                      {}, { class: "form-control-select" } %>&emsp;
-                </div>
-                <div class="text-center">
-                  <%= submit_tag :add_schedule,  class: "btn btn-primary", value: '登録' %>
-                </div>
+                <%= form_tag(schedules_path) do %>
+                  <div class="form-group">
+                      日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
+                        {}, { class: "form-control-select" } %>&emsp;
+                      時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
+                      <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;
+                  </div>
+                  <div class="form-group">
+                      場所: <%= select :schedule, :place_id, options_for_select(@places),
+                        {}, { class: "form-control-select" } %>&emsp;
+                  </div>
+                  <div class="text-center">
+                    <%= submit_tag :add_schedule,  class: "btn btn-primary", value: '登録' %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
