@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-      <section class="col-md-12 shopping-cart">
+      <section class="col-md-10 shopping-cart">
       	<header>
         	<div class="row">
         		<div class="col-xs-6"><%= link_to '新規登録', new_travel_path %></div>
@@ -17,6 +17,9 @@
         <% @travels.each do |travel| %>
         <div class="item">
           <div class="delete">
+            <%= link_to edit_travel_path(travel) do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
             <%= link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
               <i class="fa fa-trash-o"></i>
             <% end %>
@@ -26,14 +29,11 @@
         		<div class="col-sm-6 col-xs-6 group">
               <div class="details">
                 <h4><%= link_to travel.name , travel_path(travel) %></h4>
-                <%= travel.schedule %>
+                <%= travel.formatted_schedule %>
               </div>
         		</div>
-            <div class="col-xs-3 hidden-xs">
-              <%= travel.memo %>
-            </div>
             <div class="col-sm-3 col-xs-6">
-              <%= link_to '編集', edit_travel_path(travel), class: 'btn btn-primary' %><br>
+              <%= simple_format(travel.memo) %>
             </div>
         	</div>
         </div>

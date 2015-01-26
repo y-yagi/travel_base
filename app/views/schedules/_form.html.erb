@@ -1,0 +1,20 @@
+<%= form_for(@schedule) do |f| %>
+  <% if @schedule.errors.any? %>
+    <%= render partial: 'form_error_header', locals: { error_messages: @schedule.errors.full_messages } %>
+  <% end %>
+  <div class="form-group">
+    <%= label_tag(I18n.t :shcedule, scope: [:activerecord, :attributes, :travel]) %><br>
+    <%= f.time_field :start_time, { class: "form-control-select" } %>
+    〜
+    <%= f.time_field :end_time, { class: "form-control-select" } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :memo %><br>
+    <%= f.text_area :memo, class: "form-control", rows: 5 %>
+  </div>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '更新', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
+<% end %>

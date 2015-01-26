@@ -1,0 +1,14 @@
+<%= form_for([@schedule, @route]) do |f| %>
+  <% if @route.errors.any? %>
+    <%= render partial: 'form_error_header', locals: { error_messages: @route.errors.full_messages } %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_area :detail , class: "form-control", rows: 8 %>
+  </div>
+  <div class="col-md-12 col-sm-12">
+    <div class="text-center">
+      <%= f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." } %>
+    </div>
+  </div>
+<% end %>

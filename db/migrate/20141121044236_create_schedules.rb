@@ -6,6 +6,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.datetime :end_time
       t.integer :travel_date_id, null: false
       t.integer :place_id, null: false
+      t.integer :route_id
 
       t.timestamps null: false
     end

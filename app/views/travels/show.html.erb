@@ -97,28 +97,51 @@
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>
                 <% schedule.extend(ScheduleDecorator) %>
-                <% if i % 2 == 0 %>
-                  <li>
-                <% else %>
+                <% route = schedule.route %>
+                <% if route %>
                   <li class="timeline-inverted">
+                    <div class="timeline-badge warning"><i class="fa fa-arrow-circle-right"></i></div>
+                    <div class="timeline-panel">
+                      <div class="timeline-heading">
+                        <div class="delete">
+                          <%= link_to edit_schedule_route_path(schedule, route) do %>
+                            <i class="fa fa-edit"></i>
+                          <% end %>
+                          <%= link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                            <i class="fa fa-trash-o"></i>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="timeline-body">
+                        <%= simple_format(route.detail) %>
+                        <br>
+                      </div>
+                    </div>
+                  </li>
                 <% end %>
-                <div class="timeline-badge success"><i class="fa fa-map-marker"></i>
-                </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h4 class="timeline-title"><%= schedule.place.name %></h4>
-                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
-                    <div class="delete">
-                      <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
-                        <i class="fa fa-trash-o"></i>
-                      <% end %>
+                <li>
+                  <div class="timeline-badge success"><i class="fa fa-map-marker"></i></div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h4 class="timeline-title"><%= schedule.place.name %>
+                        <% unless route %>
+                          <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
+                        <% end %>
+                      </h4>
+                      <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                      <div class="delete">
+                        <%= link_to edit_schedule_path(schedule) do %>
+                          <i class="fa fa-edit"></i>
+                        <% end %>
+                        <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                          <i class="fa fa-trash-o"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="timeline-body">
+                      <%= simple_format(schedule.memo) %>
                     </div>
                   </div>
-                  <div class="timeline-body">
-                    <% memo = schedule.try(:memo) || 'メモを編集' %>
-                    <a href="#" class="schedule-memo" data-type="textarea" data-pk="<%= schedule.id %>" data-url="<%= update_memo_schedule_path(schedule) %>" data-title="Enter memo"><%= memo %></a>
-                  </div>
-                </div>
                 </li>
               <% end %>
             </ul>

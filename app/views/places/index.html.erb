@@ -22,28 +22,29 @@
         <% @places.each do |place| %>
         <div class="item">
           <div class="delete">
+            <%= link_to edit_place_path(place) do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
             <%= link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
               <i class="fa fa-trash-o"></i>
             <% end %>
           </div>
 
         	<div class="row">
-        		<div class="col-sm-6 col-xs-6 group">
+        		<div class="col-sm-2 col-xs-2">
               <div class="details">
-                <h4><%= link_to place.name , map_place_path(place.id), target: '_blank' %></h4>
-                <%= place.address %><br>
-                <% if place.urls.present? %>
-                  <% place.urls.each_with_index do |url, i| %>
-                    <%= link_to "参考URL#{i + 1}", url, target: '_blank' %>
-                  <% end %>
-                <% end %>
+                <h4><%= link_to place.name, map_place_path(place.id), target: '_blank' %></h4>
               </div>
         		</div>
-            <div class="col-xs-3 hidden-xs">
+        		<div class="col-sm-6 col-xs-6">
+              <%= place.address %><br>
+              <% if place.urls.present? %>
+                <% place.urls.each_with_index do |url, i| %>
+                  <%= link_to "参考URL#{i + 1}", url, target: '_blank' %>
+                <% end %>
+              <% end %>
+              <br>
               <%= simple_format(place.memo) %>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-              <%= link_to '編集', edit_place_path(place), class: 'btn btn-primary' %><br>
             </div>
         	</div>
         </div>

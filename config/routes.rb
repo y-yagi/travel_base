@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
       patch 'update_memo'
     end
+    resources :routes
   end
   resources :users
   resources :places do
