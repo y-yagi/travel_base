@@ -17323,7 +17323,7 @@ meta.foundation-data-attribute-namespace {
     min-height: inherit;
   }
 }
-@media only screen and (max-width: 991px) and only screen and (max-width: 768px) {
+@media only screen and (max-width: 991px) and (max-width: 768px) {
   .nav-tabs.vertical li {
     margin: 0px 10px 5px 10px;
   }
