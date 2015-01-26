@@ -12,3 +12,6 @@
 /tmp
 
 .env
+
+coverage
+public/assets/
