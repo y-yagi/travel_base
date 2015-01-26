@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201235632) do
+ActiveRecord::Schema.define(version: 20150126043115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20141201235632) do
   end
 
   add_index "places", ["deleted_at", "user_id", "status"], name: "index_places_on_deleted_at_and_user_id_and_status", using: :btree
+
+  create_table "routes", force: :cascade do |t|
+    t.text     "detail"
+    t.integer  "schedule_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "routes", ["schedule_id"], name: "index_routes_on_schedule_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
     t.text     "memo"
@@ -102,6 +111,7 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   add_index "users", ["deleted_at", "uid", "provider"], name: "index_users_on_deleted_at_and_uid_and_provider", using: :btree
 
+  add_foreign_key "routes", "schedules"
   add_foreign_key "travel_photos", "photo_service_user_infos"
   add_foreign_key "travel_photos", "travels"
 end
