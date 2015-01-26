@@ -1,3 +1,3 @@
 class Route < ActiveRecord::Base
-  belongs_to :schedule
+  has_one :schedule
 end

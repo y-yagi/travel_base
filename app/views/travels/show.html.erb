@@ -97,8 +97,8 @@
             <ul class="timeline">
               <% travel_date.schedules.each_with_index do |schedule, i| %>
                 <% schedule.extend(ScheduleDecorator) %>
-                <% if schedule.route %>
-                  <% route = schedule.route %>
+                <% route = schedule.route %>
+                <% if route %>
                   <li class="timeline-inverted">
                     <div class="timeline-badge warning"><i class="fa fa-arrow-circle-right"></i></div>
                     <div class="timeline-panel">
@@ -124,7 +124,7 @@
                   <div class="timeline-panel">
                     <div class="timeline-heading">
                       <h4 class="timeline-title"><%= schedule.place.name %>
-                        <% if schedule.route.blank? %>
+                        <% unless route %>
                           <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
                         <% end %>
                       </h4>

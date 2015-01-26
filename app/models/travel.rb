@@ -21,7 +21,7 @@ class Travel < ActiveRecord::Base
   has_one :owner, through: :user
 
   scope :schedules, -> do
-    eager_load(:travel_dates, :travel_photos, travel_dates: :schedules, travel_dates: { schedules: :place })
+    eager_load(:travel_dates, :travel_photos, travel_dates: { schedules: [:place, :route] })
       .merge(TravelDate.order(:date)).merge(Schedule.order(:start_time))
   end
   scope :mine, ->(user) { where(owner_id: user.id) }
