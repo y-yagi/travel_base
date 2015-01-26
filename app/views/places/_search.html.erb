@@ -31,7 +31,7 @@
               <td><%= name %></td>
               <td><%= address %></td>
               <td class=" "><%= link_to 'この場所を地図で見る', googlemap_link(address), target: '_blank'  %></td>
-              <td class="center "><%= f.submit 'この場所を登録する', class: 'btn btn-default' %></td>
+              <td class="center "><%= f.submit 'この場所を登録する', class: 'btn btn-primary' %></td>
               <%= f.hidden_field :name, value: name %>
               <%= f.hidden_field :address, value: address  %>
               <%= f.hidden_field :latitude, value: place.geometry['location']['lat'] %>
