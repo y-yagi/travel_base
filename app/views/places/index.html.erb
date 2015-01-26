@@ -32,8 +32,10 @@
               <div class="details">
                 <h4><%= link_to place.name , map_place_path(place.id), target: '_blank' %></h4>
                 <%= place.address %><br>
-                <% place.urls.each_with_index do |url, i| %>
-                  <%= link_to "参考URL#{i + 1}", url, target: '_blank' %>
+                <% if place.urls.present? %>
+                  <% place.urls.each_with_index do |url, i| %>
+                    <%= link_to "参考URL#{i + 1}", url, target: '_blank' %>
+                  <% end %>
                 <% end %>
               </div>
         		</div>
