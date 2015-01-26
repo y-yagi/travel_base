@@ -123,20 +123,23 @@
                   <div class="timeline-badge success"><i class="fa fa-map-marker"></i></div>
                   <div class="timeline-panel">
                     <div class="timeline-heading">
-                      <h4 class="timeline-title"><%= schedule.place.name %></h4>
+                      <h4 class="timeline-title"><%= schedule.place.name %>
+                        <% if schedule.route.blank? %>
+                          <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
+                        <% end %>
+                      </h4>
                       <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
-                      <% if schedule.route.blank? %>
-                        <%= link_to 'この場所への移動方法を登録する', new_schedule_route_path(schedule) %>
-                      <% end %>
                       <div class="delete">
+                        <%= link_to edit_schedule_path(schedule) do %>
+                          <i class="fa fa-edit"></i>
+                        <% end %>
                         <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
                           <i class="fa fa-trash-o"></i>
                         <% end %>
                       </div>
                     </div>
                     <div class="timeline-body">
-                      <% memo = schedule.try(:memo) || 'メモを編集' %>
-                      <a href="#" class="schedule-memo" data-type="textarea" data-pk="<%= schedule.id %>" data-url="<%= update_memo_schedule_path(schedule) %>" data-title="Enter memo"><%= memo %></a>
+                      <%= simple_format(schedule.memo) %>
                     </div>
                   </div>
                 </li>

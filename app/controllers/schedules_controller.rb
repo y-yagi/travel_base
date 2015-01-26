@@ -1,17 +1,13 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :update_memo, :destroy]
 
-  def new
-    @schedule = Schedule.new
-  end
-
   def edit
   end
 
   def create
     @schedule = Schedule.build(schedule_params)
     if @schedule.save
-      flash[:info] ='Schedule was successfully created.'
+      flash[:info] ='スケジュールを作成しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :new
@@ -20,21 +16,16 @@ class SchedulesController < ApplicationController
 
   def update
     if @schedule.update(schedule_params)
-      flash[:info] ='Schedule was successfully updated.'
+      flash[:info] ='スケジュールを更新しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :edit
     end
   end
 
-  def update_memo
-    @schedule.update!(memo: params[:value])
-    head :ok
-  end
-
   def destroy
     @schedule.destroy
-    flash[:info] ='Schedule was successfully destroyed.'
+    flash[:info] ='スケジュールを削除しました'
     redirect_to travel_path(@schedule.travel_date.travel)
   end
 
