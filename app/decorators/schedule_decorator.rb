@@ -1,5 +1,6 @@
 module ScheduleDecorator
   def formatted_time
-    start_time.strftime("%H:%M") + " 〜 " + end_time.strftime("%H:%M")
+    return if start_time.blank? && end_time.blank?
+    "#{start_time.try(:strftime, '%H:%M')}〜#{end_time.try(:strftime, '%H:%M')}"
   end
 end

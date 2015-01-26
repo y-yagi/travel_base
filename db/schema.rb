@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20141201235632) do
 
   create_table "schedules", force: :cascade do |t|
     t.text     "memo"
-    t.datetime "start_time",     null: false
-    t.datetime "end_time",       null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "travel_date_id", null: false
     t.integer  "place_id",       null: false
     t.datetime "created_at",     null: false
