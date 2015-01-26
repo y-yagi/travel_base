@@ -20,13 +20,15 @@
                         <ul class="submenu">
                           <li><%= link_to '新規作成', new_travel_path %></li>
                           <li><a href="<%= travels_path %>">一覧<i class="fa fa-angle-right"></i></a>
-                            <ul class="sub-submenu">
-                              <% @travels.each do |travel| %>
-                                <li>
-                                  <%= link_to travel.name, travel_path(travel) %>
-                                </li>
-                              <% end %>
-                            </ul>
+                            <% if @travels.present? %>
+                              <ul class="sub-submenu">
+                                <% @travels.each do |travel| %>
+                                  <li>
+                                    <%= link_to travel.name, travel_path(travel) %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            <% end %>
                           </li>
                         </ul>
                       </li>
