@@ -2,11 +2,10 @@
 <section class="page-block double-padding-top double-space-bottom">
 	<div class="container-fluid">
   	<div class="page-heading center">
-      <h2><%= @travel.name %></h2>
-      <h3><%= @travel.memo %><span></span></h3>
+      <h2><%= link_to @travel.name, edit_travel_path(@travel) %></h2>
   	</div>
     <div class="row double-space-top">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-5 col-md-offset-2">
         <% unless @travel.past? %>
           <% # add schedule panel %>
           <div class="panel panel-primary">
@@ -22,13 +21,17 @@
                 <div class="form-group">
                   <%= form_tag(schedules_path) do %>
                     日程: <%= select :schedule, :travel_date_id, @travel.schedule_list_for_select,
-                      {}, { class: "form-control-select" } %>&emsp;&emsp;
+                      {}, { class: "form-control-select" } %>&emsp;
                     時間: <%= time_field :schedule, :start_time, { class: "form-control-select" } %> 〜
-                    <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;&emsp;
-                    場所: <%= select :schedule, :place_id, options_for_select(@places),
-                      {}, { class: "form-control-select" } %>&emsp;&emsp;
-                    <%= submit_tag :add_schedule,  class: "btn btn-primary", value: '登録' %>
+                    <%= time_field :schedule, :end_time, { class: "form-control-select" } %>&emsp;
                   <% end %>
+                </div>
+                <div class="form-group">
+                    場所: <%= select :schedule, :place_id, options_for_select(@places),
+                      {}, { class: "form-control-select" } %>&emsp;
+                </div>
+                <div class="text-center">
+                  <%= submit_tag :add_schedule,  class: "btn btn-primary", value: '登録' %>
                 </div>
               </div>
             </div>
@@ -54,6 +57,24 @@
             </div>
           </div>
         <% end %>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#confirm-memo" class="collapsed">
+                メモを確認する
+              </a>
+            </h4>
+          </div>
+          </div>
+            <div id="confirm-memo" class="panel-collapse collapse" style="height: 0px;">
+              <div class="panel-body">
+                <%= simple_format(@travel.memo) %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row double-space-top">
