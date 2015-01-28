@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-md-8 col-sm-offset-2">
       <section class="col-md-12 shopping-cart">
       	<header>
         	<div class="row">
@@ -31,12 +31,12 @@
           </div>
 
         	<div class="row">
-        		<div class="col-sm-2 col-xs-2">
+        		<div class="col-md-3 col-xs-12">
               <div class="details">
                 <h4><%= link_to place.name, map_place_path(place.id), target: '_blank' %></h4>
               </div>
         		</div>
-        		<div class="col-sm-6 col-xs-6">
+        		<div class="col-md-9 col-xs-12">
               <%= place.address %><br>
               <% if place.urls.present? %>
                 <% place.urls.each_with_index do |url, i| %>

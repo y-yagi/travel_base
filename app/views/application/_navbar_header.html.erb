@@ -14,13 +14,13 @@
             <ul>
               <li class="<%= 'active' if current_menu?('index') %>"><%= link_to 'HOME', root_path %></li>
 
-              <li class="<%= 'active' if current_menu?('places') %>"><a href="#">行きたい場所</a>
+              <li class="<%= 'active' if current_menu?('places') %>"><%= link_to '行きたい場所', places_path %>
                 <ul class="submenu">
                   <li><%= link_to '新規登録', new_place_path %></li>
                   <li><%= link_to '一覧', places_path %></li>
                 </ul>
               </li>
-              <li class="<%= 'active' if current_menu?('travels') %>"><a href="#">旅行計画</a>
+              <li class="<%= 'active' if current_menu?('travels') %>"><%= link_to '旅行計画', travels_path %>
                 <ul class="submenu">
                   <li><%= link_to '新規作成', new_travel_path %></li>
                   <li><a href="<%= travels_path %>">一覧<i class="fa fa-angle-right"></i></a>
