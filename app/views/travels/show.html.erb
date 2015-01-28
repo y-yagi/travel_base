@@ -1,11 +1,11 @@
 <% @need_pages_js = true %>
 <section class="page-block double-padding-top double-space-bottom">
-	<div class="container-fluid">
-  	<div class="page-heading center">
+  <div class="container-fluid">
+    <div class="page-heading center">
       <h2><%= link_to @travel.name, edit_travel_path(@travel) %></h2>
-  	</div>
+    </div>
     <div class="row double-space-top">
-      <div class="col-md-5 col-md-offset-2">
+      <div class="col-md-5 col-md-offset-2 col-xs-12">
         <% unless @travel.past? %>
           <% # add schedule panel %>
           <div class="panel panel-primary">
@@ -58,7 +58,7 @@
           </div>
         <% end %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
@@ -67,11 +67,9 @@
               </a>
             </h4>
           </div>
-          </div>
-            <div id="confirm-memo" class="panel-collapse collapse" style="height: 0px;">
-              <div class="panel-body">
-                <%= simple_format(@travel.memo) %>
-              </div>
+          <div id="confirm-memo" class="panel-collapse collapse" style="height: 0px;">
+            <div class="panel-body">
+              <%= simple_format(@travel.memo) %>
             </div>
           </div>
         </div>
@@ -80,81 +78,80 @@
     <div class="row double-space-top">
       <div class="col-md-8 col-md-offset-2">
         <div class="tab-content">
-        <ul class="nav-tabs left" role="tablist">
-          <% @travel.travel_dates.each_with_index do |d, i| %>
-            <li class="<%= 'active' if i == 0 %>"><a href="#<%= i + 1%>_day" role="tab" data-toggle="tab"><%= i + 1%>日目</a></li>
-          <% end %>
-        </ul>
-        <% @travel.travel_dates.each_with_index do |travel_date, i| %>
-          <div class="tab-pane <%= "fade in active" if i == 0 %>" id="<%= i + 1%>_day">
-            <hr>
-            <h4>
-              <%= I18n.l(travel_date.date, format: :long) %>
-              <% if travel_date.schedules.present? %>
-                <br>
-                <small><%= link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
-              <% end %>
-            </h4>
-            <ul class="timeline">
-              <% travel_date.schedules.each_with_index do |schedule, i| %>
-                <% schedule.extend(ScheduleDecorator) %>
-                <% route = schedule.route %>
-                <% if route %>
-                  <li class="timeline-inverted">
-                    <div class="timeline-badge warning"><i class="fa fa-arrow-circle-right"></i></div>
+          <ul class="nav-tabs left" role="tablist">
+            <% @travel.travel_dates.each_with_index do |d, i| %>
+              <li class="<%= 'active' if i == 0 %>"><a href="#<%= i + 1%>_day" role="tab" data-toggle="tab"><%= i + 1%>日目</a></li>
+            <% end %>
+          </ul>
+          <% @travel.travel_dates.each_with_index do |travel_date, i| %>
+            <div class="tab-pane <%= "fade in active" if i == 0 %>" id="<%= i + 1%>_day">
+              <h4>
+                <%= I18n.l(travel_date.date, format: :long) %>
+                <% if travel_date.schedules.present? %>
+                  <br>
+                  <small><%= link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+                <% end %>
+              </h4>
+
+              <ul class="timeline">
+                <% travel_date.schedules.each_with_index do |schedule, i| %>
+                  <% schedule.extend(ScheduleDecorator) %>
+                  <% route = schedule.route %>
+                  <% if route %>
+                    <li class="timeline-inverted">
+                      <div class="timeline-badge warning"><i class="fa fa-arrow-circle-right"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <div class="delete">
+                            <%= link_to edit_schedule_route_path(schedule, route) do %>
+                              <i class="fa fa-edit"></i>
+                            <% end %>
+                            <%= link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                              <i class="fa fa-trash-o"></i>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div class="timeline-body">
+                          <%= simple_format(route.detail) %>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                  <li>
+                    <div class="timeline-badge success"><i class="fa fa-map-marker"></i></div>
                     <div class="timeline-panel">
                       <div class="timeline-heading">
+                        <h4 class="timeline-title"><%= schedule.place.name %>
+                          <% unless route %>
+                            <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
+                          <% end %>
+                        </h4>
+                        <% if schedule.start_time.present? || schedule.end_time.present? %>
+                          <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                        <% end %>
                         <div class="delete">
-                          <%= link_to edit_schedule_route_path(schedule, route) do %>
+                          <%= link_to edit_schedule_path(schedule) do %>
                             <i class="fa fa-edit"></i>
                           <% end %>
-                          <%= link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                          <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
                             <i class="fa fa-trash-o"></i>
                           <% end %>
                         </div>
                       </div>
-                      <div class="timeline-body">
-                        <%= simple_format(route.detail) %>
-                        <br>
-                      </div>
+                      <% if schedule.memo.present? %>
+                        <div class="timeline-body">
+                          <%= simple_format(schedule.memo) %>
+                        </div>
+                      <% end %>
                     </div>
                   </li>
                 <% end %>
-                <li>
-                  <div class="timeline-badge success"><i class="fa fa-map-marker"></i></div>
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <h4 class="timeline-title"><%= schedule.place.name %>
-                        <% unless route %>
-                          <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
-                        <% end %>
-                      </h4>
-                      <% if schedule.start_time.present? || schedule.end_time.present? %>
-                        <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
-                      <% end %>
-                      <div class="delete">
-                        <%= link_to edit_schedule_path(schedule) do %>
-                          <i class="fa fa-edit"></i>
-                        <% end %>
-                        <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
-                          <i class="fa fa-trash-o"></i>
-                        <% end %>
-                      </div>
-                    </div>
-                    <% if schedule.memo.present? %>
-                      <div class="timeline-body">
-                        <%= simple_format(schedule.memo) %>
-                      </div>
-                    <% end %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+              </ul>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-	</div>
+  </div>
 </section><!--Section Close-->
 

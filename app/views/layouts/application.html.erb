@@ -19,34 +19,22 @@
     <% if @need_gon %>
       <%= include_gon %>
     <% end %>
-
-
     <%= csrf_meta_tags %>
   </head>
 
   <body class="parallax animated fadeIn">
-    <!--Off-Canvas-->
     <div class="off-canvas-wrap" data-offcanvas>
     	<div class="inner-wrap">
         <%= render 'mobile_navbar' %>
-          <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <%= render 'navbar_header' %>
-          </nav>
-          <div class="site-layout">
-            <div class="page">
-              <%= render 'flash' %>
-
-              <%= yield %>
-
-              <section class="info-box primary">
-                <div class="container">
-                  <div class="row"></div>
-                </div>
-              </section>
-            <div>
-          <div>
-      </div>
-    </div>
+        <div class="site-layout">
+          <%= render 'navbar_header' %>
+          <div class="page">
+            <%= render 'flash' %>
+            <%= yield %>
+            <%= render 'footer' %>
+          </div> <!-- page -->
+        </div> <!-- site-layout -->
+      </div> <!-- inner-wrap -->
+    </div> <!-- off-canvas-wrap -->
   </body>
-
 </html>
