@@ -1,0 +1,36 @@
+<!--Off-Canvas Menu-->
+<aside class="left-off-canvas-menu">
+	<div class="mobile-navi">
+  	<form method="get" class="mobile-search">
+      <label class="sr-only" for="m-search"></label>
+    	<input class="form-control input-lg" name="m-search" id="m-search" type="text" placeholder="Search">
+      <button type="submit"><i class="icon icon-search"></i></button>
+    </form>
+    <ul class="buttons">
+      <li><%= link_to '登録情報', edit_user_path(current_user) %></li>
+      <li><%= link_to 'ログアウト', logout_path %></li>
+    </ul>
+    <ul>
+      <li class="<%= 'current' if current_menu?('places') %>"><%= link_to '行きたい場所', places_path %><span></span>
+        <ul class="submenu">
+          <li><%= link_to '新規登録', new_place_path %></li>
+          <li><%= link_to '一覧', places_path %></li>
+        </ul>
+      </li>
+      <li class="<%= 'current' if current_menu?('travels') %>"><%= link_to '旅行計画', travels_path %><span></span>
+        <ul class="submenu">
+          <li><%= link_to '新規作成', new_travel_path %></li>
+          <li><%= link_to '一覧', travels_path %><span></span>
+            <% if @travels.present? %>
+              <ul class="sub-submenu">
+                <% @travels.each do |travel| %>
+                  <li><%= link_to travel.name, travel_path(travel) %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</aside><!--Off-Canvas Menu Close-->
