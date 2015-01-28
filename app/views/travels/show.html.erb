@@ -91,7 +91,8 @@
             <h4>
               <%= I18n.l(travel_date.date, format: :long) %>
               <% if travel_date.schedules.present? %>
-                <small><%= link_to '行く場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
+                <br>
+                <small><%= link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank' %></small>
               <% end %>
             </h4>
             <ul class="timeline">
@@ -128,7 +129,9 @@
                           <%= link_to '(移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted' %>
                         <% end %>
                       </h4>
-                      <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                      <% if schedule.start_time.present? || schedule.end_time.present? %>
+                        <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
+                      <% end %>
                       <div class="delete">
                         <%= link_to edit_schedule_path(schedule) do %>
                           <i class="fa fa-edit"></i>
@@ -138,9 +141,11 @@
                         <% end %>
                       </div>
                     </div>
-                    <div class="timeline-body">
-                      <%= simple_format(schedule.memo) %>
-                    </div>
+                    <% if schedule.memo.present? %>
+                      <div class="timeline-body">
+                        <%= simple_format(schedule.memo) %>
+                      </div>
+                    <% end %>
                   </div>
                 </li>
               <% end %>

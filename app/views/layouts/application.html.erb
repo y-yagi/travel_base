@@ -25,24 +25,20 @@
   </head>
 
   <body class="parallax animated fadeIn">
-    <div class="off-canvas-wrap" data-offcanvas>
-    	<div class="inner-wrap">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-          <%= render 'navbar_header' %>
-        </nav>
-        <div class="site-layout">
-          <div class="page">
-            <%= render 'flash' %>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <%= render 'navbar_header' %>
+    </nav>
+    <div class="site-layout">
+      <div class="page">
+        <%= render 'flash' %>
 
-            <%= yield %>
+        <%= yield %>
 
-            <section class="info-box primary">
-              <div class="container">
-                <div class="row"></div>
-              </div>
-            </section>
-          <div>
-        <div>
+        <section class="info-box primary">
+          <div class="container">
+            <div class="row"></div>
+          </div>
+        </section>
       <div>
     <div>
   </body>
