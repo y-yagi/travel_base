@@ -7,7 +7,7 @@
       	<div class="row">
           <div class="col-sm-6">
             <div class="page-heading center">
-              <h2>行きたい場所</h2>
+              <h2><%= link_to '行きたい場所', places_path %></h2>
             </div>
             <% if @places.present? %>
               <h4>最近登録した場所</h4>
@@ -23,7 +23,7 @@
           </div>
           <div class="col-sm-6">
             <div class="page-heading center">
-              <h2>旅行計画</h2>
+              <h2><%= link_to('旅行計画', travels_path) %></h2>
             </div>
             <% if @travels.present? %>
               <% first_travel = @travels.first %>
