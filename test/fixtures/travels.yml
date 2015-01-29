@@ -1,0 +1,15 @@
+kyoto:
+  name: 京都旅行
+  start_date: <%= 3.days.since %>
+  end_date: <%= 5.days.since %>
+  memo: 宿は未定
+  owner_id: google
+  members:
+    - 100
+
+okayama:
+  name: 岡山旅行
+  start_date: <%= 100.days.ago %>
+  end_date: <%= 95.days.ago %>
+  memo: 過去の旅行
+  owner_id: google
