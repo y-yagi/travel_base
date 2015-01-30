@@ -1,21 +1,16 @@
-# == Schema Information
-#
-# Table name: schedules
-#
-#  id             :integer          not null, primary key
-#  memo           :text
-#  start_time     :datetime         not null
-#  end_time       :datetime         not null
-#  travel_date_id :integer          not null
-#  place_id       :integer          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#
-
 require 'test_helper'
 
 class ScheduleTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'should have the necessary required validators' do
+    schedule = Schedule.new
+    assert_not schedule.valid?
+    assert_equal [:travel_date_id, :place_id], schedule.errors.keys
+  end
+
+  test '".build" return Schedule instance' do
+    params = ActionController::Parameters.new
+    params.permit!
+    schedule = Schedule.build(params)
+    assert_instance_of Schedule, schedule
+  end
 end

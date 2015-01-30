@@ -1,0 +1,20 @@
+google:
+  uid: 1
+  provider: google
+  name: google_account
+  email: test@google.com
+
+facebook:
+  id: 100
+  uid: 1
+  provider: facebook
+  name: facebook_account
+  email: test@facebook.com
+
+twitter:
+  uid: 1
+  provider: twitter
+  name: twitter_account
+  email: test@twitter.com
+
+

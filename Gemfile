@@ -39,6 +39,15 @@ group :development, :test do
   gem 'pry-nav'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'coveralls', require: false
+  gem 'guard-minitest'
+  gem 'minitest-sound'
+  gem 'minitest-slow_test'
+  gem 'poltergeist'
+end
+
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'

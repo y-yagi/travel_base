@@ -33,16 +33,15 @@ class Place < ActiveRecord::Base
     def build(params, user)
       place = new(params)
       place.user_id = user.id
-      set_geoinfo(place) if params[:latitude].blank? && params[:address].present?
+      place.set_geoinfo! if params[:latitude].blank? && params[:address].present?
       place
     end
+  end
 
-    def set_geoinfo(place)
-      geo_info = Geocoder.search(place.address)
-      return if geo_info.empty?
-
-      place.latitude = geo_info.first.geometry['location']['lat']
-      place.longitude = geo_info.first.geometry['location']['lng']
-    end
+  def set_geoinfo!
+    geo_info = Geocoder.search(address)
+    return if geo_info.empty?
+    self.latitude = geo_info.first.geometry['location']['lat']
+    self.longitude = geo_info.first.geometry['location']['lng']
   end
 end
