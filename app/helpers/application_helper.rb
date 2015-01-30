@@ -16,4 +16,12 @@ module ApplicationHelper
   def current_menu?(name)
     controller_name == name
   end
+
+  def create_route_title_from_schedules(schedules, index)
+    route_title = ''
+    if index != 0 && before_schedule = schedules[index - 1]
+      route_title = before_schedule.place.name
+    end
+    route_title + '〜' + schedules[index].place.name
+  end
 end
