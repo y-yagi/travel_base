@@ -36,7 +36,7 @@
                 <h4><%= link_to place.name, map_place_path(place.id), target: '_blank' %></h4>
               </div>
         		</div>
-        		<div class="col-md-9 col-xs-12">
+        		<div class="col-md-8 col-xs-12">
               <%= place.address %><br>
               <% if place.urls.present? %>
                 <% place.urls.each_with_index do |url, i| %>
