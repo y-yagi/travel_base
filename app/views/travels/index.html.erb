@@ -9,18 +9,17 @@
     <div class="col-sm-8 col-sm-offset-2">
       <section class="col-md-12 shopping-cart">
       	<header>
-        	<div class="row">
-        		<div class="col-xs-6"><%= link_to '新規登録', new_travel_path %></div>
+          <div class="operation-list">
+            <%= link_to '', new_travel_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle" %>
         	</div>
         </header>
-        <br>
         <% @travels.each do |travel| %>
         <div class="item">
           <div class="delete">
-            <%= link_to edit_travel_path(travel) do %>
+            <%= link_to edit_travel_path(travel), title: '編集' do %>
               <i class="fa fa-edit"></i>
             <% end %>
-            <%= link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+            <%= link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do %>
               <i class="fa fa-trash-o"></i>
             <% end %>
           </div>
