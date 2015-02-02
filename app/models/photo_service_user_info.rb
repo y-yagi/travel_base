@@ -15,6 +15,7 @@ class PhotoServiceUserInfo < ActiveRecord::Base
 
   scope :mine, ->(user) { where(user_id: user.id) }
 
-  enum service_type: [ :picasa, :flicker ]
+  # TODO: add other photo service
+  enum service_type: [ :picasa ]
 
 end
