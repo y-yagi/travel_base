@@ -19,6 +19,8 @@
 class Place < ActiveRecord::Base
   include Elasticsearch::Model
 
+  belongs_to :user
+
   scope :mine, ->(user) { where(user_id: user.id) }
 
   enum status: [ :not_gone, :already_went ]

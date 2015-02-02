@@ -38,6 +38,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (6.0.0)
     array_form_helper (0.0.1)
       actionpack (>= 4.0)
@@ -115,6 +116,8 @@ GEM
     json (1.8.1)
     jwt (1.2.0)
     kgio (2.9.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -292,6 +295,7 @@ DEPENDENCIES
   guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   minitest-slow_test
   minitest-sound
   omniauth

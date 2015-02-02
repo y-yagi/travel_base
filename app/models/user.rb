@@ -31,9 +31,8 @@ class User < ActiveRecord::Base
       create! do |u|
         u.provider = auth['provider']
         u.uid = auth['uid']
-        u.email = auth['info']['email']
-        u.name = auth['info']['name'].present? ?
-          auth['info']['name'] : auth['info']['nickname']
+        u.email = auth['info']['email'].presence || ''
+        u.name = auth['info']['name'].presence || auth['info']['nickname']
       end
     end
   end
