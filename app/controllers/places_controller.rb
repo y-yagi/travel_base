@@ -23,38 +23,27 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.build(place_params, current_user)
-    respond_to do |format|
-      if @place.save
-        flash[:info] ='Place was successfully created.'
-        format.html { redirect_to places_url }
-        format.json { render :show, status: :created, location: @place }
-      else
-        format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    if @place.save
+      flash[:info] ='Place was successfully created.'
+      redirect_to places_url
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @place.update(place_params)
-        flash[:info] ='Place was successfully updated.'
-        format.html { redirect_to places_url }
-        format.json { render :show, status: :ok, location: @place }
-      else
-        format.html { render :edit }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    if @place.update(place_params)
+      flash[:info] ='Place was successfully updated.'
+      redirect_to places_url
+    else
+      render :edit
     end
   end
 
   def destroy
     @place.destroy
-    respond_to do |format|
-      flash[:info] ='Place was successfully destroyed.'
-      format.html { redirect_to places_url }
-      format.json { head :no_content }
-    end
+    flash[:info] ='Place was successfully destroyed.'
+    redirect_to places_url
   end
 
   private
