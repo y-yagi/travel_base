@@ -103,10 +103,10 @@
                       <div class="timeline-panel">
                         <div class="timeline-heading">
                           <div class="delete">
-                            <%= link_to edit_schedule_route_path(schedule, route) do %>
+                            <%= link_to edit_schedule_route_path(schedule, route), title: '編集' do %>
                               <i class="fa fa-edit"></i>
                             <% end %>
-                            <%= link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                            <%= link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do %>
                               <i class="fa fa-trash-o"></i>
                             <% end %>
                           </div>
@@ -131,10 +131,10 @@
                           <p><small class="text-muted"><i class="fa fa-clock-o"></i> <%= schedule.formatted_time %></small></p>
                         <% end %>
                         <div class="delete">
-                          <%= link_to edit_schedule_path(schedule) do %>
+                          <%= link_to edit_schedule_path(schedule), title: '編集' do %>
                             <i class="fa fa-edit"></i>
                           <% end %>
-                          <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
+                          <%= link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do %>
                             <i class="fa fa-trash-o"></i>
                           <% end %>
                         </div>

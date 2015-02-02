@@ -1,0 +1,13 @@
+kifune:
+  travel_date: kyoto_date_1
+  place: kifune
+  start_time: <%= DateTime.parse('13:00') %>
+  end_time: <%= DateTime.parse('15:00') %>
+  memo: ライトアップもある
+
+shimogamo:
+  travel_date: kyoto_date_1
+  place: shimogamo
+  route: route_to_shimogamo
+  start_time: <%= DateTime.parse('18:00') %>
+  end_time: <%= DateTime.parse('19:00') %>

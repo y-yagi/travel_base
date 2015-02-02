@@ -13,3 +13,10 @@ okayama:
   end_date: <%= 95.days.ago %>
   memo: 過去の旅行
   owner: google
+
+yamaguchi:
+  name: 山口旅行
+  start_date: <%= 10.days.since %>
+  end_date: <%= 15.days.since %>
+  memo: 別ユーザの旅行
+  owner: twitter

@@ -18,3 +18,18 @@ kamigamo:
   latitude: 35.059598
   longitude: 135.751738
   user: twitter
+
+kifune:
+  name: 貴船神社
+  address: 京都府京都市左京区鞍馬貴船町180
+  latitude: 35.07182
+  longitude: 135.45462
+  user: google
+
+shimogamo:
+  name: 下鴨神社
+  address: 京都府京都市 左京区下鴨泉川町59
+  latitude: 35.07182
+  longitude: 135.45462
+  user: google
+
