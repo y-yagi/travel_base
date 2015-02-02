@@ -1,0 +1,11 @@
+kyoto_date_1:
+  travel: kyoto
+  date: <%= 3.days.since %>
+
+kyoto_date_2:
+  travel: kyoto
+  date: <%= 4.days.since %>
+
+kyoto_date_3:
+  travel: kyoto
+  date: <%= 5.days.since %>

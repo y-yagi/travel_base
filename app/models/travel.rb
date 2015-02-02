@@ -18,7 +18,7 @@ class Travel < ActiveRecord::Base
   include Elasticsearch::Model
   has_many :travel_dates, dependent: :destroy
   has_many :travel_photos, dependent: :destroy
-  has_one :owner, through: :user
+  belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   scope :schedules, -> do
     eager_load(:travel_dates, :travel_photos, travel_dates: { schedules: [:place, :route] })
@@ -26,7 +26,7 @@ class Travel < ActiveRecord::Base
   end
   scope :mine, ->(user) { where(owner_id: user.id) }
   scope :belong, ->(user) do
-    where('members @> ARRAY[?]::integer[]', [user.id])
+    where('members @> ARRAY[?]::integer[] OR owner_id = ?', [user.id], user.id)
   end
   scope :future, -> do
     where('end_date >= ?', Time.now.to_date)
@@ -65,7 +65,7 @@ class Travel < ActiveRecord::Base
 
   def member?(user_id)
     return false unless members
-    members.include?(user_id)
+    members.include?(user_id) || owner_id == user_id
   end
 
   def past?

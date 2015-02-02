@@ -43,6 +43,7 @@ group :test do
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'guard-minitest'
+  gem 'launchy'
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'poltergeist'

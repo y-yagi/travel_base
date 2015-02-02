@@ -7,20 +7,38 @@ require 'rails/test_help'
 
 require 'capybara/rails'
 
+Geocoder.configure(lookup: :test)
+Geocoder::Lookup::Test.add_stub(
+  'tokyo', [
+    {
+      'formatted_address': 'tokyo minatoku',
+      geometry: {
+        'location' => {
+          'lat'     => 35.681382,
+          'lng'     => 139.766084,
+          'address' => 'tokyo',
+        }
+      },
+      address_components: [
+        {
+          'long_name' => '東京駅',
+        }
+      ]
+    }
+  ]
+)
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:google_oauth2,
+  'uid' => '1',
+  'provider' => 'google_oauth2',
+)
+
+Minitest::Sound.success = '/home/yaginuma/Dropbox/tmp/music/other/sey.mp3'
+Minitest::Sound.failure = '/home/yaginuma/Dropbox/tmp/music/other/mdai.mp3'
+Minitest::Sound.during_test = '/home/yaginuma/Dropbox/tmp/music/other/rs1_25_beatthemup.mp3'
+
 class ActiveSupport::TestCase
   fixtures :all
-
-  def assert_valid(record, message = nil)
-    message ||= "Expected #{record.inspect} to be valid"
-    assert record.valid?, message
-  end
-
-  def assert_invalid(record, options = {})
-    assert record.invalid?, "Expected #{record.inspect} to be invalid"
-    options.each do |attribute, message|
-      assert_includes record.errors[attribute], message
-    end
-  end
 end
 
 class ActionDispatch::IntegrationTest
@@ -29,23 +47,8 @@ class ActionDispatch::IntegrationTest
 
   require 'capybara/poltergeist'
   Capybara.javascript_driver = :poltergeist
+  def login
+    visit '/auth/google_oauth2'
+  end
 end
 
-Geocoder.configure(lookup: :test)
-Geocoder::Lookup::Test.add_stub(
-  'tokyo', [
-    {
-      geometry: {
-        'location' => {
-          'lat'     => 35.681382,
-          'lng'     => 139.766084,
-          'address' => 'tokyo',
-        }
-      }
-    }
-  ]
-)
-
-Minitest::Sound.success = '/home/yaginuma/Dropbox/tmp/music/other/sey.mp3'
-Minitest::Sound.failure = '/home/yaginuma/Dropbox/tmp/music/other/mdai.mp3'
-Minitest::Sound.during_test = '/home/yaginuma/Dropbox/tmp/music/other/rs1_25_beatthemup.mp3'

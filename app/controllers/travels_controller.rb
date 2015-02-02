@@ -1,14 +1,14 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:edit, :update, :destroy, :edit_photo]
+  before_action :set_travel, only: [:edit, :update, :edit_photo]
+  before_action :set_travel_by_owner, only: [:destroy]
 
   def index
-    # TODO: user
-    @travels = Travel.order('start_date DESC')
+    @travels = Travel.belong(current_user).order('start_date DESC')
   end
 
   def show
     @places = Place.mine(current_user).pluck(:name, :id)
-    @travel = Travel.schedules.mine(current_user).find(params[:id])
+    @travel = Travel.schedules.belong(current_user).find(params[:id])
   end
 
   def new
@@ -46,10 +46,14 @@ class TravelsController < ApplicationController
 
   private
     def set_travel
+      @travel = Travel.belong(current_user).find(params[:id])
+    end
+
+    def set_travel_by_owner
       @travel = Travel.mine(current_user).find(params[:id])
     end
 
     def travel_params
-      params.require(:travel).permit(:name, :memo, :start_date, :end_date, :deleted_at, :user_id)
+      params.require(:travel).permit(:name, :memo, :start_date, :end_date, :user_id)
     end
 end

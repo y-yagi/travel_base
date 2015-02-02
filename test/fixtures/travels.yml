@@ -3,7 +3,7 @@ kyoto:
   start_date: <%= 3.days.since %>
   end_date: <%= 5.days.since %>
   memo: 宿は未定
-  owner_id: google
+  owner: google
   members:
     - 100
 
@@ -12,4 +12,11 @@ okayama:
   start_date: <%= 100.days.ago %>
   end_date: <%= 95.days.ago %>
   memo: 過去の旅行
-  owner_id: google
+  owner: google
+
+yamaguchi:
+  name: 山口旅行
+  start_date: <%= 10.days.since %>
+  end_date: <%= 15.days.since %>
+  memo: 別ユーザの旅行
+  owner: twitter
