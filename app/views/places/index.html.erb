@@ -8,25 +8,34 @@
   <div class="row">
     <div class="col-md-8 col-sm-offset-2">
       <section class="col-md-12 shopping-cart">
-      	<header>
-        	<div class="row">
-        		<div class="col-xs-6"><%= link_to '新規登録', new_place_path %></div>
-            <div class="col-xs-6">
-              <% if @places.present? %>
-                <%= link_to '一覧をGoogleMapで見る', map_places_path, target: '_blank'  %>
-              <% end %>
-            </div>
-        	</div>
-        </header>
-        <br>
+        <% unless params[:already] %>
+      	  <header>
+            <div class="operation-list">
+              <%= link_to '', new_place_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle" %>
+              <%= link_to '', places_path(already: true), title: 'アーカイブした場所を表示する', 'data-placement' => 'top', class: "tooltipped fa fa-history" %>
+            <% if @places.present? %>
+              <%= link_to '', map_places_path, target: '_blank', title: '一覧をGoogleMapで見る', 'data-placement' => 'top', class: "tooltipped fa fa-map-marker" %>
+            <% end %>
+        	  </div>
+          </header>
+        <% end %>
         <% @places.each do |place| %>
         <div class="item">
           <div class="delete">
-            <%= link_to edit_place_path(place) do %>
-              <i class="fa fa-edit"></i>
-            <% end %>
-            <%= link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' } do %>
-              <i class="fa fa-trash-o"></i>
+            <% if params[:already] %>
+              <%= link_to place_path(place, place: { status: :not_gone }), method: :patch, data: { confirm: 'アーカイブした場所を一覧に戻します。宜しいですか?' }, title: '戻す' do %>
+                <i class="fa fa-undo"></i>
+              <% end %>
+            <% else %>
+              <%= link_to edit_place_path(place), title: '編集' do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+              <%= link_to place_path(place, place: { status: :already_went }), method: :patch, data: { confirm: 'アーカイブします。宜しいですか?' }, title: 'アーカイブ' do %>
+                <i class="fa fa-archive"></i>
+              <% end %>
+              <%= link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do %>
+                <i class="fa fa-trash-o"></i>
+              <% end %>
             <% end %>
           </div>
 
