@@ -44,13 +44,50 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
 
   test 'edit place' do
     place = Place.order('updated_at DESC').first
-    first('.fa-edit').click
+    first("a[title='編集']").click
 
     fill_in 'place_name', with: '更新名称'
     fill_in 'place_address', with: '更新住所'
-    fill_in 'place_urls_0', with: 'http://www.jreast.co.jp/estation/stations/204.html'
+    fill_in 'place_urls_0', with: 'http://www.jreast.co.jp/estation/stations/200.html'
     fill_in 'place_memo', with: '更新メモ'
     click_button '登録'
+    place.reload
+
+    assert_equal '更新名称', place.name
+    assert_equal '更新住所', place.address
+    assert_equal 'http://www.jreast.co.jp/estation/stations/200.html', place.urls.first
+    assert_equal '更新メモ', place.memo
   end
 
+  test 'destroy place' do
+    first("a[title='削除']").click
+
+    assert_no_match '大麻比古神社', page.text
+    assert_match '伏見稲荷大社', page.text
+    assert_no_match '上賀茂神社', page.text
+  end
+
+  test 'archive place' do
+    first("a[title='アーカイブ']").click
+
+    assert_no_match '大麻比古神社', page.text
+    assert_match '伏見稲荷大社', page.text
+    assert_no_match '上賀茂神社', page.text
+
+    find('.fa-history').click
+    assert_match '大麻比古神社', page.text
+    assert_no_match '伏見稲荷大社', page.text
+  end
+
+  test 'restore archived place' do
+    Place.order('updated_at DESC').first.update_attributes!(status: :already_went)
+    find('.fa-history').click
+
+    assert_match '大麻比古神社', page.text
+    assert_no_match '伏見稲荷大社', page.text
+
+    first("a[title='戻す']").click
+    assert_match '大麻比古神社', page.text
+    assert_match '伏見稲荷大社', page.text
+  end
 end
