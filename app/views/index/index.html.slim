@@ -35,6 +35,5 @@ section.double-padding-top
                 br
                 | です。
             - else
-              p.p-lg
-                = link_to('旅行の予定を作成する', new_travel_path)
+              | <p class="p-lg">旅行の予定はありません。<a href="#{new_travel_path}" title="Inline Link">旅行の予定を作成する。</a></p>
             #calendar
