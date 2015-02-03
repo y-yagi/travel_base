@@ -1,0 +1,41 @@
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h3
+        | 行きたい場所一覧
+  .row
+    .col-md-8.col-sm-offset-2
+      section.col-md-12.shopping-cart
+        - unless params[:already]
+        header
+          .operation-list
+            = link_to '', new_place_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle"
+            = link_to '', places_path(already: true), title: 'アーカイブした場所を表示する', 'data-placement' => 'top', class: "tooltipped fa fa-history"
+            - if @places.present?
+              = link_to '', map_places_path, target: '_blank', title: '一覧をGoogleMapで見る', 'data-placement' => 'top', class: "tooltipped fa fa-map-marker"
+        - @places.each do |place|
+          .item
+            .delete
+              - if params[:already]
+                = link_to place_path(place, place: { status: :not_gone }), method: :patch, data: { confirm: 'アーカイブした場所を一覧に戻します。宜しいですか?' }, title: '戻す' do
+                  i.fa.fa-undo
+              - else
+                = link_to edit_place_path(place), title: '編集' do
+                  i.fa.fa-edit
+                = link_to place_path(place, place: { status: :already_went }), method: :patch, data: { confirm: 'アーカイブします。宜しいですか?' }, title: 'アーカイブ' do
+                  i.fa.fa-archive
+                = link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                  i.fa.fa-trash-o
+            .row
+              .col-md-3.col-xs-12
+                .details
+                  h4
+                    = link_to place.name, map_place_path(place.id), target: '_blank'
+              .col-md-8.col-xs-12
+                = place.address
+                br
+                - if place.urls.present?
+                  - place.urls.each_with_index do |url, i|
+                    = link_to "参考URL#{i + 1}", url, target: '_blank'
+                br
+                = simple_format(place.memo)

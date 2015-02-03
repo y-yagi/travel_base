@@ -1,0 +1,9 @@
+.panel.static.panel-danger
+  .panel-heading
+    h4.panel-title
+      | 入力内容にエラーがあります
+  .panel-body
+    ul
+      - error_messages.each do |message|
+        li.text-danger
+          = message

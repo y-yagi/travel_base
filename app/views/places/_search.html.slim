@@ -1,0 +1,46 @@
+= form_for(new_place_path, method: :get, html: { class: 'sp-form' } ) do |f|
+  .col-sm-12.form-group
+    = text_field_tag :query, params[:query], class: "form-control input-lg", placeholder: 'Search', id: 'search'
+  = f.submit class: "btn btn-md btn-center btn-primary", value: '検索'
+br
+br
+- if params[:query]
+  - if @places.count == 0
+    p.text-center.text-primary
+      | 名称に一致するスポットはありませんでした
+  - else
+    p.text-center.text-primary
+      | 名称に一致するスポットは
+      = @places.count
+      | 件ありました
+    table.table.table-striped
+      thead
+        tr
+          th
+            | #
+          th
+            | 名称
+          th
+            | 住所
+          th
+          th
+      tbody
+        - @places.each_with_index do |place, i|
+          tr
+            = form_for(@place) do |f|
+              - address = get_address_form_geocode_result(place)
+              - name = get_place_name_from_geocode_result(place)
+              td
+                = i + 1
+              td
+                = name
+              td
+                = address
+              td.
+                = link_to 'この場所を地図で見る', googlemap_link(address), target: '_blank'
+              td.center
+                = f.submit 'この場所を登録する', class: 'btn btn-primary'
+              = f.hidden_field :name, value: name
+              = f.hidden_field :address, value: address
+              = f.hidden_field :latitude, value: place.geometry['location']['lat']
+              = f.hidden_field :longitude, value: place.geometry['location']['lng']

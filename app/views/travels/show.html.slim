@@ -1,0 +1,110 @@
+- @need_pages_js = true
+section.page-block.double-padding-top.double-space-bottom
+  .container-fluid
+    .page-heading.center
+      h2
+        = link_to @travel.name, edit_travel_path(@travel)
+    .row.double-space-top
+      .col-md-5.col-md-offset-2.col-xs-12
+        - unless @travel.past?
+          - # add schedule panel
+          .panel.panel-primary
+            .panel-heading
+              h4.panel-title
+                a.collapsed[data-toggle="collapse" data-parent="#manage-photo" href="#add-schedule"]
+                  |  予定を追加する
+            #add-schedule.panel-collapse.collapse[style="height: 0px;"]
+              .panel-body
+                = form_tag(schedules_path) do
+                  .form-group
+                    |  日程:
+                    = select :schedule, :travel_date_id, @travel.schedule_list_for_select, {}, { class: "form-control-select" }
+                    |   時間:
+                    = time_field :schedule, :start_time, { class: "form-control-select" }
+                    |  〜
+                    = time_field :schedule, :end_time, { class: "form-control-select" }
+                    |  
+                  .form-group
+                    |  場所:
+                    = select :schedule, :place_id, options_for_select(@places), {}, { class: "form-control-select" }
+                    |  
+                  .text-center
+                    = submit_tag :add_schedule,  class: "btn btn-primary", value: '登録'
+        - else
+          - # add photo panel
+          .panel.panel-primary
+            .panel-heading
+              h4.panel-title
+                a.collapsed[data-toggle="collapse" href="#manage-photo"]
+                  |  写真管理
+            #manage-photo.panel-collapse.collapse[style="height: 0px;"]
+              .panel-body
+                = link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id)
+                |    写真を見る :
+                = select :travel_photo, :id, @travel.photo_list_for_select, { prompt: 'Please select' }, { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" }
+                |    
+      .col-md-4.col-xs-12
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              a.collapsed[data-toggle="collapse" href="#confirm-memo"]
+                |  メモを確認する
+          #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
+            .panel-body
+              = simple_format(@travel.memo)
+    .row.double-space-top
+      .col-md-8.col-md-offset-2
+        .tab-content
+          ul.nav-tabs.left[role="tablist"]
+            - @travel.travel_dates.each_with_index do |d, i|
+              |  <li class="#{'active' if i == 0}"><a href="##{i + 1}_day" role="tab" data-toggle="tab">#{i + 1}日目</a></li>
+          - @travel.travel_dates.each_with_index do |travel_date, i|
+            div class="tab-pane#{" fade in active" if i == 0}" id="#{i + 1}_day"
+              h4
+                = I18n.l(travel_date.date, format: :long)
+                - if travel_date.schedules.present?
+                  br
+                  small
+                    = link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank'
+              ul.timeline
+                - travel_date.schedules.each_with_index do |schedule, i|
+                  - schedule.extend(ScheduleDecorator)
+                  - route = schedule.route
+                  - if route
+                    li.timeline-inverted
+                      .timeline-badge.warning
+                        i.fa.fa-arrow-circle-right
+                      .timeline-panel
+                        .timeline-heading
+                          .delete
+                            = link_to edit_schedule_route_path(schedule, route), title: '編集' do
+                              i.fa.fa-edit
+                            = link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                              i.fa.fa-trash-o
+                        h5.timeline-title
+                          = create_route_title_from_schedules(travel_date.schedules, i)
+                        .timeline-body
+                          = simple_format(route.detail)
+                  li
+                    .timeline-badge.success
+                      i.fa.fa-map-marker
+                    .timeline-panel
+                      .timeline-heading
+                        h4.timeline-title
+                          = schedule.place.name
+                          - unless route
+                            = link_to ' (移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted'
+                        - if schedule.start_time.present? || schedule.end_time.present?
+                          p
+                            small.text-muted
+                              i.fa.fa-clock-o
+                              = " " + schedule.formatted_time
+                        .delete
+                          = link_to edit_schedule_path(schedule), title: '編集' do
+                            i.fa.fa-edit
+                          br
+                          = link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                            i.fa.fa-trash-o
+                      - if schedule.memo.present?
+                        .timeline-body
+                          = simple_format(schedule.memo)

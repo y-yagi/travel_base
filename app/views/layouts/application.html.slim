@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    title
+      | TravelBase
+    = stylesheet_link_tag    'application', media: 'all'
+    - if controller_name == 'map'
+      = include_gon
+      script[src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"]
+      = javascript_include_tag 'pages/map'
+    - else
+      = javascript_include_tag 'application'
+      = javascript_include_tag "pages/#{controller_name}" if @need_pages_js
+    - if @need_gon
+      = include_gon
+    = csrf_meta_tags
+  body.parallax.animated.fadeIn
+    .off-canvas-wrap[data-offcanvas]
+      .inner-wrap
+        = render 'mobile_navbar'
+        .site-layout
+          = render 'navbar_header'
+          .page
+            = render 'flash'
+            = yield
+            = render 'footer'

@@ -1,0 +1,27 @@
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h3
+        | 旅行計画一覧
+  .row
+    .col-sm-8.col-sm-offset-2
+      section.col-md-12.shopping-cart
+        header
+          .operation-list
+            = link_to '', new_travel_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle"
+        - @travels.each do |travel|
+          .item
+            .delete
+              = link_to edit_travel_path(travel), title: '編集' do
+                i.fa.fa-edit
+              = link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                i.fa.fa-trash-o
+            .row
+              .col-md-3.col-xs-12
+                .details
+                  h4
+                    = link_to travel.name , travel_path(travel)
+              .col-md-8.col-xs-12
+                = travel.formatted_schedule
+                br
+                = simple_format(travel.memo)

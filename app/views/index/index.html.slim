@@ -1,0 +1,40 @@
+- @need_pages_js = true, @need_gon = true
+section.double-padding-top
+  .container
+    .row.double-space-top
+      .col-lg-12
+        h3.heading.center
+          | Travel Base
+          span
+        .row
+          .col-sm-6
+            .page-heading.center
+              h2
+                = link_to '行きたい場所', places_path
+            - if @places.present?
+              h4
+                | 最近登録した場所
+              ul.featured-list
+                - @places.each do |place|
+                  li
+                    = link_to place.name , map_place_path(place.id), target: '_blank'
+            - else
+              p
+                | まだ行きたい場所は登録されていません。
+            = link_to '新しい行きたい場所を登録する', new_place_path
+          .col-sm-6
+            .page-heading.center
+              h2
+                = link_to('旅行計画', travels_path)
+            - if @travels.present?
+              - first_travel = @travels.first
+              p.p-lg
+                | 次の旅行は
+                br
+                = link_to("#{first_travel.name}(#{first_travel.formatted_schedule})", first_travel)
+                br
+                | です。
+            - else
+              p.p-lg
+                = link_to('旅行の予定を作成する', new_travel_path)
+            #calendar

@@ -1,0 +1,27 @@
+= form_for(@place) do |f|
+  - if @place.errors.any?
+    = render partial: 'form_error_header', locals: { error_messages: @place.errors.full_messages }
+  .form-group
+    = f.label :name
+    span.text-primary.p-lg
+      | (必須)
+    br
+    = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :address
+    span
+      span.text-primary.p-lg
+        | (必須)
+      br
+      = f.text_field :address, class: "form-control"
+  .form-group
+    = f.label :urls
+    br
+    = f.array_url_field :urls, class: "form-control form-array", array_size: 2
+  .form-group
+    = f.label :memo
+    br
+    = f.text_area :memo, class: "form-control"
+  .col-md-12.col-sm-12
+    .text-center
+      = f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." }

@@ -1,0 +1,21 @@
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h3
+        | 登録
+    .row
+      .col-sm-8.col-sm-offset-2
+        ul.nav.nav-tabs
+          li.active
+            a[href="#search" data-toggle="tab" aria-expanded="false"]
+              | 名称を検索して登録する
+          li.
+            a[href="#form" data-toggle="tab" aria-expanded="true"]
+              | 名称・住所を登録する
+        .tab-content
+          #search.tab-pane.active
+            hr
+            = render 'search'
+          #form.tab-pane.fade
+            hr
+            = render 'form'

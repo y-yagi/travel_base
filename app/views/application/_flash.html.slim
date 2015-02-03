@@ -1,0 +1,9 @@
+- flash.each do |type, msg|
+  section class="info-box #{type} space-bottom alert"
+    .container
+      .row
+        .col-lg-8
+          h3.light-weight.light-color
+            = msg.html_safe
+        .col-lg-4
+          |  <button type="button" class="btn btn-transparent btn-#{type}" data-dismiss="info-box">×

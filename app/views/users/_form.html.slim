@@ -1,0 +1,15 @@
+= form_for(@user) do |f|
+  - if @user.errors.any?
+    = render partial: 'form_error_header', locals: { error_messages: @user.errors.full_messages }
+  = f.fields_for(:photo_service_user_info) do |f_photo|
+    .form-group
+      = f_photo.label :service_type
+      br
+      = f_photo.select :service_type, PhotoServiceUserInfo.service_types.keys, {}, { class: "form-control-select", prompt: 'Please select' }
+    .form-group
+      = f_photo.label :photo_service_user_id
+      br
+      = f_photo.text_field :photo_service_user_id, class: "form-control"
+  .col-md-12.col-sm-12
+    .text-center
+      = f.submit class: "btn btn-md btn-primary", value: '更新', data: { disable_with: "Please wait..." }

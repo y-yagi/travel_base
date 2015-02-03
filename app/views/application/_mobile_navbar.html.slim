@@ -1,0 +1,39 @@
+aside.left-off-canvas-menu
+  .mobile-navi
+    form.mobile-search[method="get"]
+      label.sr-only[for="m-search"]
+      input#m-search.form-control.input-lg[name="m-search" type="text" placeholder="Search"]
+      button[type="submit"]
+        i.icon.icon-search
+    ul.buttons
+      li
+        = link_to '登録情報', edit_user_path(current_user)
+      li
+        = link_to 'ログアウト', logout_path
+    ul
+      |  <li class="
+      = 'current' if current_menu?('places')
+      | ">
+      = link_to '行きたい場所', places_path
+    span
+    ul.submenu
+      li
+        = link_to '新規登録', new_place_path
+      li
+        = link_to '一覧', places_path
+    |  <li class="
+    = 'current' if current_menu?('travels')
+    | ">
+    = link_to '旅行計画', travels_path
+    span
+    ul.submenu
+      li
+        = link_to '新規作成', new_travel_path
+      li
+        = link_to '一覧', travels_path
+        span
+        - if @travels.present?
+          ul.sub-submenu
+            - @travels.each do |travel|
+              li
+                = link_to travel.name, travel_path(travel)

@@ -14,6 +14,6 @@ class TopIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'display next travel in top page' do
-    assert_match '次の旅行は京都旅行(2015年02月05日(木) 〜 2015年02月07日(土))', page.text
+    assert_match '次の旅行は京都旅行', page.text
   end
 end

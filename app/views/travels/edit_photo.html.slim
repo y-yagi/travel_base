@@ -1,0 +1,14 @@
+h1
+  | Editing PhotoInfo
+= form_for(@travel_photo) do |f|
+  .form-group
+    = f.label :photo_service_album_id
+    br
+    = f.select :photo_service_album_id, @album_list, class: "form-control"
+  .form-group
+    = f.label :name
+    br
+    = f.text_field :name, class: "form-control"
+  = f.hidden_field :travel_id
+  = f.hidden_field :photo_service_user_info_id
+  = f.submit class: "btn btn-default", value: '登録'
