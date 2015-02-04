@@ -1,16 +1,10 @@
-| <div style="background-image:url(
-= image_path('specialty-page/banner.jpg')
-| );" class="specialty-page-bg">
+div style="background-image:url(#{image_path('specialty-page/banner.jpg')});" class="specialty-page-bg"
+  span
 section.specialty-page
   .container
     .error-numb
       span
-        | 4
-      | 0
-      span
-        | 4
+        | 404
     h3.light-weight
-      | The page you're looking for can't be found
-    |  <a class="btn btn-primary btn-center" href="
-    = root_path
-    | ">Go to home page
+      p
+        | The page you're looking for can't be found#{link_to 'Go to home page', root_path, class: "btn btn-primary btn-center"}
