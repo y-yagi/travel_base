@@ -90,4 +90,12 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
     assert_match '大麻比古神社', page.text
     assert_match '伏見稲荷大社', page.text
   end
+
+  test 'paging' do
+    assert_no_match 'places_9', page.text
+    click_link '最後'
+
+    assert_match 'places_9', page.text
+    assert_no_match 'places_0', page.text
+  end
 end

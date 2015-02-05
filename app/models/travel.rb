@@ -40,6 +40,7 @@ class Travel < ActiveRecord::Base
   validates :owner_id, presence: true
   validates_with TravelDateValidator
 
+  paginates_per 10
 
   class << self
     def build(params, user)

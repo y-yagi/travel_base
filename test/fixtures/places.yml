@@ -33,3 +33,11 @@ shimogamo:
   longitude: 135.45462
   user: google
 
+<% 10.times.each do |i| %>
+places_<%= i %>:
+  name: $LABEL
+  address: 住所 $LABEL
+  latitude: 35.07182
+  longitude: 135.45462
+  user: google
+<% end %>
