@@ -216,3 +216,10 @@ ja:
       travel_photo:
         name: 名前
         photo_service_album_id: アルバム名
+  views:
+    pagination:
+      first: "&laquo; 先頭"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "&hellip;"

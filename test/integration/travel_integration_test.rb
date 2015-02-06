@@ -159,4 +159,12 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
 
     assert_no_match 'バスで30分', page.text
   end
+
+  test 'paging' do
+    assert_no_match 'travels_9', page.text
+    click_link '最後'
+
+    assert_match 'travels_9', page.text
+    assert_no_match 'travels_0', page.text
+  end
 end

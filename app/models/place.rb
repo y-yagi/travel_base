@@ -31,6 +31,8 @@ class Place < ActiveRecord::Base
   validates :latitude, presence: true, if: -> { address.present? }
   validates :longitude, presence: true, if: -> { address.present? }
 
+  paginates_per 10
+
   class << self
     def build(params, user)
       place = new(params)

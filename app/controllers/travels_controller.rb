@@ -3,7 +3,7 @@ class TravelsController < ApplicationController
   before_action :set_travel_by_owner, only: [:destroy]
 
   def index
-    @travels = Travel.belong(current_user).order('start_date DESC')
+    @travels = Travel.belong(current_user).order('start_date DESC').page(params[:page])
   end
 
   def show

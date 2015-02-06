@@ -9,8 +9,8 @@ kyoto:
 
 okayama:
   name: 岡山旅行
-  start_date: <%= 100.days.ago %>
-  end_date: <%= 95.days.ago %>
+  start_date: <%= 10.days.ago %>
+  end_date: <%= 5.days.ago %>
   memo: 過去の旅行
   owner: google
 
@@ -20,3 +20,12 @@ yamaguchi:
   end_date: <%= 15.days.since %>
   memo: 別ユーザの旅行
   owner: twitter
+
+<% 10.times.each do |i| %>
+travels_<%= i %>:
+  name: $LABEL
+  start_date: <%= 100.days.ago %>
+  end_date: <%= 95.days.ago %>
+  memo: $LABEL
+  owner: google
+<% end %>

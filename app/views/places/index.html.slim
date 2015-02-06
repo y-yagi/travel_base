@@ -39,3 +39,4 @@ section.page-block.space-top.space-bottom
                     = link_to "参考URL#{i + 1}", url, target: '_blank'
                 br
                 = simple_format(place.memo)
+      = paginate @places
