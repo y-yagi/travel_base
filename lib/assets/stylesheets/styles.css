@@ -4905,8 +4905,8 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/assets/fontawesome-webfont.eot');
-  src: url('/assets/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('/assets/fontawesome-webfont.woff') format('woff'), url('/assets/fontawesome-webfont.ttf') format('truetype'), url('/assets/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  src: url('/fonts/fontawesome-webfont.eot');
+  src: url('/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('/fonts/fontawesome-webfont.woff') format('woff'), url('/fonts/fontawesome-webfont.ttf') format('truetype'), url('/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -6571,8 +6571,8 @@ button.close {
 }
 @font-face {
   font-family: 'kedavra-icons';
-  src: url('/assets/kedavra-icons.eot?-rwc8qk');
-  src: url('/assets/kedavra-icons.eot?#iefix-rwc8qk') format('embedded-opentype'), url('/assets/kedavra-icons.woff?-rwc8qk') format('woff'), url('/assets/kedavra-icons.ttf?-rwc8qk') format('truetype'), url('/assets/kedavra-icons.svg?-rwc8qk#kedavra-icons') format('svg');
+  src: url('/fonts/kedavra-icons.eot?-rwc8qk');
+  src: url('/fonts/kedavra-icons.eot?#iefix-rwc8qk') format('embedded-opentype'), url('/fonts/kedavra-icons.woff?-rwc8qk') format('woff'), url('/fonts/kedavra-icons.ttf?-rwc8qk') format('truetype'), url('/fonts/kedavra-icons.svg?-rwc8qk#kedavra-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -8335,7 +8335,7 @@ Copyright (c) 2014 Daniel Eden
 /** /font-icons if you are not using font icons you can just remove this part/**/
 @font-face {
   font-family: 'Slide-icons';
-  src: url('/assets/Slide-icons.eot');
+  src: url('/fonts/Slide-icons.eot');
 }
 @font-face {
   font-family: 'Slide-icons';
