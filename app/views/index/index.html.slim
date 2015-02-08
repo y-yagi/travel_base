@@ -26,8 +26,8 @@ section.double-padding-top
             .page-heading.center
               h2
                 = link_to('旅行計画', travels_path)
-            - if @travels.present?
-              - first_travel = @travels.first
+            - if @future_travels.present?
+              - first_travel = @future_travels.first
               p.p-lg
                 | 次の旅行は
                 br
