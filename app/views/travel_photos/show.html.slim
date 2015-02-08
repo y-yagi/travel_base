@@ -5,19 +5,11 @@ section.container.space-top.double-space-bottom
         = @album.name
       .row.lightGallery
         - @photos.each do |photo|
-          |  <div class="col-md-3 col-sm-3" data-src="
-          = photo.content.src
-          | " data-title="
-          = photo.title
-          | "> 
-          .thumbnail-zoom
-            .overlay
-            .figcap
-              i.fa.fa-search-plus
-              p
-                = photo.title
-            |  <img src="
-            = photo.media.thumbnails.last.url
-            | " alt="
-            = photo.title
-            | "/> 
+          div class="col-md-3 col-sm-3" data-src="#{photo.content.src}" data-title="#{photo.title}"
+            .thumbnail-zoom
+              .overlay
+              .figcap
+                i.fa.fa-search-plus
+                p
+                  = photo.title
+              |  <img src="#{photo.media.thumbnails.last.url}" alt="#{photo.title}" />
