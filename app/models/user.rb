@@ -13,7 +13,9 @@
 #
 
 class User < ActiveRecord::Base
-  has_one :photo_service_user_info
+  has_one :photo_service_user_info, dependent: :destroy
+  has_many :places, dependent: :destroy
+  has_many :travels, foreign_key: 'owner_id', dependent: :destroy
 
   validates :uid, presence: true
   validates :name, presence: true

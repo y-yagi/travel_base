@@ -1,0 +1,13 @@
+.tab-pane.fade id="destroy"
+    .panel.static.panel-danger
+      .panel-heading
+        h4.panel-title
+          | アカウント削除
+      .panel-body
+        p
+          | 削除処理をされますと登録されたデータが全て削除されます。
+          br
+          | また、削除後にいままでご登録いただいたデータを復旧することはできませんのであらかじめご了承ください。
+
+    .text-center
+      = link_to '削除', user_path(@user), method: :delete, class: "btn btn-md btn-danger", data: { disable_with: "Please wait..." , confirm: 'アカウントを削除します。宜しいですか?' }

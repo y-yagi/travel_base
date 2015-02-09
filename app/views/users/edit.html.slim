@@ -1,10 +1,19 @@
-section.page-block.space-top.space-bottom
+section.page-block.user-account.space-bottom
   .container
-    .page-heading.center
-
-    .row.gray-bg
-      .col-sm-8.col-sm-offset-2
+    .row
+      .col-md-3.navigation
         h3.heading.center
-          | 写真サービス 連携設定
-          span
-        = render 'form'
+          | ユーザ設定
+        ul.nav-tabs.vertical role="tablist"
+          li.active
+            a href="#photo-service" role="tab" data-toggle="tab"
+              | 写真サービス連携設定
+              span.line
+          li
+            a href="#destroy" role="tab" data-toggle="tab"
+              | アカウント削除
+              span.line
+      .col-md-9.gray-bg
+        .tab-content
+          = render 'photo_service_form'
+          = render 'destroy'

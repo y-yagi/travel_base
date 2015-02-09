@@ -39,7 +39,7 @@ header.header.sticky
                       li
                         = link_to travel.name, travel_path(travel)
       .tools.group
-        = link_to '登録情報', edit_user_path(current_user), class: 'pull-left'
+        = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
         = link_to 'ログアウト', logout_path, class: 'pull-left'
   form.quick-search[method="get" autocomplete="off"]
     .overlay

@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_url, notice: 'User was successfully destroyed.'
+    flash[:info] = 'ユーザの削除が完了しました'
+    redirect_to login_url
   end
 
   private
