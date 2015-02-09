@@ -1,26 +1,19 @@
-| <div style="background-image:url(
-= image_path('specialty-page/banner.jpg')
-| );" class="specialty-page-bg">
-| </div>
+| <div style="background-image:url(#{image_path('specialty-page/banner.jpg')});" class="specialty-page-bg"></div>
 section.specialty-page
   .container
     .row
-      .col-md-12.col-sm-12.social-sugnup
+      .col-md-12.col-sm-12
         .page-heading
           h2
             | Login
-          p
-            | 以下のサービスのアカウントでログイン出来ます
-        - unless Rails.env.production?
-          a.google[href="/auth/developer"]
-            | Develop
-        a.google[href="/auth/google_oauth2"]
-          | Google
-        a.twitter[href="/auth/twitter"]
-          | Twitter
-        a.facebook[href="/auth/facebook"]
-          | Facebook
-    p.helper-text
-      | By signing up, you agree to the
-      a.helper-text[href="#"]
-        | Privacy Policy & Terms of Service
+          | #{link_to '利用規約', terms_path, style: "color: '#448956'"}に同意してログインする
+        .social-sugnup
+          - unless Rails.env.production?
+            a.google[href="/auth/developer"]
+              | Develop
+          a.google[href="/auth/google_oauth2"]
+            | Google
+          a.twitter[href="/auth/twitter"]
+            | Twitter
+          a.facebook[href="/auth/facebook"]
+            | Facebook
