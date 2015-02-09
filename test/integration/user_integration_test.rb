@@ -27,7 +27,6 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
     destory_places_count = destory_user.places.size
     destory_traves_count = destory_user.travels.size
 
-
     click_link '削除'
 
     assert_raise(ActiveRecord::RecordNotFound) do

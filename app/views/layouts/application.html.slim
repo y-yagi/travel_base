@@ -21,7 +21,7 @@ html
   body.parallax.animated.fadeIn
     .off-canvas-wrap[data-offcanvas]
       .inner-wrap
-        = render 'mobile_navbar'
+        = render 'mobile_navbar' if current_user
         .site-layout
           = render 'navbar_header'
           .page

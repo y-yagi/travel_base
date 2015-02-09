@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
+  get '/terms', to: 'terms#index'
+  get '/privacy', to: 'privacy#index'
+
   namespace :map do
     get 'schedule'
     get 'places'

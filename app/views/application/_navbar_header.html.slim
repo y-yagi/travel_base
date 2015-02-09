@@ -2,45 +2,46 @@ header.header.sticky
   .inner
     .container.group
       = link_to image_tag('logo.png'),  root_path, class: 'logo'
-      #nav-toggle.left-off-canvas-toggle
-        span
-      .navigation
-        nav.menu
-          ul
-            |  <li class="
-            = 'active' if current_menu?('index')
-            | ">
-            = link_to 'HOME', root_path
-            |  <li class="
-            = 'active' if current_menu?('places')
-            | ">
-            = link_to '行きたい場所', places_path
-            ul.submenu
-              li
-                = link_to '新規登録', new_place_path
-              li
-                = link_to '一覧', places_path
-            |  <li class="
-            = 'active' if current_menu?('travels')
-            | ">
-            = link_to '旅行計画', travels_path
-            ul.submenu
-              li
-                = link_to '新規作成', new_travel_path
-              li
-                | <a href="
-                = travels_path
-                | ">一覧
-                i.fa.fa-angle-right
-                | </a>
-                - if @travels.present?
-                  ul.sub-submenu
-                    - @travels.each do |travel|
-                      li
-                        = link_to travel.name, travel_path(travel)
-      .tools.group
-        = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
-        = link_to 'ログアウト', logout_path, class: 'pull-left'
+      - if current_user
+        #nav-toggle.left-off-canvas-toggle
+          span
+        .navigation
+          nav.menu
+            ul
+              |  <li class="
+              = 'active' if current_menu?('index')
+              | ">
+              = link_to 'HOME', root_path
+              |  <li class="
+              = 'active' if current_menu?('places')
+              | ">
+              = link_to '行きたい場所', places_path
+              ul.submenu
+                li
+                  = link_to '新規登録', new_place_path
+                li
+                  = link_to '一覧', places_path
+              |  <li class="
+              = 'active' if current_menu?('travels')
+              | ">
+              = link_to '旅行計画', travels_path
+              ul.submenu
+                li
+                  = link_to '新規作成', new_travel_path
+                li
+                  | <a href="
+                  = travels_path
+                  | ">一覧
+                  i.fa.fa-angle-right
+                  | </a>
+                  - if @travels.present?
+                    ul.sub-submenu
+                      - @travels.each do |travel|
+                        li
+                          = link_to travel.name, travel_path(travel)
+        .tools.group
+          = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
+          = link_to 'ログアウト', logout_path, class: 'pull-left'
   form.quick-search[method="get" autocomplete="off"]
     .overlay
     input.search-field[type="text" placeholder="Search"]
