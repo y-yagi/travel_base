@@ -1,5 +1,6 @@
 class PrivacyController < ApplicationController
-  skip_before_filter :check_logged_in, :setup
+  skip_before_action :check_logged_in, :setup
+
   def index
   end
 end

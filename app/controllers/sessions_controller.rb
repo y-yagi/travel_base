@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :check_logged_in, :setup
+  skip_before_action :check_logged_in, :setup
   protect_from_forgery except: [:create]
 
   def new
