@@ -48,14 +48,14 @@ section.page-block
   .container
     .row
       .page-heading.center
-        | 各種SNSのアカウントでSign in / Login が行えます。利用はもちろん無料です。
+        | 各種SNSのアカウントでSign in / Log in が行えます。もちろん利用は無料です。
       .social-sugnup
         - unless Rails.env.production?
           a.google[href="/auth/developer"]
-            | Sign in with Develop
+            | Log in with Develop
         a.google[href="/auth/google_oauth2"]
-          | Sign in with Google
+          | Log in with Google
         a.twitter[href="/auth/twitter"]
-          | Sign in with Twitter
+          | Log in with Twitter
         a.facebook[href="/auth/facebook"]
-          | Sign in with Facebook
+          | Log in with Facebook
