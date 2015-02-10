@@ -1,39 +1,61 @@
-- @need_pages_js = true, @need_gon = true
-section.double-padding-top
+section.hero-static style="background-image:url(#{image_path('specialty-page/top_1.jpg')});" data-stellar-background-ratio="0.5"
+  .overlay
+    .inner
+      .content
+        .container
+          h1
+            | さあ、次はどこに行こうか
+          h3
+
+section.page-block
   .container
-    .row.double-space-top
-      .col-lg-12
-        h3.heading.center
-          | Travel Base
-          span
-        .row
-          .col-sm-6
-            .page-heading.center
-              h2
-                = link_to '行きたい場所', places_path
-            - if @places.present?
-              h4
-                | 最近登録した場所
-              ul.featured-list
-                - @places.each do |place|
-                  li
-                    = link_to place.name , map_place_path(place.id), target: '_blank'
-            - else
-              p
-                | まだ行きたい場所は登録されていません。
-            = link_to '新しい行きたい場所を登録する', new_place_path
-          .col-sm-6
-            .page-heading.center
-              h2
-                = link_to('旅行計画', travels_path)
-            - if @future_travels.present?
-              - first_travel = @future_travels.first
-              p.p-lg
-                | 次の旅行は
-                br
-                = link_to("#{first_travel.name}(#{first_travel.formatted_schedule})", first_travel)
-                br
-                | です。
-            - else
-              | <p class="p-lg">旅行の予定はありません。<a href="#{new_travel_path}" title="Inline Link">旅行の予定を作成する。</a></p>
-            #calendar
+    h3.heading
+      | Welcome to Travel Base!!<span></span>
+    .row.space-top
+      .col-md-8.col-sm-8
+        p
+          | Travel Baseは旅行管理の為のWebサービスです。行きたい場所の管理、旅行予定の管理が行えます。
+
+section.page-block
+  .container
+    .page-heading.center
+      h3
+        | Travel Baseで出来ること<span></span>
+    .row
+      / Left Column
+      .col-md-6
+        .row.icon-block
+          .col-lg-2.col-md-2.col-sm-2.featured-icon.center
+            i.icon.icon-map
+          .col-md-10.col-sm-10
+            h5
+              | 行きたい場所の管理
+            p.small
+              | 行きたい場所の登録・管理が出来ます。行ってみたい・ちょっと気になる、そんな場所あったら、とりあえず登録してみましょう。場所の登録は、場所の名前さえわかればOK。
+      / Right Column
+      .col-md-6
+        .row.icon-block
+          .col-lg-2.col-md-2.col-sm-2.featured-icon.center
+            i.icon.icon-rocket
+          .col-md-10.col-sm-10
+            h5
+              | 旅行の管理
+            p.small
+              | 行きたい場所が出来たら、具体的な旅行の予定を立てましょう。<br>
+              | いつ行くか、どこに行くか。Travel Baseでは旅行の予定の管理が出来ます。
+
+section.page-block
+  .container
+    .row
+      .page-heading.center
+        | 各種SNSのアカウントでSign in / Log in が行えます。もちろん利用は無料です。
+      .social-sugnup
+        - unless Rails.env.production?
+          a.google[href="/auth/developer"]
+            | Log in with Develop
+        a.google[href="/auth/google_oauth2"]
+          | Log in with Google
+        a.twitter[href="/auth/twitter"]
+          | Log in with Twitter
+        a.facebook[href="/auth/facebook"]
+          | Log in with Facebook
