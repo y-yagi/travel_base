@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap-css
+ *= require fullcalendar
  *= require_tree ../../../lib/assets/stylesheets
  *= require_tree .
  *= require_self

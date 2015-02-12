@@ -13,6 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-css
-//= require moment.min
+//= require foundation
+//= require moment
+//= require moment/locale/ja
+//= require fullcalendar
+//= require jquery-placeholder
+//= require jquery.stellar
+//= require jquery-validate
+//= require modernizr
+//= require respond
+//= require smoothscroll
 //= require_tree ../../../lib/assets/javascripts
 //= require_directory .
