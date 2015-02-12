@@ -24,4 +24,5 @@
     = f.text_area :memo, class: "form-control"
   .col-md-12.col-sm-12
     .text-center
+      = hidden_field_tag :display_form, :true
       = f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." }
