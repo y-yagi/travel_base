@@ -82,7 +82,8 @@ section.page-block.double-padding-top.double-space-bottom
                             = link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                               i.fa.fa-trash-o
                         h5.timeline-title
-                          = create_route_title_from_schedules(travel_date.schedules, i)
+                          strong.text-primary
+                              = create_route_title_from_schedules(travel_date.schedules, i)
                         .timeline-body
                           = simple_format(route.detail)
                   li

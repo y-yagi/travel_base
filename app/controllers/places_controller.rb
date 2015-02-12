@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def index
     @places = if params[:already]
@@ -15,6 +16,7 @@ class PlacesController < ApplicationController
   end
 
   def new
+    @need_pages_js
     @place = Place.new
 
     @places = params[:query].present? ? Geocoder.search(params[:query]) : []

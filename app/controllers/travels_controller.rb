@@ -1,6 +1,7 @@
 class TravelsController < ApplicationController
   before_action :set_travel, only: [:edit, :update, :edit_photo]
   before_action :set_travel_by_owner, only: [:destroy]
+  before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def index
     @travels = Travel.belong(current_user).order('start_date DESC').page(params[:page])
