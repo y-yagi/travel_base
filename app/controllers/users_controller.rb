@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def edit
     @user.build_photo_service_user_info unless @user.photo_service_user_info

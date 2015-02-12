@@ -1,0 +1,2 @@
+$ ->
+  $('#place_form').validate()

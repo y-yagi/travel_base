@@ -1,6 +1,6 @@
 = form_for(new_place_path, method: :get, html: { class: 'sp-form' } ) do |f|
   .col-sm-12.form-group
-    = text_field_tag :query, params[:query], class: "form-control input-lg", placeholder: 'Search', id: 'search'
+    = text_field_tag :query, params[:query], class: "form-control input-lg", placeholder: 'Search', id: 'search', required: 'required'
   = f.submit class: "btn btn-md btn-center btn-primary", value: '検索'
 br
 br

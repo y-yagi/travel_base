@@ -4,3 +4,4 @@ $ ->
   params: (params) ->
     params._method = 'patch'
     return params
+  $('#travel_form').validate()

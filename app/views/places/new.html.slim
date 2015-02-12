@@ -6,16 +6,16 @@ section.page-block.space-top.space-bottom
     .row
       .col-sm-8.col-sm-offset-2
         ul.nav.nav-tabs
-          li.active
+          li class="#{"active" unless params[:display_form]}"
             a[href="#search" data-toggle="tab" aria-expanded="false"]
               | 名称を検索して登録する
-          li.
+          li class="#{"active" if params[:display_form]}"
             a[href="#form" data-toggle="tab" aria-expanded="true"]
               | 名称・住所を登録する
         .tab-content
-          #search.tab-pane.active
+          div id="search" class="tab-pane #{"active" unless params[:display_form]}"
             hr
             = render 'search'
-          #form.tab-pane.fade
+          div id="form" class="tab-pane #{"active" if params[:display_form]}"
             hr
             = render 'form'

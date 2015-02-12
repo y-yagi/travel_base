@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
   def ssl_configured?
     Rails.env.production?
   end
+
+  def set_page_js
+    @need_pages_js = true
+  end
 end
