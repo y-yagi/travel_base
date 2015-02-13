@@ -23,5 +23,5 @@
 //= require modernizr
 //= require respond
 //= require smoothscroll
-//= require_tree ../../../lib/assets/javascripts
+//= require_tree ../../../lib/assets/javascripts/common/
 //= require_directory .
