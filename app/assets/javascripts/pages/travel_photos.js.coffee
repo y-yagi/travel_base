@@ -1,0 +1,2 @@
+$ ->
+  $('.lightGallery').lightGallery(caption: true)
