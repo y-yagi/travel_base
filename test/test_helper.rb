@@ -32,6 +32,11 @@ OmniAuth.config.add_mock(:google_oauth2,
   'uid' => '1',
   'provider' => 'google_oauth2',
 )
+OmniAuth.config.add_mock(:facebook,
+  'uid' => '2',
+  'provider' => 'facebook',
+)
+
 
 Minitest::Sound.success = '/home/yaginuma/Dropbox/tmp/music/other/sey.mp3'
 Minitest::Sound.failure = '/home/yaginuma/Dropbox/tmp/music/other/mdai.mp3'
@@ -47,6 +52,7 @@ class ActionDispatch::IntegrationTest
 
   require 'capybara/poltergeist'
   Capybara.javascript_driver = :poltergeist
+
   def login
     visit '/auth/google_oauth2'
   end

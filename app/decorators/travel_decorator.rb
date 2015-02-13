@@ -1,8 +1,4 @@
 module TravelDecorator
-  def schedule
-    start_date.to_s + " ~ " + end_date.to_s
-  end
-
   def formatted_schedule
     I18n.l(start_date, format: :long)  + " 〜 " + I18n.l(end_date, format: :long)
   end
