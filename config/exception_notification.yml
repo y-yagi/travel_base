@@ -1,0 +1,5 @@
+production:
+  idobata:
+    url:  <%= ENV['IDOBATA_URL'] %>
+    stage: "[production]"
+

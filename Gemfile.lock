@@ -85,6 +85,12 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
+    exception_notification-idobata (0.0.3)
+      exception_notification (~> 4.0.0)
+      rest-client
     execjs (2.3.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -325,6 +331,8 @@ DEPENDENCIES
   dotenv-rails
   elasticsearch-model
   elasticsearch-rails
+  exception_notification
+  exception_notification-idobata
   geocoder
   gon
   guard-minitest

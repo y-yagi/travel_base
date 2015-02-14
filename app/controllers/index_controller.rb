@@ -5,7 +5,6 @@ class IndexController < ApplicationController
     dashboard if logged_in?
   end
 
-
   def dashboard
     setup
     @places = Place.mine(current_user).order('created_at DESC')
