@@ -85,6 +85,12 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
+    exception_notification-idobata (0.0.3)
+      exception_notification (~> 4.0.0)
+      rest-client
     execjs (2.3.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -199,13 +205,6 @@ GEM
       railties (= 4.2.0)
       sprockets-rails
     rails-assets-bootstrap-css (3.2.0)
-    rails-assets-fastclick (1.0.6)
-    rails-assets-foundation (5.5.1)
-      rails-assets-fastclick (>= 0.6.11)
-      rails-assets-jquery (>= 2.1.0)
-      rails-assets-jquery-placeholder (~> 2.0.7)
-      rails-assets-jquery.cookie (~> 1.4.0)
-      rails-assets-modernizr (>= 2.7.2)
     rails-assets-fullcalendar (2.2.7)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
@@ -214,8 +213,6 @@ GEM
       rails-assets-jquery (>= 2.1.0)
     rails-assets-jquery-validate (1.13.1)
       rails-assets-jquery (>= 1.6.4)
-    rails-assets-jquery.cookie (1.4.1)
-      rails-assets-jquery (>= 1.2)
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
@@ -325,6 +322,8 @@ DEPENDENCIES
   dotenv-rails
   elasticsearch-model
   elasticsearch-rails
+  exception_notification
+  exception_notification-idobata
   geocoder
   gon
   guard-minitest
@@ -347,7 +346,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails-assets-bootstrap-css
-  rails-assets-foundation
   rails-assets-fullcalendar
   rails-assets-jquery-placeholder
   rails-assets-jquery-validate

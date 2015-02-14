@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-css
-//= require foundation
 //= require moment
 //= require moment/locale/ja
 //= require fullcalendar
