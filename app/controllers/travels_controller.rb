@@ -24,7 +24,7 @@ class TravelsController < ApplicationController
 
     if @travel.save
       flash[:info] ='旅行情報を作成しました'
-      redirect_to @travel
+      redirect_to travel_path(@travel)
     else
       render :new
     end
