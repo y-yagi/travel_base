@@ -14,7 +14,7 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
 
   test 'create place that search by name' do
     find('.fa-plus-circle').click
-    fill_in 'search', with: 'tokyo'
+    fill_in 'place_search', with: 'tokyo'
     click_button '検索'
 
     assert_difference 'Place.count' do

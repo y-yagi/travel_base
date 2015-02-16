@@ -17,7 +17,7 @@
 #
 
 class Place < ActiveRecord::Base
-  include Elasticsearch::Model
+  include Searchable
 
   belongs_to :user
 
@@ -39,6 +39,10 @@ class Place < ActiveRecord::Base
       place.user_id = user.id
       place.set_geoinfo! if params[:latitude].blank? && params[:address].present?
       place
+    end
+
+    def search_fields
+      ['name', 'address', 'memo']
     end
   end
 
