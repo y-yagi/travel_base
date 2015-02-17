@@ -54,6 +54,7 @@ end
 group :test do
   gem 'capybara'
   gem 'coveralls', require: false
+  gem 'guard'
   gem 'guard-minitest'
   gem 'launchy'
   gem 'minitest-sound'
