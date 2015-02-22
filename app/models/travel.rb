@@ -52,15 +52,13 @@ class Travel < ActiveRecord::Base
   end
 
   def adjust_travel_dates
-    new_date_range = (start_date..end_date)
     unless travel_dates.empty?
-      travel_dates.each do |travel_date|
-        travel_date.destroy! unless new_date_range.include?(travel_date.date)
-      end
+      travel_dates.where.not(date: date_range).each(&:destroy!)
     end
+
     old_date_range = travel_dates.map(&:date)
-    new_date_range.each do |d|
-      self.travel_dates.build({ date: d }) unless old_date_range.include?(d)
+    date_range.reject { |d| old_date_range.include?(d) }.each do |d|
+      self.travel_dates.build({ date: d })
     end
   end
 
@@ -71,5 +69,9 @@ class Travel < ActiveRecord::Base
 
   def past?
     Time.now.to_date > end_date
+  end
+
+  def date_range
+    start_date..end_date
   end
 end
