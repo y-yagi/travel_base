@@ -5,5 +5,5 @@ test:
   host: "localhost:9250"
 
 production:
-  host: "localhost:9200"
+  url: <%= ENV['BONSAI_URL'] %>
 
