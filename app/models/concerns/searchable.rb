@@ -3,6 +3,7 @@ module Searchable
 
   included do
     include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
 
     def self.search_by(query, user, fields: self.search_fields, page: 1)
       params = {
