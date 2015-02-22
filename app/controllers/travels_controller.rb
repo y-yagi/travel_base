@@ -10,6 +10,11 @@ class TravelsController < ApplicationController
   def show
     @places = Place.mine(current_user).pluck(:name, :id)
     @travel = Travel.schedules.belong(current_user).find(params[:id])
+
+    respond_to do |format|
+      format.html { render :show }
+      format.ics { render text: @travel.to_ics }
+    end
   end
 
   def new

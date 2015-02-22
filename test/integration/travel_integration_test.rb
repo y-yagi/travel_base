@@ -167,4 +167,12 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     assert_match 'travels_9', page.text
     assert_no_match 'travels_0', page.text
   end
+
+  test 'icalendar data' do
+    travel = travels(:kyoto)
+    visit travel_path(travel, format: :ics)
+
+    assert_match 'DESCRIPTION:宿は未定', page.text
+    assert_match 'SUMMARY:京都旅行', page.text
+  end
 end

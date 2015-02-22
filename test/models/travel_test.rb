@@ -87,4 +87,10 @@ class TravelTest < ActiveSupport::TestCase
     assert_equal 2, dates.size
     assert_equal [5.days.since.to_date, 6.days.since.to_date], dates
   end
+
+  test 'can get icalendar data' do
+    ics = travels(:kyoto).to_ics
+
+    assert_match 'SUMMARY:京都旅行', ics
+  end
 end
