@@ -39,14 +39,16 @@ header.header.sticky
                       - @travels.each do |travel|
                         li
                           = link_to travel.name, travel_path(travel)
+          .search
+            i.icon.icon-search
         .tools.group
           = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
           = link_to 'ログアウト', logout_path, class: 'pull-left'
       - else
         .tools.group
           = link_to 'ログイン', login_path, class: 'pull-left'
-  form.quick-search[method="get" autocomplete="off"]
+  = form_tag(search_path, method: :get, autocomplete: 'off', class: 'quick-search')
     .overlay
-    input.search-field[type="text" placeholder="Search"]
+    = text_field_tag(:search, params[:search], placeholder: "Search", class: 'search-field')
     span
       | Press enter to search

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/search', to: 'search#index'
+
   root 'index#index'
 
   get '/auth/:provider/callback', to: 'sessions#create'
