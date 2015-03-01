@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-css
 //= require moment
@@ -23,4 +24,6 @@
 //= require respond
 //= require smoothscroll
 //= require_tree ../../../lib/assets/javascripts/common/
+//= require turbolinks
 //= require_directory .
+Turbolinks.enableProgressBar();
