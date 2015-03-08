@@ -74,4 +74,15 @@ class Travel < ActiveRecord::Base
   def date_range
     start_date..end_date
   end
+
+  def to_ics
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = Icalendar::Values::Date.new(start_date)
+      e.dtend       = Icalendar::Values::Date.new(end_date)
+      e.summary     = name
+      e.description = memo
+    end
+    cal.to_ical
+  end
 end
