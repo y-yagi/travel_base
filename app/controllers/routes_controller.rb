@@ -12,7 +12,7 @@ class RoutesController < ApplicationController
   def create
     @route = @schedule.build_route(route_params)
     if @route.save
-      flash[:info] ='移動方法を作成しました'
+      flash[:info] = '移動方法を作成しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :new
@@ -21,7 +21,7 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
-      flash[:info] ='移動方法を更新しました'
+      flash[:info] = '移動方法を更新しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :edit
@@ -30,7 +30,7 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.destroy
-    flash[:info] ='移動方法を削除しました'
+    flash[:info] = '移動方法を削除しました'
     redirect_to travel_path(@schedule.travel_date.travel)
   end
 

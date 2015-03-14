@@ -7,7 +7,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.build(schedule_params)
     if @schedule.save
-      flash[:info] ='スケジュールを作成しました'
+      flash[:info] = 'スケジュールを作成しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :new
@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
 
   def update
     if @schedule.update(schedule_params)
-      flash[:info] ='スケジュールを更新しました'
+      flash[:info] = 'スケジュールを更新しました'
       redirect_to travel_path(@schedule.travel_date.travel)
     else
       render :edit
@@ -25,7 +25,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
-    flash[:info] ='スケジュールを削除しました'
+    flash[:info] = 'スケジュールを削除しました'
     redirect_to travel_path(@schedule.travel_date.travel)
   end
 
