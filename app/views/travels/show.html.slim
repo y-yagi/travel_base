@@ -52,6 +52,8 @@ section.page-block.double-padding-top.double-space-bottom
           #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
             .panel-body
               = simple_format(@travel.memo)
+              = link_to edit_travel_path(@travel), title: '編集' do
+                i.fa.fa-edit
     .row.double-space-top
       .col-md-8.col-md-offset-2
         .tab-content
