@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:info] = 'ユーザの削除が完了しました'
+    flash[:info] = 'ユーザ情報の削除が完了しました'
     redirect_to login_url
   end
 

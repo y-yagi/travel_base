@@ -62,6 +62,7 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
   test 'destroy place' do
     first("a[title='削除']").click
 
+    visit places_path
     assert_no_match '大麻比古神社', page.text
     assert_match '伏見稲荷大社', page.text
     assert_no_match '上賀茂神社', page.text
@@ -70,6 +71,7 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
   test 'archive place' do
     first("a[title='アーカイブ']").click
 
+    visit places_path
     assert_no_match '大麻比古神社', page.text
     assert_match '伏見稲荷大社', page.text
     assert_no_match '上賀茂神社', page.text
