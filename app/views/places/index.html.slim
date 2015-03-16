@@ -34,6 +34,10 @@ section.page-block.space-top.space-bottom
               .col-md-8.col-xs-12
                 = place.address
                 br
+                - if place.tags.present?
+                  - place.tags.each do |tag|
+                    = link_to(tag, places_path(tag: tag), class: 'label label-info label-list')
+                br
                 - if place.urls.present?
                   - place.urls.reject(&:blank?).each_with_index do |url, i|
                     = link_to "参考URL#{i + 1}", url, target: '_blank'

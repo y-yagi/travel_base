@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-css
+//= require bootstrap-tagsinput
 //= require moment
 //= require moment/locale/ja
 //= require fullcalendar

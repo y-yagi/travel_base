@@ -3,13 +3,7 @@ class PlacesController < ApplicationController
   before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def index
-    @places = if params[:already]
-                Place.mine(current_user).order('updated_at DESC')
-                  .already_went.page(params[:page])
-              else
-                Place.mine(current_user).order('updated_at DESC')
-                  .not_gone.page(params[:page])
-              end
+    @places = Place.acquire_by_params(current_user, params)
   end
 
   def show
@@ -56,7 +50,8 @@ class PlacesController < ApplicationController
     end
 
     def place_params
+      params[:place][:tags] = params[:place][:tags].split(',') if params[:place][:tags]
       params.require(:place).permit(:name, :address, :status,
-        :memo, :latitude, :longitude, :website, urls: [])
+        :memo, :latitude, :longitude, :website, urls: [], tags: [])
     end
 end

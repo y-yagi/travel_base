@@ -15,6 +15,10 @@
       br
       = f.text_field :address, class: "form-control", required: 'required'
   .form-group
+    = f.label :tags
+    br
+    = f.text_field :tags, class: "form-control", data: { role: "tagsinput" }, value: @place.tags.try(:join, ',')
+  .form-group
     = f.label :urls
     br
     = f.array_url_field :urls, class: "form-control form-array", array_size: 2

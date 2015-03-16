@@ -250,6 +250,7 @@ GEM
       railties (= 4.2.1.rc4)
       sprockets-rails
     rails-assets-bootstrap-css (3.2.0)
+    rails-assets-bootstrap-tagsinput (0.3.14)
     rails-assets-fullcalendar (2.3.0)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
@@ -414,6 +415,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.1.rc.4)
   rails-assets-bootstrap-css
+  rails-assets-bootstrap-tagsinput
   rails-assets-fullcalendar
   rails-assets-jquery-placeholder
   rails-assets-jquery-validate
