@@ -22,6 +22,9 @@ class Place < ActiveRecord::Base
   belongs_to :user
 
   scope :mine, ->(user) { where(user_id: user.id) }
+  scope :tag, ->(tag) do
+    where('tags @> ARRAY[?]::varchar[]', [tag])
+  end
 
   enum status: [ :not_gone, :already_went ]
 
@@ -42,7 +45,19 @@ class Place < ActiveRecord::Base
     end
 
     def search_fields
-      ['name', 'address', 'memo']
+      ['name', 'address', 'memo', 'tags']
+    end
+
+    def acquire_by_params(user, params)
+      places = Place.mine(user).order('updated_at DESC')
+      if params[:already]
+        places = places.already_went.page(params[:page])
+      else
+        places = places.not_gone.page(params[:page])
+      end
+      places = places.tag(params[:tag]) if params[:tag]
+
+      places
     end
   end
 
