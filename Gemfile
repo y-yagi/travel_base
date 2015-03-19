@@ -34,7 +34,7 @@ gem 'responders'
 gem 'rollbar', '~> 1.4.2'
 gem 'sass-rails', '~> 5.0.0'
 gem 'slim-rails'
-gem 'turbolinks'
+gem 'turbolinks', github: 'rails/turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
