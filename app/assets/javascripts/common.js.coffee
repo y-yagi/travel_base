@@ -5,3 +5,5 @@ $ ->
   $("#alert-info").fadeTo(2000, 500).slideUp(500, ->
     $("#alert-info").alert('close')
   )
+
+Turbolinks.enableProgressBar

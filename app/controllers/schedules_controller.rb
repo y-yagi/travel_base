@@ -12,12 +12,12 @@ class SchedulesController < ApplicationController
     else
       flash_msg = { danger: @schedule.errors.full_messages.join("\n") }
     end
-    redirect_to travel_path(@schedule.travel_date.travel), flash_msg
+    redirect_to travel_path(@schedule.travel_date.travel), change: 'schedule_list', flash_msg
   end
 
   def update
     if @schedule.update(schedule_params)
-      redirect_to travel_path(@schedule.travel_date.travel), info: 'スケジュールを更新しました'
+      redirect_to travel_path(@schedule.travel_date.travel), change: 'schedule_list', info: 'スケジュールを更新しました'
     else
       render :edit
     end
