@@ -8,7 +8,7 @@ class TravelsController < ApplicationController
   end
 
   def show
-    @places = Place.mine(current_user).pluck(:name, :id)
+    @places = Place.mine(current_user).not_gone.pluck(:name, :id)
     @travel = Travel.schedules.belong(current_user).find(params[:id])
 
     respond_to do |format|
