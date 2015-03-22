@@ -5,7 +5,7 @@ section.page-block.double-padding-top.double-space-bottom
       h2
         = link_to @travel.name, edit_travel_path(@travel)
     .row.double-space-top
-      .col-md-5.col-md-offset-2.col-xs-12
+      .col-md-8.col-md-offset-2.col-xs-12
         - unless @travel.past?
           - # add schedule panel
           .panel.panel-primary
@@ -16,19 +16,19 @@ section.page-block.double-padding-top.double-space-bottom
             #add-schedule.panel-collapse.collapse[style="height: 0px;"]
               .panel-body
                 = form_tag(schedules_path) do
-                    .col-md-6.col-xs-12
-                      | 日程:
-                      = select :schedule, :travel_date_id, @travel.schedule_list_for_select, {}, { class: "form-control-select" }
-                    .col-md-6.col-xs-12
-                      | 時間:
+                  .row
+                    .col-md-5.col-xs-12
+                      i.fa.fa-calendar.right10.tooltipped[title="日時を選択"]
+                      = select :schedule, :travel_date_id, @travel.schedule_list_for_select, {}, { class: "form-control-select right5" }
                       = time_field :schedule, :start_time, { class: "form-control-select" }
                       |  〜
-                      = time_field :schedule, :end_time, { class: "form-control-select", style: "width: 110px;" }
-                    .col-md-12.col-xs-12
-                      | 場所:
+                      = time_field :schedule, :end_time, { class: "form-control-select" }
+                    .col-md-5.col-xs-12
+                      i.fa.fa-map-marker.right10.tooltipped[title="場所を選択"]
                       = select :schedule, :place_id, options_for_select(@places), {}, { class: "form-control-select" }
-                    .col-md-12.col-xs-12.text-center
-                      = submit_tag :add_schedule,  class: "btn btn-primary", value: '登録'
+                  br
+                  .col-md-12.col-xs-12
+                    = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録'
         - else
           - # add photo panel
           .panel.panel-primary
@@ -43,17 +43,18 @@ section.page-block.double-padding-top.double-space-bottom
                 .col-md-8.col-xs-12
                   | 写真を見る : &nbsp;
                   = select :travel_photo, :id, @travel.photo_list_for_select, { prompt: 'Please select' }, { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" }
-      .col-md-4.col-xs-12
-        .panel.panel-default
-          .panel-heading
-            h4.panel-title
-              a.collapsed[data-toggle="collapse" href="#confirm-memo"]
-                |  メモを確認する
-          #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
-            .panel-body
-              = simple_format(@travel.memo)
-              = link_to edit_travel_path(@travel), title: '編集' do
-                i.fa.fa-edit
+      - if @travel.memo.present?
+        .col-md-8.col-md-offset-2.col-xs-12
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a.collapsed[data-toggle="collapse" href="#confirm-memo"]
+                  |  メモを確認する
+            #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
+              .panel-body
+                = simple_format(@travel.memo)
+                = link_to edit_travel_path(@travel), title: '編集' do
+                  i.fa.fa-edit
     .row.double-space-top
       .col-md-8.col-md-offset-2
         .tab-content
