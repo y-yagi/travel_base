@@ -17,7 +17,7 @@ section.double-padding-top
               ul.featured-list
                 - @places.each do |place|
                   li
-                    = link_to place.name , map_place_path(place.id), target: '_blank'
+                    = link_to place.name , place_path(place), target: '_blank'
             - else
               p
                 | まだ行きたい場所は登録されていません。

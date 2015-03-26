@@ -7,6 +7,9 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @need_map = true
+    gon.places  = [{ name: @place.name, latitude: @place.latitude, longitude: @place.longitude }]
+    gon.zoom = 12
   end
 
   def new

@@ -50,6 +50,15 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal 'これは上野駅', Place.last.memo
   end
 
+  test 'show place' do
+    place = places(:fushimiinari)
+    visit place_path(place)
+
+    assert_match place.name, page.text
+    assert_match place.address, page.text
+    place.tags.each { |t| assert_match t, page.text }
+  end
+
   test 'edit place' do
     place = Place.order('updated_at DESC').first
     first("a[title='編集']").click
