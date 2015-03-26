@@ -17,6 +17,7 @@ class TravelPhotosController < ApplicationController
   end
 
   def show
+    @need_pages_js = true
     return redirect_to root_path unless @travel_photo.travel.member?(current_user.id)
     client = PhotoServiceInfoWrapper.get_client(@travel_photo.photo_service_user_info)
     album_list = client.album.list

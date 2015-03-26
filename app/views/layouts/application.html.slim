@@ -6,16 +6,12 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     title
       | TravelBase
-    = javascript_include_tag 'application'
     = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = include_gon
     script[src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"]
-    - if controller_name == 'map' || @need_map
-      = include_gon
-      = javascript_include_tag 'pages/map'
-    - else
-      = javascript_include_tag "pages/#{controller_name}" if @need_pages_js
-    - if @need_gon
-      = include_gon
+    - if @need_pages_js
+      = javascript_include_tag "pages/#{controller_name}"
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     = render 'rollbar'
