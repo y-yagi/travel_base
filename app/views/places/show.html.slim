@@ -1,0 +1,42 @@
+= javascript_include_tag "pages/google_map"
+
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h2
+        = link_to(@place.name, edit_place_path(@place))
+        span
+    .row
+      .col-md-6
+        .page-heading.center
+          h3.light-weight.text-primary
+            | 登録情報
+        h4.bold-weight
+          | 住所:
+        p
+          = @place.address
+        - if @place.tags.present?
+          h4.bold-weight
+            | タグ:
+          p
+            - @place.tags.each do |tag|
+              span.label.label-info.label-list
+                = tag
+        - if @place.urls.try { any?(&:present?) }
+          h4.bold-weight
+            | URL:
+          p
+            - @place.urls.reject(&:blank?).each_with_index do |url, i|
+              = link_to "参考URL#{i + 1}", url, target: '_blank'
+        - if @place.memo.present?
+          h4.bold-weight
+            | メモ:
+          p
+            = simple_format(@place.memo)
+      .col-md-6
+        .page-heading.center
+          h3.light-weight.text-primary
+            | 地図
+        .google-map.h-550.space-bottom
+          #map-canvas
+

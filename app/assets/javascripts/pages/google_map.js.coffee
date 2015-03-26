@@ -4,7 +4,7 @@ attachMessage = (marker, msg) ->
     ).open(marker.getMap(), marker)
   )
 
-initialize = () ->
+show_google_map = () ->
   mapOptions =
     zoom: gon.zoom
     center: new google.maps.LatLng(gon.places[0]['latitude'], gon.places[0]['longitude'])
@@ -21,4 +21,5 @@ initialize = () ->
     i++
   )
 
-google.maps.event.addDomListener(window, 'load', initialize)
+$ ->
+  show_google_map()

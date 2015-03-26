@@ -7,10 +7,13 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @need_pages_js = true
+    gon.places  = [{ name: @place.name, latitude: @place.latitude, longitude: @place.longitude }]
+    gon.zoom = 12
   end
 
   def new
-    @need_pages_js
+    @need_pages_js = true
     @place = Place.new
 
     @places = params[:query].present? ? Geocoder.search(params[:query]) : []

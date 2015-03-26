@@ -30,7 +30,7 @@ section.page-block.space-top.space-bottom
               .col-md-3.col-xs-12
                 .details
                   h4
-                    = link_to place.name, map_place_path(place.id), target: '_blank'
+                    = link_to place.name, place_path(place)
               .col-md-8.col-xs-12
                 = place.address
                 br
