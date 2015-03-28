@@ -7,9 +7,8 @@ html
     title
       | TravelBase
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-    = include_gon
     script[src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"]
+    = javascript_include_tag 'application'
     - if @need_pages_js
       = javascript_include_tag "pages/#{controller_name}"
     = favicon_link_tag 'favicon.ico'

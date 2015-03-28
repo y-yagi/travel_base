@@ -1,5 +1,5 @@
 $ ->
   $('#calendar').fullCalendar
     lang: 'ja',
-    events: gon.events
+    events: JSON.parse($('#future_travels').attr('value')),
     contentHeight: 500 # high enough to avoid scrollbars
