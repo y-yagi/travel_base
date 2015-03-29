@@ -1,4 +1,3 @@
-- @need_pages_js = true, @need_gon = true
 section.double-padding-top
   .container
     .row.double-space-top
@@ -26,14 +25,15 @@ section.double-padding-top
             .page-heading.center
               h2
                 = link_to('旅行計画', travels_path)
-            - if @future_travels.present?
-              - first_travel = @future_travels.first
+            - if @next_travel
               p.p-lg
                 | 次の旅行は
                 br
-                = link_to("#{first_travel.name}(#{first_travel.formatted_schedule})", first_travel)
+                = link_to("#{@next_travel.name}(#{@next_travel.formatted_schedule})", @next_travel)
                 br
                 | です。
             - else
               | <p class="p-lg">旅行の予定はありません。<a href="#{new_travel_path}" title="Inline Link">旅行の予定を作成する。</a></p>
+            = hidden_field_tag('future_travels', @future_travels)
             #calendar
+

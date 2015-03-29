@@ -1,4 +1,7 @@
 = javascript_include_tag "pages/google_map"
 
+= hidden_field_tag('places_for_map', @places_for_map)
+= hidden_field_tag('map_zoom', @map_zoom)
+
 .google-map.h-550
   #map-canvas

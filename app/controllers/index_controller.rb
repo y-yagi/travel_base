@@ -9,14 +9,11 @@ class IndexController < ApplicationController
     @need_pages_js = true
     setup
     @places = Place.mine(current_user).order('created_at DESC').limit(5)
-    @future_travels = Travel.schedules.belong(current_user).future
-    gon.events = if @future_travels.present?
-                      @future_travels.map do |t|
-                        { title: t.name, start: t.start_date, end: t.end_date + 1 }
-                      end
-                  else
-                    {}
-                  end
+    future_travels = Travel.schedules.belong(current_user).future
+    @next_travel = future_travels.first
+    @future_travels = future_travels.map do |t|
+      { title: t.name, start: t.start_date, end: t.end_date+ 1 }
+    end.to_json
     render :dashboard
   end
 end

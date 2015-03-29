@@ -8,8 +8,8 @@ class PlacesController < ApplicationController
 
   def show
     @need_pages_js = true
-    gon.places  = [{ name: @place.name, latitude: @place.latitude, longitude: @place.longitude }]
-    gon.zoom = 12
+    @places_for_map  = [{ name: @place.name, latitude: @place.latitude, longitude: @place.longitude }].to_json
+    @map_zoom = 12
   end
 
   def new

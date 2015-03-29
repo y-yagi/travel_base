@@ -1,5 +1,8 @@
 = javascript_include_tag "pages/google_map"
 
+= hidden_field_tag('places_for_map', @places_for_map)
+= hidden_field_tag('map_zoom', @map_zoom)
+
 section.page-block.space-top.space-bottom
   .container
     .page-heading.center
@@ -39,4 +42,5 @@ section.page-block.space-top.space-bottom
             | 地図
         .google-map.h-550.space-bottom
           #map-canvas
+
 
