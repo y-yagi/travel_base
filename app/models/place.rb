@@ -20,6 +20,7 @@ class Place < ActiveRecord::Base
   include Searchable
 
   belongs_to :user
+  has_many :places_station
 
   scope :mine, ->(user) { where(user_id: user.id) }
   scope :tag, ->(tag) do

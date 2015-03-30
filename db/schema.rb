@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330231523) do
+ActiveRecord::Schema.define(version: 20150330231756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20150330231523) do
 
   add_index "places", ["deleted_at", "user_id", "status"], name: "index_places_on_deleted_at_and_user_id_and_status", using: :btree
   add_index "places", ["tags"], name: "index_places_on_tags", using: :gin
+
+  create_table "places_stations", id: false, force: :cascade do |t|
+    t.integer "place_id",   null: false
+    t.integer "station_id", null: false
+    t.string  "distance"
+  end
+
+  add_index "places_stations", ["place_id", "station_id"], name: "index_places_stations_on_place_id_and_station_id", using: :btree
+  add_index "places_stations", ["station_id", "place_id"], name: "index_places_stations_on_station_id_and_place_id", using: :btree
 
   create_table "routes", force: :cascade do |t|
     t.text     "detail"
