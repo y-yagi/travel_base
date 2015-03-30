@@ -6,8 +6,10 @@
 section.page-block.space-top.space-bottom
   .container
     .page-heading.center
-      h2
-        = link_to(@place.name, edit_place_path(@place))
+      h2.light-weight.text-primary
+        = @place.name
+        = link_to edit_place_path(@place), title: '編集' do
+          i.fa.fa-edit.small.text-muted.left10
         span
     .row
       .col-md-6
