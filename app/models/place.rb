@@ -68,4 +68,16 @@ class Place < ActiveRecord::Base
     self.latitude = geo_info.first.geometry['location']['lat']
     self.longitude = geo_info.first.geometry['location']['lng']
   end
+
+  def set_station_info
+    return unless places_station.empty? || address_changed?
+
+    begin
+      stations = HeartRailsExpressApi.get_stations(latitude, longitude)
+      PlacesStation.build_from_api_result!(self, stations)
+    rescue => e
+      logger.error(e)
+      Rollbar.error(e, "can't create station data")
+    end
+  end
 end

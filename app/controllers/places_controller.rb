@@ -25,6 +25,7 @@ class PlacesController < ApplicationController
   def create
     @place = Place.build(place_params, current_user)
     if @place.save
+      @place.set_station_info
       flash[:info] = %("#{@place.name}"を登録しました)
       redirect_to places_url
     else
