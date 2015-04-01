@@ -1,6 +1,9 @@
 require 'test_helper'
+require 'support/heart_rails_api_helper'
 
 class PlaceTest < ActiveSupport::TestCase
+  include HeartRailsExpressApiHelper
+
   test 'should have the necessary required validators' do
     place = Place.new
     assert_not place.valid?
@@ -39,5 +42,20 @@ class PlaceTest < ActiveSupport::TestCase
 
     assert_equal 35.681382, place.latitude
     assert_equal 139.766084, place.longitude
+  end
+
+  test 'set station info' do
+    place = places(:kifune)
+    set_station_mock
+
+    assert_difference('PlacesStation.count', 2) do
+      place.set_station_info
+    end
+
+    assert_equal '310m', place.places_station.first.distance
+    assert_equal 134.997666, place.places_station.first.station.longitude
+    assert_equal 35.002054, place.places_station.first.station.latitude
+    assert_equal 'JR加古川線', place.places_station.first.station.line
+    assert_equal '日本へそ公園', place.places_station.first.station.name
   end
 end

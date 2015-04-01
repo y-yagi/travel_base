@@ -1,13 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  line: MyString
-  latitude: 1.5
-  longitude: 1.5
+kyoto:
+  name: 京都駅
+  line: JR西日本
+  latitude: 135.452792
+  longitude: 34.59765
 
-two:
-  name: MyString
-  line: MyString
-  latitude: 1.5
-  longitude: 1.5

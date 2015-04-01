@@ -66,6 +66,7 @@ group :test do
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'poltergeist'
+  gem 'webmock'
 end
 
 group :production do

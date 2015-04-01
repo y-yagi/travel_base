@@ -1,8 +1,12 @@
 require 'test_helper'
+require 'support/heart_rails_api_helper'
 
 class PlaceIntegrationTest < ActionDispatch::IntegrationTest
+  include HeartRailsExpressApiHelper
+
   def setup
     login
+    set_station_mock
     visit places_path
   end
 
@@ -56,6 +60,9 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
 
     assert_match place.name, page.text
     assert_match place.address, page.text
+    assert_match place.places_station.first.station.name, page.text
+    assert_match place.places_station.first.station.line, page.text
+    assert_match place.places_station.first.distance, page.text
     place.tags.each { |t| assert_match t, page.text }
   end
 
