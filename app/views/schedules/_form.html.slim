@@ -2,10 +2,14 @@
   - if @schedule.errors.any?
     = render partial: 'form_error_header', locals: { error_messages: @schedule.errors.full_messages }
   .form-group
+    = label_tag '行き先'
+    br
+    = @schedule.place.name
+  .form-group
     = label_tag(I18n.t :shcedule, scope: [:activerecord, :attributes, :travel])
     br
     = f.time_field :start_time, { class: "form-control-select" }
-    |  〜 
+    |  〜
     = f.time_field :end_time, { class: "form-control-select" }
   .form-group
     = f.label :memo
