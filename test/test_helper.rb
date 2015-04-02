@@ -6,6 +6,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'capybara/rails'
+require 'webmock/minitest'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 Geocoder.configure(lookup: :test)
 Geocoder::Lookup::Test.add_stub(

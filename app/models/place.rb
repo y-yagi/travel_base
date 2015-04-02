@@ -20,6 +20,7 @@ class Place < ActiveRecord::Base
   include Searchable
 
   belongs_to :user
+  has_many :places_station
 
   scope :mine, ->(user) { where(user_id: user.id) }
   scope :tag, ->(tag) do
@@ -66,5 +67,17 @@ class Place < ActiveRecord::Base
     return if geo_info.empty?
     self.latitude = geo_info.first.geometry['location']['lat']
     self.longitude = geo_info.first.geometry['location']['lng']
+  end
+
+  def set_station_info
+    return unless places_station.empty? || address_changed?
+
+    begin
+      stations = HeartRailsExpressApi.get_stations(latitude, longitude)
+      PlacesStation.build_from_api_result!(self, stations)
+    rescue => e
+      logger.error(e)
+      Rollbar.error(e, "can't create station data")
+    end
   end
 end

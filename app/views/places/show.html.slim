@@ -20,6 +20,13 @@ section.page-block.space-top.space-bottom
           | 住所:
         p
           = @place.address
+        - if @place.places_station.present?
+          h4.bold-weight
+            | 最寄り駅:
+          ul.featured-list
+            - @place.places_station.each do |near_station|
+              li
+                = "#{near_station.station.line} #{near_station.station.name}駅  #{near_station.distance}"
         - if @place.tags.present?
           h4.bold-weight
             | タグ:
@@ -33,6 +40,7 @@ section.page-block.space-top.space-bottom
           p
             - @place.urls.reject(&:blank?).each_with_index do |url, i|
               = link_to "参考URL#{i + 1}", url, target: '_blank'
+      .col-md-6
         - if @place.memo.present?
           h4.bold-weight
             | メモ:

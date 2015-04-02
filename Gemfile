@@ -15,6 +15,7 @@ gem 'exception_notification'
 gem 'exception_notification-idobata'
 gem 'geocoder'
 gem 'rails-footnotes', '~> 4.0'
+gem 'http'
 gem 'icalendar'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
@@ -65,6 +66,7 @@ group :test do
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'poltergeist'
+  gem 'webmock'
 end
 
 group :production do
