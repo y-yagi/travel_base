@@ -110,6 +110,7 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     visit travel_path(travel)
     find("a[href='#{edit_schedule_path(schedule)}']").click
 
+    assert_match schedule.place.name, page.text
     fill_in 'schedule_start_time', with: '12:20'
     fill_in 'schedule_end_time', with: '13:55'
     fill_in 'schedule_memo', with: 'お昼に注意'
