@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330231756) do
+ActiveRecord::Schema.define(version: 20150403225841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150330231756) do
 
   create_table "schedules", force: :cascade do |t|
     t.text     "memo"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.time     "start_time"
+    t.time     "end_time"
     t.integer  "travel_date_id", null: false
     t.integer  "place_id",       null: false
     t.integer  "route_id"
