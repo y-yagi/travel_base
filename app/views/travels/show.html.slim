@@ -98,9 +98,7 @@ section.page-block.double-padding-top.double-space-bottom
                     .timeline-panel
                       .timeline-heading
                         h4.timeline-title
-                          = schedule.place.name
-                          - unless route
-                            = link_to ' (移動方法を登録する)', new_schedule_route_path(schedule), class: 'small text-muted'
+                          = link_to(schedule.place.name, place_path(schedule.place))
                         - if schedule.start_time.present? || schedule.end_time.present?
                           p
                             small.text-muted
@@ -112,6 +110,10 @@ section.page-block.double-padding-top.double-space-bottom
                           br
                           = link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                             i.fa.fa-trash-o
+                          - unless route
+                            br
+                            = link_to new_schedule_route_path(schedule), title: '移動方法を登録する' do
+                              i.fa.fa-bus
                       - if schedule.memo.present?
                         .timeline-body
                           = simple_format(schedule.memo)

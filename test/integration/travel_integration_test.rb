@@ -133,7 +133,7 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
   test 'add route' do
     travel = travels(:kyoto)
     visit travel_path(travel)
-    first(:link, '移動方法を登録する').click
+    first("a[title='移動方法を登録する']").click
     fill_in 'route_detail', with: '電車で移動します'
     click_button '登録'
 
