@@ -8,6 +8,7 @@
   .form-group
     = label_tag(I18n.t :shcedule, scope: [:activerecord, :attributes, :travel])
     br
+    = select :schedule, :travel_date_id, @travel.schedule_list_for_select(selected: @schedule.travel_date_id), {}, { class: "form-control-select right5" }
     = f.time_field :start_time, { class: "form-control-select" }
     |  〜
     = f.time_field :end_time, { class: "form-control-select" }

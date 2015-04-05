@@ -2,6 +2,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :update_memo, :destroy]
 
   def edit
+    @travel = @schedule.travel_date.travel
   end
 
   def create
