@@ -13,4 +13,11 @@ class ScheduleTest < ActiveSupport::TestCase
     schedule = Schedule.build(params)
     assert_instance_of Schedule, schedule
   end
+
+  test 'should error when register already registered place' do
+    new_schedule = schedules(:kifune).dup
+    new_schedule.valid?
+
+    assert_equal [:place_id], new_schedule.errors.keys
+  end
 end

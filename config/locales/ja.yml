@@ -219,6 +219,8 @@ ja:
       travel_photo:
         name: 名前
         photo_service_album_id: アルバム名
+      schedule:
+        place: 旅行計画にその場所
   views:
     pagination:
       first: "&laquo; 先頭"
