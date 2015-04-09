@@ -18,6 +18,6 @@ class ScheduleTest < ActiveSupport::TestCase
     new_schedule = schedules(:kifune).dup
     new_schedule.valid?
 
-    assert_equal [:place_id], new_schedule.errors.keys
+    assert_equal [:place], new_schedule.errors.keys
   end
 end
