@@ -9,10 +9,10 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.build(schedule_params)
     if @schedule.save
       flash[:info] = 'スケジュールを作成しました'
-      redirect_to travel_path(@schedule.travel_date.travel)
     else
-      render :new
+      flash[:danger] = @schedule.errors.full_messages.join("\n")
     end
+    redirect_to travel_path(@schedule.travel_date.travel)
   end
 
   def update
