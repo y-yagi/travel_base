@@ -27,6 +27,9 @@ class Place < ActiveRecord::Base
   scope :tag, ->(tag) do
     where('tags @> ARRAY[?]::varchar[]', [tag])
   end
+  scope :registered_recently, -> do
+    not_gone.order('created_at DESC').limit(5)
+  end
 
   enum status: [ :not_gone, :already_went ]
 
