@@ -20,6 +20,11 @@ section.page-block.space-top.space-bottom
                       = link_to(place.name, place_path(place))
                     p
                       = place.address
+                    - if place.tags.present?
+                      p
+                        - place.tags.each do |tag|
+                          span.label.label-info.label-list
+                            = tag
                     span.devider
                     br
                       = place.memo
