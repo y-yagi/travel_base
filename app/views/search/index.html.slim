@@ -17,7 +17,7 @@ section.page-block.space-top.space-bottom
               .col-md-4.col-sm-4
                 .place-box
                     h3
-                      = link_to(place.name, map_place_path(place.id))
+                      = link_to(place.name, place_path(place))
                     p
                       = place.address
                     span.devider
