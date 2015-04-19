@@ -24,5 +24,10 @@ module TravelBase
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     config.middleware.use(ExceptionNotification::Rack,
       config_for(:exception_notification).with_indifferent_access)
+
+    config.generators do |g|
+      g.assets     false
+      g.helper     false
+    end
   end
 end
