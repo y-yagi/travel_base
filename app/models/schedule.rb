@@ -2,14 +2,16 @@
 #
 # Table name: schedules
 #
-#  id             :integer          not null, primary key
-#  memo           :text
-#  start_time     :datetime         not null
-#  end_time       :datetime         not null
-#  travel_date_id :integer          not null
-#  place_id       :integer          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                 :integer          not null, primary key
+#  memo               :text
+#  start_time         :time
+#  end_time           :time
+#  travel_date_id     :integer          not null
+#  place_id           :integer          not null
+#  route_id           :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  attachment_file_id :string
 #
 
 class Schedule < ActiveRecord::Base

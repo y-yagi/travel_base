@@ -7,7 +7,6 @@
 #  memo       :text
 #  start_date :date
 #  end_date   :date
-#  deleted_at :datetime
 #  owner_id   :integer          not null
 #  members    :integer          is an Array
 #  created_at :datetime         not null

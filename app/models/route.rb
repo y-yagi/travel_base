@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: routes
+#
+#  id         :integer          not null, primary key
+#  detail     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Route < ActiveRecord::Base
   has_one :schedule, dependent: :destroy
 end
