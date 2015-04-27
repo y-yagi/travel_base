@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403225841) do
+ActiveRecord::Schema.define(version: 20150419231115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150403225841) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "urls",                                array: true
-    t.datetime "deleted_at"
     t.integer  "user_id",                null: false
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20150403225841) do
     t.string   "tags",                                array: true
   end
 
-  add_index "places", ["deleted_at", "user_id", "status"], name: "index_places_on_deleted_at_and_user_id_and_status", using: :btree
   add_index "places", ["tags"], name: "index_places_on_tags", using: :gin
 
   create_table "places_stations", id: false, force: :cascade do |t|
@@ -63,11 +61,12 @@ ActiveRecord::Schema.define(version: 20150403225841) do
     t.text     "memo"
     t.time     "start_time"
     t.time     "end_time"
-    t.integer  "travel_date_id", null: false
-    t.integer  "place_id",       null: false
+    t.integer  "travel_date_id",     null: false
+    t.integer  "place_id",           null: false
     t.integer  "route_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "attachment_file_id"
   end
 
   add_index "schedules", ["travel_date_id"], name: "index_schedules_on_travel_date_id", using: :btree
@@ -107,14 +106,12 @@ ActiveRecord::Schema.define(version: 20150403225841) do
     t.text     "memo"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "deleted_at"
     t.integer  "owner_id",   null: false
     t.integer  "members",                 array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "travels", ["deleted_at", "owner_id"], name: "index_travels_on_deleted_at_and_owner_id", using: :btree
   add_index "travels", ["members"], name: "index_travels_on_members", using: :gin
 
   create_table "users", force: :cascade do |t|
@@ -122,12 +119,9 @@ ActiveRecord::Schema.define(version: 20150403225841) do
     t.string   "provider",   null: false
     t.string   "name",       null: false
     t.string   "email",      null: false
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "users", ["deleted_at", "uid", "provider"], name: "index_users_on_deleted_at_and_uid_and_provider", using: :btree
 
   add_foreign_key "travel_photos", "photo_service_user_infos"
   add_foreign_key "travel_photos", "travels"

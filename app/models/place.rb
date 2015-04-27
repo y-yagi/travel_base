@@ -8,12 +8,12 @@
 #  memo       :text
 #  latitude   :float
 #  longitude  :float
-#  website    :string
-#  deleted_at :datetime
+#  urls       :string           is an Array
 #  user_id    :integer          not null
-#  status     :integer          default("0")
+#  status     :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  tags       :string           is an Array
 #
 
 class Place < ActiveRecord::Base

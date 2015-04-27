@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: places_stations
+#
+#  place_id   :integer          not null
+#  station_id :integer          not null
+#  distance   :string
+#
+
 class PlacesStation < ActiveRecord::Base
   belongs_to :place
   belongs_to :station
