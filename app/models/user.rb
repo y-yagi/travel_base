@@ -37,4 +37,11 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def update_if_needed!(auth)
+    new_email = auth['info']['email']
+    if new_email.present? && email != new_email
+      update!(email: new_email)
+    end
+  end
 end
