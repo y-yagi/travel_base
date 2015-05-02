@@ -33,7 +33,16 @@ class User < ActiveRecord::Base
         u.provider = auth['provider']
         u.uid = auth['uid']
         u.email = auth['info']['email'].presence || ''
-        u.name = auth['info']['name'].presence || auth['info']['nickname']
+        u.name = acquire_name_from_auth_hash(auth)
+      end
+    end
+
+    def acquire_name_from_auth_hash(auth)
+      case auth['provider']
+      when 'twitter', 'facebook'
+        auth['info']['nickname'].presence || auth['info']['name']
+      else
+        auth['info']['name']
       end
     end
   end
@@ -41,7 +50,13 @@ class User < ActiveRecord::Base
   def update_if_needed!(auth)
     new_email = auth['info']['email']
     if new_email.present? && email != new_email
-      update!(email: new_email)
+      self.email = new_email
     end
+
+    new_name = User.acquire_name_from_auth_hash(auth)
+    if new_name.present? && name != new_name
+      self.name = new_name
+    end
+    save! if changed?
   end
 end
