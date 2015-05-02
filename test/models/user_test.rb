@@ -48,4 +48,16 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal new_email, user.email
   end
+
+  test 'update user info when name changed' do
+    user = users(:google)
+    new_name = user.name + "_new"
+    auth = {
+      'provider' => 'google_oauth2', 'uid' => 2,
+      'info' => { 'name' => new_name }
+    }
+    user.update_if_needed!(auth)
+
+    assert_equal new_name, user.name
+  end
 end
