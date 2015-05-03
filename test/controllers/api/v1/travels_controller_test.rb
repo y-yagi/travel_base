@@ -25,7 +25,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'travel include schedule info' do
+  test 'travel include schedule detail' do
     travel = travels(:kyoto)
     get :show, id: travel.id, fields: '*', format: :json
 
@@ -33,11 +33,15 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.name, parsed_response_body['name']
+
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
       parsed_response_body['travel_dates'].first['date']
     assert_equal travel.travel_dates.first.schedules.size,
       parsed_response_body['travel_dates'].first['schedules'].size
+
+    assert_equal travel.travel_dates.first.schedules.first.place.name,
+      parsed_response_body['travel_dates'].first['schedules'].first['place']['name']
   end
 
   test "can't get other user's travel detail" do

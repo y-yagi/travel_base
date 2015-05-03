@@ -1,12 +1,12 @@
-module Api::Schedule
+module Api::Place
   extend ActiveSupport::Concern
 
   included do
     include Garage::Representer
     property :id
+    property :name
     property :memo
-    property :start_time
-    property :end_time
-    property :place
+    property :latitude
+    property :longitude
   end
 end
