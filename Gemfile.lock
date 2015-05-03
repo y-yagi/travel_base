@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/cookpad/garage.git
-  revision: d5d5c099e33c2f36b5a9f1c3f6acd183dbfae289
+  remote: git://github.com/y-yagi/garage.git
+  revision: 45769f72601901ab23977757976665430c5e865b
+  branch: add_support_time_type
   specs:
     garage (1.4.1)
       coffee-rails
@@ -464,6 +465,7 @@ DEPENDENCIES
   rails-footnotes (~> 4.0)
   rails_12factor
   rambulance
+  responders
   rollbar (~> 1.4.2)
   sass-rails (~> 5.0.0)
   slim-rails

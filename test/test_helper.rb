@@ -45,6 +45,7 @@ Minitest::Sound.failure = '/home/yaginuma/Dropbox/tmp/music/other/mdai.mp3'
 Minitest::Sound.during_test = '/home/yaginuma/Dropbox/tmp/music/other/rs1_25_beatthemup.mp3'
 
 class ActiveSupport::TestCase
+  set_fixture_class oauth_applications: Doorkeeper::Application
   fixtures :all
 end
 

@@ -15,6 +15,8 @@
 
 class Travel < ActiveRecord::Base
   include Elasticsearch::Model
+  include Api::Travel
+
   has_many :travel_dates, dependent: :destroy
   has_many :travel_photos, dependent: :destroy
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'

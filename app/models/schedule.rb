@@ -15,6 +15,8 @@
 #
 
 class Schedule < ActiveRecord::Base
+  include Api::Schedule
+
   belongs_to :travel_date
   belongs_to :place
   belongs_to :route
