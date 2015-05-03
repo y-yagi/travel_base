@@ -9,5 +9,7 @@
 #
 
 class Route < ActiveRecord::Base
+  include Api::Route
+
   has_one :schedule, dependent: :destroy
 end

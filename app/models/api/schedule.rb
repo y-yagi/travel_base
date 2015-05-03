@@ -8,5 +8,6 @@ module Api::Schedule
     property :start_time
     property :end_time
     property :place
+    property :route
   end
 end

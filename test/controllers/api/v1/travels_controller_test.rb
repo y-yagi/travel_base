@@ -37,8 +37,12 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
       parsed_response_body['travel_dates'].first['date']
+
     assert_equal travel.travel_dates.first.schedules.size,
       parsed_response_body['travel_dates'].first['schedules'].size
+
+    assert_equal travel.travel_dates.first.schedules.second.route.detail,
+      parsed_response_body['travel_dates'].first['schedules'].second['route']['detail']
 
     assert_equal travel.travel_dates.first.schedules.first.place.name,
       parsed_response_body['travel_dates'].first['schedules'].first['place']['name']
