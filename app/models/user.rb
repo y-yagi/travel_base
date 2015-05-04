@@ -45,6 +45,16 @@ class User < ActiveRecord::Base
         auth['info']['name']
       end
     end
+
+    def authenticate!(params)
+      return nil if params[:provider].blank? || params[:id].blank?
+
+      if params[:provider] == 'google_oauth2'
+        User.find_by(email: params[:id], provider: params[:provider])
+      else
+        User.find_by(name: params[:id], provider: params[:provider])
+      end
+    end
   end
 
   def update_if_needed!(auth)

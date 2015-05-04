@@ -13,7 +13,7 @@ Doorkeeper.configure do
   grant_flows %w(password)
 
   resource_owner_from_credentials do |routes|
-    User.find_by(name: params[:name], provider: params[:provider])
+    User.authenticate!(params)
   end
 end
 
