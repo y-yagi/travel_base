@@ -18,6 +18,7 @@
 
 class Place < ActiveRecord::Base
   include Searchable
+  include Api::Place
 
   belongs_to :user
   has_many :places_station

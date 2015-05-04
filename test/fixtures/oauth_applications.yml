@@ -1,0 +1,5 @@
+travel_base:
+  name: travel_base
+  uid: uid
+  secret: secret
+  redirect_uri: redirect_uri

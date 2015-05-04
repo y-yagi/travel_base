@@ -10,9 +10,12 @@
 #
 
 class TravelDate < ActiveRecord::Base
+  include Api::TravelDate
+
   belongs_to :travel
   has_many :schedules, dependent: :destroy
 
   validates :date, presence: true
   validates :travel_id, presence: true
+
 end
