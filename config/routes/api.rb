@@ -1,4 +1,7 @@
-use_doorkeeper if Rails.env.development?
+use_doorkeeper do
+  skip_controllers :applications, :authorized_applications
+end
+
 namespace :api do
   namespace :v1 do
     resources :travels, only: %i(index show)
