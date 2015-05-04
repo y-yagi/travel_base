@@ -1,5 +1,5 @@
 travel_base:
   name: travel_base
-  uid: 4d845f17392aae60e575fd70385feff59210993be95f296070ed6bef8d655ff3
-  secret: ea41dd3c529809b9aaf4bce81dd76be37de7d311bbd175b8ba18d9fc1105b4d9
-  redirect_uri: "urn:ietf:wg:oauth:2.0:oob"
+  uid: uid
+  secret: secret
+  redirect_uri: redirect_uri
