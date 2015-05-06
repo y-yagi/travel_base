@@ -7,6 +7,9 @@ module Api::Travel
 
     property :id
     property :name
+    property :start_date
+    property :end_date
+    property :memo
     collection :travel_dates, selectable: true
 
     def self.build_permissions(perms, other, target)
