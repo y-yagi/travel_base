@@ -33,6 +33,9 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.name, parsed_response_body['name']
+    assert_equal travel.start_date.to_s, parsed_response_body['start_date']
+    assert_equal travel.end_date.to_s, parsed_response_body['end_date']
+    assert_equal travel.memo, parsed_response_body['memo']
 
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
