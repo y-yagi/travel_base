@@ -12,6 +12,7 @@ module Api::Travel
     property :memo
     property :formatted_start_date
     property :formatted_end_date
+    property :updated_at
     collection :travel_dates, selectable: true
 
     def self.build_permissions(perms, other, target)

@@ -38,6 +38,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal travel.memo, parsed_response_body['memo']
     assert_equal I18n.l(travel.start_date, format: :long), parsed_response_body['formatted_start_date']
     assert_equal I18n.l(travel.end_date, format: :long), parsed_response_body['formatted_end_date']
+    assert_equal travel.updated_at.as_json, parsed_response_body['updated_at']
 
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
