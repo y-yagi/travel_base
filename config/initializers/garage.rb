@@ -11,6 +11,7 @@ Doorkeeper.configure do
   default_scopes :public
   optional_scopes(*Garage::TokenScope.optional_scopes)
   grant_flows %w(password)
+  access_token_expires_in nil
 
   resource_owner_from_credentials do |routes|
     User.authenticate!(params)
