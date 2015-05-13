@@ -3,6 +3,6 @@ class Api::ApplicationController < ActionController::Base
   include Garage::ControllerHelper
 
   def current_resource_owner
-    @current_resource_owner ||= User.find(resource_owner_id) if resource_owner_id
+    @current_resource_owner ||= User.authenticate!(user_id: params[:user_id], provider: params[:user_provider])
   end
 end
