@@ -63,22 +63,25 @@ class UserTest < ActiveSupport::TestCase
 
   test 'authenticate by google user' do
     user = users(:google)
-    params = { provider: 'google_oauth2', id: user.email }
 
-    assert_equal user, User.authenticate!(params)
+    assert_equal user, User.authenticate!(
+      user_id: user.email, provider: 'google_oauth2'
+    )
   end
 
   test 'authenticate by twitter user' do
     user = users(:twitter)
-    params = { provider: 'twitter', id: user.name }
 
-    assert_equal user, User.authenticate!(params)
+    assert_equal user, User.authenticate!(
+      user_id: user.name, provider: 'twitter'
+    )
   end
 
   test 'authenticate by invalid user' do
     user = users(:google)
-    params = { provider: 'twitter', id: user.email }
 
-    assert_equal nil, User.authenticate!(params)
+    assert_equal nil, User.authenticate!(
+      user_id: user.email, provider: 'twitter'
+    )
   end
 end

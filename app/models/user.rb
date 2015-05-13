@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
       end
     end
 
-    def authenticate!(params)
-      return nil if params[:provider].blank? || params[:id].blank?
+    def authenticate!(user_id: nil, provider: nil)
+      return nil if user_id.blank? || provider.blank?
 
-      if params[:provider] == 'google_oauth2'
-        User.find_by(email: params[:id], provider: params[:provider])
+      if provider == 'google_oauth2'
+        User.find_by(email: user_id, provider: provider)
       else
-        User.find_by(name: params[:id], provider: params[:provider])
+        User.find_by(name: user_id, provider: provider)
       end
     end
   end

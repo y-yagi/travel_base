@@ -5,13 +5,14 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
   include ApiHelper
 
   setup do
-    @access_token = get_access_token(users(:google).id)
+    @user = users(:google)
+    @access_token = get_access_token
     header = 'Bearer ' + @access_token.token
     @request.env['HTTP_AUTHORIZATION'] = header
   end
 
   test 'can get my travel list' do
-    get :index, format: :json
+    get :index, format: :json, user_id: @user.email, user_provider: @user.provider
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
@@ -20,14 +21,16 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'can get my travel detail' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*', format: :json
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
 
     assert_response :success
   end
 
   test 'travel include schedule detail' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*', format: :json
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
@@ -57,7 +60,8 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
   test "can't get other user's travel detail" do
     travel = users(:twitter).travels.first
     assert_raises ActiveRecord::RecordNotFound do
-      get :show, id: travel.id, format: :json
+      get :show, id: travel.id, format: :json,
+        user_id: @user.email, user_provider: @user.provider
     end
   end
 end
