@@ -49,6 +49,16 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
     assert_equal travel.travel_dates.first.schedules.size,
       parsed_response_body['travel_dates'].first['schedules'].size
+    assert_equal travel.travel_dates.first.schedules.first.id,
+      parsed_response_body['travel_dates'].first['schedules'].first['id']
+    assert_equal travel.travel_dates.first.schedules.first.memo,
+      parsed_response_body['travel_dates'].first['schedules'].first['memo']
+    assert_equal travel.travel_dates.first.schedules.first.start_time.strftime("%H:%M"),
+      parsed_response_body['travel_dates'].first['schedules'].first['formatted_start_time']
+    assert_equal travel.travel_dates.first.schedules.first.end_time.strftime("%H:%M"),
+      parsed_response_body['travel_dates'].first['schedules'].first['formatted_end_time']
+
+
 
     assert_equal travel.travel_dates.first.schedules.second.route.detail,
       parsed_response_body['travel_dates'].first['schedules'].second['route']['detail']
