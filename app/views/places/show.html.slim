@@ -40,7 +40,6 @@ section.page-block.space-top.space-bottom
           p
             - @place.urls.reject(&:blank?).each_with_index do |url, i|
               = link_to "参考URL#{i + 1}", url, target: '_blank'
-      .col-md-6
         - if @place.memo.present?
           h4.bold-weight
             | メモ:
