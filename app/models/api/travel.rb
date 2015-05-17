@@ -26,6 +26,7 @@ module Api::Travel
     def formatted_start_date
       I18n.l(start_date, format: :long)
     end
+
     def formatted_end_date
       I18n.l(end_date, format: :long)
     end
