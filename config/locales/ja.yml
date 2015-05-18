@@ -202,7 +202,7 @@ ja:
         name: 名前
         address: 住所
         memo: メモ
-        urls: 関連サイトのURL
+        urls: URL
         tags: タグ
       travel:
         name: 名前
