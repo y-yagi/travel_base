@@ -1,10 +1,10 @@
 Garage.configure {}
-
 Garage::TokenScope.configure do
   register :public, desc: 'acessing publicly available data' do
     access :read, Travel
   end
 end
+Garage.configuration.strategy = Garage::Strategy::Doorkeeper
 
 Doorkeeper.configure do
   orm :active_record

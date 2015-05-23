@@ -63,6 +63,7 @@ class PlaceTest < ActiveSupport::TestCase
   end
 
   test 'set station info' do
+    PlacesStation.delete_all
     place = places(:kifune)
     set_station_mock
 

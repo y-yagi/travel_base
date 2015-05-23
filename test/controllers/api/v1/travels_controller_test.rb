@@ -58,13 +58,14 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal travel.travel_dates.first.schedules.first.end_time.strftime("%H:%M"),
       parsed_response_body['travel_dates'].first['schedules'].first['formatted_end_time']
 
-
-
     assert_equal travel.travel_dates.first.schedules.second.route.detail,
       parsed_response_body['travel_dates'].first['schedules'].second['route']['detail']
 
-    assert_equal travel.travel_dates.first.schedules.first.place.name,
-      parsed_response_body['travel_dates'].first['schedules'].first['place']['name']
+    expected_place = travel.travel_dates.first.schedules.first.place
+    actual_place = parsed_response_body['travel_dates'].first['schedules'].first['place']
+    assert_equal expected_place.name, actual_place['name']
+    assert_equal expected_place.address, actual_place['address']
+    assert_match expected_place.places_station.first.station.name, actual_place['station_info']
   end
 
   test "can't get other user's travel detail" do

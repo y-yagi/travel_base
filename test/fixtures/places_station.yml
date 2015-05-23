@@ -2,3 +2,13 @@ kyoto:
   place: fushimiinari
   station: kyoto
   distance: 150m
+
+ooasahiko:
+  place: ooasahiko
+  station: bantou
+  distance: 800m
+
+kifune:
+  place: kifune
+  station: kifune
+  distance: 1800m

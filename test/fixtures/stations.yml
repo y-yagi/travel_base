@@ -19,3 +19,15 @@ kyoto:
   latitude: 135.452792
   longitude: 34.59765
 
+bantou:
+  name: 板東駅
+  line: 高徳線
+  latitude: 135.452792
+  longitude: 34.59765
+
+kifune:
+  name: 貴船口
+  line: 鞍馬線
+  latitude: 135.452792
+  longitude: 34.59765
+
