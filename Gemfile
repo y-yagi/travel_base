@@ -1,7 +1,6 @@
 ruby '2.2.2'
 
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 gem 'active_decorator'
 gem 'array_form_helper'
@@ -30,16 +29,6 @@ gem 'picasa'
 gem 'pg'
 gem 'pg_array_parser'
 gem 'rails', '4.2.1'
-gem 'rails-assets-bootstrap-css'
-gem 'rails-assets-fullcalendar'
-gem 'rails-assets-jquery-placeholder'
-gem 'rails-assets-jquery.stellar'
-gem 'rails-assets-jquery-validate'
-gem 'rails-assets-modernizr'
-gem 'rails-assets-moment'
-gem 'rails-assets-respond'
-gem 'rails-assets-smoothscroll'
-gem 'rails-assets-bootstrap-tagsinput'
 gem 'rambulance'
 gem 'responders'
 gem 'rollbar', '~> 1.4.2'
@@ -75,4 +64,17 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-css'
+  gem 'rails-assets-fullcalendar'
+  gem 'rails-assets-jquery-placeholder'
+  gem 'rails-assets-jquery.stellar'
+  gem 'rails-assets-jquery-validate'
+  gem 'rails-assets-modernizr'
+  gem 'rails-assets-moment'
+  gem 'rails-assets-respond'
+  gem 'rails-assets-smoothscroll'
+  gem 'rails-assets-bootstrap-tagsinput'
 end

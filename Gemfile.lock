@@ -454,16 +454,16 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (= 4.2.1)
-  rails-assets-bootstrap-css
-  rails-assets-bootstrap-tagsinput
-  rails-assets-fullcalendar
-  rails-assets-jquery-placeholder
-  rails-assets-jquery-validate
-  rails-assets-jquery.stellar
-  rails-assets-modernizr
-  rails-assets-moment
-  rails-assets-respond
-  rails-assets-smoothscroll
+  rails-assets-bootstrap-css!
+  rails-assets-bootstrap-tagsinput!
+  rails-assets-fullcalendar!
+  rails-assets-jquery-placeholder!
+  rails-assets-jquery-validate!
+  rails-assets-jquery.stellar!
+  rails-assets-modernizr!
+  rails-assets-moment!
+  rails-assets-respond!
+  rails-assets-smoothscroll!
   rails-footnotes (~> 4.0)
   rails_12factor
   rambulance
