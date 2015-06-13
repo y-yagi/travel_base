@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :travels do
     resources :travel_photos, as: 'photos', path: 'photos'
+    resources :travel_members, only: [:new, :destroy], as: 'members', path: 'members'
   end
+
   resources :schedules do
     member do
       patch 'update_memo'

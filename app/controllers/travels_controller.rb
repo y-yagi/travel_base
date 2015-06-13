@@ -23,6 +23,8 @@ class TravelsController < ApplicationController
   end
 
   def edit
+    members = @travel.members - [@travel.owner_id]
+    @members = User.find(members)
   end
 
   def create

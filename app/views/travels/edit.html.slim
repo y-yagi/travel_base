@@ -10,7 +10,7 @@ section.page-block.user-account.space-bottom
               | 基本情報編集
               span.line
           li
-            a href="#members" role="tab" data-toggle="tab"
+            a href="#member" role="tab" data-toggle="tab"
               | メンバー管理
               span.line
       .col-md-9.gray-bg
@@ -20,8 +20,6 @@ section.page-block.user-account.space-bottom
               h3.heading.center
                 | 基本情報編集
               = render 'form'
-          .tab-pane.fade.in id="members"
+          .tab-pane.fade.in id="member"
             .col-sm-8.col-sm-offset-2
-              h3.heading.center
-                | メンバー管理
-              = render 'form'
+              = render 'member'

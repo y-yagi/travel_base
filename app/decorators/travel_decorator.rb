@@ -14,4 +14,9 @@ module TravelDecorator
     travel_photos.each { |p| list[p.name] = travel_photo_path(p.travel, p) }
     options_for_select(list)
   end
+
+  def generate_invite_url
+    request.protocol + request.host_with_port +
+      new_travel_member_path(travel_id: id, key: generate_invite_key)
+  end
 end

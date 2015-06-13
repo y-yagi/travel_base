@@ -68,6 +68,10 @@ class Travel < ActiveRecord::Base
     members.include?(user_id) || owner_id == user_id
   end
 
+  def owner?(user_id)
+    owner_id == user_id
+  end
+
   def past?
     Time.now.to_date > end_date
   end
@@ -85,5 +89,15 @@ class Travel < ActiveRecord::Base
       e.description = memo
     end
     cal.to_ical
+  end
+
+  def generate_invite_key
+    message_verifier = Rails.application.message_verifier(:travel_members)
+    message_verifier.generate(self.id)
+  end
+
+  def valid_invite_key?(key)
+    travel_id = Rails.application.message_verifier(:travel_members).verify(key)
+    self.id == travel_id
   end
 end
