@@ -7,13 +7,13 @@ section.page-block.space-top.space-bottom
       .col-sm-8.col-sm-offset-2
         ul.nav.nav-tabs
           li class="#{"active" unless params[:display_form]}"
-            a[href="#search" data-toggle="tab" aria-expanded="false"]
+            a[href="#place_search" data-toggle="tab" aria-expanded="false"]
               | 名称を検索して登録する
           li class="#{"active" if params[:display_form]}"
             a[href="#form" data-toggle="tab" aria-expanded="true"]
               | 名称・住所を登録する
         .tab-content
-          div id="search" class="tab-pane #{"active" unless params[:display_form]}"
+          div id="place_search" class="tab-pane #{"active" unless params[:display_form]}"
             hr
             = render 'search'
           div id="form" class="tab-pane #{"active" if params[:display_form]}"
