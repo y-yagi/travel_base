@@ -1,6 +1,18 @@
 .panel.static.panel-primary
   .panel-heading
     h4.panel-title
+      | メンバー招待用URL
+  .panel-body
+    | この旅行計画にメンバーを追加したい場合、以下のURLをメンバーにシェアして下さい。
+    br
+    = text_field_tag(:invite_url, @travel.generate_invite_url, { readonly: true, class: 'form-control' })
+
+br
+hr
+
+.panel.static.panel-primary
+  .panel-heading
+    h4.panel-title
       | メンバー一覧
   .panel-body
     - if @members.empty?
@@ -27,14 +39,3 @@
               td
                 = link_to travel_member_path(@travel, member),  method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                   i.fa.fa-trash-o
-
-br
-hr
-.panel.static.panel-primary
-  .panel-heading
-    h4.panel-title
-      | メンバー招待用URL
-  .panel-body
-    | この旅行計画にメンバーを追加したい場合、以下のURLをメンバーにシェアして下さい。
-    br
-    = text_field_tag(:invite_url, @travel.generate_invite_url, { readonly: true, class: 'form-control' })

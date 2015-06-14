@@ -68,8 +68,8 @@ class Travel < ActiveRecord::Base
     members.include?(user_id) || owner_id == user_id
   end
 
-  def owner?(user_id)
-    owner_id == user_id
+  def owner?(user)
+    owner_id == user.id
   end
 
   def past?

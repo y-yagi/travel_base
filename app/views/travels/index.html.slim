@@ -11,11 +11,12 @@ section.page-block.space-top.space-bottom
             = link_to '', new_travel_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle"
         - @travels.each do |travel|
           .item
-            .delete
-              = link_to edit_travel_path(travel), title: '編集' do
-                i.fa.fa-edit
-              = link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
-                i.fa.fa-trash-o
+            - if travel.owner?(current_user)
+              .delete
+                = link_to edit_travel_path(travel), title: '編集' do
+                  i.fa.fa-edit
+                = link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                  i.fa.fa-trash-o
             .row
               .col-md-3.col-xs-12
                 .details
