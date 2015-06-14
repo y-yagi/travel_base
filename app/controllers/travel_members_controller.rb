@@ -5,7 +5,7 @@ class TravelMembersController < ApplicationController
 
     travel.update!(members: (travel.members << current_user.id).uniq)
     flash[:info] = '旅行に参加しました'
-    redirect_to edit_travel_url(travel)
+    redirect_to travel_url(travel)
   end
 
   def destroy

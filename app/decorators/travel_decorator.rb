@@ -16,7 +16,6 @@ module TravelDecorator
   end
 
   def generate_invite_url
-    request.protocol + request.host_with_port +
-      new_travel_member_path(travel_id: id, key: generate_invite_key)
+    new_travel_member_url(travel_id: id, key: generate_invite_key)
   end
 end

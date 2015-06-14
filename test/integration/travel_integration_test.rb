@@ -176,4 +176,35 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     assert_match 'DESCRIPTION:宿は未定', page.text
     assert_match 'SUMMARY:京都旅行', page.text
   end
+
+  test 'add members link is displayed' do
+    travel = Travel.order('updated_at DESC').first
+    first("a[title='編集']").click
+    click_link 'メンバー管理'
+
+    invite_url = find('#invite_url').value
+    assert_equal travel.generate_invite_url, invite_url
+  end
+
+  test 'can add member' do
+    current_user = users(:google)
+    twitter_user = users(:twitter)
+    other_user_travel = Travel.mine(twitter_user).first
+
+    assert_not_includes other_user_travel.members, current_user.id
+    visit other_user_travel.generate_invite_url
+    other_user_travel.reload
+    assert_includes other_user_travel.members, current_user.id
+  end
+
+  test 'can remove member' do
+    travel = Travel.order('updated_at DESC').first
+    twitter_user = users(:twitter)
+    travel.update!(members: (travel.members << twitter_user.id).uniq)
+
+    first("a[title='編集']").click
+    click_link 'メンバー管理'
+
+    assert_match twitter_user.name, page.text
+  end
 end
