@@ -24,4 +24,8 @@ module ApplicationHelper
     end
     route_title + '〜' + schedules[index].place.name
   end
+
+  def generate_invite_url(travel)
+    new_travel_member_url(travel_id: travel.id, key: travel.generate_invite_key)
+  end
 end

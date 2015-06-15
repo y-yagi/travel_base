@@ -74,5 +74,3 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
-
-Rails.application.default_url_options[:host] = 'travel-base.herokuapp.com'

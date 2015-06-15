@@ -5,7 +5,7 @@
   .panel-body
     | この旅行計画にメンバーを追加したい場合、以下のURLをメンバーにシェアして下さい。
     br
-    = text_field_tag(:invite_url, @travel.generate_invite_url, { readonly: true, class: 'form-control' })
+    = text_field_tag(:invite_url, generate_invite_url(@travel), { readonly: true, class: 'form-control' })
 
 br
 hr

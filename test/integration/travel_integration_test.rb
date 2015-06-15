@@ -183,7 +183,9 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     click_link 'メンバー管理'
 
     invite_url = find('#invite_url').value
-    assert_equal travel.generate_invite_url, invite_url
+    expect_invite_url = new_travel_member_url(
+      travel_id: travel.id, key: travel.generate_invite_key)
+    assert_equal expect_invite_url, invite_url
   end
 
   test 'can add member' do
@@ -192,7 +194,9 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     other_user_travel = Travel.mine(twitter_user).first
 
     assert_not_includes other_user_travel.members, current_user.id
-    visit other_user_travel.generate_invite_url
+    invite_url = new_travel_member_url(
+      travel_id: other_user_travel.id, key: other_user_travel.generate_invite_key)
+    visit invite_url
     other_user_travel.reload
     assert_includes other_user_travel.members, current_user.id
   end
