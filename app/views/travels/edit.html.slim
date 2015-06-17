@@ -1,8 +1,25 @@
-section.page-block.space-top.space-bottom
+section.page-block.user-account.space-bottom
   .container
     .row
-      .col-sm-8.col-sm-offset-2.gray-bg-padding
+      .col-md-3.navigation
         h3.heading.center
           | 旅行計画編集
-          span
-        = render 'form'
+        ul.nav-tabs.vertical role="tablist"
+          li.active
+            a href="#basic" role="tab" data-toggle="tab"
+              | 基本情報編集
+              span.line
+          li
+            a href="#member" role="tab" data-toggle="tab"
+              | メンバー管理
+              span.line
+      .col-md-9.gray-bg
+        .tab-content
+          .tab-pane.fade.in.active id="basic"
+            .col-sm-8.col-sm-offset-2
+              h3.heading.center
+                | 基本情報編集
+              = render 'form'
+          .tab-pane.fade.in id="member"
+            .col-sm-8.col-sm-offset-2
+              = render 'member'

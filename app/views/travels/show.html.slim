@@ -4,8 +4,9 @@ section.page-block.double-padding-top.double-space-bottom
     .page-heading.center
       h2
         = @travel.name
-        = link_to edit_travel_path(@travel), title: '編集' do
-          i.fa.fa-edit.small.text-muted.left10
+        - if @travel.owner?(current_user)
+          = link_to edit_travel_path(@travel), title: '編集' do
+            i.fa.fa-edit.small.text-muted.left10
         span
     .row.double-space-top
       .col-md-8.col-md-offset-2.col-xs-12

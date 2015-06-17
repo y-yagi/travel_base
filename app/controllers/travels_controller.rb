@@ -1,6 +1,6 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:edit, :update, :edit_photo]
-  before_action :set_travel_by_owner, only: [:destroy]
+  before_action :set_travel, only: [:edit_photo]
+  before_action :set_travel_by_owner, only: [:edit, :update, :destroy]
   before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def index
@@ -23,6 +23,8 @@ class TravelsController < ApplicationController
   end
 
   def edit
+    members = @travel.members - [@travel.owner_id]
+    @members = User.find(members)
   end
 
   def create

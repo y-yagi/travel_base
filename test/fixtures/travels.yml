@@ -35,6 +35,8 @@ yamaguchi:
   end_date: <%= 15.days.since %>
   memo: 別ユーザの旅行
   owner: twitter
+  members:
+    - twitter
 
 <% 10.times.each do |i| %>
 travels_<%= i %>:
