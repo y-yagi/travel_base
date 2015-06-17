@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:info] = 'ユーザ情報の更新が完了しました'
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_path(@user), info: 'ユーザ情報の更新が完了しました'
     else
       render :edit
     end
@@ -17,8 +16,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:info] = 'ユーザ情報の削除が完了しました'
-    redirect_to login_url
+    redirect_to login_url, info: 'ユーザ情報の削除が完了しました'
   end
 
   private

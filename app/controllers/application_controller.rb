@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_logged_in, :setup
   force_ssl if: :ssl_configured?
+  add_flash_types :info, :warning, :danger
 
   helper_method :current_user
 
