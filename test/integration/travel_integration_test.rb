@@ -192,13 +192,16 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     current_user = users(:google)
     twitter_user = users(:twitter)
     other_user_travel = Travel.mine(twitter_user).first
-
     assert_not_includes other_user_travel.members, current_user.id
+
     invite_url = new_travel_member_url(
       travel_id: other_user_travel.id, key: other_user_travel.generate_invite_key)
     visit invite_url
     other_user_travel.reload
     assert_includes other_user_travel.members, current_user.id
+
+    visit travels_path
+    assert_match other_user_travel.name, page.text
   end
 
   test 'can remove member' do
