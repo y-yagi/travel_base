@@ -4,8 +4,7 @@ class TravelPhotosController < ApplicationController
   def new
     @photo_service_user_info = current_user.photo_service_user_info
     unless @photo_service_user_info
-      flash[:info] = '写真サービスの設定を実施して下さい'
-      return redirect_to edit_user_path(current_user)
+      return redirect_to edit_user_path(current_user), info: '写真サービスの設定を実施して下さい'
     end
 
     setup_album_list(@photo_service_user_info)
@@ -30,8 +29,7 @@ class TravelPhotosController < ApplicationController
     setup_album_list(@photo_service_user_info)
     @travel_photo = TravelPhoto.new(travel_photo_params)
     if @travel_photo.save
-      flash[:info] = '写真データを紐付けしました'
-      redirect_to @travel_photo.travel
+      redirect_to @travel_photo.travel, info: '写真データを紐付けしました'
     else
       render :new
     end
@@ -39,8 +37,7 @@ class TravelPhotosController < ApplicationController
 
   def update
     if @travel_photo.update(travel_photo_params)
-      flash[:info] = '写真データの紐付けを更新しました'
-      redirect_to @travel_photo.travel
+      redirect_to @travel_photo.travel, info: '写真データの紐付けを更新しました'
     else
       render :update
     end
@@ -48,8 +45,7 @@ class TravelPhotosController < ApplicationController
 
   def destroy
     @travel_photo.destroy
-    flash[:info] = '写真データの紐付けを削除しました'
-    redirect_to @travel_photo.travel
+    redirect_to @travel_photo.travel, info: '写真データの紐付けを削除しました'
   end
 
   private

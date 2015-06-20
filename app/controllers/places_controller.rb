@@ -26,8 +26,7 @@ class PlacesController < ApplicationController
     @place = Place.build(place_params, current_user)
     if @place.save
       @place.set_station_info
-      flash[:info] = %("#{@place.name}"を登録しました)
-      redirect_to places_url
+      redirect_to places_url, info: %("#{@place.name}"を登録しました)
     else
       render :new
     end
@@ -35,8 +34,7 @@ class PlacesController < ApplicationController
 
   def update
     if @place.update(place_params)
-      flash[:info] = %("#{@place.name}"の情報を更新しました)
-      redirect_to places_url
+      redirect_to places_url, info: %("#{@place.name}"の情報を更新しました)
     else
       render :edit
     end
@@ -44,8 +42,7 @@ class PlacesController < ApplicationController
 
   def destroy
     @place.destroy
-    flash[:info] = %("#{@place.name}"を削除しました)
-    redirect_to places_url
+    redirect_to places_url, info: %("#{@place.name}"を削除しました)
   end
 
   private

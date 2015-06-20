@@ -31,8 +31,7 @@ class TravelsController < ApplicationController
     @travel = Travel.build(travel_params, current_user)
 
     if @travel.save
-      flash[:info] = '旅行の予定を作成しました'
-      redirect_to travel_path(@travel)
+      redirect_to travel_path(@travel), info: '旅行の予定を作成しました'
     else
       render :new
     end
@@ -40,8 +39,7 @@ class TravelsController < ApplicationController
 
   def update
     if @travel.update(travel_params)
-      flash[:info] = '旅行の予定を更新しました'
-      redirect_to @travel
+      redirect_to @travel, info: '旅行の予定を更新しました'
     else
       render :edit
     end
@@ -49,8 +47,7 @@ class TravelsController < ApplicationController
 
   def destroy
     @travel.destroy
-    flash[:info] = '旅行の予定を削除しました'
-    redirect_to travels_url
+    redirect_to travels_url, info: '旅行の予定を削除しました'
   end
 
   private
