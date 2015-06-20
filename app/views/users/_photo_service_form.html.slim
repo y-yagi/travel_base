@@ -20,5 +20,7 @@
           br
           = f_photo.text_field :photo_service_user_id, class: "form-control", required: 'required'
       .col-md-12.col-sm-12
+        p.text-danger
+          | 連携設定を更新した場合、既に紐付けてある写真データの紐付けは全て解除されます。ご注意下さい。
         .text-center
           = f.submit class: "btn btn-md btn-primary", value: '更新', data: { disable_with: "Please wait..." }
