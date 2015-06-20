@@ -12,6 +12,7 @@
 
 class PhotoServiceUserInfo < ActiveRecord::Base
   belongs_to :user
+  has_many :travel_photos, dependent: :destroy
 
   scope :mine, ->(user) { where(user_id: user.id) }
 
