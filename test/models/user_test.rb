@@ -73,7 +73,7 @@ class UserTest < ActiveSupport::TestCase
     user = users(:twitter)
 
     assert_equal user, User.authenticate!(
-      user_id: user.name, provider: 'twitter'
+      user_id: user.uid, provider: 'twitter'
     )
   end
 

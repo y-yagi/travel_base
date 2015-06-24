@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
       if provider == 'google_oauth2'
         User.find_by(email: user_id, provider: provider)
       else
-        User.find_by(name: user_id, provider: provider)
+        User.find_by(uid: user_id, provider: provider)
       end
     end
   end
