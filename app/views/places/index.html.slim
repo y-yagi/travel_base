@@ -40,7 +40,7 @@ section.page-block.space-top.space-bottom
                 br
                 - if place.urls.present?
                   - place.urls.reject(&:blank?).each_with_index do |url, i|
-                    = link_to "参考URL#{i + 1}", url, target: '_blank'
+                    = link_to "URL#{i + 1} ", url, target: '_blank'
                 br
                 = simple_format(place.memo)
       = paginate @places
