@@ -27,12 +27,18 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'travel include schedule detail' do
+  test "can't get other user's travel detail" do
+    travel = users(:twitter).travels.first
+    assert_raises ActiveRecord::RecordNotFound do
+      get :show, id: travel.id, format: :json,
+        user_id: @user.email, user_provider: @user.provider
+    end
+  end
+
+  test 'json include travel data' do
     travel = travels(:kyoto)
     get :show, id: travel.id, fields: '*',
       format: :json, user_id: @user.email, user_provider: @user.provider
-
-    assert_response :success
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.name, parsed_response_body['name']
@@ -42,10 +48,24 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal I18n.l(travel.start_date, format: :long), parsed_response_body['formatted_start_date']
     assert_equal I18n.l(travel.end_date, format: :long), parsed_response_body['formatted_end_date']
     assert_equal travel.updated_at.as_json, parsed_response_body['updated_at']
+  end
+
+  test 'json include travel date date' do
+    travel = travels(:kyoto)
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
+    parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
       parsed_response_body['travel_dates'].first['date']
+  end
+
+  test 'json include schedules data' do
+    travel = travels(:kyoto)
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
+    parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.first.schedules.size,
       parsed_response_body['travel_dates'].first['schedules'].size
@@ -57,22 +77,28 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
       parsed_response_body['travel_dates'].first['schedules'].first['formatted_start_time']
     assert_equal travel.travel_dates.first.schedules.first.end_time.strftime("%H:%M"),
       parsed_response_body['travel_dates'].first['schedules'].first['formatted_end_time']
+  end
+
+  test 'json include route data' do
+    travel = travels(:kyoto)
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
+    parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.first.schedules.second.route.detail,
       parsed_response_body['travel_dates'].first['schedules'].second['route']['detail']
+  end
+
+  test 'json include place data' do
+    travel = travels(:kyoto)
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
+    parsed_response_body = JSON.parse(@response.body)
 
     expected_place = travel.travel_dates.first.schedules.first.place
     actual_place = parsed_response_body['travel_dates'].first['schedules'].first['place']
     assert_equal expected_place.name, actual_place['name']
     assert_equal expected_place.address, actual_place['address']
     assert_match expected_place.places_station.first.station.name, actual_place['station_info']
-  end
-
-  test "can't get other user's travel detail" do
-    travel = users(:twitter).travels.first
-    assert_raises ActiveRecord::RecordNotFound do
-      get :show, id: travel.id, format: :json,
-        user_id: @user.email, user_provider: @user.provider
-    end
   end
 end
