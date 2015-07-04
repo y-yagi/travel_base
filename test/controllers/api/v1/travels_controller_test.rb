@@ -99,6 +99,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     actual_place = parsed_response_body['travel_dates'].first['schedules'].first['place']
     assert_equal expected_place.name, actual_place['name']
     assert_equal expected_place.address, actual_place['address']
+    assert_equal expected_place.urls.join(','), actual_place['url']
     assert_match expected_place.places_station.first.station.name, actual_place['station_info']
   end
 end

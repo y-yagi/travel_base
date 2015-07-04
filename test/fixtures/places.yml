@@ -47,6 +47,8 @@ kifune:
   latitude: 35.07182
   longitude: 135.45462
   user: google
+  urls:
+    - http://kifunejinja.jp/
 
 shimogamo:
   name: 下鴨神社
@@ -54,6 +56,8 @@ shimogamo:
   latitude: 35.07182
   longitude: 135.45462
   user: google
+  urls:
+    - http://www.shimogamo-jinja.or.jp/
 
 <% 10.times.each do |i| %>
 places_<%= i %>:
