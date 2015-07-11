@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :uid, :provider, :name, :email, :deleted_at,
+        :uid, :provider, :name, :email, :deleted_at, :auto_archive,
         photo_service_user_info_attributes: [ :service_type, :photo_service_user_id, :user_id ]
       )
     end

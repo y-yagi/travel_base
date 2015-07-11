@@ -213,6 +213,7 @@ ja:
       user:
         name: ユーザ名
         email: メールアドレス
+        auto_archive: 自動アーカイブ設定
       photo_service_user_info:
         photo_service_user_id: ユーザID
         service_type: サービス名
