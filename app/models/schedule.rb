@@ -34,9 +34,8 @@ class Schedule < ActiveRecord::Base
   def already_registered
     return if self.travel_date.blank? || !place_id_changed?
 
-    exists = Schedule.includes(:travel_date).references(:travel_date)
-      .where('travel_dates.travel_id = ? AND place_id = ?', self.travel_date.travel_id, self.place_id)
-      .exists?
+    exists = Schedule.
+      where('travel_date_id = ? AND place_id = ?', self.travel_date.id, self.place_id).exists?
 
     errors.add(:place, :taken) if exists
   end

@@ -32,8 +32,15 @@ class ScheduleTest < ActiveSupport::TestCase
 
   test 'should error when register already registered place' do
     new_schedule = schedules(:kifune).dup
-    new_schedule.valid?
 
+    assert_not new_schedule.valid?
     assert_equal [:place], new_schedule.errors.keys
+  end
+
+  test 'should not error when register already registered place to another date' do
+    new_schedule = schedules(:kifune).dup
+    new_schedule.travel_date = travel_dates(:kyoto_date_2)
+
+    assert new_schedule.valid?
   end
 end
