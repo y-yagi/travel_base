@@ -16,8 +16,12 @@ class GoogleMap
     data = new Array()
     i = 0
     places.forEach((place) ->
-      data.push( {position: new google.maps.LatLng(place['latitude'], place['longitude']), content: place['name']})
-      myMarker = new google.maps.Marker({position: data[i].position, map: map })
+      data.push({position: new google.maps.LatLng(place['latitude'], place['longitude']), content: place['name']})
+      myMarker = new google.maps.Marker({
+        position: data[i].position,
+        map: map,
+        icon: "//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{i+1}|ff6633|000000"
+      })
       attachMessage(myMarker, data[i].content)
       i++
     )
