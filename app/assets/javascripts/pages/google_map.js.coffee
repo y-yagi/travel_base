@@ -20,7 +20,7 @@ class GoogleMap
       myMarker = new google.maps.Marker({
         position: data[i].position,
         map: map,
-        icon: "//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{i+1}|ff6633|000000"
+        icon: "https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=#{i+1}|ff6633|000000"
       })
       attachMessage(myMarker, data[i].content)
       i++
