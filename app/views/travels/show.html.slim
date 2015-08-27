@@ -19,7 +19,7 @@ section.page-block.double-padding-top.double-space-bottom
                   |  予定を追加する
             #add-schedule.panel-collapse.collapse[style="height: 0px;"]
               .panel-body
-                = form_tag(schedules_path) do
+                = form_tag(schedules_path, remote: true) do
                   .row
                     .col-md-5.col-xs-12
                       i.fa.fa-calendar.right10.tooltipped[title="日時を選択"]
@@ -60,7 +60,7 @@ section.page-block.double-padding-top.double-space-bottom
                 = link_to edit_travel_path(@travel), title: '編集' do
                   i.fa.fa-edit
     .row.double-space-top
-      .col-md-8.col-md-offset-2
+      div class="col-md-8 col-md-offset-2" id="schedule_list"
         .tab-content
           ul.nav-tabs.left[role="tablist"]
             - @travel.travel_dates.each_with_index do |d, i|

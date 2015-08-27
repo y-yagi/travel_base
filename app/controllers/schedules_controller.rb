@@ -8,16 +8,17 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.build(schedule_params)
     if @schedule.save
-      flash_msg = { info: 'スケジュールを作成しました' }
+      flash[:info] = 'スケジュールを作成しました'
     else
-      flash_msg = { danger: @schedule.errors.full_messages.join("\n") }
+      flash[:danger] = @schedule.errors.full_messages.join("\n")
     end
-    redirect_to travel_path(@schedule.travel_date.travel), flash_msg
+    redirect_to travel_path(@schedule.travel_date.travel), change: 'schedule_list'
   end
 
   def update
     if @schedule.update(schedule_params)
-      redirect_to travel_path(@schedule.travel_date.travel), info: 'スケジュールを更新しました'
+      flash[:info] = 'スケジュールを更新しました'
+      redirect_to travel_path(@schedule.travel_date.travel), change: 'schedule_list'
     else
       render :edit
     end
