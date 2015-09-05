@@ -3,6 +3,8 @@ module Api::Place
 
   included do
     include Garage::Representer
+    include Garage::Authorizable
+
     property :id
     property :name
     property :address
@@ -11,6 +13,14 @@ module Api::Place
     property :longitude
     property :station_info
     property :url
+
+    def self.build_permissions(perms, other, target)
+      perms.permits! :read if perms.user == other
+    end
+
+    def build_permissions(perms, other)
+      perms.permits! :read if perms.user == other
+    end
 
     def station_info
       places_station.each.sum do |ns|

@@ -2,6 +2,7 @@ Garage.configure {}
 Garage::TokenScope.configure do
   register :public, desc: 'acessing publicly available data' do
     access :read, Travel
+    access :read, Place
   end
 end
 Garage.configuration.strategy = Garage::Strategy::Doorkeeper
