@@ -67,3 +67,11 @@ places_<%= i %>:
   longitude: 135.45462
   user: google
 <% end %>
+
+shimogamo:
+  name: 出雲大社
+  address: 島根県出雲市大社町杵築東195
+  latitude: 35.2355
+  longitude: 132.4116
+  user: google
+  status: <%= Place.statuses[:already_went] %>
