@@ -318,6 +318,9 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (10.4.2)
+    rake-guardian (0.1.0)
+      activesupport
+      rake (~> 10.0)
     rambulance (0.3.1)
       actionpack
       activesupport
@@ -462,6 +465,7 @@ DEPENDENCIES
   rails-assets-smoothscroll!
   rails-footnotes (~> 4.0)
   rails_12factor
+  rake-guardian
   rambulance
   responders
   rollbar (~> 1.4.2)
