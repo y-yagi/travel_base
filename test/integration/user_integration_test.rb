@@ -6,11 +6,26 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
     first(:link, 'ユーザ設定').click
   end
 
+  test 'setup user info' do
+    current_user = users(:google)
+    assert_not current_user.auto_archive
+
+    within ('#form') do
+      check 'user[auto_archive]'
+      click_button '更新'
+    end
+    current_user.reload
+
+    assert current_user.auto_archive
+  end
+
   test 'setup photo serice info' do
-    select 'picasa', from: 'user_photo_service_user_info_attributes_service_type'
-    fill_in 'user_photo_service_user_info_attributes_photo_service_user_id',
-      with: 'photo_serivce@example.com'
-    click_button '更新'
+    within ('#photo-service') do
+      select 'picasa', from: 'user_photo_service_user_info_attributes_service_type'
+      fill_in 'user_photo_service_user_info_attributes_photo_service_user_id',
+        with: 'photo_serivce@example.com'
+      click_button '更新'
+    end
 
     current_user = users(:google)
     assert_equal 'photo_serivce@example.com',

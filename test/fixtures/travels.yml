@@ -24,8 +24,8 @@ kyoto:
 
 okayama:
   name: 岡山旅行
-  start_date: <%= 10.days.ago %>
-  end_date: <%= 5.days.ago %>
+  start_date: <%= 5.days.ago %>
+  end_date: <%= 1.day.ago %>
   memo: 過去の旅行
   owner: google
 

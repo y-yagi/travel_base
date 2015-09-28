@@ -108,4 +108,36 @@ class TravelTest < ActiveSupport::TestCase
 
     assert_match 'SUMMARY:京都旅行', ics
   end
+
+  test 'if you have automatic archiving to true, the finished travel is archived' do
+    users(:google).update!(auto_archive: true)
+    past_travel = travels(:okayama)
+
+    past_travel.places.each do |place|
+      assert place.not_gone?
+    end
+
+    Travel.archive_places!
+    past_travel.reload
+
+    past_travel.places.each do |place|
+      assert place.already_went?
+    end
+  end
+
+  test 'if the automatic archiving you have to false, and that was the end travel is not archived' do
+    users(:google).update!(auto_archive: false)
+    past_travel = travels(:okayama)
+
+    past_travel.places.each do |place|
+      assert place.not_gone?
+    end
+
+    Travel.archive_places!
+    past_travel.reload
+
+    past_travel.places.each do |place|
+      assert place.not_gone?
+    end
+  end
 end

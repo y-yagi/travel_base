@@ -27,3 +27,11 @@ shimogamo:
   route: route_to_shimogamo
   start_time: <%= DateTime.parse('18:00') %>
   end_time: <%= DateTime.parse('19:00') %>
+
+kibitsu:
+  travel_date: okayama_date_1
+  place: kibitsu
+
+kibitsuhiko:
+  travel_date: okayama_date_2
+  place: kibitsuhiko

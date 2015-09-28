@@ -59,6 +59,20 @@ shimogamo:
   urls:
     - http://www.shimogamo-jinja.or.jp/
 
+kibitsu:
+  name: 吉備津神社
+  address:  岡山県岡山市北区吉備津931
+  latitude: 34.670714
+  longitude: 133.850654
+  user: google
+
+kibitsuhiko:
+  name: 吉備津彦神社
+  address:  岡山市北区一宮1043
+  latitude: 34.676838
+  longitude: 133.864219
+  user: google
+
 <% 10.times.each do |i| %>
 places_<%= i %>:
   name: $LABEL

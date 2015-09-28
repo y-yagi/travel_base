@@ -50,6 +50,18 @@ class Travel < ActiveRecord::Base
       travel.members = [user.id]
       travel
     end
+
+    def archive_places!
+      ended_travels = Travel.where(end_date: Time.zone.yesterday.to_date)
+      return if ended_travels.empty?
+
+      ended_travels.each do |travel|
+        travel.places.each do |place|
+          next unless place.user.auto_archive?
+          place.already_went!
+        end
+      end
+    end
   end
 
   def adjust_travel_dates
@@ -99,5 +111,9 @@ class Travel < ActiveRecord::Base
   def valid_invite_key?(key)
     travel_id = Rails.application.message_verifier(:travel_members).verify(key)
     self.id == travel_id
+  end
+
+  def places
+    travel_dates.map { |date| date.schedules.map(&:place) }.flatten
   end
 end
