@@ -293,7 +293,7 @@ GEM
       rails-assets-jquery (>= 1.7.2)
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
-    rails-assets-modernizr (3.0.0)
+    rails-assets-modernizr (2.8.3)
     rails-assets-moment (2.10.6)
     rails-assets-raf.js (0.0.4)
     rails-assets-respond (1.4.2)
@@ -462,7 +462,7 @@ DEPENDENCIES
   rails-assets-jquery-placeholder!
   rails-assets-jquery-validate!
   rails-assets-jquery.stellar!
-  rails-assets-modernizr!
+  rails-assets-modernizr (= 2.8.3)!
   rails-assets-moment!
   rails-assets-respond!
   rails-assets-smoothscroll!
