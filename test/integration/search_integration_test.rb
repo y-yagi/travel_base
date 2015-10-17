@@ -9,7 +9,7 @@ class SearchIntegrationTest < ActionDispatch::IntegrationTest
     unless Elasticsearch::Extensions::Test::Cluster.running?
       Elasticsearch::Extensions::Test::Cluster.start(nodes: 1)
     end
-    Place.import
+    Place.__elasticsearch__.create_index!
     login
   end
 
