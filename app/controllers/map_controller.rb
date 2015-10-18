@@ -13,7 +13,7 @@ class MapController < ApplicationController
   end
 
   def places
-    places = Place.mine(current_user).not_gone
+    places = Place.acquire_by_params(current_user, params)
     @places_for_map = places.map{ |p| { name: p.name, latitude: p.latitude, longitude: p.longitude } }.to_json
     @map_zoom = 7
     render :show
