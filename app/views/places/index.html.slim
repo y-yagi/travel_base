@@ -12,7 +12,7 @@ section.page-block.space-top.space-bottom
             = link_to '', new_place_path, title: '追加', 'data-placement' => 'top', class: "tooltipped fa fa-plus-circle"
             = link_to '', places_path(already: true), title: 'アーカイブした場所を表示する', 'data-placement' => 'top', class: "tooltipped fa fa-history"
             - if @places.present?
-              = link_to '', map_places_path, target: '_blank', title: '一覧をGoogleMapで見る', 'data-placement' => 'top', class: "tooltipped fa fa-map-marker"
+              = link_to '', map_places_path(tag: params[:tag]), target: '_blank', title: '一覧をGoogleMapで見る', 'data-placement' => 'top', class: "tooltipped fa fa-map-marker"
         - @places.each do |place|
           .item
             .delete
