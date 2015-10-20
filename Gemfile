@@ -40,6 +40,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'quiet_assets'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do
