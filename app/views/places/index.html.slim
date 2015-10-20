@@ -37,10 +37,12 @@ section.page-block.space-top.space-bottom
                 - if place.tags.present?
                   - place.tags.each do |tag|
                     = link_to(tag, places_path(tag: tag), class: 'label label-info label-list')
-                br
+                  br
                 - if place.urls.present?
                   - place.urls.reject(&:blank?).each_with_index do |url, i|
-                    = link_to "URL#{i + 1} ", url, target: '_blank'
-                br
+                    = link_to url, url, target: '_blank'
+                    br
+                - else
+                  br
                 = simple_format(place.memo)
       = paginate @places
