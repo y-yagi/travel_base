@@ -107,6 +107,8 @@ GEM
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
       railties (~> 4.0)
+    dropbox-sdk (1.6.5)
+      json
     elasticsearch (1.0.14)
       elasticsearch-api (= 1.0.14)
       elasticsearch-transport (= 1.0.14)
@@ -429,6 +431,7 @@ DEPENDENCIES
   coffee-rails
   coveralls
   dotenv-rails
+  dropbox-sdk
   elasticsearch-extensions
   elasticsearch-model
   elasticsearch-rails
