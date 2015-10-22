@@ -60,6 +60,9 @@ class TravelsController < ApplicationController
     end
 
     def travel_params
-      params.require(:travel).permit(:name, :memo, :start_date, :end_date, :user_id)
+      params.require(:travel).permit(
+        :name, :memo, :start_date, :end_date, :user_id,
+        dropbox_files_attributes: [:id, :name, :url]
+      )
     end
 end

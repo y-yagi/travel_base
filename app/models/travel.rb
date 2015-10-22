@@ -19,7 +19,10 @@ class Travel < ActiveRecord::Base
 
   has_many :travel_dates, dependent: :destroy
   has_many :travel_photos, dependent: :destroy
+  has_many :dropbox_files, dependent: :destroy
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
+
+  accepts_nested_attributes_for :dropbox_files
 
   scope :schedules, -> do
     eager_load(:travel_dates, :travel_photos, travel_dates: { schedules: [:place, :route] })
