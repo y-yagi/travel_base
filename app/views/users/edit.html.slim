@@ -14,6 +14,10 @@ section.page-block.user-account.space-bottom
               | 写真サービス連携設定
               span.line
           li
+            a href="#dropbox" role="tab" data-toggle="tab"
+              | Dropbox連携設定
+              span.line
+          li
             a href="#destroy" role="tab" data-toggle="tab"
               | アカウント削除
               span.line
@@ -21,4 +25,5 @@ section.page-block.user-account.space-bottom
         .tab-content
           = render 'form'
           = render 'photo_service_form'
+          = render 'dropbox'
           = render 'destroy'
