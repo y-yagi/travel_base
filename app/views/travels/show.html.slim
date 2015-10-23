@@ -59,6 +59,19 @@ section.page-block.double-padding-top.double-space-bottom
                 = simple_format(@travel.memo)
                 = link_to edit_travel_path(@travel), title: '編集' do
                   i.fa.fa-edit
+      - if @travel.dropbox_files.present?
+        .col-md-8.col-md-offset-2.col-xs-12
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a.collapsed[data-toggle="collapse" href="#dropbox-files"]
+                  | ファイルを確認する
+            #dropbox-files.panel-collapse.collapse[style="height: 0px;"]
+              .panel-body
+                - @travel.dropbox_files.each do |file|
+                  = link_to file.name, file.url, target: '_blank'
+                  | &nbsp;
+
     .row.double-space-top
       .col-md-8.col-md-offset-2
         .tab-content
