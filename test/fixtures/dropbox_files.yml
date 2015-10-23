@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  url: MyString
-  travel_id:
-
-two:
-  name: MyString
-  url: MyString
-  travel_id:
+detail_pdf:
+  name: $LABEL
+  url: http://example.com/$LABEL
+  travel: kyoto

@@ -38,3 +38,6 @@ hr
             tr
               td
                 = link_to dropbox_file.name, dropbox_file.url, target: '_blank'
+              td
+                = link_to travel_dropbox_file_url(@travel, dropbox_file),  method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除', id: "dropbox-files-#{dropbox_file.id}" do
+                  i.fa.fa-trash-o

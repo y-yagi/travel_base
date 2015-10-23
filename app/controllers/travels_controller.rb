@@ -39,7 +39,7 @@ class TravelsController < ApplicationController
 
   def update
     if @travel.update(travel_params)
-      redirect_to @travel, info: '旅行の予定を更新しました'
+      redirect_to edit_travel_path(@travel), info: '旅行の予定を更新しました'
     else
       render :edit
     end

@@ -214,4 +214,14 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
 
     assert_match twitter_user.name, page.text
   end
+
+  test 'can remove file' do
+    travel = travels(:kyoto)
+    visit edit_travel_path(travel)
+    assert_match 'detail_pdf', page.text
+
+    find("#dropbox-files-#{travel.dropbox_files.first.id}").click
+
+    assert_no_match 'detail_pdf', page.text
+  end
 end
