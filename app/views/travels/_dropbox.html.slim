@@ -12,7 +12,7 @@
       br
       .col-md-12.col-sm-12
         .text-center
-          = f.submit class: "btn btn-md btn-primary", value: '選択したファイルを登録', data: { disable_with: "Please wait..." }
+          = f.submit class: "btn btn-md btn-primary", value: '選択したファイルを登録', data: { disable_with: "Please wait..." }, disabled: true, id: 'dropbox-file-submit'
 br
 hr
 

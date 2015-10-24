@@ -9,6 +9,7 @@ $ ->
           content += "<input type='hidden' name='travel[dropbox_files_attributes][#{file_count}][name]' id='travel_dropbox_files_attributes_#{file_count}_name' value=#{files[0].name}>"
           content += "<input type='hidden' name='travel[dropbox_files_attributes][#{file_count}][url]' id='travel_dropbox_files_attributes_#{file_count}_url' value=#{files[0].link}>"
           $('.dropbox-files').append(content)
+          $('#dropbox-file-submit').removeAttr('disabled')
           file_count += 1
     }
     button = Dropbox.createChooseButton(options)
