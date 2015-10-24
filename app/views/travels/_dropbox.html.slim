@@ -5,7 +5,10 @@
   .panel-body
     | Dropboxに登録しているファイルを、この旅行と紐付ける事が出来ます
     br
-    .dropbox-button
+    br
+    .col-md-12.col-sm-12
+      .text-center
+        .dropbox-button
     br
     = form_for(@travel, html: { id: 'travel_form'}) do |f|
       .dropbox-files
