@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+detail_pdf:
+  name: $LABEL
+  url: http://example.com/$LABEL
+  travel: kyoto

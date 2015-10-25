@@ -13,6 +13,10 @@ section.page-block.user-account.space-bottom
             a href="#member" role="tab" data-toggle="tab"
               | メンバー管理
               span.line
+          li
+            a href="#dropbox" role="tab" data-toggle="tab"
+              | Dropbox連携
+              span.line
       .col-md-9.gray-bg
         .tab-content
           .tab-pane.fade.in.active id="basic"
@@ -23,3 +27,6 @@ section.page-block.user-account.space-bottom
           .tab-pane.fade.in id="member"
             .col-sm-8.col-sm-offset-2
               = render 'member'
+          .tab-pane.fade.in id="dropbox"
+            .col-sm-8.col-sm-offset-2
+              = render 'dropbox'

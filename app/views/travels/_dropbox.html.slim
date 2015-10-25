@@ -1,0 +1,46 @@
+.panel.static.panel-primary
+  .panel-heading
+    h4.panel-title
+     | Dropbox連携
+  .panel-body
+    | Dropboxに登録しているファイルを、この旅行と紐付ける事が出来ます
+    br
+    br
+    .col-md-12.col-sm-12
+      .text-center
+        .dropbox-button
+    br
+    = form_for(@travel, html: { id: 'travel_form'}) do |f|
+      .dropbox-files
+      br
+      .col-md-12.col-sm-12
+        .text-center
+          = f.submit class: "btn btn-md btn-primary", value: '選択したファイルを登録', data: { disable_with: "Please wait..." }, disabled: true, id: 'dropbox-file-submit'
+br
+hr
+
+.panel.static.panel-primary
+  .panel-heading
+    h4.panel-title
+      | 登録済みファイル一覧
+  .panel-body
+    - if @travel.dropbox_files.empty?
+      p
+        strong
+          | ファイルは登録されていません
+    - else
+      table.table.table-striped
+        thead
+          tr
+            th
+              | ファイル名
+            th
+              |
+        tbody
+          - @travel.dropbox_files.each do |dropbox_file|
+            tr
+              td
+                = link_to dropbox_file.name, dropbox_file.url, target: '_blank'
+              td
+                = link_to travel_dropbox_file_url(@travel, dropbox_file),  method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除', id: "dropbox-files-#{dropbox_file.id}" do
+                  i.fa.fa-trash-o

@@ -39,7 +39,7 @@ class TravelsController < ApplicationController
 
   def update
     if @travel.update(travel_params)
-      redirect_to @travel, info: '旅行の予定を更新しました'
+      redirect_to edit_travel_path(@travel), info: '旅行の予定を更新しました'
     else
       render :edit
     end
@@ -60,6 +60,9 @@ class TravelsController < ApplicationController
     end
 
     def travel_params
-      params.require(:travel).permit(:name, :memo, :start_date, :end_date, :user_id)
+      params.require(:travel).permit(
+        :name, :memo, :start_date, :end_date, :user_id,
+        dropbox_files_attributes: [:id, :name, :url]
+      )
     end
 end
