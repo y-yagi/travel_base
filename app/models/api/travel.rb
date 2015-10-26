@@ -14,6 +14,7 @@ module Api::Travel
     property :formatted_end_date
     property :updated_at
     collection :travel_dates, selectable: true
+    collection :dropbox_files
 
     def self.build_permissions(perms, other, target)
       perms.permits! :read if perms.user == other
