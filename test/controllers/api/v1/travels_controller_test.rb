@@ -102,4 +102,15 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal expected_place.urls.join(','), actual_place['url']
     assert_match expected_place.places_station.first.station.name, actual_place['station_info']
   end
+
+  test 'json include dropbox file data' do
+    travel = travels(:kyoto)
+    get :show, id: travel.id, fields: '*',
+      format: :json, user_id: @user.email, user_provider: @user.provider
+    parsed_response_body = JSON.parse(@response.body)
+
+    assert_equal travel.dropbox_files.size, parsed_response_body['dropbox_files'].size
+    assert_equal travel.dropbox_files.first.name, parsed_response_body['dropbox_files'].first['name']
+    assert_equal travel.dropbox_files.first.url, parsed_response_body['dropbox_files'].first['url']
+  end
 end
