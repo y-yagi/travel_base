@@ -5,7 +5,7 @@ section.page-block.double-padding-top.double-space-bottom
       h2
         = @travel.name
         - if @travel.owner?(current_user)
-          = link_to edit_travel_path(@travel), title: '編集' do
+          = link_to edit_travel_path(@travel), title: '編集', "data-no-turbolink": true do
             i.fa.fa-edit.small.text-muted.left10
         span
     .row.double-space-top
@@ -57,7 +57,7 @@ section.page-block.double-padding-top.double-space-bottom
             #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
               .panel-body
                 = simple_format(@travel.memo)
-                = link_to edit_travel_path(@travel), title: '編集' do
+                = link_to edit_travel_path(@travel), title: '編集', "data-no-turbolink": true do
                   i.fa.fa-edit
       - if @travel.dropbox_files.present?
         .col-md-8.col-md-offset-2.col-xs-12

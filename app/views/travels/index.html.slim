@@ -13,7 +13,7 @@ section.page-block.space-top.space-bottom
           .item
             - if travel.owner?(current_user)
               .delete
-                = link_to edit_travel_path(travel), title: '編集' do
+                = link_to edit_travel_path(travel), title: '編集', "data-no-turbolink": true do
                   i.fa.fa-edit
                 = link_to travel, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                   i.fa.fa-trash-o
