@@ -72,7 +72,6 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
     visit travel_path(travel)
 
     assert_match travel.memo, page.text
-    assert_match '写真管理', page.text
   end
 
   test 'add schedule' do

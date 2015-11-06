@@ -33,20 +33,6 @@ section.page-block.double-padding-top.double-space-bottom
                   br
                   .col-md-12.col-xs-12
                     = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録'
-        - else
-          - # add photo panel
-          .panel.panel-primary
-            .panel-heading
-              h4.panel-title
-                a.collapsed[data-toggle="collapse" href="#manage-photo"]
-                  |  写真管理
-            #manage-photo.panel-collapse.collapse[style="height: 0px;"]
-              .panel-body
-                .col-md-4.col-xs-12
-                  = link_to '写真データを紐付ける', new_travel_photo_path(travel_id: @travel.id)
-                .col-md-8.col-xs-12
-                  | 写真を見る : &nbsp;
-                  = select :travel_photo, :id, @travel.photo_list_for_select, { prompt: 'Please select' }, { class: "form-control-select", onchange: "if (this.value) window.location.href=this.value" }
       - if @travel.memo.present?
         .col-md-8.col-md-offset-2.col-xs-12
           .panel.panel-default
