@@ -19,10 +19,10 @@ class SearchIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'can search places that login user created' do
-    within(:css, "form.quick-search") do
+    within(:css, "form.mobile-search") do
       fill_in 'search', with: '神社'
     end
-    find('.quick-search').trigger('click')
+    find('.icon-search').trigger('click')
 
     assert_match '大麻比古神社', page.text
     assert_match '貴船神社', page.text
