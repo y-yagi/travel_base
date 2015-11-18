@@ -15,6 +15,13 @@ GIT
       responders
       sass-rails
 
+GIT
+  remote: git://github.com/y-yagi/turbolinks.git
+  revision: 75115a3c217f54b447b780061ae0279abae1f146
+  specs:
+    turbolinks (3.0.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -391,8 +398,6 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     tins (1.6.0)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -483,7 +488,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.0)
   slim-rails
   spring
-  turbolinks
+  turbolinks!
   uglifier (>= 1.3.0)
   unicorn
   web-console (~> 2.0.0)

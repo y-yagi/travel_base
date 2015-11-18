@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :places do
+    member do
+      patch :archive
+    end
+
     collection do
       get 'search'
     end
