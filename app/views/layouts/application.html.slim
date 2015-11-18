@@ -7,7 +7,7 @@ html
     title
       | TravelBase
     = stylesheet_link_tag    'application', media: 'all'
-    script[src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"]
+    script[src="//maps.googleapis.com/maps/api/js?v=3.exp"]
     script[src="//www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="4j5bv0i7855ev2x"]
     = javascript_include_tag 'application'
     - if @need_pages_js
