@@ -27,4 +27,3 @@
 //= require_tree ../../../lib/assets/javascripts/common/
 //= require turbolinks
 //= require_directory .
-Turbolinks.enableProgressBar();

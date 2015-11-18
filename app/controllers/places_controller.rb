@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_place, only: [:show, :edit, :update, :destroy, :archive]
   before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def index
@@ -43,6 +43,11 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     redirect_to places_url, info: %("#{@place.name}"を削除しました)
+  end
+
+  def archive
+    @place.update!(status: :already_went)
+    redirect_to places_url, info: %("#{@place.name}"をアーカイブしました), change: 'places'
   end
 
   private
