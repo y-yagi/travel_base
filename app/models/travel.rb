@@ -68,14 +68,8 @@ class Travel < ActiveRecord::Base
   end
 
   def adjust_travel_dates
-    if travel_dates.present?
-      travel_dates.where.not(date: date_range).each(&:destroy!)
-    end
-
-    old_date_range = travel_dates.map(&:date)
-    date_range.reject { |d| old_date_range.include?(d) }.each do |d|
-      self.travel_dates.build({ date: d })
-    end
+    remove_erased_dates!
+    build_new_dates
   end
 
   def member?(user_id)
@@ -119,4 +113,18 @@ class Travel < ActiveRecord::Base
   def places
     travel_dates.map { |date| date.schedules.map(&:place) }.flatten
   end
+
+  private
+    def remove_erased_dates!
+      if travel_dates.present?
+        travel_dates.where.not(date: date_range).each(&:destroy!)
+      end
+    end
+
+    def build_new_dates
+      old_date_range = travel_dates.map(&:date)
+      date_range.reject { |d| old_date_range.include?(d) }.each do |d|
+        self.travel_dates.build({ date: d })
+      end
+    end
 end
