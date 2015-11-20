@@ -68,7 +68,7 @@ class Travel < ActiveRecord::Base
   end
 
   def adjust_travel_dates
-    unless travel_dates.empty?
+    if travel_dates.present?
       travel_dates.where.not(date: date_range).each(&:destroy!)
     end
 
