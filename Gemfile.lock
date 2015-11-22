@@ -217,6 +217,8 @@ GEM
       minitest (>= 5.0)
     minitest-sound (0.0.7)
       minitest (>= 5.0)
+    minitest-test_profile (0.1.0)
+      minitest
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -455,6 +457,7 @@ DEPENDENCIES
   launchy
   minitest-slow_test
   minitest-sound
+  minitest-test_profile
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

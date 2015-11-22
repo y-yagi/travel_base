@@ -60,6 +60,7 @@ group :test do
   gem 'launchy'
   gem 'minitest-sound'
   gem 'minitest-slow_test'
+  gem 'minitest-test_profile'
   gem 'poltergeist'
   gem 'webmock'
 end
