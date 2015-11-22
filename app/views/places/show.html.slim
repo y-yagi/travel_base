@@ -38,8 +38,9 @@ section.page-block.space-top.space-bottom
           h4.bold-weight
             | URL:
           p
-            - @place.urls.reject(&:blank?).each_with_index do |url, i|
-              = link_to "URL#{i + 1} ", url, target: '_blank'
+            - @place.urls.reject(&:blank?).each do |url|
+              = link_to url, url, target: '_blank'
+              br
         - if @place.memo.present?
           h4.bold-weight
             | メモ:

@@ -39,7 +39,7 @@ section.page-block.space-top.space-bottom
                     = link_to(tag, places_path(tag: tag), class: 'label label-info label-list')
                   br
                 - if place.urls.present?
-                  - place.urls.reject(&:blank?).each_with_index do |url, i|
+                  - place.urls.reject(&:blank?).each do |url|
                     = link_to url, url, target: '_blank'
                     br
                 - else
