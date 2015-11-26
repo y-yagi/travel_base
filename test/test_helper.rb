@@ -46,6 +46,8 @@ Minitest::Sound.during_test = '/home/yaginuma/Dropbox/tmp/music/other/rs1_25_bea
 
 Minitest::SlowTest.exclude_test_name = %(test_can_search_places_that_login_user_created)
 
+Minitest::TestProfile.use!
+
 class ActiveSupport::TestCase
   set_fixture_class oauth_applications: Doorkeeper::Application
   fixtures :all
