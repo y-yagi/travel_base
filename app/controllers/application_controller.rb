@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   force_ssl if: :ssl_configured?
   add_flash_types :info, :warning, :danger
 
-  helper_method :current_user
+  helper_method :current_user, :markdown
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
 
   def set_page_js
     @need_pages_js = true
+  end
+
+  def markdown
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   end
 end
