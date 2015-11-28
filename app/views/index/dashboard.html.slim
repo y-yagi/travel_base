@@ -34,6 +34,6 @@ section.double-padding-top
                 | です。
             - else
               | <p class="p-lg">旅行の予定はありません。<a href="#{new_travel_path}" title="Inline Link">旅行の予定を作成する。</a></p>
-            = hidden_field_tag('future_travels', @future_travels)
+            = hidden_field_tag('calendar_events', @events)
             #calendar
 
