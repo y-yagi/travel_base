@@ -67,11 +67,13 @@ section.page-block.double-padding-top.double-space-bottom
           - @travel.travel_dates.each_with_index do |travel_date, i|
             div class="tab-pane#{" fade in active" if i == 0}" id="#{i + 1}_day"
               h4
-                = I18n.l(travel_date.date, format: :long)
-                - if travel_date.schedules.present?
-                  br
-                  small
-                    = link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank'
+                .text-primary
+                  strong
+                    = I18n.l(travel_date.date, format: :long)
+                  - if travel_date.schedules.present?
+                    br
+                    small
+                      = link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank'
               ul.timeline
                 - travel_date.schedules.each_with_index do |schedule, i|
                   - schedule.extend(ScheduleDecorator)
