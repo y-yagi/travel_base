@@ -16,6 +16,19 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
-    assert_equal Place.mine(users(:google)).not_gone.size, parsed_response_body.size
+    assert_equal Place.mine(users(:google)).size, parsed_response_body.size
+  end
+
+  test 'specify the update date, the data after the date that update can be get' do
+    latest_travel = Place.mine(users(:google)).not_gone.first
+    travel_to 1.day.since do
+      latest_travel.update!(name: latest_travel.name + ' 更新')
+    end
+
+    get :index, format: :json, user_id: @user.email, user_provider: @user.provider, updated_at: Time.current
+    assert_response :success
+    parsed_response_body = JSON.parse(@response.body)
+    assert_equal 1, parsed_response_body.size
+    assert_equal latest_travel.id, parsed_response_body.first['id']
   end
 end
