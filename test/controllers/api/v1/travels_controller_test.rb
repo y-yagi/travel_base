@@ -101,6 +101,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal expected_place.address, actual_place['address']
     assert_equal expected_place.urls.join(','), actual_place['url']
     assert_match expected_place.places_station.first.station.name, actual_place['station_info']
+    assert_match expected_place.status, actual_place['status']
   end
 
   test 'json include dropbox file data' do

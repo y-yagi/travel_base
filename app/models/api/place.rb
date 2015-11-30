@@ -13,6 +13,7 @@ module Api::Place
     property :longitude
     property :station_info
     property :url
+    property :status
 
     def self.build_permissions(perms, other, target)
       perms.permits! :read if perms.user == other
