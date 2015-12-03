@@ -8,7 +8,7 @@ bundler_args: "--without production"
 cache: bundler
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
-  - xvfb-run bin/rake
+  - xvfb-run bundle exec rake test
 before_script:
   - export TZ=Asia/Tokyo
   - cp config/database.yml.travis config/database.yml
