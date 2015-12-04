@@ -32,8 +32,7 @@ section.page-block.space-top.space-bottom
             | タグ:
           p
             - @place.tags.each do |tag|
-              span.label.label-info.label-list
-                = tag
+              = link_to(tag, places_path(tag: tag), class: 'label label-info label-list')
         - if @place.urls.try { any?(&:present?) }
           h4.bold-weight
             | URL:
