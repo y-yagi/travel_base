@@ -4,6 +4,8 @@ require 'elasticsearch/extensions/test/cluster'
 
 class SearchIntegrationTest < ActionDispatch::IntegrationTest
   def setup
+    skip 'Disabling temporarily search'
+
     Capybara.current_driver = Capybara.javascript_driver
 
     unless Elasticsearch::Extensions::Test::Cluster.running?
@@ -14,6 +16,8 @@ class SearchIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   def teardown
+    return
+
     Capybara.current_driver = Capybara.default_driver
     Elasticsearch::Extensions::Test::Cluster.stop
   end
