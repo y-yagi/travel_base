@@ -12,7 +12,7 @@
 class TravelDate < ActiveRecord::Base
   include Api::TravelDate
 
-  belongs_to :travel
+  belongs_to :travel, touch: true
   has_many :schedules, -> { order(:start_time) }, dependent: :destroy
 
   validates :date, presence: true
