@@ -114,4 +114,17 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
     assert_equal travel.dropbox_files.first.name, parsed_response_body['dropbox_files'].first['name']
     assert_equal travel.dropbox_files.first.url, parsed_response_body['dropbox_files'].first['url']
   end
+
+  test 'specify the update date, the data after the date that update can be get' do
+    latest_travel = Travel.mine(users(:google)).order(:updated_at).last
+    travel_to 1.day.since do
+      latest_travel.update!(name: latest_travel.name + ' 更新')
+    end
+
+    get :index, format: :json, user_id: @user.email, user_provider: @user.provider, updated_at: Time.current
+    assert_response :success
+    parsed_response_body = JSON.parse(@response.body)
+    assert_equal 1, parsed_response_body.size
+    assert_equal latest_travel.id, parsed_response_body.first['id']
+  end
 end
