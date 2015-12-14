@@ -35,7 +35,7 @@ section.page-block.double-padding-top.double-space-bottom
                     = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録'
       - if @travel.memo.present?
         .col-md-8.col-md-offset-2.col-xs-12
-          .panel.panel-default
+          .panel.panel-primary
             .panel-heading
               h4.panel-title
                 a.collapsed[data-toggle="collapse" href="#confirm-memo"]
@@ -47,7 +47,7 @@ section.page-block.double-padding-top.double-space-bottom
                   i.fa.fa-edit
       - if @travel.dropbox_files.present?
         .col-md-8.col-md-offset-2.col-xs-12
-          .panel.panel-default
+          .panel.panel-primary
             .panel-heading
               h4.panel-title
                 a.collapsed[data-toggle="collapse" href="#dropbox-files"]
