@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def googlemap_link(address)
-    URI.encode("https://maps.google.co.jp/maps?q=#{address}")
+    URI.encode("https://www.google.co.jp/maps/?q=#{address}")
   end
 
   def current_menu?(name)

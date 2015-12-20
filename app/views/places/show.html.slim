@@ -49,6 +49,10 @@ section.page-block.space-top.space-bottom
         .page-heading.center
           h3.light-weight.text-primary
             | 地図
+        span
+          = link_to(googlemap_link(@place.address), class: 'text-primary', target: '_blank') do
+            i.fa.fa-caret-right
+              | 大きい地図を表示
         .google-map.h-550.space-bottom
           #map-canvas
 
