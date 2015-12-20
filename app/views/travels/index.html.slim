@@ -25,5 +25,5 @@ section.page-block.space-top.space-bottom
               .col-md-8.col-xs-12
                 = travel.formatted_schedule
                 br
-                = simple_format(travel.memo)
+                = simple_format(markdown.render(travel.memo))
       = paginate @travels

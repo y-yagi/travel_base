@@ -42,7 +42,7 @@ section.page-block.double-padding-top.double-space-bottom
                   |  メモを確認する
             #confirm-memo.panel-collapse.collapse[style="height: 0px;"]
               .panel-body
-                = simple_format(@travel.memo)
+                = simple_format(markdown.render(@travel.memo))
                 = link_to edit_travel_path(@travel), title: '編集', "data-no-turbolink": true do
                   i.fa.fa-edit
       - if @travel.dropbox_files.present?

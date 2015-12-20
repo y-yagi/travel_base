@@ -490,6 +490,7 @@ DEPENDENCIES
   rails_12factor
   rake-guardian
   rambulance
+  redcarpet
   responders
   rollbar
   sass-rails (~> 5.0.0)
