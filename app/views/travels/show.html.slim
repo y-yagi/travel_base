@@ -116,6 +116,9 @@ section.page-block.double-padding-top.double-space-bottom
                             br
                             = link_to new_schedule_route_path(schedule), title: '移動方法を登録する' do
                               i.fa.fa-bus
+                          br
+                          = link_to create_route_link_from_travel_date(travel_date, i), title: 'GoogleMapでルートを確認する', target: '_blank' do
+                            i.fa.fa-map-marker
                       - if schedule.memo.present?
                         .timeline-body
                           = simple_format(schedule.memo)
