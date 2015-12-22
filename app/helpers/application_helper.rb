@@ -10,7 +10,11 @@ module ApplicationHelper
   end
 
   def googlemap_link(address)
-    URI.encode("https://maps.google.co.jp/maps?q=#{address}")
+    URI.encode("https://www.google.co.jp/maps/?q=#{address}")
+  end
+
+  def googlemap_route_link(from, to)
+    URI.encode("https://www.google.co.jp/maps/dir/#{from}/#{to}")
   end
 
   def current_menu?(name)
@@ -23,6 +27,12 @@ module ApplicationHelper
       route_title = before_schedule.place.name
     end
     route_title + '〜' + schedules[index].place.name
+  end
+
+  def create_route_link_from_travel_date(travel_date, index)
+    from = index.zero? ? '' : travel_date.schedules[index - 1].place.address
+    to = travel_date.schedules[index].place.address
+    googlemap_route_link(from, to)
   end
 
   def generate_invite_url(travel)
