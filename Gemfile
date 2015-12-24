@@ -47,7 +47,7 @@ end
 
 group :development, :test do
   gem 'brakeman'
-  gem 'web-console', '~> 2.0.0'
+  gem 'web-console', '>= 2.1.3'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-nav'
