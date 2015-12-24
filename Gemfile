@@ -43,11 +43,11 @@ gem 'uglifier', '>= 1.3.0'
 group :development do
   gem 'quiet_assets'
   gem 'rack-mini-profiler'
+  gem 'web-console', '>= 2.1.3'
 end
 
 group :development, :test do
   gem 'brakeman'
-  gem 'web-console', '~> 2.0.0'
   gem 'spring'
   gem 'pry-rails'
   gem 'pry-nav'
