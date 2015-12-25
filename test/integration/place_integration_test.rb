@@ -1,12 +1,8 @@
 require 'test_helper'
-require 'support/heart_rails_api_helper'
 
 class PlaceIntegrationTest < ActionDispatch::IntegrationTest
-  include HeartRailsExpressApiHelper
-
   def setup
     login
-    set_station_mock
     visit places_path
   end
 

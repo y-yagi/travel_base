@@ -17,11 +17,8 @@
 #
 
 require 'test_helper'
-require 'support/heart_rails_api_helper'
 
 class PlaceTest < ActiveSupport::TestCase
-  include HeartRailsExpressApiHelper
-
   test 'should have the necessary required validators' do
     place = Place.new
     assert_not place.valid?
