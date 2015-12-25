@@ -63,6 +63,7 @@ group :test do
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
   gem 'poltergeist'
+  gem 'vcr'
   gem 'webmock'
 end
 

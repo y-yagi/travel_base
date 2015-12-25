@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://express.heartrails.com/api/json?method=getStations&x=135.45462&y=35.07182
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - express.heartrails.com
+      User-Agent:
+      - http.rb/0.9.8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+      Status:
+      - '200'
+      X-Powered-By:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.0
+      Etag:
+      - '"7983342fe61a0e9f9c710b2b4f5b6c1c"'
+      X-Runtime:
+      - '1'
+      Content-Length:
+      - '528'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Expires:
+      - Thu, 01 Dec 1994 16:00:00 GMT
+      Server:
+      - nginx/0.8.54 + Phusion Passenger 3.0.0 (mod_rails/mod_rack)
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJyZXNwb25zZSI6eyJzdGF0aW9uIjpbeyJkaXN0YW5jZSI6IjQyODBtIiwi
+        cG9zdGFsIjoiNjIyMDA0MSIsIngiOjEzNS40ODM0NTUsIm5leHQiOiLoiLnl
+        sqEiLCJwcmV2Ijoi5ZCJ5a+MIiwieSI6MzUuMTAyMTY4LCJsaW5lIjoiSlLl
+        sbHpmbDmnKznt5oiLCJwcmVmZWN0dXJlIjoi5Lqs6YO95bqcIiwibmFtZSI6
+        IuWckumDqCJ9LHsiZGlzdGFuY2UiOiI0NTkwbSIsInBvc3RhbCI6IjYyOTAx
+        NjUiLCJ4IjoxMzUuNDk4NTQ4LCJuZXh0Ijoi5ZyS6YOoIiwicHJldiI6IuWF
+        q+acqCIsInkiOjM1LjA5MjA1MywibGluZSI6IkpS5bGx6Zmw5pys57eaIiwi
+        cHJlZmVjdHVyZSI6IuS6rOmDveW6nCIsIm5hbWUiOiLlkInlr4wifSx7ImRp
+        c3RhbmNlIjoiNzA1MG0iLCJwb3N0YWwiOiI2MjkwMTQxIiwieCI6MTM1LjUz
+        MTk3NiwibmV4dCI6IuWQieWvjCIsInByZXYiOiLljYPku6Plt50iLCJ5Ijoz
+        NS4wNjg5ODUsImxpbmUiOiJKUuWxsemZsOacrOe3miIsInByZWZlY3R1cmUi
+        OiLkuqzpg73lupwiLCJuYW1lIjoi5YWr5pyoIn1dfX0K
+    http_version: 
+  recorded_at: Sat, 26 Dec 2015 01:41:17 GMT
+recorded_with: VCR 3.0.1
