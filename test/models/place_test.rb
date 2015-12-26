@@ -63,7 +63,6 @@ class PlaceTest < ActiveSupport::TestCase
     PlacesStation.delete_all
     place = places(:kifune)
 
-
     VCR.use_cassette('places_station') do
       assert_difference('PlacesStation.count', 3) do
         place.set_station_info
