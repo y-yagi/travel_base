@@ -64,7 +64,7 @@ group :test do
   gem 'launchy'
   gem 'minitest-sound'
   gem 'minitest-slow_test'
-  gem 'minitest-test_profile'
+  gem 'minitest-test_profile', github: 'y-yagi/minitest-test_profile', branch: 'rails_5'
   gem 'poltergeist'
   gem 'vcr'
   gem 'webmock'

@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 1e42a4dfb4ae8dd86729877dbc55adcbf947fa48
+  revision: 4d98b0d837b29d34355f3fcb3916b6ac4a8b1bef
   specs:
     actioncable (5.0.0.beta1)
       actionpack (= 5.0.0.beta1)
@@ -128,6 +128,15 @@ GIT
     exception_notification-idobata (1.0.0)
       exception_notification
       rest-client
+
+GIT
+  remote: git://github.com/y-yagi/minitest-test_profile.git
+  revision: d8dc833397d216cc50caeb2225ffc48c70125c45
+  branch: rails_5
+  specs:
+    minitest-test_profile (0.1.0)
+      coveralls
+      minitest
 
 GIT
   remote: git://github.com/y-yagi/oauth2.git
@@ -363,8 +372,6 @@ GEM
       minitest (>= 5.0)
     minitest-sound (0.0.7)
       minitest (>= 5.0)
-    minitest-test_profile (0.1.0)
-      minitest
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -587,7 +594,7 @@ DEPENDENCIES
   launchy
   minitest-slow_test
   minitest-sound
-  minitest-test_profile
+  minitest-test_profile!
   oauth2!
   omniauth
   omniauth-facebook
