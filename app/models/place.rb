@@ -80,9 +80,6 @@ class Place < ActiveRecord::Base
       stations = HeartRailsExpressApi.get_stations(latitude, longitude)
       PlacesStation.build_from_api_result!(self, stations)
     rescue => e
-      p "error"
-      p e
-      p e.backtrace.join("\n")
       logger.error(e)
       Rollbar.error(e, "can't create station data")
     end
