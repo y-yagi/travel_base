@@ -1,4 +1,4 @@
-ruby '2.2.3'
+ruby '2.3.0'
 
 source 'https://rubygems.org'
 
@@ -16,7 +16,7 @@ gem 'garage', github: 'cookpad/garage'
 gem 'garage-doorkeeper'
 gem 'geocoder'
 gem 'rails-footnotes', '~> 4.0'
-gem 'http'
+gem 'http', '0.9.8'
 gem 'holiday_jp'
 gem 'icalendar'
 gem 'jbuilder'
@@ -63,6 +63,7 @@ group :test do
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
   gem 'poltergeist'
+  gem 'vcr'
   gem 'webmock'
 end
 
