@@ -450,7 +450,7 @@ DEPENDENCIES
   guard
   guard-minitest
   holiday_jp
-  http
+  http (= 0.9.8)
   icalendar
   jbuilder
   jquery-rails
