@@ -28,5 +28,7 @@ module TravelBase
       g.assets     false
       g.helper     false
     end
+
+    config.active_record.time_zone_aware_types = [:time]
   end
 end
