@@ -25,7 +25,7 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
       latest_place.update!(name: latest_place.name + ' 更新')
     end
 
-    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: Time.current }
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since }
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
     assert_equal 1, parsed_response_body.size
