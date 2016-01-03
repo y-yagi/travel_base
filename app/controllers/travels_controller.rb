@@ -14,7 +14,7 @@ class TravelsController < ApplicationController
 
     respond_to do |format|
       format.html { render :show }
-      format.ics { render text: @travel.to_ics }
+      format.ics { render plain: @travel.to_ics }
     end
   end
 
