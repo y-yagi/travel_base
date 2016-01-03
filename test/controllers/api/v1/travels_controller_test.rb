@@ -12,7 +12,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
   end
 
   test 'can get my travel list' do
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider }
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
@@ -21,8 +21,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'can get my travel detail' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
 
     assert_response :success
   end
@@ -30,15 +29,13 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
   test "can't get other user's travel detail" do
     travel = users(:twitter).travels.first
     assert_raises ActiveRecord::RecordNotFound do
-      get :show, id: travel.id, format: :json,
-        user_id: @user.email, user_provider: @user.provider
+      get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider }
     end
   end
 
   test 'json include travel data' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.name, parsed_response_body['name']
@@ -52,8 +49,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include travel date date' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
@@ -63,8 +59,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include schedules data' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.first.schedules.size,
@@ -81,8 +76,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include route data' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.travel_dates.first.schedules.second.route.detail,
@@ -91,8 +85,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include place data' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     expected_place = travel.travel_dates.first.schedules.first.place
@@ -106,8 +99,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include dropbox file data' do
     travel = travels(:kyoto)
-    get :show, id: travel.id, fields: '*',
-      format: :json, user_id: @user.email, user_provider: @user.provider
+    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
     parsed_response_body = JSON.parse(@response.body)
 
     assert_equal travel.dropbox_files.size, parsed_response_body['dropbox_files'].size
@@ -121,7 +113,7 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
       latest_travel.update!(name: latest_travel.name + ' 更新')
     end
 
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider, updated_at: Time.current
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: Time.current }
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
     assert_equal 1, parsed_response_body.size
