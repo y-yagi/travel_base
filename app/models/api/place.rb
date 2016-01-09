@@ -17,10 +17,12 @@ module Api::Place
 
     def self.build_permissions(perms, other, target)
       perms.permits! :read if perms.user == other
+      perms.permits! :write if perms.user == other
     end
 
     def build_permissions(perms, other)
       perms.permits! :read if perms.user == other
+      perms.permits! :write if perms.user == other
     end
 
     def station_info

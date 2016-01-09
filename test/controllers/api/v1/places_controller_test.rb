@@ -31,4 +31,29 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
     assert_equal 1, parsed_response_body.size
     assert_equal latest_place.id, parsed_response_body.first['id']
   end
+
+  test 'can create place' do
+    assert_difference 'Place.count' do
+      post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
+        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315
+    end
+
+    assert_response :success
+
+    place = Place.last
+    assert_equal '赤羽駅', place.name
+    assert_equal '東京都北区赤羽一丁目1-1', place.address
+    assert_equal 35.46409, place.latitude
+    assert_equal 139.4315, place.longitude
+  end
+
+  test 'can not create a place in the user that is not authenticated' do
+    @request.env['HTTP_AUTHORIZATION'] = nil
+    assert_no_difference 'Place.count' do
+      post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
+        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315
+    end
+
+    assert_response 401
+  end
 end
