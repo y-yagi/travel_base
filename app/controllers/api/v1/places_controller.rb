@@ -10,12 +10,6 @@ class Api::V1::PlacesController < Api::ApplicationController
   end
 
   def create_resource
-    @resource = ::Place.create!(
-      name: params[:name], address: params[:address],
-      latitude: params[:latitude], longitude: params[:longitude],
-      user_id: current_resource_owner.id
-    )
-    @resource.set_station_info
-    @resource
+    @resource = Place.create_from_params!(params: params, current_resource_owner: current_resource_owner)
   end
 end

@@ -56,4 +56,17 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
 
     assert_response 401
   end
+
+  test "supplemented with automatic if the address is not" do
+    post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
+      name: '下灘駅', latitude: 35.655048, longitude: 132.589155
+
+    assert_response :success
+
+    place = Place.last
+    assert_equal '下灘駅', place.name
+    assert_equal '愛媛県伊予市双海町大久保', place.address
+    assert_equal 35.655048, place.latitude
+    assert_equal 132.589155, place.longitude
+  end
 end
