@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cookpad/garage.git
-  revision: 16560c5a5afcdbdda80578cf3db2384f9644e604
+  revision: 7c738538833a90dec72ea9d92d1df3bad9f97d49
   specs:
     garage (1.5.2)
       coffee-rails
@@ -242,12 +242,12 @@ GEM
       rack (>= 1.0, < 3)
     omniauth-facebook (3.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.2.10)
+    omniauth-google-oauth2 (0.3.0)
       addressable (~> 2.3)
       jwt (~> 1.0)
       multi_json (~> 1.3)
       omniauth (>= 1.1.1)
-      omniauth-oauth2 (~> 1.3.1)
+      omniauth-oauth2 (>= 1.3.1)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
@@ -297,7 +297,7 @@ GEM
     rails-assets-bootstrap-css (3.3.4)
     rails-assets-bootstrap-tagsinput (0.7.1)
       rails-assets-jquery (~> 2.1.1)
-    rails-assets-fullcalendar (2.5.0)
+    rails-assets-fullcalendar (2.6.0)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.1.4)
@@ -308,7 +308,7 @@ GEM
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
-    rails-assets-moment (2.11.0)
+    rails-assets-moment (2.11.1)
     rails-assets-raf.js (0.0.4)
     rails-assets-respond (1.4.2)
     rails-assets-smoothscroll (0.1.0)
@@ -385,7 +385,7 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
-    spring (1.6.1)
+    spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -399,7 +399,7 @@ GEM
     terminal-table (1.5.2)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.1)
+    tilt (2.0.2)
     tins (1.6.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -418,7 +418,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.22.3)
+    webmock (1.22.6)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
