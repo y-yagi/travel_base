@@ -140,4 +140,15 @@ class TravelTest < ActiveSupport::TestCase
       assert place.not_gone?
     end
   end
+
+  test 'deleted data is recorded' do
+    travel= Travel.first
+    travel.destroy!
+
+    deleted_datum = DeletedDatum.last
+
+    assert_equal 'travels', deleted_datum.table_name
+    assert_equal travel.id, deleted_datum.datum_id
+    assert_equal travel.owner_id, deleted_datum.user_id
+  end
 end

@@ -18,6 +18,7 @@
 
 class Place < ActiveRecord::Base
   include Api::Place
+  include Recorder
 
   belongs_to :user
   has_many :places_station
@@ -38,6 +39,8 @@ class Place < ActiveRecord::Base
   validates :user_id, presence: true
   validates :latitude, presence: true, if: -> { address.present? }
   validates :longitude, presence: true, if: -> { address.present? }
+
+  after_destroy :record_deleted_datum
 
   paginates_per 10
 
