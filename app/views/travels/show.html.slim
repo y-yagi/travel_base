@@ -32,7 +32,7 @@ section.page-block.double-padding-top.double-space-bottom
                       = select :schedule, :place_id, options_for_select(@places), {}, { class: "form-control-select" }
                   br
                   .col-md-12.col-xs-12
-                    = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録'
+                    = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録', data: { disable_with: "Please wait..." }
       - if @travel.memo.present?
         .col-md-8.col-md-offset-2.col-xs-12
           .panel.panel-primary
