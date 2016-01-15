@@ -4,6 +4,7 @@ Garage::TokenScope.configure do
     access :read, Travel
     access :read, Place
     access :write, Place
+    access :read, DeletedDatum
   end
 end
 Garage.configuration.strategy = Garage::Strategy::Doorkeeper
