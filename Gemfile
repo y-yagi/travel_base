@@ -84,3 +84,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-smoothscroll'
   gem 'rails-assets-bootstrap-tagsinput'
 end
+
+gem 'nokogiri', '>= 1.6.7.2'
