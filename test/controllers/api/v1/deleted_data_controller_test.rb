@@ -14,7 +14,7 @@ class Api::V1::DeletedDataControllerTest < ActionController::TestCase
   test 'can get my deleted data list' do
     place = Place.first.destroy!
     travel = Travel.first.destroy!
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider }
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
@@ -32,7 +32,7 @@ class Api::V1::DeletedDataControllerTest < ActionController::TestCase
       place.destroy!
     end
 
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider, updated_at: Time.current
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: Time.current }
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
     assert_equal 'places', parsed_response_body[0]['table_name']
