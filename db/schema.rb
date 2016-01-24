@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022225347) do
+ActiveRecord::Schema.define(version: 20160111005816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deleted_data", force: :cascade do |t|
+    t.string   "table_name"
+    t.integer  "datum_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "deleted_data", ["updated_at"], name: "index_deleted_data_on_updated_at", using: :btree
 
   create_table "dropbox_files", force: :cascade do |t|
     t.string   "name"

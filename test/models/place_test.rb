@@ -75,4 +75,15 @@ class PlaceTest < ActiveSupport::TestCase
     assert_equal 'JR山陰本線', place.places_station.first.station.line
     assert_equal '園部', place.places_station.first.station.name
   end
+
+  test 'deleted data is recorded' do
+    place = Place.first
+    place.destroy!
+
+    deleted_datum = DeletedDatum.last
+
+    assert_equal 'places', deleted_datum.table_name
+    assert_equal place.id, deleted_datum.datum_id
+    assert_equal place.user_id, deleted_datum.user_id
+  end
 end

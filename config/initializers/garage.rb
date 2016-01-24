@@ -3,6 +3,8 @@ Garage::TokenScope.configure do
   register :public, desc: 'acessing publicly available data' do
     access :read, Travel
     access :read, Place
+    access :write, Place
+    access :read, DeletedDatum
   end
 end
 Garage.configuration.strategy = Garage::Strategy::Doorkeeper

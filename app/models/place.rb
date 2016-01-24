@@ -18,6 +18,7 @@
 
 class Place < ActiveRecord::Base
   include Api::Place
+  include Recorder
 
   belongs_to :user
   has_many :places_station
@@ -38,6 +39,8 @@ class Place < ActiveRecord::Base
   validates :user_id, presence: true
   validates :latitude, presence: true, if: -> { address.present? }
   validates :longitude, presence: true, if: -> { address.present? }
+
+  after_destroy :record_deleted_datum
 
   paginates_per 10
 
@@ -63,6 +66,12 @@ class Place < ActiveRecord::Base
       places = places.tag(params[:tag]) if params[:tag]
 
       places
+    end
+
+    def get_address_form_geocode_result(place)
+      # 最初の国名が含まれるので、国名のみ削除する
+      # また、郵便番号が含まれる場合、郵便番号も削除
+      place.formatted_address.split(' ', 2).second.try { gsub(/^〒[0-9-]+ /, '') }
     end
   end
 

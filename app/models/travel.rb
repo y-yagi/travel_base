@@ -16,6 +16,7 @@
 class Travel < ActiveRecord::Base
   include Elasticsearch::Model
   include Api::Travel
+  include Recorder
 
   has_many :travel_dates, dependent: :destroy
   has_many :travel_photos, dependent: :destroy
@@ -37,6 +38,7 @@ class Travel < ActiveRecord::Base
   end
 
   before_save :adjust_travel_dates
+  after_destroy :record_deleted_datum
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :start_date, presence: true

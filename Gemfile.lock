@@ -524,6 +524,7 @@ DEPENDENCIES
   minitest-slow_test
   minitest-sound!
   minitest-test_profile!
+  nokogiri (>= 1.6.7.2)
   oauth2!
   omniauth
   omniauth-facebook

@@ -8,4 +8,8 @@ class Api::V1::PlacesController < Api::ApplicationController
       ::Place.mine(current_resource_owner).includes(places_station: :station).order(updated_at: :desc)
     end
   end
+
+  def create_resource
+    @resource = Place.create_from_params!(params: params, current_resource_owner: current_resource_owner)
+  end
 end
