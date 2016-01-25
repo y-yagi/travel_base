@@ -205,13 +205,16 @@ class TravelIntegrationTest < ActionDispatch::IntegrationTest
 
   test 'can remove member' do
     travel = Travel.order('updated_at DESC').first
-    twitter_user = users(:twitter)
-    travel.update!(members: (travel.members << twitter_user.id).uniq)
+    member = User.find(travel.members.first)
 
     first("a[title='編集']").click
     click_link 'メンバー管理'
 
-    assert_match twitter_user.name, page.text
+    assert_match member.name, page.text
+
+    within('.member-list') { first(:link, '削除').click }
+    click_link 'メンバー管理'
+    assert_no_match member.name, page.text
   end
 
   test 'can remove file' do
