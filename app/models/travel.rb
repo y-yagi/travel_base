@@ -18,7 +18,7 @@ class Travel < ActiveRecord::Base
   include Api::Travel
   include Recorder
 
-  has_many :travel_dates, dependent: :destroy
+  has_many :travel_dates, -> { order(:date) },  dependent: :destroy
   has_many :travel_photos, dependent: :destroy
   has_many :dropbox_files, dependent: :destroy
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
