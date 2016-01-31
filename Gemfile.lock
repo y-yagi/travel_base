@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cookpad/garage.git
-  revision: 7c738538833a90dec72ea9d92d1df3bad9f97d49
+  revision: ea92abfae59aa76751ce08ea6a2ca85573f9489f
   specs:
     garage (1.5.2)
       coffee-rails
@@ -45,7 +45,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_decorator (0.6.0)
+    active_decorator (0.7.0)
     activejob (4.2.5.1)
       activesupport (= 4.2.5.1)
       globalid (>= 0.3.0)
@@ -359,7 +359,7 @@ GEM
     ruby2ruby (2.2.0)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
-    ruby_parser (3.7.2)
+    ruby_parser (3.7.3)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
@@ -369,7 +369,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sexp_processor (4.6.0)
+    sexp_processor (4.6.1)
     shellany (0.0.1)
     simplecov (0.11.1)
       docile (~> 1.1.0)
