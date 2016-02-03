@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :travel_photos, as: 'photos', path: 'photos'
     resources :travel_members, only: [:new, :destroy], as: 'members', path: 'members'
     resources :dropbox_files, only: [:destroy], as: 'dropbox_files', path: 'dropbox_files'
+    resources :todos, only: [:index, :create, :destroy, :update], as: 'todos', path: 'todos'
   end
 
   resources :schedules do

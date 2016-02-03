@@ -1,0 +1,44 @@
+section.page-block.double-padding-top.double-space-bottom
+  .container-fluid
+    .page-heading.center
+      h2
+        | やることリスト
+    .row.double-space-top
+      .col-md-8.col-md-offset-2.col-xs-12
+        = form_for(@todo, url: travel_todos_path) do |f|
+          .row
+            .form-group.col-md-7.com-sm-7
+              = f.text_field :detail, class: "form-control", required: 'required', placeholder: 'やること'
+            .form-group.col-md-3.com-sm-3
+              i.fa.fa-calendar.right10.tooltipped[title="期限を指定"]
+              = f.date_select :deadline_at, { default: 1.day.since.midnight, include_blank: true, start_year: Date.today.year }, { class: "form-control-select" }
+            .form-group.col-md-2.com-sm-2
+              = f.submit class: "btn btn-primary", value: '登録', data: { disable_with: "Please wait..." }
+      hr
+      .col-md-8.col-md-offset-2.col-xs-12
+        table.table.table-striped
+          thead
+            tr
+              th
+                |
+              th
+                | やること
+              th
+                | 期限
+              th
+                |
+          tbody
+            - @todos.each_with_index do |todo, i|
+              tr class=('line-through' if todo.finished)
+                td width="10%"
+                  = form_for([todo.travel, todo], remote: true) do |f|
+                    .checkbox
+                      label.hover
+                        = f.check_box :finished, class: "form-control checkbox todo-finished", id: "todo_#{todo.id}"
+                td.todo-detail
+                  = todo.detail
+                td width="20%"
+                  = todo.deadline_at.try { strftime("%m/%d") }
+                td width="10%"
+                  = link_to travel_todo_path(todo.travel, todo),  method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                    i.fa.fa-trash-o

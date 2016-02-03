@@ -1,5 +1,6 @@
 require 'simplecov'
 require 'coveralls'
+require 'support//wait_for_ajax'
 
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
@@ -60,6 +61,7 @@ end
 class ActionDispatch::IntegrationTest
   fixtures :all
   include Capybara::DSL
+  include WaitForAjax
 
   require 'capybara/poltergeist'
   Capybara.javascript_driver = :poltergeist
