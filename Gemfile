@@ -45,7 +45,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler', github: 'MiniProfiler/rack-mini-profiler'
   gem 'web-console', '>= 2.1.3'
 end
 
