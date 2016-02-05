@@ -1,0 +1,8 @@
+{
+  "name": "travel-base",
+  "short_name": "travel-base",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "79888152839",
+  "gcm_user_visible_only": true
+}
