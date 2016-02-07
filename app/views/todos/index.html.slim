@@ -30,7 +30,7 @@ section.page-block.double-padding-top.double-space-bottom
           tbody
             - @todos.each_with_index do |todo, i|
               tr class=('line-through' if todo.finished)
-                td width="10%"
+                td width="5%"
                   = form_for([todo.travel, todo], remote: true) do |f|
                     .checkbox
                       label.hover
