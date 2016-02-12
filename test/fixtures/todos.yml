@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+kyoto_todo:
+  travel: kyoto
+  user: google
+  detail: 京都チケット予約
+  deadline_at: <%= 1.days.since %>
+
+okayama_todo:
+  travel: okayama
+  user: google
+  detail: 岡山チケット予約
+  deadline_at: <%= 2.days.since %>

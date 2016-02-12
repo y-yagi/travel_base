@@ -21,6 +21,7 @@ class Travel < ActiveRecord::Base
   has_many :travel_dates, -> { order(:date) },  dependent: :destroy
   has_many :travel_photos, dependent: :destroy
   has_many :dropbox_files, dependent: :destroy
+  has_many :todos, dependent: :destroy
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
   accepts_nested_attributes_for :dropbox_files

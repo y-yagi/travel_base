@@ -54,6 +54,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'activesupport-testing-metadata'
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'guard'
