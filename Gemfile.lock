@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/cookpad/garage.git
-  revision: 2405bbacd7fd5f47065b121af039da13c7d35c56
+  revision: 9e9768a89208dbf08a935e1c403bca14e7c270c8
   specs:
-    garage (1.5.4)
+    garage (1.5.5)
       coffee-rails
       haml
       hashie
@@ -167,7 +167,7 @@ GEM
       minitest (>= 3.0)
     haml (4.0.7)
       tilt
-    hashdiff (0.2.3)
+    hashdiff (0.3.0)
     hashie (3.4.3)
     highline (1.7.8)
     holiday_jp (0.4.3)
@@ -186,7 +186,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     icalendar (2.3.0)
-    jbuilder (2.4.0)
+    jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.0)
@@ -204,9 +204,9 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.5)
+    listen (3.0.6)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
+      rb-inotify (>= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.10)
@@ -345,7 +345,7 @@ GEM
       activesupport
       railties
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.6)
+    rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
     responders (2.1.1)
