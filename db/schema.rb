@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111005816) do
+ActiveRecord::Schema.define(version: 20160203225519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,19 @@ ActiveRecord::Schema.define(version: 20160111005816) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "todos", force: :cascade do |t|
+    t.integer  "travel_id"
+    t.integer  "user_id"
+    t.text     "detail"
+    t.datetime "deadline_at"
+    t.boolean  "finished",    default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "todos", ["travel_id"], name: "index_todos_on_travel_id", using: :btree
+  add_index "todos", ["user_id"], name: "index_todos_on_user_id", using: :btree
+
   create_table "travel_dates", force: :cascade do |t|
     t.date     "date",       null: false
     t.integer  "travel_id",  null: false
@@ -184,6 +197,8 @@ ActiveRecord::Schema.define(version: 20160111005816) do
   end
 
   add_foreign_key "dropbox_files", "travels"
+  add_foreign_key "todos", "travels"
+  add_foreign_key "todos", "users"
   add_foreign_key "travel_photos", "photo_service_user_infos"
   add_foreign_key "travel_photos", "travels"
 end

@@ -13,7 +13,7 @@ gem 'elasticsearch-rails'
 # TODO: https://github.com/smartinez87/exception_notification/pull/306 がマージされたら、masterを参照する
 gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
 gem 'exception_notification-idobata', github: 'y-yagi/exception_notification-idobata', branch: 'exception_notification_5'
-gem 'garage', github: 'cookpad/garage'
+gem 'the_garage'
 gem 'garage-doorkeeper'
 gem 'geocoder'
 gem 'rails-footnotes'
@@ -57,6 +57,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'activesupport-testing-metadata'
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'guard'

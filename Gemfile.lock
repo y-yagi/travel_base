@@ -1,34 +1,17 @@
 GIT
   remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: cb7a6cf4d4cd7febb587bcffb4719233034c331b
+  revision: 973971f511f5d95ec5b87c2e0908727c0fa70c74
   specs:
     rack-mini-profiler (0.9.8)
       rack (>= 1.2.0)
 
 GIT
   remote: git://github.com/amatsuda/kaminari.git
-  revision: 282b2125292d8f4c721dba89510ee4360c071eb0
+  revision: 27a0c850b50a8bf095665ad3c0907efada919533
   specs:
     kaminari (1.0.0.alpha)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-
-GIT
-  remote: git://github.com/cookpad/garage.git
-  revision: 2405bbacd7fd5f47065b121af039da13c7d35c56
-  specs:
-    garage (1.5.4)
-      coffee-rails
-      haml
-      hashie
-      http_accept_language (>= 2.0.0)
-      oauth2
-      oj
-      rack-accept-default (~> 0.0.2)
-      rails (>= 4.0.0)
-      redcarpet (>= 3.1.1)
-      responders
-      sass-rails
 
 GIT
   remote: git://github.com/smartinez87/exception_notification.git
@@ -50,9 +33,9 @@ GIT
 
 GIT
   remote: git://github.com/y-yagi/minitest-sound.git
-  revision: 08ee5f2a97e52c896b39244389cffa64556e1f4d
+  revision: c2e09db76178c9cceaec7f9f4d491b6866e5b13c
   specs:
-    minitest-sound (0.0.7)
+    minitest-sound (0.0.8)
       minitest (>= 5.0)
 
 GIT
@@ -114,6 +97,8 @@ GEM
       method_source
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    activesupport-testing-metadata (0.1.0)
+      activesupport (>= 4.0)
     addressable (2.4.0)
     ansi (1.5.0)
     arel (7.0.0)
@@ -140,7 +125,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cliver (0.3.2)
-    coderay (1.1.0)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -149,9 +134,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
-    coveralls (0.8.10)
+    coveralls (0.8.11)
       json (~> 1.8)
-      rest-client (>= 1.6.8, < 2)
       simplecov (~> 0.11.0)
       term-ansicolor (~> 1.3)
       thor (~> 0.19.1)
@@ -193,7 +177,7 @@ GEM
     formatador (0.2.5)
     garage-doorkeeper (2.0.0)
       doorkeeper (>= 2.0.0)
-    geocoder (1.3.0)
+    geocoder (1.3.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -211,7 +195,7 @@ GEM
       minitest (>= 3.0)
     haml (4.0.7)
       tilt
-    hashdiff (0.2.3)
+    hashdiff (0.3.0)
     hashie (3.4.3)
     highline (1.7.8)
     holiday_jp (0.4.3)
@@ -230,7 +214,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     icalendar (2.3.0)
-    jbuilder (2.4.0)
+    jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.0)
@@ -245,9 +229,9 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.5)
+    listen (3.0.6)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
+      rb-inotify (>= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.10)
@@ -262,7 +246,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nenv (0.2.0)
+    nenv (0.3.0)
     netrc (0.11.0)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
@@ -270,14 +254,14 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    oauth (0.4.7)
+    oauth (0.5.0)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0, < 1.5.2)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (2.14.3)
+    oj (2.14.5)
     omniauth (1.3.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
@@ -335,9 +319,9 @@ GEM
       railties (= 5.0.0.beta2)
       sprockets-rails (>= 2.0.0)
     rails-assets-bootstrap-css (3.3.6)
-    rails-assets-bootstrap-tagsinput (0.7.1)
+    rails-assets-bootstrap-tagsinput (0.8.0)
       rails-assets-jquery (~> 2.1.1)
-    rails-assets-fullcalendar (2.6.0)
+    rails-assets-fullcalendar (2.6.1)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.1.4)
@@ -348,7 +332,7 @@ GEM
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
-    rails-assets-moment (2.11.1)
+    rails-assets-moment (2.11.2)
     rails-assets-raf.js (0.0.4)
     rails-assets-respond (1.4.2)
     rails-assets-smoothscroll (0.1.0)
@@ -384,7 +368,7 @@ GEM
       activesupport
       railties
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.5)
+    rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
     responders (2.1.1)
@@ -393,7 +377,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rollbar (2.7.1)
+    rollbar (2.8.0)
       multi_json
     ruby-prof (0.15.9)
     ruby2ruby (2.2.0)
@@ -409,7 +393,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sexp_processor (4.6.1)
+    sexp_processor (4.7.0)
     shellany (0.0.1)
     simplecov (0.11.2)
       docile (~> 1.1.0)
@@ -426,7 +410,7 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
-    spring (1.6.2)
+    spring (1.6.3)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -438,6 +422,18 @@ GEM
     term-ansicolor (1.3.2)
       tins (~> 1.0)
     terminal-table (1.5.2)
+    the_garage (2.0.2)
+      coffee-rails
+      haml
+      hashie
+      http_accept_language (>= 2.0.0)
+      oauth2
+      oj
+      rack-accept-default (~> 0.0.2)
+      rails (>= 4.0.0)
+      redcarpet (>= 3.1.1)
+      responders
+      sass-rails
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
@@ -459,7 +455,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.22.6)
+    webmock (1.24.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -474,6 +470,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_decorator
+  activesupport-testing-metadata
   array_form_helper
   brakeman
   capybara
@@ -485,7 +482,6 @@ DEPENDENCIES
   elasticsearch-rails
   exception_notification!
   exception_notification-idobata!
-  garage!
   garage-doorkeeper
   geocoder
   guard
@@ -536,6 +532,7 @@ DEPENDENCIES
   sass-rails
   slim-rails
   spring
+  the_garage
   turbolinks!
   uglifier (>= 1.3.0)
   unicorn
