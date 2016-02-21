@@ -13,6 +13,10 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
     visit travel_todos_path(travels(:kyoto))
   end
 
+  def teardown
+    Capybara.current_driver = Capybara.default_driver
+  end
+
   test 'display todos that I registered in list' do
     assert_match '京都チケット予約', page.text
     assert_match 1.days.since.strftime("%m/%d"), page.text
