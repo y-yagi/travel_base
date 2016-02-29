@@ -7,6 +7,8 @@ section.page-block.double-padding-top.double-space-bottom
         - if @travel.owner?(current_user)
           = link_to edit_travel_path(@travel), title: '編集', "data-no-turbolink": true do
             i.fa.fa-edit.small.text-muted.left10
+        = link_to travel_todos_path(@travel), title: 'やることリスト' do
+          i.fa.fa-tasks.small.text-muted.left10
         span
     .row.double-space-top
       .col-md-8.col-md-offset-2.col-xs-12
