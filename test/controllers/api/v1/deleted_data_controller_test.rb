@@ -18,7 +18,7 @@ class Api::V1::DeletedDataControllerTest < ActionController::TestCase
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
-    assert_equal DeletedDatum.mine(users(:google)).size, parsed_response_body.size
+    assert_equal users(:google).deleted_data.size, parsed_response_body.size
     assert_equal 'places', parsed_response_body[0]['table_name']
     assert_equal place.id, parsed_response_body[0]['datum_id']
     assert_equal 'travels', parsed_response_body[1]['table_name']
