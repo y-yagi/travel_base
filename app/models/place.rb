@@ -24,7 +24,6 @@ class Place < ActiveRecord::Base
   has_many :places_station
   has_many :schedules, dependent: :destroy
 
-  scope :mine, ->(user) { where(user_id: user.id) }
   scope :tag, ->(tag) do
     where('tags @> ARRAY[?]::varchar[]', [tag])
   end
@@ -57,7 +56,7 @@ class Place < ActiveRecord::Base
     end
 
     def acquire_by_params(user, params)
-      places = Place.mine(user).order('updated_at DESC')
+      places = user.places.order('updated_at DESC')
       if params[:already]
         places = places.already_went.page(params[:page])
       else
