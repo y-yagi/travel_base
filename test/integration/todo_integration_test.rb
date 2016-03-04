@@ -5,12 +5,14 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
   def setup
     if metadata[:js]
       Capybara.current_driver = Capybara.javascript_driver
-    else
-      Capybara.current_driver = Capybara.default_driver
     end
 
     login
     visit travel_todos_path(travels(:kyoto))
+  end
+
+  def teardown
+    Capybara.current_driver = Capybara.default_driver
   end
 
   test 'display todos that I registered in list' do
