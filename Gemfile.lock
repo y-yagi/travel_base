@@ -6,6 +6,12 @@ GIT
       rack (>= 1.2.0)
 
 GIT
+  remote: git://github.com/amatsuda/active_decorator.git
+  revision: f22876f1382891d81e84c2e1fe336c8e143e54e7
+  specs:
+    active_decorator (0.7.0)
+
+GIT
   remote: git://github.com/amatsuda/kaminari.git
   revision: 3974ae5f39ce31bfca28d17eccd8daf3ca263aa3
   specs:
@@ -80,7 +86,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_decorator (0.7.0)
     activejob (5.0.0.beta3)
       activesupport (= 5.0.0.beta3)
       globalid (>= 0.3.6)
@@ -464,7 +469,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_decorator
+  active_decorator!
   activesupport-testing-metadata
   array_form_helper
   brakeman
