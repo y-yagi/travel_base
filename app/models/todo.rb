@@ -2,8 +2,6 @@ class Todo < ActiveRecord::Base
   belongs_to :travel
   belongs_to :user
 
-  scope :mine, ->(user) { where(user_id: user.id) }
-
   validates :detail, presence: true, length: { maximum: 255 }
 
   class << self

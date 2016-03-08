@@ -16,11 +16,11 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
-    assert_equal Place.mine(users(:google)).size, parsed_response_body.size
+    assert_equal users(:google).places.size, parsed_response_body.size
   end
 
   test 'specify the update date, the data after the date that update can be get' do
-    latest_place = Place.mine(users(:google)).not_gone.first
+    latest_place = users(:google).places.not_gone.first
     travel_to 1.day.since do
       latest_place.update!(name: latest_place.name + ' 更新')
     end

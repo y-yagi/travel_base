@@ -5,8 +5,6 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
   def setup
     if metadata[:js]
       Capybara.current_driver = Capybara.javascript_driver
-    else
-      Capybara.current_driver = Capybara.default_driver
     end
 
     login

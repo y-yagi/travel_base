@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :places, dependent: :destroy
   has_many :travels, foreign_key: 'owner_id', dependent: :destroy
   has_many :todos, dependent: :destroy
+  has_many :deleted_data, dependent: :destroy
 
   validates :uid, presence: true
   validates :name, presence: true

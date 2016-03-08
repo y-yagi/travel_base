@@ -8,7 +8,7 @@ class TravelsController < ApplicationController
   end
 
   def show
-    @places = Place.mine(current_user).not_gone.
+    @places = current_user.places.not_gone.
       order('updated_at DESC').pluck(:name, :id)
     @travel = Travel.schedules.belong(current_user).find(params[:id])
 

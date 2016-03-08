@@ -3,9 +3,9 @@ class Api::V1::DeletedDataController < Api::ApplicationController
 
   def require_resources
     @resources = if params[:updated_at]
-      ::DeletedDatum.mine(current_resource_owner).where('updated_at > ?', params[:updated_at])
+      current_resource_owner.deleted_data.where('updated_at > ?', params[:updated_at])
     else
-      ::DeletedDatum.mine(current_resource_owner)
+      current_resource_owner.deleted_data
     end
   end
 end

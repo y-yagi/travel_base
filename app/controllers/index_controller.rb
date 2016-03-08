@@ -8,7 +8,7 @@ class IndexController < ApplicationController
   def dashboard
     @need_pages_js = true
     setup
-    @places = Place.mine(current_user).registered_recently
+    @places = current_user.places.registered_recently
     future_travels = Travel.schedules.belong(current_user).future
     @next_travel = future_travels.first
     future_travels_for_calendar = future_travels.map do |t|
