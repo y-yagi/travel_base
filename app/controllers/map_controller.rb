@@ -1,8 +1,7 @@
 class MapController < ApplicationController
 
   def schedule
-    @trave_date = TravelDate.eager_load(:schedules).find(params[:travel_date_id])
-
+    load_travel_date
     return redirect_to root_path if @trave_date.schedules.empty?
     return redirect_to root_path unless @trave_date.travel.member?(current_user.id)
 
@@ -25,4 +24,10 @@ class MapController < ApplicationController
     @map_zoom = 12
     render :show
   end
+
+  private
+    def load_travel_date
+      @trave_date = TravelDate.eager_load(:schedules, [schedules: :place])
+        .merge(Schedule.order(:start_time)).find(params[:travel_date_id])
+    end
 end
