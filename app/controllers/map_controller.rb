@@ -1,11 +1,11 @@
 class MapController < ApplicationController
 
   def schedule
-    load_travel_date
-    return redirect_to root_path if @trave_date.schedules.empty?
-    return redirect_to root_path unless @trave_date.travel.member?(current_user.id)
+    travel_dates = load_travel_dates
+    return redirect_to root_path if travel_dates.schedules.empty?
+    return redirect_to root_path unless travel_dates.travel.member?(current_user.id)
 
-    places = @trave_date.schedules.map(&:place)
+    places = travel_dates.schedules.map(&:place)
     @places_for_map = places.map { |p| { name: p.name, latitude: p.latitude, longitude: p.longitude } }.to_json
     @map_zoom = 12
     render :show
@@ -26,8 +26,8 @@ class MapController < ApplicationController
   end
 
   private
-    def load_travel_date
-      @trave_date = TravelDate.eager_load(:schedules, [schedules: :place])
+    def load_travel_dates
+      TravelDate.eager_load(:schedules, [schedules: :place])
         .merge(Schedule.order(:start_time)).find(params[:travel_date_id])
     end
 end
