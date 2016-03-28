@@ -6,9 +6,11 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     title
       | TravelBase
-    = stylesheet_link_tag    'application', media: 'all'
+    link[rel="manifest" href="/manifest.json"]
+    = stylesheet_link_tag 'application', media: 'all'
     script[src="//maps.googleapis.com/maps/api/js?v=3.exp"]
     script[src="//www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="4j5bv0i7855ev2x"]
+    script[src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async]
     = javascript_include_tag 'application'
     - if @need_pages_js
       = javascript_include_tag "pages/#{controller_name}"
