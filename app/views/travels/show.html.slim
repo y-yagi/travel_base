@@ -62,10 +62,10 @@ section.page-block.double-padding-top.double-space-bottom
       .col-md-8.col-md-offset-2
         .tab-content
           ul.nav-tabs.left[role="tablist"]
-            - @travel.travel_dates.each_with_index do |d, i|
-              |  <li class="#{'active' if i == 0}"><a href="##{i + 1}_day" role="tab" data-toggle="tab">#{i + 1}日目</a></li>
+            - @travel.travel_dates.each_with_index do |travel_date, i|
+              |  <li class="#{'active' if travel_date.date.today? }"><a href="##{i + 1}_day" role="tab" data-toggle="tab">#{i + 1}日目</a></li>
           - @travel.travel_dates.each_with_index do |travel_date, i|
-            div class="tab-pane#{" fade in active" if i == 0}" id="#{i + 1}_day"
+            div class="tab-pane#{" fade in active" if travel_date.date.today? }" id="#{i + 1}_day"
               h4
                 .text-primary
                   strong
