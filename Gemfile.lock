@@ -98,10 +98,10 @@ GEM
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
-    elasticsearch (1.0.15)
-      elasticsearch-api (= 1.0.15)
-      elasticsearch-transport (= 1.0.15)
-    elasticsearch-api (1.0.15)
+    elasticsearch (1.0.17)
+      elasticsearch-api (= 1.0.17)
+      elasticsearch-transport (= 1.0.17)
+    elasticsearch-api (1.0.17)
       multi_json
     elasticsearch-extensions (0.0.20)
       ansi
@@ -111,7 +111,7 @@ GEM
       elasticsearch (> 0.4)
       hashie
     elasticsearch-rails (0.1.8)
-    elasticsearch-transport (1.0.15)
+    elasticsearch-transport (1.0.17)
       faraday
       multi_json
     erubis (2.7.0)
@@ -127,7 +127,7 @@ GEM
     formatador (0.2.5)
     garage-doorkeeper (2.0.0)
       doorkeeper (>= 2.0.0)
-    geocoder (1.3.3)
+    geocoder (1.3.4)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -330,7 +330,7 @@ GEM
     redcarpet (3.3.4)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.8.3)
+    rollbar (2.9.1)
       multi_json
     ruby-prof (0.15.9)
     ruby2ruby (2.3.0)
@@ -363,7 +363,7 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
-    spring (1.6.4)
+    spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -375,7 +375,7 @@ GEM
     term-ansicolor (1.3.2)
       tins (~> 1.0)
     terminal-table (1.5.2)
-    the_garage (2.0.2)
+    the_garage (2.0.3)
       coffee-rails
       haml
       hashie
@@ -406,7 +406,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.24.2)
+    webmock (1.24.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
