@@ -14,3 +14,8 @@ $ ->
     }
     button = Dropbox.createChooseButton(options)
     $('.dropbox-button').append(button)
+
+  $('.travel_date').on('click',  (e) ->
+    travel_date_id = $(e.target).data("travel-date-id")
+    $('#schedule_travel_date_id').val(travel_date_id)
+  )
