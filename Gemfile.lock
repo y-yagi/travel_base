@@ -290,7 +290,7 @@ GEM
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
-    rails-assets-moment (2.12.0)
+    rails-assets-moment (2.13.0)
     rails-assets-raf.js (0.0.4)
     rails-assets-respond (1.4.2)
     rails-assets-smoothscroll (0.1.0)
@@ -330,7 +330,7 @@ GEM
     redcarpet (3.3.4)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.9.1)
+    rollbar (2.10.0)
       multi_json
     ruby-prof (0.15.9)
     ruby2ruby (2.3.0)
@@ -406,7 +406,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.24.3)
+    webmock (1.24.5)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
