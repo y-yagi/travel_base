@@ -1,19 +1,19 @@
 GIT
   remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: f580d609677c0792b9685d555ffa7c1378c15787
+  revision: 9b2f5da8940a5ffcf31a488510f92c0acaf1a72c
   specs:
     rack-mini-profiler (0.9.9.2)
       rack (>= 1.2.0)
 
 GIT
   remote: git://github.com/amatsuda/active_decorator.git
-  revision: 95f8f85abb1030c9877310d7fedef435a58a521b
+  revision: 78706d3b353886852bcdc9ee0399e8be92ab9f5a
   specs:
     active_decorator (0.7.0)
 
 GIT
   remote: git://github.com/amatsuda/kaminari.git
-  revision: 772de7ccea717ad74524163fa6ae9601efc87c2f
+  revision: 0e21d52feca1f79a9aca83613cf053eb5273827e
   specs:
     kaminari (1.0.0.alpha)
       actionpack (>= 3.0.0)
@@ -214,7 +214,7 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.6)
+    listen (3.1.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     loofah (2.0.3)
@@ -233,7 +233,7 @@ GEM
     minitest-test_profile (0.2.0)
       coveralls
       minitest
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.3.0)
@@ -311,7 +311,7 @@ GEM
     rails-assets-bootstrap-css (3.3.6)
     rails-assets-bootstrap-tagsinput (0.8.0)
       rails-assets-jquery (~> 2.1.1)
-    rails-assets-fullcalendar (2.6.1)
+    rails-assets-fullcalendar (2.7.0)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.1.4)
@@ -322,7 +322,7 @@ GEM
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
-    rails-assets-moment (2.12.0)
+    rails-assets-moment (2.13.0)
     rails-assets-raf.js (0.0.4)
     rails-assets-respond (1.4.2)
     rails-assets-smoothscroll (0.1.0)
@@ -367,7 +367,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rollbar (2.9.1)
+    rollbar (2.10.0)
       multi_json
     ruby-prof (0.15.9)
     ruby2ruby (2.3.0)
@@ -443,7 +443,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.24.3)
+    webmock (2.0.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
