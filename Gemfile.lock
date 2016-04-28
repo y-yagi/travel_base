@@ -38,21 +38,6 @@ GIT
       rest-client
 
 GIT
-  remote: git://github.com/y-yagi/minitest-sound.git
-  revision: c2e09db76178c9cceaec7f9f4d491b6866e5b13c
-  specs:
-    minitest-sound (0.0.8)
-      minitest (>= 5.0)
-
-GIT
-  remote: git://github.com/y-yagi/minitest-test_profile.git
-  revision: 821ede68b569f65a287b87dfa05646c38b844679
-  specs:
-    minitest-test_profile (0.2.0)
-      coveralls
-      minitest
-
-GIT
   remote: git://github.com/y-yagi/turbolinks.git
   revision: 75115a3c217f54b447b780061ae0279abae1f146
   specs:
@@ -243,6 +228,11 @@ GEM
     minitest (5.8.4)
     minitest-slow_test (0.1.0)
       minitest (>= 5.0)
+    minitest-sound (0.0.8)
+      minitest (>= 5.0)
+    minitest-test_profile (0.2.0)
+      coveralls
+      minitest
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -493,8 +483,8 @@ DEPENDENCIES
   kaminari!
   launchy
   minitest-slow_test
-  minitest-sound!
-  minitest-test_profile!
+  minitest-sound
+  minitest-test_profile
   nokogiri (>= 1.6.7.2)
   oauth2
   omniauth
