@@ -12,7 +12,7 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
   end
 
   test 'can get my places list' do
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider }
 
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
@@ -25,7 +25,7 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
       latest_place.update!(name: latest_place.name + ' 更新')
     end
 
-    get :index, format: :json, user_id: @user.email, user_provider: @user.provider, updated_at: Time.current
+    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since }
     assert_response :success
     parsed_response_body = JSON.parse(@response.body)
     assert_equal 1, parsed_response_body.size
@@ -34,8 +34,8 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
 
   test 'can create place' do
     assert_difference 'Place.count' do
-      post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
-        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315
+      post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
+        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315 }
     end
 
     assert_response :success
@@ -50,16 +50,16 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
   test 'can not create a place in the user that is not authenticated' do
     @request.env['HTTP_AUTHORIZATION'] = nil
     assert_no_difference 'Place.count' do
-      post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
-        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315
+      post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
+        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315 }
     end
 
     assert_response 401
   end
 
   test "supplemented with automatic if the address is not" do
-    post :create, format: :json, user_id: @user.email, user_provider: @user.provider,
-      name: '下灘駅', latitude: 35.655048, longitude: 132.589155
+    post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
+      name: '下灘駅', latitude: 35.655048, longitude: 132.589155 }
 
     assert_response :success
 

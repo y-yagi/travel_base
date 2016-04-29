@@ -27,7 +27,7 @@ Geocoder::Lookup::Test.add_stub(
   ]
 )
 Geocoder::Lookup::Test.add_stub(
-  [35.655048, 132.589155], [
+  ['35.655048', '132.589155'], [
     { 'formatted_address': '日本 愛媛県伊予市双海町大久保',
       geometry: { 'location': { 'lat': 35.655048, 'lng': 132.589155, 'address': '愛媛' } },
       address_components: [{ 'long_name': '下灘駅' }]
