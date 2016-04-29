@@ -182,7 +182,7 @@ GEM
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.6)
+    listen (3.1.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     loofah (2.0.3)
@@ -203,7 +203,7 @@ GEM
     minitest-test_profile (0.2.0)
       coveralls
       minitest
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.3.0)
@@ -279,7 +279,7 @@ GEM
     rails-assets-bootstrap-css (3.3.6)
     rails-assets-bootstrap-tagsinput (0.8.0)
       rails-assets-jquery (~> 2.1.1)
-    rails-assets-fullcalendar (2.6.1)
+    rails-assets-fullcalendar (2.7.0)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.1.4)
@@ -406,7 +406,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webmock (1.24.5)
+    webmock (2.0.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
