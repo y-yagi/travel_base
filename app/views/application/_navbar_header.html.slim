@@ -39,6 +39,15 @@ header.header.sticky
                       - @travels.each do |travel|
                         li
                           = link_to travel.name, travel_path(travel)
+              |  <li class="
+              = 'active' if current_menu?('events')
+              | ">
+              = link_to 'イベント管理', events_path
+              ul.submenu
+                li
+                  = link_to '新規登録', new_event_path
+                li
+                  = link_to '一覧', events_path
         .tools.group
           = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
           = link_to 'ログアウト', logout_path, class: 'pull-left'
