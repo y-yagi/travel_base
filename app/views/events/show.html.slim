@@ -15,7 +15,7 @@ section.page-block.space-top.space-bottom
       .col-md-6
         .page-heading.center
           h3.light-weight.text-primary
-            | 登録情報
+            | イベント情報
         h4.bold-weight
           | 期間:
         p
@@ -37,8 +37,6 @@ section.page-block.space-top.space-bottom
         p
           = @event.place.address
         - if @event.place.places_station.present?
-          h4.bold-weight
-            | 最寄り駅:
           ul.featured-list
             - @event.place.places_station.each do |near_station|
               li
