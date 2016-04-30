@@ -10,13 +10,14 @@
   .form-group
     = f.label :place_id
     br
-    = f.select :place_id, options_for_select(@places, selected: @event.place.id), { }, { class: "form-control-select" }
+    = f.select :place_id, options_for_select(@places, selected: @event.place_id), { }, { class: "form-control-select" }
   .form-group
     = f.label :detail
     br
     = f.text_area :detail, class: "form-control"
   .form-group
-    = f.label :start_date
+    label
+      | 期間
     br
     = f.date_field :start_date, { class: "form-control-select" }
     |  〜

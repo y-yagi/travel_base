@@ -222,6 +222,12 @@ ja:
         photo_service_album_id: アルバム名
       schedule:
         place: 旅行計画にその場所
+      event:
+        name: 名前
+        detail: 詳細
+        place_id: 場所
+        start_date: 開始日
+        end_date: 終了日
   views:
     pagination:
       first: "&laquo; 先頭"
