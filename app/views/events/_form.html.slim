@@ -1,0 +1,26 @@
+= form_for(@event) do |f|
+  - if @event.errors.any?
+    = render partial: 'form_error_header', locals: { error_messages: @event.errors.full_messages }
+  .form-group
+    = f.label :name
+    span.text-primary.p-lg
+      | (必須)
+    br
+    = f.text_field :name, class: "form-control", required: 'required'
+  .form-group
+    = f.label :place_id
+    br
+    = f.select :place_id, options_for_select(@places, selected: @event.place.id), { }, { class: "form-control-select" }
+  .form-group
+    = f.label :detail
+    br
+    = f.text_area :detail, class: "form-control"
+  .form-group
+    = f.label :start_date
+    br
+    = f.date_field :start_date, { class: "form-control-select" }
+    |  〜
+    = f.date_field :end_date, { class: "form-control-select" }
+  .col-md-12.col-sm-12
+    .text-center
+      = f.submit class: "btn btn-md btn-primary", value: '登録', data: { disable_with: "Please wait..." }

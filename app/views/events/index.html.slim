@@ -1,0 +1,26 @@
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h3
+        | イベント一覧
+  .row
+    div class="col-md-8 col-md-offset-2" id="events"
+      section.col-md-12.shopping-cart
+        header
+          .operation-list
+            = link_to '', new_event_path, title: '追加', 'data-eventment' => 'top', class: "tooltipped fa fa-plus-circle"
+        - @events.each do |event|
+          .item
+            .delete
+              = link_to edit_event_path(event), title: '編集' do
+                i.fa.fa-edit
+              = link_to event, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                i.fa.fa-trash-o
+            .row
+              .col-md-3.col-xs-12
+                .details
+                  h4
+                    = link_to event.name, event_path(event)
+              .col-md-8.col-xs-12
+                = event.period
+      = paginate @events
