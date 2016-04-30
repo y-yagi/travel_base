@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   belongs_to :place
 
   validates :name, presence: true, length: { maximum: 255 }
-  validates :detail, length: { maximum: 255 }
+  validates :detail, length: { maximum: 1024 }
 
   after_destroy :record_deleted_datum
 
