@@ -1,4 +1,4 @@
-class CreateTodos < ActiveRecord::Migration
+class CreateTodos < ActiveRecord::Migration[4.2]
   def change
     create_table :todos do |t|
       t.references :travel, index: true, foreign_key: true

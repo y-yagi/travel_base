@@ -1,4 +1,4 @@
-class CreateTravelDates < ActiveRecord::Migration
+class CreateTravelDates < ActiveRecord::Migration[4.2]
   def change
     create_table :travel_dates do |t|
       t.date :date, null: false
