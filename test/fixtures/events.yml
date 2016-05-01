@@ -1,17 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  detail: MyString
-  user: one
-  place: one
-  start_date: 2016-04-30
-  end_date: 2016-04-30
-
-two:
-  name: MyString
-  detail: MyString
-  user: two
-  place: two
-  start_date: 2016-04-30
-  end_date: 2016-04-30
+ooasahiko:
+  name: 大麻比古神社例祭
+  detail: 一年の中で最も大切なお祭りです。大麻さんの秋祭りと呼ばれます。
+  user: google
+  place: ooasahiko
+  start_date: 2016-11-01
+  end_date: 2016-11-02
