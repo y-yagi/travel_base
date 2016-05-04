@@ -1,4 +1,4 @@
-class CreateTravels < ActiveRecord::Migration
+class CreateTravels < ActiveRecord::Migration[4.2]
   def change
     create_table :travels do |t|
       t.string :name, null: false

@@ -1,4 +1,4 @@
-class CreatePhotoServiceUserInfos < ActiveRecord::Migration
+class CreatePhotoServiceUserInfos < ActiveRecord::Migration[4.2]
   def change
     create_table :photo_service_user_infos do |t|
       t.references :user, index: true
