@@ -21,6 +21,7 @@ class Place < ActiveRecord::Base
   include Recorder
 
   belongs_to :user
+  has_one :event, dependent: :destroy
   has_many :places_station
   has_many :schedules, dependent: :destroy
 

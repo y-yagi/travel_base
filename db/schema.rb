@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203225519) do
+ActiveRecord::Schema.define(version: 20160430103415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["updated_at"], name: "index_deleted_data_on_updated_at", using: :btree
   end
-
-  add_index "deleted_data", ["updated_at"], name: "index_deleted_data_on_updated_at", using: :btree
 
   create_table "dropbox_files", force: :cascade do |t|
     t.string   "name"
@@ -32,9 +31,21 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.integer  "travel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["travel_id"], name: "index_dropbox_files_on_travel_id", using: :btree
   end
 
-  add_index "dropbox_files", ["travel_id"], name: "index_dropbox_files_on_travel_id", using: :btree
+  create_table "events", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "detail"
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_events_on_place_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -45,9 +56,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.datetime "created_at",        null: false
     t.datetime "revoked_at"
     t.string   "scopes"
+    t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
   end
-
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
   create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id"
@@ -58,11 +68,10 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.datetime "revoked_at"
     t.datetime "created_at",        null: false
     t.string   "scopes"
+    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
   end
-
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
-  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -72,9 +81,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.string   "scopes",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
-
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "photo_service_user_infos", force: :cascade do |t|
     t.integer  "user_id"
@@ -82,9 +90,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.string   "photo_service_user_id", null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["user_id"], name: "index_photo_service_user_infos_on_user_id", using: :btree
   end
-
-  add_index "photo_service_user_infos", ["user_id"], name: "index_photo_service_user_infos_on_user_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name",                   null: false
@@ -98,18 +105,16 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "tags",                                array: true
+    t.index ["tags"], name: "index_places_on_tags", using: :gin
   end
-
-  add_index "places", ["tags"], name: "index_places_on_tags", using: :gin
 
   create_table "places_stations", id: false, force: :cascade do |t|
     t.integer "place_id",   null: false
     t.integer "station_id", null: false
     t.string  "distance"
+    t.index ["place_id", "station_id"], name: "index_places_stations_on_place_id_and_station_id", using: :btree
+    t.index ["station_id", "place_id"], name: "index_places_stations_on_station_id_and_place_id", using: :btree
   end
-
-  add_index "places_stations", ["place_id", "station_id"], name: "index_places_stations_on_place_id_and_station_id", using: :btree
-  add_index "places_stations", ["station_id", "place_id"], name: "index_places_stations_on_station_id_and_place_id", using: :btree
 
   create_table "routes", force: :cascade do |t|
     t.text     "detail"
@@ -126,9 +131,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.integer  "route_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["travel_date_id"], name: "index_schedules_on_travel_date_id", using: :btree
   end
-
-  add_index "schedules", ["travel_date_id"], name: "index_schedules_on_travel_date_id", using: :btree
 
   create_table "stations", force: :cascade do |t|
     t.string   "name"
@@ -147,19 +151,17 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.boolean  "finished",    default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["travel_id"], name: "index_todos_on_travel_id", using: :btree
+    t.index ["user_id"], name: "index_todos_on_user_id", using: :btree
   end
-
-  add_index "todos", ["travel_id"], name: "index_todos_on_travel_id", using: :btree
-  add_index "todos", ["user_id"], name: "index_todos_on_user_id", using: :btree
 
   create_table "travel_dates", force: :cascade do |t|
     t.date     "date",       null: false
     t.integer  "travel_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["travel_id"], name: "index_travel_dates_on_travel_id", using: :btree
   end
-
-  add_index "travel_dates", ["travel_id"], name: "index_travel_dates_on_travel_id", using: :btree
 
   create_table "travel_photos", force: :cascade do |t|
     t.string   "name",                       null: false
@@ -168,10 +170,9 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.string   "photo_service_album_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["photo_service_user_info_id"], name: "index_travel_photos_on_photo_service_user_info_id", using: :btree
+    t.index ["travel_id"], name: "index_travel_photos_on_travel_id", using: :btree
   end
-
-  add_index "travel_photos", ["photo_service_user_info_id"], name: "index_travel_photos_on_photo_service_user_info_id", using: :btree
-  add_index "travel_photos", ["travel_id"], name: "index_travel_photos_on_travel_id", using: :btree
 
   create_table "travels", force: :cascade do |t|
     t.string   "name",       null: false
@@ -182,9 +183,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
     t.integer  "members",                 array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["members"], name: "index_travels_on_members", using: :gin
   end
-
-  add_index "travels", ["members"], name: "index_travels_on_members", using: :gin
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",                          null: false
@@ -197,6 +197,8 @@ ActiveRecord::Schema.define(version: 20160203225519) do
   end
 
   add_foreign_key "dropbox_files", "travels"
+  add_foreign_key "events", "places"
+  add_foreign_key "events", "users"
   add_foreign_key "todos", "travels"
   add_foreign_key "todos", "users"
   add_foreign_key "travel_photos", "photo_service_user_infos"

@@ -1,0 +1,51 @@
+= javascript_include_tag "pages/google_map"
+
+= hidden_field_tag('places_for_map', @places_for_map)
+= hidden_field_tag('map_zoom', @map_zoom)
+
+section.page-block.space-top.space-bottom
+  .container
+    .page-heading.center
+      h2.light-weight.text-primary
+        = @event.name
+        = link_to edit_event_path(@event), title: '編集' do
+          i.fa.fa-edit.small.text-muted.left10
+        span
+    .row
+      .col-md-6
+        .page-heading.center
+          h3.light-weight.text-primary
+            | イベント情報
+        h4.bold-weight
+          | 期間:
+        p
+          = @event.period
+        h4.bold-weight
+          | 詳細:
+        p
+          = simple_format(@event.detail)
+      .col-md-6
+        .page-heading.center
+          h3.light-weight.text-primary
+            | 場所
+        h4.bold-weight
+          | 名称:
+        p
+          = @event.place.name
+        h4.bold-weight
+          | 住所:
+        p
+          = @event.place.address
+        - if @event.place.places_station.present?
+          ul.featured-list
+            - @event.place.places_station.each do |near_station|
+              li
+                = "#{near_station.station.line} #{near_station.station.name}駅  #{near_station.distance}"
+        span
+          = link_to(googlemap_link(@event.place.address), class: 'text-primary', target: '_blank') do
+            i.fa.fa-caret-right
+              | 大きい地図を表示
+        .google-map.h-550.space-bottom
+          #map-canvas
+
+

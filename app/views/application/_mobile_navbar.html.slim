@@ -23,6 +23,14 @@ aside.left-off-canvas-menu
                 - @travels.each do |travel|
                   li
                    = link_to travel.name, travel_path(travel)
+      li class="#{'current' if current_menu?('events')}"
+        = link_to 'イベント管理', events_path
+        span
+        ul.submenu
+          li
+            = link_to '新規登録', new_event_path
+          li
+            = link_to '一覧', events_path
       li
         = link_to 'その他', '#'
         span
