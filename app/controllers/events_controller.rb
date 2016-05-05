@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     end
 
     def set_places
-      @places = current_user.places.not_gone.pluck(:name, :id)
+      @places = current_user.places.not_gone.order(updated_at: :desc).pluck(:name, :id)
     end
 
     def event_params
