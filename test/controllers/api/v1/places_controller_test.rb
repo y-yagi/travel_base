@@ -1,22 +1,21 @@
 require 'test_helper'
 require 'support/api_helper'
 
-class Api::V1::PlacesControllerTest < ActionController::TestCase
+class Api::V1::PlacesControllerTest < ActionDispatch::IntegrationTest
   include ApiHelper
 
   setup do
     @user = users(:google)
     @access_token = get_access_token
-    header = 'Bearer ' + @access_token.token
-    @request.env['HTTP_AUTHORIZATION'] = header
+    @authorization = 'Bearer ' + @access_token.token
   end
 
   test 'can get my places list' do
-    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider }
+    get api_v1_places_path(format: :json),  params: { user_id: @user.email, user_provider: @user.provider },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_response :success
-    parsed_response_body = JSON.parse(@response.body)
-    assert_equal users(:google).places.size, parsed_response_body.size
+    assert_equal users(:google).places.size, response.parsed_body.size
   end
 
   test 'specify the update date, the data after the date that update can be get' do
@@ -25,17 +24,18 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
       latest_place.update!(name: latest_place.name + ' 更新')
     end
 
-    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since }
+    get api_v1_places_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
     assert_response :success
-    parsed_response_body = JSON.parse(@response.body)
-    assert_equal 1, parsed_response_body.size
-    assert_equal latest_place.id, parsed_response_body.first['id']
+    assert_equal 1, response.parsed_body.size
+    assert_equal latest_place.id, response.parsed_body.first['id']
   end
 
   test 'can create place' do
     assert_difference 'Place.count' do
-      post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
-        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315 }
+      post api_v1_places_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider,
+        name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315 },
+        headers: { 'HTTP_AUTHORIZATION': @authorization }
     end
 
     assert_response :success
@@ -48,9 +48,8 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
   end
 
   test 'can not create a place in the user that is not authenticated' do
-    @request.env['HTTP_AUTHORIZATION'] = nil
     assert_no_difference 'Place.count' do
-      post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
+      post api_v1_places_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider,
         name: '赤羽駅', address: '東京都北区赤羽一丁目1-1', latitude: 35.46409, longitude: 139.4315 }
     end
 
@@ -58,8 +57,9 @@ class Api::V1::PlacesControllerTest < ActionController::TestCase
   end
 
   test "supplemented with automatic if the address is not" do
-    post :create, format: :json, params: { user_id: @user.email, user_provider: @user.provider,
-      name: '下灘駅', latitude: 35.655048, longitude: 132.589155 }
+    post api_v1_places_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider,
+      name: '下灘駅', latitude: 35.655048, longitude: 132.589155 },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_response :success
 

@@ -14,7 +14,7 @@ class Api::V1::DeletedDataControllerTest < ActionDispatch::IntegrationTest
     place = Place.first.destroy!
     travel = Travel.first.destroy!
     get api_v1_deleted_data_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider },
-      headers: { 'HTTP_AUTHORIZATION' => @authorization }
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_response :success
     assert_equal users(:google).deleted_data.size, response.parsed_body.size
