@@ -2,7 +2,7 @@ ruby '2.3.1'
 
 source 'https://rubygems.org'
 
-gem 'active_decorator', github: 'amatsuda/active_decorator'
+gem 'active_decorator'
 gem 'array_form_helper'
 gem 'coffee-rails'
 gem 'dotenv-rails'
