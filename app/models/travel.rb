@@ -35,7 +35,7 @@ class Travel < ActiveRecord::Base
     where('members @> ARRAY[?]::integer[] OR owner_id = ?', [user.id], user.id)
   end
   scope :future, -> do
-    where('end_date >= ?', Time.now.to_date)
+    where('end_date >= ?', Date.current)
   end
 
   before_save :adjust_travel_dates

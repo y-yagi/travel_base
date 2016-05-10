@@ -9,6 +9,10 @@ class Event < ApplicationRecord
 
   after_destroy :record_deleted_datum
 
+  scope :future, -> do
+    where('end_date >= ?', Date.current)
+  end
+
   paginates_per 10
 
   class << self
