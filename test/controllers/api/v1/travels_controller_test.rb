@@ -1,27 +1,27 @@
 require 'test_helper'
 require 'support/api_helper'
 
-class Api::V1::TravelsControllerTest < ActionController::TestCase
+class Api::V1::TravelsControllerTest < ActionDispatch::IntegrationTest
   include ApiHelper
 
   setup do
     @user = users(:google)
     @access_token = get_access_token
-    header = 'Bearer ' + @access_token.token
-    @request.env['HTTP_AUTHORIZATION'] = header
+    @authorization = 'Bearer ' + @access_token.token
   end
 
   test 'can get my travel list' do
-    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider }
+    get api_v1_travels_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_response :success
-    parsed_response_body = JSON.parse(@response.body)
-    assert_equal Travel.belong(users(:google)).size, parsed_response_body.size
+    assert_equal Travel.belong(users(:google)).size, response.parsed_body.size
   end
 
   test 'can get my travel detail' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_response :success
   end
@@ -29,67 +29,68 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
   test "can't get other user's travel detail" do
     travel = users(:twitter).travels.first
     assert_raises ActiveRecord::RecordNotFound do
-      get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider }
+      get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider },
+        headers: { 'HTTP_AUTHORIZATION': @authorization }
     end
   end
 
   test 'json include travel data' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
-    assert_equal travel.name, parsed_response_body['name']
-    assert_equal travel.start_date.to_s, parsed_response_body['start_date']
-    assert_equal travel.end_date.to_s, parsed_response_body['end_date']
-    assert_equal travel.memo, parsed_response_body['memo']
-    assert_equal I18n.l(travel.start_date, format: :long), parsed_response_body['formatted_start_date']
-    assert_equal I18n.l(travel.end_date, format: :long), parsed_response_body['formatted_end_date']
-    assert_equal travel.updated_at.as_json, parsed_response_body['updated_at']
+    assert_equal travel.name, response.parsed_body['name']
+    assert_equal travel.start_date.to_s, response.parsed_body['start_date']
+    assert_equal travel.end_date.to_s, response.parsed_body['end_date']
+    assert_equal travel.memo, response.parsed_body['memo']
+    assert_equal I18n.l(travel.start_date, format: :long), response.parsed_body['formatted_start_date']
+    assert_equal I18n.l(travel.end_date, format: :long), response.parsed_body['formatted_end_date']
+    assert_equal travel.updated_at.as_json, response.parsed_body['updated_at']
   end
 
   test 'json include travel date date' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
-    assert_equal travel.travel_dates.size, parsed_response_body['travel_dates'].size
+    assert_equal travel.travel_dates.size, response.parsed_body['travel_dates'].size
     assert_equal travel.travel_dates.first.date.to_s,
-      parsed_response_body['travel_dates'].first['date']
+      response.parsed_body['travel_dates'].first['date']
   end
 
   test 'json include schedules data' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_equal travel.travel_dates.first.schedules.size,
-      parsed_response_body['travel_dates'].first['schedules'].size
+      response.parsed_body['travel_dates'].first['schedules'].size
     assert_equal travel.travel_dates.first.schedules.first.id,
-      parsed_response_body['travel_dates'].first['schedules'].first['id']
+      response.parsed_body['travel_dates'].first['schedules'].first['id']
     assert_equal travel.travel_dates.first.schedules.first.memo,
-      parsed_response_body['travel_dates'].first['schedules'].first['memo']
+      response.parsed_body['travel_dates'].first['schedules'].first['memo']
     assert_equal travel.travel_dates.first.schedules.first.start_time.strftime("%H:%M"),
-      parsed_response_body['travel_dates'].first['schedules'].first['formatted_start_time']
+      response.parsed_body['travel_dates'].first['schedules'].first['formatted_start_time']
     assert_equal travel.travel_dates.first.schedules.first.end_time.strftime("%H:%M"),
-      parsed_response_body['travel_dates'].first['schedules'].first['formatted_end_time']
+      response.parsed_body['travel_dates'].first['schedules'].first['formatted_end_time']
   end
 
   test 'json include route data' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     assert_equal travel.travel_dates.first.schedules.second.route.detail,
-      parsed_response_body['travel_dates'].first['schedules'].second['route']['detail']
+      response.parsed_body['travel_dates'].first['schedules'].second['route']['detail']
   end
 
   test 'json include place data' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
     expected_place = travel.travel_dates.first.schedules.first.place
-    actual_place = parsed_response_body['travel_dates'].first['schedules'].first['place']
+    actual_place = response.parsed_body['travel_dates'].first['schedules'].first['place']
     assert_equal expected_place.name, actual_place['name']
     assert_equal expected_place.address, actual_place['address']
     assert_equal expected_place.urls.join(','), actual_place['url']
@@ -99,12 +100,12 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
 
   test 'json include dropbox file data' do
     travel = travels(:kyoto)
-    get :show, format: :json, params: { id: travel.id, user_id: @user.email, user_provider: @user.provider, fields: '*' }
-    parsed_response_body = JSON.parse(@response.body)
+    get api_v1_travel_path(travel.id, format: :json), params: { user_id: @user.email, user_provider: @user.provider, fields: '*' },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
 
-    assert_equal travel.dropbox_files.size, parsed_response_body['dropbox_files'].size
-    assert_equal travel.dropbox_files.first.name, parsed_response_body['dropbox_files'].first['name']
-    assert_equal travel.dropbox_files.first.url, parsed_response_body['dropbox_files'].first['url']
+    assert_equal travel.dropbox_files.size, response.parsed_body['dropbox_files'].size
+    assert_equal travel.dropbox_files.first.name, response.parsed_body['dropbox_files'].first['name']
+    assert_equal travel.dropbox_files.first.url, response.parsed_body['dropbox_files'].first['url']
   end
 
   test 'specify the update date, the data after the date that update can be get' do
@@ -113,10 +114,10 @@ class Api::V1::TravelsControllerTest < ActionController::TestCase
       latest_travel.update!(name: latest_travel.name + ' 更新')
     end
 
-    get :index, format: :json, params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since }
+    get api_v1_travels_path(format: :json), params: { user_id: @user.email, user_provider: @user.provider, updated_at: 1.minute.since },
+      headers: { 'HTTP_AUTHORIZATION': @authorization }
     assert_response :success
-    parsed_response_body = JSON.parse(@response.body)
-    assert_equal 1, parsed_response_body.size
-    assert_equal latest_travel.id, parsed_response_body.first['id']
+    assert_equal 1, response.parsed_body.size
+    assert_equal latest_travel.id, response.parsed_body.first['id']
   end
 end
