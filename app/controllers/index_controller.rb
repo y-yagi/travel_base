@@ -20,14 +20,14 @@ class IndexController < ApplicationController
   end
 
   def holidays_for_calendar
-    HolidayJp.between(Date.current, 1.year.since).map do |h|
+    HolidayJp.between(Date.current.beginning_of_month, 1.year.since).map do |h|
       { title: h.name, start: h.date, color: 'orange' }
     end
   end
 
   def events_for_calendar
     current_user.events.future.map do |e|
-      { title: e.name, start: e.start_date, end: e.end_date, color: 'darkturquoise' }
+      { title: e.name, start: e.start_date, end: e.end_date, color: 'DarkCyan' }
     end
   end
 end
