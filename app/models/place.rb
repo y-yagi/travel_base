@@ -40,8 +40,6 @@ class Place < ActiveRecord::Base
   validates :latitude, presence: true, if: -> { address.present? }
   validates :longitude, presence: true, if: -> { address.present? }
 
-  after_destroy :record_deleted_datum
-
   paginates_per 10
 
   class << self
