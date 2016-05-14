@@ -27,7 +27,7 @@ class IndexController < ApplicationController
 
   def events_for_calendar
     current_user.events.future.map do |e|
-      { title: e.name, start: e.start_date, end: e.end_date, color: 'darkturquoise' }
+      { title: e.name, start: e.start_date, end: e.end_date, color: 'DarkCyan' }
     end
   end
 end
