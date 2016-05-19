@@ -7,5 +7,6 @@ namespace :api do
     resources :travels, only: %i(index show)
     resources :places, only: %i(index create update destroy show)
     resources :deleted_data, only: %i(index)
+    resources :events, only: %i(index)
   end
 end
