@@ -20,7 +20,7 @@ class ScheduleTest < ActiveSupport::TestCase
   test 'should have the necessary required validators' do
     schedule = Schedule.new
     assert_not schedule.valid?
-    assert_equal [:travel_date_id, :place_id], schedule.errors.keys
+    assert_equal [:travel_date, :place, :travel_date_id, :place_id], schedule.errors.keys
   end
 
   test '".build" return Schedule instance' do

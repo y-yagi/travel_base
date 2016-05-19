@@ -19,7 +19,7 @@ class Schedule < ActiveRecord::Base
 
   belongs_to :travel_date, touch: true
   belongs_to :place
-  belongs_to :route
+  belongs_to :route, optional: true
 
   validates :travel_date_id, presence: true
   validates :place_id, presence: true

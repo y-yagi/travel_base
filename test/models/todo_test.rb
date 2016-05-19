@@ -4,7 +4,7 @@ class TodoTest < ActiveSupport::TestCase
   test 'should have the necessary required validators' do
     todo = Todo.new
     assert_not todo.valid?
-    assert_equal [:detail], todo.errors.keys
+    assert_equal [:travel, :user, :detail], todo.errors.keys
   end
 
   test 'validate error when set 256 character in name' do

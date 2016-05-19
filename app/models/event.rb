@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   include Recorder
 
-  belongs_to :user, required: true
-  belongs_to :place, required: true
+  belongs_to :user
+  belongs_to :place
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :detail, length: { maximum: 1024 }

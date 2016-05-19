@@ -22,7 +22,7 @@ class PlaceTest < ActiveSupport::TestCase
   test 'should have the necessary required validators' do
     place = Place.new
     assert_not place.valid?
-    assert_equal [:name, :address, :user_id], place.errors.keys
+    assert_equal [:user, :name, :address, :user_id], place.errors.keys
   end
 
   test 'validate error when set 256 character in name' do
@@ -40,7 +40,7 @@ class PlaceTest < ActiveSupport::TestCase
   test 'validate error when address is not nil' do
     place = Place.new(address: 'tokyo', name: 'tokyo', user_id: 1)
     assert_not place.valid?
-    assert_equal place.errors.keys, [:latitude, :longitude]
+    assert_equal place.errors.keys, [:user, :latitude, :longitude]
   end
 
   test 'build method return Place instance' do

@@ -19,7 +19,7 @@ class TravelTest < ActiveSupport::TestCase
   test 'should have the necessary required validators' do
     travel = Travel.new
     assert_not travel.valid?
-    assert_equal [:name, :start_date, :end_date, :owner_id], travel.errors.keys
+    assert_equal [:owner, :name, :start_date, :end_date, :owner_id], travel.errors.keys
   end
 
   test 'validate error when set 256 character in name' do
