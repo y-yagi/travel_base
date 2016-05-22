@@ -26,7 +26,7 @@ class GoogleMap
       i++
     )
 
-$(document).on('ready turbolinks:load',  ->
+$(document).on('turbolinks:load',  ->
   if $('#places_for_map').length > 0
     places = JSON.parse($('#places_for_map').attr('value'))
     zoom = parseInt($('#map_zoom').attr('value'), 12)

@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load',  ->
+$(document).on('turbolinks:load',  ->
   if $('#calendar_events').length > 0
     $('#calendar').fullCalendar
       lang: 'ja',

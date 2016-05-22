@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load',  ->
+$(document).on('turbolinks:load',  ->
   $('#travel_form').validate()
 
   if ($('.dropbox-button').length > 0 )

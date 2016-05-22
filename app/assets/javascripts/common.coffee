@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load',  ->
+$(document).on('turbolinks:load',  ->
   $('[data-dismiss="info-box"]').click ->
     $(".info-box").remove()
 

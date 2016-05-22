@@ -1,3 +1,3 @@
-$(document).on('ready turbolinks:load',  ->
+$(document).on('turbolinks:load',  ->
   $('.lightGallery').lightGallery(caption: true)
 )
