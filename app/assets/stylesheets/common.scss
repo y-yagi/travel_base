@@ -35,7 +35,8 @@
   height: 175px;
 }
 
-html.turbolinks-progress-bar::before {
+.turbolinks-progress-bar {
+  background-color: #7a62d3;
   background-color: #448956 !important;
 }
 

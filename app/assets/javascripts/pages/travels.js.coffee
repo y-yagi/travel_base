@@ -1,4 +1,4 @@
-$ ->
+$(document).on('ready turbolinks:load',  ->
   $('#travel_form').validate()
 
   if ($('.dropbox-button').length > 0 )
@@ -19,3 +19,4 @@ $ ->
     travel_date_id = $(e.target).data("travel-date-id")
     $('#schedule_travel_date_id').val(travel_date_id)
   )
+)

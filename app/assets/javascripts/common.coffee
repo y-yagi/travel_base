@@ -1,4 +1,4 @@
-$(document).on('ready page:partial-load',  ->
+$(document).on('ready turbolinks:load',  ->
   $('[data-dismiss="info-box"]').click ->
     $(".info-box").remove()
 
@@ -6,5 +6,3 @@ $(document).on('ready page:partial-load',  ->
     $("#alert-info").alert('close')
   )
 )
-
-Turbolinks.enableProgressBar
