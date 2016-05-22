@@ -39,7 +39,7 @@ gem 'rollbar'
 gem 'sass-rails'
 gem 'skylight'
 gem 'slim-rails'
-gem 'turbolinks', github: 'y-yagi/turbolinks'
+gem 'turbolinks', '~> 5.0.0.beta'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
