@@ -2,4 +2,9 @@ production:
   idobata:
     url:  <%= ENV['IDOBATA_URL'] %>
     stage: "[production]"
-
+  pushbullet:
+    users:
+      -
+        api_token: <%= ENV['PUSHBULLET_API_TOKEN'] %>
+        device_idens:
+          - <%= ENV['PUSHBULLET_DEVICE_IDEN'] %>
