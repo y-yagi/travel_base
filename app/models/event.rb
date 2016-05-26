@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   include Recorder
+  include Api::Event
 
   belongs_to :user
   belongs_to :place
