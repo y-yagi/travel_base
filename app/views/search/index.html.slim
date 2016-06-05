@@ -2,7 +2,7 @@ section.page-block.space-top.space-bottom
   .container
     .row
       .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
-      - if @places.empty?
+      - if @places.blank?
         .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
           p class="text-center"
             = "「 #{params[:search]}」に一致する場所は見つかりませんでした。"
