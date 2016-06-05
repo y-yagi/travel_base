@@ -6,6 +6,17 @@ GIT
       rack (>= 1.2.0)
 
 GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 64d8c402e6e79e8ec2966a15c35b98196813ef8e
+  specs:
+    ransack (1.7.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
+
+GIT
   remote: git://github.com/amatsuda/kaminari.git
   revision: 384d5cc9adcdd2ce27e83531961943406241acc8
   specs:
@@ -83,7 +94,6 @@ GEM
     activesupport-testing-metadata (0.1.0)
       activesupport (>= 4.0)
     addressable (2.4.0)
-    ansi (1.5.0)
     arel (7.0.0)
     array_form_helper (0.0.1)
       actionpack (>= 4.0)
@@ -124,22 +134,6 @@ GEM
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
-    elasticsearch (1.0.17)
-      elasticsearch-api (= 1.0.17)
-      elasticsearch-transport (= 1.0.17)
-    elasticsearch-api (1.0.17)
-      multi_json
-    elasticsearch-extensions (0.0.20)
-      ansi
-      ruby-prof
-    elasticsearch-model (0.1.9)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.9)
-    elasticsearch-transport (1.0.17)
-      faraday
-      multi_json
     erubis (2.7.0)
     exception_notification-pushbullet (0.1.0)
       exception_notification
@@ -269,6 +263,8 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    polyamorous (1.3.0)
+      activerecord (>= 3.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -358,7 +354,6 @@ GEM
       netrc (~> 0.7)
     rollbar (2.11.3)
       multi_json
-    ruby-prof (0.15.9)
     ruby-pushbullet (0.1.4)
       json
       rest-client (~> 1.8.0)
@@ -452,9 +447,6 @@ DEPENDENCIES
   coveralls
   doorkeeper (~> 4.0.x)
   dotenv-rails
-  elasticsearch-extensions
-  elasticsearch-model
-  elasticsearch-rails
   exception_notification!
   exception_notification-idobata!
   exception_notification-pushbullet
@@ -503,6 +495,7 @@ DEPENDENCIES
   rails_12factor
   rake-guardian
   rambulance
+  ransack!
   responders
   rollbar
   sass-rails

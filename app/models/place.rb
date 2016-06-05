@@ -50,10 +50,6 @@ class Place < ActiveRecord::Base
       place
     end
 
-    def search_fields
-      ['name', 'address', 'memo', 'tags']
-    end
-
     def acquire_by_params(user, params)
       places = user.places.order('updated_at DESC')
       if params[:already]

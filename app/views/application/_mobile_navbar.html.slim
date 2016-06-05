@@ -1,5 +1,10 @@
 aside.left-off-canvas-menu
   .mobile-navi
+    = form_tag(search_path, method: :get, autocomplete: 'off', class: 'mobile-search')
+      label.sr-only[for="m-search"]
+      = text_field_tag(:search, params[:search], placeholder: "Search", class: 'm-search form-control input-lg')
+      button[type="submit"]
+        i.icon.icon-search
     ul
       li class="#{'current' if current_menu?('places')}"
         = link_to '行きたい場所', places_path

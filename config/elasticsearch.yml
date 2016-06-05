@@ -1,9 +1,0 @@
-development:
-  host: "localhost:9200"
-
-test:
-  host: "localhost:9250"
-
-production:
-  url: <%= ENV['BONSAI_URL'] %>
-
