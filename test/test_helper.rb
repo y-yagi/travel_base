@@ -1,7 +1,11 @@
+require 'simplecov'
 require 'coveralls'
 require 'support//wait_for_ajax'
 
-Coveralls.wear!('rails')
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter 'app/controllers/travel_photos_controller.rb'
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
