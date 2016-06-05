@@ -48,6 +48,8 @@ header.header.sticky
                   = link_to '新規登録', new_event_path
                 li
                   = link_to '一覧', events_path
+          .search
+            i.icon.icon-search
         .tools.group
           = link_to 'ユーザ設定', edit_user_path(current_user), class: 'pull-left'
           = link_to 'ログアウト', logout_path, class: 'pull-left'

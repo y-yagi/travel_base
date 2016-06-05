@@ -1,12 +1,7 @@
-require 'simplecov'
 require 'coveralls'
 require 'support//wait_for_ajax'
 
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-SimpleCov.start do
-   add_filter 'app/models/concerns/searchable.rb'
-   add_filter 'app/controllers/search_controller.rb'
-end
+Coveralls.wear!('rails')
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)

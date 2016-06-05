@@ -14,7 +14,6 @@
 #
 
 class Travel < ActiveRecord::Base
-  include Elasticsearch::Model
   include Api::Travel
   include Recorder
 

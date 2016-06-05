@@ -32,3 +32,4 @@ module TravelBase
     config.active_record.time_zone_aware_types = [:time]
   end
 end
+ActiveRecord::Base.belongs_to_required_by_default = true
