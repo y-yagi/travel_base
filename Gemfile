@@ -7,7 +7,7 @@ gem 'array_form_helper'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'doorkeeper', '~> 4.0.x'
-gem 'kaminari', github: 'amatsuda/kaminari'
+gem 'kaminari'
 # TODO: https://github.com/smartinez87/exception_notification/pull/306 がマージされたら、masterを参照する
 gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
 gem 'exception_notification-idobata', github: 'y-yagi/exception_notification-idobata', branch: 'exception_notification_5'
@@ -45,7 +45,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'quiet_assets'
-  gem 'rack-mini-profiler', github: 'MiniProfiler/rack-mini-profiler'
+  gem 'rack-mini-profiler'
   gem 'web-console', '>= 2.1.3'
 end
 
