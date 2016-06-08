@@ -13,6 +13,14 @@
           label.hover
             = f.check_box :auto_archive, class: "form-control checkbox"
             | 旅行が終わったら、旅行で行った場所を自動的にアーカイブする
+      hr
+      .form-group
+        = f.label :notification
+        br
+        .checkbox
+          label.hover
+            = f.check_box :notification, class: "form-control checkbox"
+            | スケジュールの通知を行う(Androidアプリのみ)
       .col-md-12.col-sm-12
         .text-center
           = f.submit class: "btn btn-md btn-primary", value: '更新', data: { disable_with: "Please wait..." }
