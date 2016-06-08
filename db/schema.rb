@@ -187,15 +187,15 @@ ActiveRecord::Schema.define(version: 20160608043121) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "uid",                                    null: false
-    t.string   "provider",                               null: false
-    t.string   "name",                                   null: false
-    t.string   "email",                                  null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "auto_archive",           default: false
-    t.boolean  "notification",           default: false
-    t.string   "android_instance_token"
+    t.string   "uid",                          null: false
+    t.string   "provider",                     null: false
+    t.string   "name",                         null: false
+    t.string   "email",                        null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "auto_archive", default: false
+    t.boolean  "notification", default: false
+    t.string   "device_token"
   end
 
   add_foreign_key "dropbox_files", "travels"
