@@ -29,6 +29,16 @@ class Schedule < ActiveRecord::Base
     def build(params)
       new(params)
     end
+
+    def convert_datetime_to_time(datetime)
+      datetime.change(year: 2000, day: 1, month: 1) + 9.hours
+    end
+
+    def start_time_in(begin_time, end_time)
+      converted_begin = convert_datetime_to_time(begin_time)
+      converted_end = convert_datetime_to_time(end_time)
+      where(start_time: converted_begin..converted_end)
+    end
   end
 
   def already_registered

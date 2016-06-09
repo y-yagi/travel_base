@@ -12,6 +12,8 @@
 #
 
 class User < ActiveRecord::Base
+  include Api::User
+
   has_one :photo_service_user_info, dependent: :destroy
   has_many :places, dependent: :destroy
   has_many :events, dependent: :destroy
@@ -24,6 +26,8 @@ class User < ActiveRecord::Base
   validates :provider, presence: true
 
   accepts_nested_attributes_for :photo_service_user_info
+
+  before_save :encrypt_device_token
 
   class << self
     def find_or_create_from_auth_hash(auth)
@@ -71,5 +75,15 @@ class User < ActiveRecord::Base
       self.name = new_name
     end
     save! if changed?
+  end
+
+  def encrypt_device_token
+    if device_token_changed? && device_token.present?
+      self.device_token = Rails.application.message_verifier(:device_token).generate(device_token)
+    end
+  end
+
+  def raw_device_token
+    Rails.application.message_verifier(:device_token).verify(device_token)
   end
 end

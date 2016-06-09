@@ -12,11 +12,13 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
 
     within ('#form') do
       check 'user[auto_archive]'
+      check 'user[notification]'
       click_button '更新'
     end
     current_user.reload
 
     assert current_user.auto_archive
+    assert current_user.notification
   end
 
   test 'setup photo serice info' do
