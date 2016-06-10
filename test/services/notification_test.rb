@@ -18,5 +18,8 @@ class NotificationTest < ActiveSupport::TestCase
 
     kifune.update!(start_time: 20.minutes.since + 9.hours)
     assert_empty notification.schedules
+
+    kifune.travel_date.update!(date: 1.day.since)
+    assert_empty notification.schedules
   end
 end

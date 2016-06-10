@@ -17,6 +17,8 @@ class Notification
   end
 
   def schedules
-    Schedule.includes(place: :user).start_time_in(Time.current, 15.minutes.since).where('users.notification': true)
+    Schedule.includes(:travel_date, place: :user).start_time_in(Time.current, 15.minutes.since)
+      .where('users.notification': true)
+      .where('travel_dates.date': Date.current)
   end
 end
