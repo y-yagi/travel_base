@@ -12,7 +12,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'can update token' do
     assert_nil @user.device_token
-    patch api_v1_user_path(@user),  params: { user_id: @user.email, user_provider: @user.provider, token: 'token' },
+    patch api_v1_user_registrate_token_path,  params: { user_id: @user.email, user_provider: @user.provider, token: 'token' },
       headers: { 'HTTP_AUTHORIZATION': @authorization }, as: :json
 
     assert_response :success
