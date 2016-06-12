@@ -5,6 +5,7 @@ class TravelsController < ApplicationController
 
   def index
     @travels = Travel.belong(current_user).order('start_date DESC').page(params[:page])
+    fresh_when(@travels)
   end
 
   def show
