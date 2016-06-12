@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.acquire_by_params(current_user, params)
+    fresh_when(@places)
   end
 
   def show
