@@ -35,14 +35,6 @@ class TravelPhotosController < ApplicationController
     end
   end
 
-  def update
-    if @travel_photo.update(travel_photo_params)
-      redirect_to @travel_photo.travel, info: '写真データの紐付けを更新しました'
-    else
-      render :update
-    end
-  end
-
   def destroy
     @travel_photo.destroy
     redirect_to @travel_photo.travel, info: '写真データの紐付けを削除しました'
