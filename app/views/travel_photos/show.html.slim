@@ -5,6 +5,9 @@ section.container.space-top.double-space-bottom
     section.col-md-12
       h2.post-title
         = @travel_photo.name
+        small.pull-right
+          = link_to @travel_photo, method: :delete, data: { confirm: '紐付けを解除します。宜しいですか?' }, title: '紐付け解除' do
+            i.fa.fa-trash-o
       .row.lightGallery
         - @photos.each do |photo|
           div class="col-md-3 col-sm-3" data-src="#{photo.content.src}" data-title="#{photo.title}"

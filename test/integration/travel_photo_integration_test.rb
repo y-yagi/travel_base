@@ -38,4 +38,16 @@ class TravelPhotoIntegrationTest < ActionDispatch::IntegrationTest
   ensure
     VCR.eject_cassette
   end
+
+  def test_destroy_travel_photo
+    VCR.insert_cassette('travel_photo_list')
+    travel_photo = travel_photos(:kyoto_photo)
+    visit travel_photo_path(travel_id: @travel.id, id: travel_photo.id)
+
+    assert_difference 'TravelPhoto.count', -1 do
+      first("a[title='紐付け解除']").click
+    end
+  ensure
+    VCR.eject_cassette
+  end
 end
