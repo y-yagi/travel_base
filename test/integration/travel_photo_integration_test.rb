@@ -27,4 +27,15 @@ class TravelPhotoIntegrationTest < ActionDispatch::IntegrationTest
   ensure
     VCR.eject_cassette
   end
+
+  def test_show_travel_photo
+    VCR.insert_cassette('travel_photo_list')
+    travel_photo = travel_photos(:kyoto_photo)
+    visit travel_photo_path(travel_id: @travel.id, id: travel_photo.id)
+
+    assert_match '京都旅行写真', page.text
+    assert_match 'IMGP9026.JPG', page.text
+  ensure
+    VCR.eject_cassette
+  end
 end
