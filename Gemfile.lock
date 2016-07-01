@@ -426,7 +426,7 @@ DEPENDENCIES
   http
   icalendar
   jquery-rails
-  kaminari!
+  kaminari
   launchy
   minitest-slow_test
   minitest-sound
