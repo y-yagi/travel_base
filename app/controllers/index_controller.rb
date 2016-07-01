@@ -12,7 +12,7 @@ class IndexController < ApplicationController
     future_travels = Travel.schedules.belong(current_user).future
     @next_travel = future_travels.first
     future_travels_for_calendar = future_travels.map do |t|
-      { title: t.name, start: t.start_date, end: t.end_date + 1 }
+      { title: t.name, start: t.start_date, end: t.end_date + 1, url: travel_path(t) }
     end
 
     @events = (future_travels_for_calendar + holidays_for_calendar + events_for_calendar).to_json
@@ -27,7 +27,8 @@ class IndexController < ApplicationController
 
   def events_for_calendar
     current_user.events.future.map do |e|
-      { title: e.name, start: e.start_date, end: e.end_date, color: 'DarkCyan' }
+      { title: e.name, start: e.start_date, end: e.end_date,
+        color: 'DarkCyan', url: event_path(e) }
     end
   end
 end
