@@ -6,7 +6,7 @@ gem 'active_decorator'
 gem 'array_form_helper'
 gem 'coffee-rails'
 gem 'dotenv-rails'
-gem 'doorkeeper', '~> 4.0.x'
+gem 'doorkeeper'
 gem 'kaminari'
 # TODO: https://github.com/smartinez87/exception_notification/pull/306 がマージされたら、masterを参照する
 gem 'exception_notification', github: 'jeremy/exception_notification', branch: 'rails-5'
