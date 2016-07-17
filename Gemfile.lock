@@ -207,7 +207,6 @@ GEM
     memory_profiler (0.9.6)
     method_source (0.8.2)
     mime-types (2.99.2)
-    mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     minitest-slow_test (0.1.0)
