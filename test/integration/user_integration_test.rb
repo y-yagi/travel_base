@@ -8,6 +8,9 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
 
   test 'setup user info' do
     current_user = users(:google)
+    current_user.update!(admin: true)
+    visit current_path
+
     assert_not current_user.auto_archive
 
     within ('#form') do
