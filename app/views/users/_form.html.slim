@@ -13,7 +13,7 @@
           label.hover
             = f.check_box :auto_archive, class: "form-control checkbox"
             | 旅行が終わったら、旅行で行った場所を自動的にアーカイブする
-      - unless Rails.env.production?
+      - if current_user.admin?
         hr
         .form-group
           = f.label :notification
