@@ -24,6 +24,10 @@ section.page-block.space-top.space-bottom
           | 詳細:
         p
           = simple_format(@event.detail)
+        h4.bold-weight
+          | イベントURL:
+        p
+          = link_to @event.url, @event.url, target: '_blank'
       .col-md-6
         .page-heading.center
           h3.light-weight.text-primary
