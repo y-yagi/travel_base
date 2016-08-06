@@ -11,6 +11,7 @@ module Api::Event
     property :place_id
     property :start_date
     property :end_date
+    property :url
 
     def self.build_permissions(perms, other, target)
       perms.permits! :read if perms.user == other
