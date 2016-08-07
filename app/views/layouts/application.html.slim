@@ -6,12 +6,12 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     title
       | TravelBase
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     script[src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDnE5SvKIKb6jXkwkcM-WmgBLzTHwU_AWY"]
     script[src="//www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="4j5bv0i7855ev2x"]
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     - if @need_pages_js
-      = javascript_include_tag "pages/#{controller_name}"
+      = javascript_include_tag "pages/#{controller_name}", 'data-turbolinks-track': 'reload'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     = render 'rollbar'
@@ -22,7 +22,7 @@ html
         .site-layout
           = render 'navbar_header'
           .page
-            #flash data-turbolinks-temporary=''
+            #flash
               = render 'flash'
             = yield
             = render 'footer'
