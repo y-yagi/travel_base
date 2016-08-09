@@ -16,6 +16,7 @@ class Api::V1::EventsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_equal users(:google).events.size, response.parsed_body.size
+    assert_equal %w(id name detail place_id start_date end_date url), response.parsed_body.first.keys
   end
 
   test 'specify the update date, the data after the date that update can be get' do

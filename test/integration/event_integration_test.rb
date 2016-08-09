@@ -19,6 +19,7 @@ class EventIntegrationTest < ActionDispatch::IntegrationTest
     fill_in 'event_detail', with: 'この祭りの起源は極めて古く、諸説ある中に、すでに長久元年（1040）に行われた事が「春記」にみえ、「中右記」をはじめ諸記録によっても平安中期には盛んに行われていたことが知られます。'
     fill_in 'event_start_date', with: '2016-05-03'
     fill_in 'event_end_date', with: '2016-05-04'
+    fill_in 'event_url', with: 'http://inari.jp/about/num06/'
 
     assert_difference 'Event.count' do
       click_button '登録'
@@ -30,6 +31,7 @@ class EventIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal 'この祭りの起源は極めて古く、諸説ある中に、すでに長久元年（1040）に行われた事が「春記」にみえ、「中右記」をはじめ諸記録によっても平安中期には盛んに行われていたことが知られます。', event.detail
     assert_equal Date.parse('2016-05-03'), event.start_date
     assert_equal Date.parse('2016-05-04'), event.end_date
+    assert_equal 'http://inari.jp/about/num06/', event.url
   end
 
   test 'show event' do
@@ -42,6 +44,7 @@ class EventIntegrationTest < ActionDispatch::IntegrationTest
     assert_match I18n.l(event.end_date, format: :long), page.text
     assert_match event.place.name, page.text
     assert_match event.place.address, page.text
+    assert_match 'http://www.ooasahikojinja.jp/maturi/', page.text
   end
 
   test 'edit event' do
@@ -52,6 +55,7 @@ class EventIntegrationTest < ActionDispatch::IntegrationTest
     fill_in 'event_detail', with: '更新したざます'
     fill_in 'event_start_date', with: '2017-05-03'
     fill_in 'event_end_date', with: '2017-05-04'
+    fill_in 'event_url', with: 'https://www.google.co.jp'
 
     click_button '登録'
     event.reload
@@ -61,6 +65,7 @@ class EventIntegrationTest < ActionDispatch::IntegrationTest
     assert_equal '更新したざます', event.detail
     assert_equal Date.parse('2017-05-03'), event.start_date
     assert_equal Date.parse('2017-05-04'), event.end_date
+    assert_equal 'https://www.google.co.jp', event.url
   end
 
   test 'destroy event' do

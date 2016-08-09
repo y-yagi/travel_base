@@ -229,6 +229,7 @@ ja:
         place_id: 場所
         start_date: 開始日
         end_date: 終了日
+        url: イベントURL
   views:
     pagination:
       first: "&laquo; 先頭"
