@@ -26,8 +26,9 @@ section.page-block.space-top.space-bottom
           = simple_format(@event.detail)
         h4.bold-weight
           | イベントURL:
-        p
-          = link_to @event.url, @event.url, target: '_blank'
+        - if @event.url
+          p
+            = link_to @event.url, @event.url, target: '_blank'
       .col-md-6
         .page-heading.center
           h3.light-weight.text-primary
