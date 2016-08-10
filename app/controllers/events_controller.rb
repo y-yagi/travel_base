@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_places, only: [:new, :edit, :create, :update]
 
   def index
-    @events = current_user.events.order(updated_at: :desc).page(params[:page])
+    @events = current_user.events.order(start_date: :desc).page(params[:page])
   end
 
   def show
