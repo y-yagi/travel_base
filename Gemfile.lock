@@ -46,8 +46,8 @@ GEM
     arel (7.1.1)
     array_form_helper (0.0.1)
       actionpack (>= 4.0)
-    benchmark-ips (2.7.0)
-    brakeman (3.3.3)
+    benchmark-ips (2.7.1)
+    brakeman (3.3.5)
     builder (3.2.2)
     capybara (2.7.1)
       addressable
@@ -169,6 +169,7 @@ GEM
     memory_profiler (0.9.6)
     method_source (0.8.2)
     mime-types (2.99.2)
+    mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     minitest-slow_test (0.1.0)
@@ -299,7 +300,7 @@ GEM
       actionpack
       activesupport
       railties
-    ransack (1.8.1)
+    ransack (1.8.2)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
@@ -335,7 +336,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    skylight (0.10.5)
+    skylight (0.10.6)
       activesupport (>= 3.0.0)
     slim (3.0.7)
       temple (~> 0.7.6)
@@ -372,7 +373,7 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.5)
     tins (1.12.0)
-    turbolinks (5.0.0)
+    turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
