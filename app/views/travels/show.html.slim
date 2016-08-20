@@ -113,6 +113,8 @@ section.page-block.double-padding-top.double-space-bottom
                               i.fa.fa-bus.right10
                           = link_to create_route_link_from_travel_date(travel_date, i), title: 'GoogleMapでルートを確認する', target: '_blank' do
                             i.fa.fa-map-marker.right10
+                          = link_to Tenkijp.url_by_prefecture(schedule.place.prefecture), title: 'tenki.jpで天気を確認する', target: '_blank' do
+                            i.fa.fa-sun-o.right10
                         - if schedule.start_time.present? || schedule.end_time.present?
                           br
                           small.text-muted
