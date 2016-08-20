@@ -85,15 +85,17 @@ section.page-block.double-padding-top.double-space-bottom
                       .timeline-panel
                         .timeline-heading
                           .delete
-                            = link_to edit_schedule_route_path(schedule, route), title: '編集' do
-                              i.fa.fa-edit
-                            = link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
-                              i.fa.fa-trash-o
                         h5.timeline-title
                           strong.text-primary
-                              = create_route_title_from_schedules(travel_date.schedules, i)
+                            = create_route_title_from_schedules(travel_date.schedules, i)
+                          br
+                          small
+                            = link_to edit_schedule_route_path(schedule, route), title: '編集' do
+                              i.fa.fa-edit.right10
+                            = link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+                              i.fa.fa-trash-o.right10
                         .timeline-body
-                          = simple_format(route.detail)
+                            = simple_format(route.detail)
                   li
                     .timeline-badge.success
                       i.fa.fa-map-marker
@@ -101,24 +103,21 @@ section.page-block.double-padding-top.double-space-bottom
                       .timeline-heading
                         h4.timeline-title
                           = link_to(schedule.place.name, place_path(schedule.place))
-                        - if schedule.start_time.present? || schedule.end_time.present?
-                          p
-                            small.text-muted
-                              i.fa.fa-clock-o
-                              = " " + schedule.formatted_time
-                        .delete
+                        small
                           = link_to edit_schedule_path(schedule), title: '編集' do
-                            i.fa.fa-edit
-                          br
+                            i.fa.fa-edit.right10
                           = link_to schedule, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
-                            i.fa.fa-trash-o
+                            i.fa.fa-trash-o.right10
                           - unless route
-                            br
                             = link_to new_schedule_route_path(schedule), title: '移動方法を登録する' do
-                              i.fa.fa-bus
-                          br
+                              i.fa.fa-bus.right10
                           = link_to create_route_link_from_travel_date(travel_date, i), title: 'GoogleMapでルートを確認する', target: '_blank' do
-                            i.fa.fa-map-marker
+                            i.fa.fa-map-marker.right10
+                        - if schedule.start_time.present? || schedule.end_time.present?
+                          br
+                          small.text-muted
+                            i.fa.fa-clock-o
+                            = " " + schedule.formatted_time
                       - if schedule.memo.present?
                         .timeline-body
                           = simple_format(schedule.memo)
