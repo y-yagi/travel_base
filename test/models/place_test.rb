@@ -86,4 +86,11 @@ class PlaceTest < ActiveSupport::TestCase
     assert_equal place.id, deleted_datum.datum_id
     assert_equal place.user_id, deleted_datum.user_id
   end
+
+  test '#prefecture' do
+    assert_equal '北海道', Place.new(address: '北海道札幌市中央区北1条西5丁目4番地').prefecture
+    assert_equal '東京都', Place.new(address: '東京都港区芝公園４丁目２−８').prefecture
+    assert_equal '京都府', Place.new(address: '京都府京都市伏見区深草藪之内町６８').prefecture
+    assert_empty Place.new(address: 'とどうふけん無し').prefecture
+  end
 end

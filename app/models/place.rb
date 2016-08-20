@@ -87,4 +87,8 @@ class Place < ActiveRecord::Base
       Rollbar.error(e, "can't create station data")
     end
   end
+
+  def prefecture
+    address.try! { match(/\A(.{2}[都道府県]|.{3}県)/).to_s }
+  end
 end
