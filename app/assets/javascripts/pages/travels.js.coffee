@@ -19,4 +19,10 @@ $(document).on('turbolinks:load',  ->
     travel_date_id = $(e.target).data("travel-date-id")
     $('#schedule_travel_date_id').val(travel_date_id)
   )
+
+  $('#schedule_travel_date_id').on('change',  (e) ->
+    travel_date_id = $(e.target).val()
+    target = $(".tab-content").find("[data-travel-date-id='" + travel_date_id + "']")
+    target.click() if target
+  )
 )
