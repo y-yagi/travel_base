@@ -8,6 +8,7 @@ namespace :api do
     resources :places, only: %i(index create update destroy show)
     resources :deleted_data, only: %i(index)
     resources :events, only: %i(index)
+    resource :user, only: %i(show)
     patch 'user/registrate_token'
   end
 end
