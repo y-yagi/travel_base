@@ -11,7 +11,7 @@
 #  updated_at                 :datetime         not null
 #
 
-class TravelPhoto < ActiveRecord::Base
+class TravelPhoto < ApplicationRecord
   belongs_to :travel
   belongs_to :photo_service_user_info
 

@@ -11,5 +11,5 @@
 #  updated_at :datetime         not null
 #
 
-class Station < ActiveRecord::Base
+class Station < ApplicationRecord
 end

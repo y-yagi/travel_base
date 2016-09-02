@@ -14,7 +14,7 @@
 #  attachment_file_id :string
 #
 
-class Schedule < ActiveRecord::Base
+class Schedule < ApplicationRecord
   include Api::Schedule
 
   belongs_to :travel_date, touch: true

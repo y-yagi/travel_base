@@ -7,7 +7,7 @@
 #  distance   :string
 #
 
-class PlacesStation < ActiveRecord::Base
+class PlacesStation < ApplicationRecord
   belongs_to :place
   belongs_to :station
 

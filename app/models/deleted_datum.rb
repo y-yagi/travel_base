@@ -1,3 +1,3 @@
-class DeletedDatum < ActiveRecord::Base
+class DeletedDatum < ApplicationRecord
   include Api::DeletedDatum
 end

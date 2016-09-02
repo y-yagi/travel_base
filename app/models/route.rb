@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-class Route < ActiveRecord::Base
+class Route < ApplicationRecord
   include Api::Route
 
   has_one :schedule, dependent: :destroy
