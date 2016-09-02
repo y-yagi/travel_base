@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class TravelDate < ActiveRecord::Base
+class TravelDate < ApplicationRecord
   include Api::TravelDate
 
   belongs_to :travel, touch: true

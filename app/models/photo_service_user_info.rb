@@ -10,7 +10,7 @@
 #  updated_at            :datetime         not null
 #
 
-class PhotoServiceUserInfo < ActiveRecord::Base
+class PhotoServiceUserInfo < ApplicationRecord
   belongs_to :user
   has_many :travel_photos, dependent: :destroy
 

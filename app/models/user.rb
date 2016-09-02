@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Api::User
 
   has_one :photo_service_user_info, dependent: :destroy

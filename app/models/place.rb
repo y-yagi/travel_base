@@ -16,7 +16,7 @@
 #  tags       :string           is an Array
 #
 
-class Place < ActiveRecord::Base
+class Place < ApplicationRecord
   include Api::Place
   include Recorder
 
