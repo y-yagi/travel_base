@@ -3,7 +3,6 @@ ruby '2.3.1'
 source 'https://rubygems.org'
 
 gem 'active_decorator'
-gem 'array_form_helper'
 gem 'coffee-rails'
 gem 'dotenv-rails'
 gem 'doorkeeper', '>= 4.2.0'
