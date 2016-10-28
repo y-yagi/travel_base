@@ -42,6 +42,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development do
   gem 'derailed_benchmarks'
   gem 'rack-mini-profiler'
+  gem 'stackprof'
   gem 'web-console', '>= 2.1.3'
 end
 
