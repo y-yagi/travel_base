@@ -5,13 +5,13 @@ section.page-block.space-top.space-bottom
       - if @places.blank?
         .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
           p class="text-center"
-            = "「 #{params[:search]}」に一致する場所は見つかりませんでした。"
+            = "「#{params[:search]}」に一致する場所は見つかりませんでした。"
       - else
         div.toolbox.top-line-sorting
           .container
             .heading
               h1
-                | 検索結果
+                |「#{params[:search]}」の検索結果
           .row.grid-view.space-top.space-bottom
             - @places.each do |place|
               .col-md-4.col-sm-4
