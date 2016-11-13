@@ -42,7 +42,8 @@ GEM
       tzinfo (~> 1.1)
     activesupport-testing-metadata (0.1.0)
       activesupport (>= 4.0)
-    addressable (2.4.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     array_form_helper (0.0.1)
       actionpack (>= 4.0)
@@ -131,7 +132,7 @@ GEM
     hashie (3.4.6)
     heapy (0.1.2)
     holiday_jp (0.5.0)
-    http (2.0.3)
+    http (2.1.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
@@ -166,7 +167,7 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    memory_profiler (0.9.6)
+    memory_profiler (0.9.7)
     method_source (0.8.2)
     mime-types (2.99.3)
     mini_portile2 (2.1.0)
@@ -233,6 +234,7 @@ GEM
       pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (2.0.4)
     rack (2.0.1)
     rack-accept-default (0.0.2)
       rack
@@ -266,7 +268,7 @@ GEM
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-modernizr (2.8.3)
-    rails-assets-moment (2.15.2)
+    rails-assets-moment (2.16.0)
     rails-assets-respond (1.4.2)
     rails-assets-smoothscroll (0.3.4)
     rails-dom-testing (2.0.1)
@@ -352,7 +354,7 @@ GEM
     temple (0.7.7)
     term-ansicolor (1.4.0)
       tins (~> 1.0)
-    the_garage (2.3.0)
+    the_garage (2.3.2)
       coffee-rails
       haml
       hashie
