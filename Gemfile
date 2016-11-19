@@ -13,6 +13,7 @@ gem 'kaminari'
 gem 'exception_notification'
 gem 'exception_notification-pushbullet'
 gem 'the_garage'
+gem 'fast_blank'
 gem 'garage-doorkeeper'
 gem 'geocoder'
 gem 'http'
@@ -43,7 +44,7 @@ group :development do
   gem 'derailed_benchmarks'
   gem 'rack-mini-profiler'
   gem 'stackprof'
-  gem 'web-console', '>= 2.1.3'
+#  gem 'web-console', '>= 2.1.3'
   gem 'derailed_benchmarks'
 end
 

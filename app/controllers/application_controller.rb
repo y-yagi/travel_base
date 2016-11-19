@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
+    if ENV['DERAILED'] && !session[:user_id]
+      session[:user_id] = User.first.id
+    end
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
 
