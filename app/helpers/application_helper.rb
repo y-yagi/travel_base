@@ -32,4 +32,12 @@ module ApplicationHelper
   def generate_invite_url(travel)
     new_travel_member_url(travel_id: travel.id, key: travel.generate_invite_key)
   end
+
+  def assets_exist?(asset)
+    if Rails.application.config.assets.compile
+      Rails.application.assets[asset]
+    else
+      Rails.application.assets_manifest.assets[asset]
+    end
+  end
 end
