@@ -45,6 +45,8 @@ class Api::V1::TravelsControllerTest < ActionDispatch::IntegrationTest
     assert_equal travel.memo, response.parsed_body['memo']
     assert_equal I18n.l(travel.start_date, format: :long), response.parsed_body['formatted_start_date']
     assert_equal I18n.l(travel.end_date, format: :long), response.parsed_body['formatted_end_date']
+    p response
+    p response.parsed_body
     assert_equal travel.updated_at.as_json, response.parsed_body['updated_at']
   end
 
