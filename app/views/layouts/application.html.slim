@@ -10,7 +10,7 @@ html
     script[src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDnE5SvKIKb6jXkwkcM-WmgBLzTHwU_AWY"]
     script[src="//www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="4j5bv0i7855ev2x"]
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    - if @need_pages_js && assets_exist?("pages/#{controller_name}")
+    - if @need_pages_js && assets_exist?("pages/#{controller_name}.js")
       = javascript_include_tag "pages/#{controller_name}", 'data-turbolinks-track': 'reload'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
