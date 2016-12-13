@@ -80,7 +80,7 @@ class UserTest < ActiveSupport::TestCase
   test 'authenticate by invalid user' do
     user = users(:google)
 
-    assert_equal nil, User.authenticate!(
+    assert_nil User.authenticate!(
       user_id: user.email, provider: 'twitter'
     )
   end
