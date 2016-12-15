@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.3.1
+  - 2.4.0-rc1
 env:
   - DB=postgresql
 bundler_args: "--without production"
