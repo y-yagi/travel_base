@@ -79,7 +79,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-placeholder'
   gem 'rails-assets-jquery.stellar'
   gem 'rails-assets-jquery-validate'
-  gem 'rails-assets-modernizr', '2.8.3'
+  gem 'rails-assets-modernizr'
   gem 'rails-assets-moment'
   gem 'rails-assets-respond'
   gem 'rails-assets-smoothscroll'
