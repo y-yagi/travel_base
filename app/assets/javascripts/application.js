@@ -20,7 +20,6 @@
 //= require jquery-placeholder
 //= require jquery.stellar
 //= require jquery-validate
-//= require modernizr
 //= require respond
 //= require smoothscroll
 //= require_tree ../../../lib/assets/javascripts/common/
