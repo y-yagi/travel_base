@@ -1,7 +1,4 @@
 production:
-  idobata:
-    url:  <%= ENV['IDOBATA_URL'] %>
-    stage: "[production]"
   pushbullet:
     users:
       -
