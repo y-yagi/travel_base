@@ -57,8 +57,6 @@ group :test do
   gem 'activesupport-testing-metadata'
   gem 'capybara'
   gem 'coveralls', require: false
-  gem 'guard'
-  gem 'guard-minitest'
   gem 'launchy'
   gem 'minitest-sound'
   gem 'minitest-slow_test'
