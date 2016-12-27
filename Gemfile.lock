@@ -241,8 +241,6 @@ GEM
       rails-assets-jquery (>= 2.0.0)
       rails-assets-moment (>= 2.9.0)
     rails-assets-jquery (2.1.4)
-    rails-assets-jquery-validate (1.16.0)
-      rails-assets-jquery (>= 1.7.2)
     rails-assets-jquery.stellar (0.6.2)
       rails-assets-jquery (>= 1.4.3)
     rails-assets-moment (2.17.1)
@@ -415,7 +413,6 @@ DEPENDENCIES
   rails-assets-bootstrap-css!
   rails-assets-bootstrap-tagsinput!
   rails-assets-fullcalendar!
-  rails-assets-jquery-validate!
   rails-assets-jquery.stellar!
   rails-assets-moment!
   rails-assets-respond!
