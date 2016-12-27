@@ -76,7 +76,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-fullcalendar'
   gem 'rails-assets-jquery.stellar'
   gem 'rails-assets-moment'
-  gem 'rails-assets-respond'
   gem 'rails-assets-smoothscroll'
   gem 'rails-assets-bootstrap-tagsinput'
 end

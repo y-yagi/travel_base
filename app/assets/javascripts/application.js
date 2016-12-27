@@ -18,7 +18,6 @@
 //= require moment/locale/ja
 //= require fullcalendar
 //= require jquery.stellar
-//= require respond
 //= require smoothscroll
 //= require_tree ../../../lib/assets/javascripts/common/
 //= require turbolinks
