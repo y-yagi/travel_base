@@ -74,7 +74,6 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-css'
   gem 'rails-assets-fullcalendar'
-  gem 'rails-assets-jquery-placeholder'
   gem 'rails-assets-jquery.stellar'
   gem 'rails-assets-jquery-validate'
   gem 'rails-assets-moment'

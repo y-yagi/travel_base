@@ -17,7 +17,6 @@
 //= require moment
 //= require moment/locale/ja
 //= require fullcalendar
-//= require jquery-placeholder
 //= require jquery.stellar
 //= require jquery-validate
 //= require respond
