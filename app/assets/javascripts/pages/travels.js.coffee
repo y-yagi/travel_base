@@ -1,6 +1,4 @@
 $(document).on('turbolinks:load',  ->
-  $('#travel_form').validate()
-
   if ($('.dropbox-button').length > 0 )
     file_count = 0
     options = {

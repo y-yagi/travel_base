@@ -1,3 +1,1 @@
-$(document).on('turbolinks:load',  ->
-  $('#place_form').validate()
-)
+# TODO: remove file
