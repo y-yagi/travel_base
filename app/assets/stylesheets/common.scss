@@ -62,11 +62,24 @@
 .left10 {
   margin-left: 10px;
 }
-td.fc-sun {
-    background-color: #fa8072;
+td.fc-sun span.fc-day-number {
+    color: #fa8072;
+    font-weight: bold;
 }
-td.fc-sat {
-    background-color: #e0ffff;
+
+th.fc-sun span {
+    color: #fa8072;
+    font-weight: bold;
+}
+
+td.fc-sat span.fc-day-number {
+    color: #1ab3ff;
+    font-weight: bold;
+}
+
+th.fc-sat span {
+    color: #1ab3ff;
+    font-weight: bold;
 }
 
 .line-through {
