@@ -133,7 +133,7 @@ th.fc-sat span {
   z-index: 2;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background: #2f8cea;
+  background: #3dc054;
   outline: none;
   color: #fff;
   vertical-align: bottom;
@@ -167,7 +167,7 @@ th.fc-sat span {
   padding: 1.8em 1.5em 1em 1.5em;
   width: 200%;
   height: 200%;
-  background: #2f8cea;
+  background: #3dc054;
   color: #fff;
   color: transparent;
   text-transform: none;
@@ -186,7 +186,7 @@ th.fc-sat span {
 }
 .schedule .event:hover,
 .schedule .event:focus {
-  color: #2f8cea;
+  background: #3dc054;
   background: transparent;
 }
 .schedule .event:hover::before,
