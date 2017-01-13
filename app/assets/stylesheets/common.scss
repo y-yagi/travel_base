@@ -86,3 +86,115 @@ th.fc-sat span {
   color: #b2b2b2;
   text-decoration: line-through;
 }
+
+.schedule table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: none;
+}
+.schedule table th {
+  text-align: center;
+  border: none;
+  border-right: 1px solid #e0e0e0;
+  padding: 12px 0;
+}
+.schedule table th.day {
+  text-align: left;
+}
+@media only screen and (max-width: 991px) {
+  .schedule table th.day {
+    font-size: 0.875em;
+    text-transform: uppercase;
+  }
+  .schedule table th.day span {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .schedule table th {
+    font-size: 0.875em;
+  }
+}
+.schedule table td {
+  position: relative;
+  padding: 12px 0;
+  border: none;
+  border-right: 1px solid #e0e0e0;
+}
+@media only screen and (max-width: 480px) {
+  .schedule table {
+    font-size: 50%;
+  }
+}
+.schedule .event {
+  display: block;
+  width: 100%;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #2f8cea;
+  outline: none;
+  color: #fff;
+  vertical-align: bottom;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 5px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.schedule .event span {
+  display: block;
+  font-size: 0.875em;
+  text-transform: none;
+  margin-top: 5px;
+}
+.schedule .event::before,
+.schedule .event::after {
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+.schedule .event::before {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: 1;
+  padding: 1.8em 1.5em 1em 1.5em;
+  width: 200%;
+  height: 200%;
+  background: #2f8cea;
+  color: #fff;
+  color: transparent;
+  text-transform: none;
+  font-size: 1.125em;
+  font-weight: 300;
+  content: attr(data-description);
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.4;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, color 0.3s, -webkit-transform 0.3s, background-position 0.2s;
+  transition: opacity 0.3s, color 0.3s, transform 0.3s, background-position 0.2s;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  pointer-events: auto;
+}
+.schedule .event:hover,
+.schedule .event:focus {
+  color: #2f8cea;
+  background: transparent;
+}
+.schedule .event:hover::before,
+.schedule .event:focus::before {
+  color: #fff;
+  opacity: 1;
+  -webkit-transition-delay: 0s, 0s, 0s, 0.1s;
+  transition-delay: 0s, 0s, 0s, 0.1s;
+  -webkit-transform: scale(1) translateY(-75%);
+  transform: scale(1) translateY(-75%);
+}
