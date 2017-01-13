@@ -5,6 +5,8 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
+  get 'static_page/index' if Rails.env.development?
+
   get '/search', to: 'search#index'
 
   root 'index#index'
