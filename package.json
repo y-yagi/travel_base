@@ -2,6 +2,7 @@
   "name": "travel_base",
   "version": "1.0.0",
   "dependencies": {
+    "bootstrap": "*",
     "fullcalendar": "*",
     "jquery-placeholder": "*",
     "jquery.stellar": "*",
