@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap-css
 //= require bootstrap-tagsinput
-//= require moment
+//= require moment/min/moment.min
 //= require moment/locale/ja
-//= require fullcalendar
-//= require jquery.stellar
-//= require smoothscroll
+//= require fullcalendar/dist/fullcalendar.min
+//= require jquery.stellar/jquery.stellar
+//= require smoothscroll/smoothscroll.min
 //= require_tree ../../../lib/assets/javascripts/common/
 //= require turbolinks
 //= require_directory .
