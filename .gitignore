@@ -15,5 +15,6 @@
 
 coverage
 public/assets/
+node_modules/
 
 output.html

@@ -1,0 +1,20 @@
+{
+  "name": "travel_base",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "*",
+    "fullcalendar": "*",
+    "jquery-placeholder": "*",
+    "jquery.stellar": "*",
+    "jquery-validate": "*",
+    "modernizr": "*",
+    "moment": "*",
+    "respond": "*",
+    "smoothscroll": "*",
+    "bootstrap-tagsinput": "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  }
+}

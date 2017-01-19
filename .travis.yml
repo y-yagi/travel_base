@@ -5,7 +5,14 @@ rvm:
 env:
   - DB=postgresql
 bundler_args: "--without production"
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - $HOME/.yarn-cache
+before_install:
+  - nvm install 4.6.0
+  - npm config set spin false
+  - npm install -g yarn
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - xvfb-run bundle exec rake test
@@ -14,6 +21,6 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database database_test' -U postgres
   - bundle update
-cache: bundler
+  - yarn install
 services:
   - elasticsearch
