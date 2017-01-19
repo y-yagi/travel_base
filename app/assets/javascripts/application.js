@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-css
+//= require bootstrap/dist/js/bootstrap.min
 //= require bootstrap-tagsinput
 //= require moment/min/moment.min
 //= require moment/locale/ja
