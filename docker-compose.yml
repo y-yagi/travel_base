@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+    volumes:
+      - "postgresql-data:/var/lib/postgresql/"
   web:
     build: .
     command: bin/rails s -p 3000 -b '0.0.0.0'
@@ -16,3 +18,6 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD:
       POSTGRES_HOST: db
+
+volumes:
+  postgresql-data:
