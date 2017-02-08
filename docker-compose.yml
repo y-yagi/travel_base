@@ -18,6 +18,8 @@ services:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD:
       POSTGRES_HOST: db
+    tty: true
+    stdin_open: true
 
 volumes:
   postgresql-data:
