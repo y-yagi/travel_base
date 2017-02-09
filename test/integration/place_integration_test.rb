@@ -26,7 +26,7 @@ class PlaceIntegrationTest < ActionDispatch::IntegrationTest
     assert_difference 'Place.count' do
       click_button 'この場所を登録する'
     end
-    assert_equal '東京駅', Place.last.name
+    assert_equal 'tokyo', Place.last.name
   end
 
   test 'create place that regist by form' do
