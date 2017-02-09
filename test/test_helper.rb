@@ -17,7 +17,7 @@ Geocoder::Lookup::Test.add_stub(
   'tokyo', [
     {'formatted_address': 'tokyo minatoku',
      geometry: { 'location' => { 'lat' => 35.681382, 'lng' => 139.766084, 'address' => 'tokyo' } },
-     address_components: [{ 'long_name' => '東京駅' } ]
+     address_components: [{ 'long_name' => 'tokyo' } ]
     }
   ]
 )

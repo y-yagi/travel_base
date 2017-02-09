@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def get_place_name_from_geocode_result(place)
-    place.address_components.first['long_name']
-  end
-
   def googlemap_link(address)
     URI.encode("https://www.google.co.jp/maps/?q=#{address}")
   end
