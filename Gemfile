@@ -35,6 +35,7 @@ gem 'rollbar'
 gem 'sass-rails'
 gem 'sprockets', '~> 3.0'
 gem 'skylight'
+gem 'puma'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -68,6 +69,3 @@ group :test do
   gem 'webmock'
 end
 
-group :production do
-  gem 'unicorn'
-end
