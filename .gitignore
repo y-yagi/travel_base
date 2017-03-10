@@ -18,3 +18,6 @@ public/assets/
 node_modules/
 
 output.html
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
