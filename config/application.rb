@@ -31,6 +31,7 @@ module TravelBase
 
     config.active_record.time_zone_aware_types = [:time]
     config.middleware.delete Rack::Sendfile
+
+    config.load_defaults "5.1"
   end
 end
-ActiveRecord::Base.belongs_to_required_by_default = true
