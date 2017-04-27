@@ -16,6 +16,8 @@ gem 'geocoder'
 gem 'rails-footnotes'
 gem 'http'
 gem 'holiday_jp'
+# TODO: https://github.com/slim-template/slim/commit/97debc1c0d5d14567c27f94c6bf354602070a905 のリリース待ち
+gem 'haml', '< 5.0.0'
 gem 'icalendar'
 gem 'jquery-rails'
 gem 'json', '>= 2.0.0'
