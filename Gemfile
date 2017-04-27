@@ -30,7 +30,8 @@ gem 'pg'
 gem 'rails', '5.1.0'
 gem 'rambulance'
 gem 'ransack'
-gem 'responders'
+# TODO: rails 5.1.0をサポートした新しいバージョンのリリース待ち
+gem 'responders', github: "plataformatec/responders"
 gem 'rollbar'
 gem 'sass-rails'
 gem 'sprockets', '~> 3.0'
