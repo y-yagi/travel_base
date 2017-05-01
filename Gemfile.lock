@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/plataformatec/responders.git
-  revision: 153f2c603fcbd0adb90a15021a7cba53654a78e5
-  specs:
-    responders (2.3.0)
-      railties (>= 4.2.0, < 5.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -276,6 +269,9 @@ GEM
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     redcarpet (3.4.0)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -414,7 +410,6 @@ DEPENDENCIES
   rails-footnotes
   rambulance
   ransack
-  responders!
   rollbar
   sass-rails
   skylight
