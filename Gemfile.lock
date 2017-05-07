@@ -93,7 +93,6 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.6.0)
-    erubis (2.7.0)
     exception_notification (4.2.1)
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
@@ -376,12 +375,10 @@ DEPENDENCIES
   derailed_benchmarks
   doorkeeper (>= 4.2.0)
   dotenv-rails
-  erubis
   exception_notification
   exception_notification-pushbullet
   garage-doorkeeper
   geocoder
-  haml (< 5.0.0)
   holiday_jp
   http
   icalendar
