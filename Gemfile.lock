@@ -276,6 +276,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rinku (2.0.2)
     rollbar (2.14.1)
       multi_json
     ruby-pushbullet (0.1.4)
@@ -408,6 +409,7 @@ DEPENDENCIES
   rails-footnotes
   rambulance
   ransack
+  rinku
   rollbar
   sass-rails
   skylight
@@ -423,9 +425,8 @@ DEPENDENCIES
   web-console (>= 2.1.3)
   webmock
 
-
 RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.14.6
+   1.15.0

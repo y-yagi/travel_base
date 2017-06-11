@@ -96,7 +96,11 @@ section.page-block.double-padding-top.double-space-bottom
                             = link_to schedule_route_path(schedule, route), method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                               i.fa.fa-trash-o.right10
                         .timeline-body
-                            = simple_format(route.detail)
+                          a.collapsed[data-toggle="collapse" href="#show-route-#{route.id}"]
+                            | ルート表示
+                          br
+                        div.collapse[style="height: 0px;" id="show-route-#{route.id}"]
+                          = Rinku.auto_link(simple_format(route.detail), :all, 'target="_blank"').html_safe
                   li
                     .timeline-badge.success
                       i.fa.fa-map-marker
