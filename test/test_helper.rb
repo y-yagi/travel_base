@@ -15,17 +15,15 @@ WebMock.disable_net_connect!(allow_localhost: true)
 Geocoder.configure(lookup: :test)
 Geocoder::Lookup::Test.add_stub(
   'tokyo', [
-    {'formatted_address': 'tokyo minatoku',
-     geometry: { 'location' => { 'lat' => 35.681382, 'lng' => 139.766084, 'address' => 'tokyo' } },
-     address_components: [{ 'long_name' => 'tokyo' } ]
+    {'formatted_address': 'tokyo minatoku', 'name' => 'tokyo',
+     geometry: { 'location' => { 'lat' => 35.681382, 'lng' => 139.766084, 'address' => 'tokyo' } }
     }
   ]
 )
 Geocoder::Lookup::Test.add_stub(
   ['35.655048', '132.589155'], [
-    { 'formatted_address': '日本 愛媛県伊予市双海町大久保',
-      geometry: { 'location': { 'lat': 35.655048, 'lng': 132.589155, 'address': '愛媛' } },
-      address_components: [{ 'long_name': '下灘駅' }]
+    { 'formatted_address': '日本 愛媛県伊予市双海町大久保', 'name' => '下灘駅',
+      geometry: { 'location': { 'lat': 35.655048, 'lng': 132.589155, 'address': '愛媛' } }
     }
   ]
 )
