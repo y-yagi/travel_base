@@ -1,4 +1,4 @@
-FROM ruby:2.4.0
+FROM ruby:2.4.1
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs npm
 RUN npm cache clean && npm install n -g && n stable && ln -sf /usr/local/bin/node /usr/bin/node
 RUN apt-get purge -y nodejs npm
