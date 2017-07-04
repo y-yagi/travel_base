@@ -70,10 +70,4 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
 end
 
-# TODO: temporary solution for use puma server
-# Ref: https://github.com/teamcapybara/capybara/issues/1831
-Capybara.register_server :puma do |app, port, host|
-  require 'rack/handler/puma'
-  Rack::Handler::Puma.run(app, Host: host, Port: port, Threads: "0:4", config_files: ['-'])
-end
 Capybara.server = :puma
