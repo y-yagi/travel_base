@@ -16,8 +16,12 @@ class PlacesController < ApplicationController
   def new
     @need_pages_js = true
     @place = Place.new
+    @places = []
 
-    @places = params[:query].present? ? Geocoder.search(params[:query]) : []
+    if params[:query].present?
+      places = Geocoder.search(params[:query])
+      @places = places.select { |place| Place.get_address_from_geocode_result(place) }
+    end
   end
 
   def edit
