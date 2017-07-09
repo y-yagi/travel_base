@@ -38,7 +38,7 @@ module Api::Place
     def self.create_from_params!(params:, current_resource_owner:)
       address = if params[:address].blank?
         geocoder_result = Geocoder.search([params[:latitude], params[:longitude]]).first
-        ::Place.get_address_form_geocode_result(geocoder_result)
+        ::Place.get_address_from_geocode_result(geocoder_result)
       else
         params[:address]
       end

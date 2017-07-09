@@ -28,7 +28,7 @@ br
         - @places.each_with_index do |place, i|
           tr
             = form_for(@place) do |f|
-              - address = Place.get_address_form_geocode_result(place)
+              - address = Place.get_address_from_geocode_result(place)
               - name = place.data['name']
               td
                 = i + 1

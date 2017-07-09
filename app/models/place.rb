@@ -62,7 +62,7 @@ class Place < ApplicationRecord
       places
     end
 
-    def get_address_form_geocode_result(place)
+    def get_address_from_geocode_result(place)
       # 最初の国名が含まれるので、国名のみ削除する
       # また、郵便番号が含まれる場合、郵便番号も削除
       place.formatted_address.split(' ', 2).second.try { gsub(/^〒[0-9-]+ /, '') }
