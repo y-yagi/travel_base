@@ -4,6 +4,7 @@ class SearchIntegrationTest < ActionDispatch::IntegrationTest
   def setup
     Capybara.current_driver = Capybara.javascript_driver
     login
+    visit root_path
   end
 
   def teardown
