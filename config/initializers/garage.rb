@@ -6,6 +6,7 @@ Garage::TokenScope.configure do
     access :write, Place
     access :read, DeletedDatum
     access :read, Event
+    access :read, User
     access :write, User
   end
 end

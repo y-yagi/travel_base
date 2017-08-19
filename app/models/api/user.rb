@@ -6,6 +6,10 @@ module Api::User
     include Garage::Authorizable
 
     property :id
+    collection :travels
+    collection :places
+    collection :events
+    collection :deleted_data
 
     def self.build_permissions(perms, other, target)
       perms.permits! :read if perms.user == other

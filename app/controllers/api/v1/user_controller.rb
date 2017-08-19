@@ -6,8 +6,4 @@ class Api::V1::UserController < Api::ApplicationController
   def require_resource
     @resource = current_resource_owner
   end
-
-  def update_resource
-    current_resource_owner.update!(device_token: params[:token])
-  end
 end
