@@ -9,6 +9,8 @@ class Schedule < ApplicationRecord
   validates :place_id, presence: true
   validate  :already_registered
 
+  enum purpose: { sightseeing: 0, move: 1, other: 99 }
+
   class << self
     def build(params)
       new(params)
