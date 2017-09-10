@@ -1,21 +1,3 @@
-# == Schema Information
-#
-# Table name: places
-#
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  address    :string           not null
-#  memo       :text
-#  latitude   :float
-#  longitude  :float
-#  urls       :string           is an Array
-#  user_id    :integer          not null
-#  status     :integer          default(0)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  tags       :string           is an Array
-#
-
 class Place < ApplicationRecord
   include Api::Place
   include Recorder
