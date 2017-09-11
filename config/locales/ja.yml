@@ -223,6 +223,10 @@ ja:
         photo_service_album_id: アルバム名
       schedule:
         place: 旅行計画にその場所
+        purposes:
+          sightseeing: 観光
+          move: 移動
+          other: その他
       event:
         name: 名前
         detail: 詳細

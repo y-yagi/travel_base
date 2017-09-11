@@ -21,15 +21,21 @@ section.page-block.double-padding-top.double-space-bottom
               .panel-body
                 = form_tag(schedules_path) do
                   .row
-                    .col-md-5.col-xs-12
+                    .col-md-12.col-xs-12
                       i.fa.fa-calendar.right10.tooltipped[title="日時を選択"]
                       = select :schedule, :travel_date_id, @travel.schedule_list_for_select, {}, { class: "form-control-select right5" }
                       = time_field :schedule, :start_time, { class: "form-control-select" }
                       |  〜
                       = time_field :schedule, :end_time, { class: "form-control-select" }
-                    .col-md-5.col-xs-12
+                    .col-md-12.col-xs-12.space-top
+                      i.fa.fa-lightbulb-o.right10.tooltipped[title="目的を選択"]
+                      = select :schedule, :purpose, enum_options_for_select(Schedule, :purpose), {}, { class: "form-control-select" }
+                    .col-md-12.col-xs-12.space-top
                       i.fa.fa-map-marker.right10.tooltipped[title="場所を選択"]
                       = select :schedule, :place_id, options_for_select(@places), {}, { class: "form-control-select" }
+                    .col-md-8.col-xs-12.space-top
+                      i.fa.fa-pencil-square-o.right10.tooltipped[title="メモを入力"]
+                      = text_area :schedule, :memo, class: "form-control", rows: 3
                   br
                   .col-md-12.col-xs-12
                     = submit_tag :add_schedule,  class: "btn btn-primary btn-center", value: '登録', data: { disable_with: "Please wait..." }
