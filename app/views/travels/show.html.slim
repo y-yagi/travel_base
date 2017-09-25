@@ -76,7 +76,7 @@ section.page-block.double-padding-top.double-space-bottom
                     small
                       = link_to '場所の一覧をGoogleMapで見る', map_schedule_path(travel_date_id: travel_date.id), target: '_blank'
               ul.timeline
-                - travel_date.schedules.each_with_index do |schedule, i|
+                - travel_date.schedules.each_with_index do |schedule, _|
                   - schedule.extend(ScheduleDecorator)
                   - route = schedule.route
                   - if route
