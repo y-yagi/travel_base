@@ -1,3 +1,13 @@
+module Warning
+  def warn(str)
+    return if str.match?("gems")
+
+    super
+  end
+end
+
+$VERBOSE = true
+
 require 'coveralls'
 require 'support//wait_for_ajax'
 
