@@ -24,7 +24,6 @@ class MapIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'include travel places' do
-    user = users(:google)
     travel = travels(:kyoto)
     visit map_schedule_path(travel_date_id: travel.travel_dates.first.id)
 
