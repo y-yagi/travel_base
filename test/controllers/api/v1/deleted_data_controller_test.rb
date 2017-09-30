@@ -8,6 +8,7 @@ class Api::V1::DeletedDataControllerTest < ActionDispatch::IntegrationTest
     @user = users(:google)
     @access_token = get_access_token
     @authorization = 'Bearer ' + @access_token.token
+    DeletedDatum.delete_all
   end
 
   test 'can get my deleted data list' do
