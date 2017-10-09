@@ -51,7 +51,7 @@ GEM
     brakeman (4.0.1)
     builder (3.2.3)
     byebug (9.1.0)
-    capybara (2.15.1)
+    capybara (2.15.4)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
@@ -113,7 +113,7 @@ GEM
     haml (5.0.3)
       temple (>= 0.8.0)
       tilt
-    hashdiff (0.3.6)
+    hashdiff (0.3.7)
     hashie (3.5.6)
     heapy (0.1.3)
     holiday_jp (0.5.1)
@@ -186,8 +186,8 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (3.3.6)
-    omniauth (1.7.0)
+    oj (3.3.8)
+    omniauth (1.7.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
     omniauth-facebook (4.0.0)
@@ -278,7 +278,7 @@ GEM
       json
       rest-client (~> 1.8.0)
     safe_yaml (1.0.4)
-    sass (3.5.1)
+    sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -294,12 +294,12 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    skylight (1.3.1)
+    skylight (1.4.0)
       activesupport (>= 3.0.0)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
-    slim-rails (3.1.2)
+    slim-rails (3.1.3)
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
@@ -351,7 +351,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.0.1)
+    webmock (3.1.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -421,6 +421,7 @@ DEPENDENCIES
   vcr
   web-console (>= 2.1.3)
   webmock
+
 
 RUBY VERSION
    ruby 2.4.1p111
