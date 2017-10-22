@@ -39,21 +39,21 @@ class UserIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test 'destroy user' do
-    destory_user = users(:google)
+    destroy_user = users(:google)
 
     before_users_count = User.count
     before_places_count = Place.count
     before_travels_count = Travel.count
-    destory_places_count = destory_user.places.size
-    destory_traves_count = destory_user.travels.size
+    destroy_places_count = destroy_user.places.size
+    destroy_traves_count = destroy_user.travels.size
 
     click_link '削除'
 
     assert_raise(ActiveRecord::RecordNotFound) do
-      User.find(destory_user.id)
+      User.find(destroy_user.id)
     end
     assert_equal before_users_count, User.count + 1
-    assert_equal before_places_count, Place.count + destory_places_count
-    assert_equal before_travels_count, Travel.count + destory_traves_count
+    assert_equal before_places_count, Place.count + destroy_places_count
+    assert_equal before_travels_count, Travel.count + destroy_traves_count
   end
 end
