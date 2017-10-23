@@ -2,6 +2,8 @@ ruby '2.4.1'
 
 source 'https://rubygems.org'
 
+gem 'rails', '~> 5.1.4'
+
 gem 'active_decorator'
 gem 'array_form_helper'
 gem 'coffee-rails'
@@ -28,7 +30,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'picasa'
 gem 'pg'
-gem 'rails', '~> 5.1.4'
 gem 'rambulance'
 gem 'ransack'
 gem 'rollbar'
