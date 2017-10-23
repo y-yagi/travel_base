@@ -241,8 +241,6 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-footnotes (4.1.8)
-      rails (>= 3.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.1.4)
@@ -403,7 +401,6 @@ DEPENDENCIES
   puma
   rack-mini-profiler
   rails (~> 5.1.4)
-  rails-footnotes
   rambulance
   rinku
   rollbar
