@@ -382,7 +382,7 @@ DEPENDENCIES
   garage-doorkeeper
   geocoder
   holiday_jp
-  http (~> 2.0)
+  http
   icalendar
   jquery-rails
   json (>= 2.0.0)
@@ -422,7 +422,6 @@ DEPENDENCIES
   vcr
   web-console (>= 2.1.3)
   webmock
-
 
 RUBY VERSION
    ruby 2.4.1p111
