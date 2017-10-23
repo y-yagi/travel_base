@@ -2,7 +2,7 @@ require 'test_helper'
 require 'active_support/testing/metadata'
 
 class TodoIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+  setup do
     if metadata[:js]
       Capybara.current_driver = Capybara.javascript_driver
     end
@@ -11,7 +11,7 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
     visit travel_todos_path(travels(:kyoto))
   end
 
-  def teardown
+  teardown do
     Capybara.current_driver = Capybara.default_driver
   end
 
@@ -38,7 +38,7 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
     todo = todos(:kyoto_todo)
     assert_not todo.finished
 
-    page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).trigger('click')
+    page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).click
     wait_for_ajax
     assert todo.reload.finished
   end

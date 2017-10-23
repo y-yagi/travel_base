@@ -64,8 +64,9 @@ group :test do
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
-  gem 'poltergeist'
   gem 'vcr'
   gem 'webmock'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end
 

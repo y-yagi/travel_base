@@ -25,3 +25,5 @@ before_script:
   - yarn install
 services:
   - elasticsearch
+addons:
+  chrome: stable

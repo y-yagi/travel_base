@@ -67,8 +67,7 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include WaitForAjax
 
-  require 'capybara/poltergeist'
-  Capybara.javascript_driver = :poltergeist
+  Capybara.javascript_driver = :selenium_chrome_headless
 
   def login
     visit '/auth/google_oauth2'
