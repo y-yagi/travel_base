@@ -3,6 +3,8 @@ require 'application_system_test_case'
 require 'active_support/testing/metadata'
 
 class TodosTest < ApplicationSystemTestCase
+  driven_by :selenium_chrome_headless
+
   setup do
     login
     visit travel_todos_path(travels(:kyoto))
