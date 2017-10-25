@@ -16,7 +16,8 @@ before_install:
   - npm install -g yarn
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
-  - xvfb-run bundle exec rake test
+  - bin/rails test
+  - bin/rails test:system
 before_script:
   - export TZ=Asia/Tokyo
   - cp config/database.yml.travis config/database.yml
