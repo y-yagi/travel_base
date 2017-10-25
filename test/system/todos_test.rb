@@ -3,8 +3,6 @@ require 'application_system_test_case'
 require 'active_support/testing/metadata'
 
 class TodosTest < ApplicationSystemTestCase
-  driven_by :selenium_chrome_headless
-
   setup do
     login
     visit travel_todos_path(travels(:kyoto))
@@ -29,20 +27,25 @@ class TodosTest < ApplicationSystemTestCase
     assert_match Date.today.strftime("%m/%d"), page.text
   end
 
-  test 'finish todo', js: true do
-    todo = todos(:kyoto_todo)
-    assert_not todo.finished
 
-    page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).click
+  sub_test_case 'with JS' do
+    driven_by :selenium_chrome_headless
 
-    wait_for_ajax
-    assert todo.reload.finished
-  end
+    test 'finish todo' do
+      todo = todos(:kyoto_todo)
+      assert_not todo.finished
 
-  test 'destroy todo' do
-    first("a[title='削除']").click
-    page.driver.browser.switch_to.alert.accept
+      page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).click
 
-    assert_no_match '京都チケット予約', page.text
+      wait_for_ajax
+      assert todo.reload.finished
+    end
+
+    test 'destroy todo' do
+      first("a[title='削除']").click
+      page.driver.browser.switch_to.alert.accept
+
+      assert_no_match '京都チケット予約', page.text
+    end
   end
 end

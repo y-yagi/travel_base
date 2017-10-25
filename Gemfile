@@ -62,6 +62,7 @@ group :test do
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
+  gem 'minitest-sub_test_case'
   gem 'vcr'
   gem 'webmock'
   gem 'chromedriver-helper'
