@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class TravelIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class TravelsTest < ApplicationSystemTestCase
+  setup do
     login
     visit travels_path
   end

@@ -1,6 +1,4 @@
-require 'test_helper'
 require 'application_system_test_case'
-require 'active_support/testing/metadata'
 
 class TodosTest < ApplicationSystemTestCase
   setup do

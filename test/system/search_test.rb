@@ -1,14 +1,11 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class SearchIntegrationTest < ActionDispatch::IntegrationTest
+class SearchTest < ApplicationSystemTestCase
+  driven_by :selenium_chrome_headless
+
   setup do
-    Capybara.current_driver = Capybara.javascript_driver
     login
     visit root_path
-  end
-
-  teardown do
-    Capybara.current_driver = Capybara.default_driver
   end
 
   test 'can search places that login user created' do

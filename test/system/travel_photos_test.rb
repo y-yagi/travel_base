@@ -1,6 +1,6 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class TravelPhotoIntegrationTest < ActionDispatch::IntegrationTest
+class TravelPhotosTest < ApplicationSystemTestCase
   def setup
     @travel = travels(:kyoto)
     login

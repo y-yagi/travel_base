@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class TopIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class TopTest < ApplicationSystemTestCase
+  setup do
     login
     visit root_path
   end

@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class EventIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class EventsTest < ApplicationSystemTestCase
+  setup do
     login
     visit events_path
   end
