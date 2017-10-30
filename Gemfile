@@ -45,7 +45,6 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'stackprof'
 #  gem 'web-console', '>= 2.1.3'
-  gem 'derailed_benchmarks'
 end
 
 group :development, :test do
