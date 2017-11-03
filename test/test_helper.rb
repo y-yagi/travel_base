@@ -12,7 +12,7 @@ $VERBOSE = true
 require 'coveralls'
 require 'support//wait_for_ajax'
 
-Coveralls.wear_merged!('rails')
+Coveralls.wear!('rails')
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
