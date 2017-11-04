@@ -1,18 +1,9 @@
-require 'test_helper'
-require 'active_support/testing/metadata'
+require 'application_system_test_case'
 
-class TodoIntegrationTest < ActionDispatch::IntegrationTest
+class TodosTest < ApplicationSystemTestCase
   setup do
-    if metadata[:js]
-      Capybara.current_driver = Capybara.javascript_driver
-    end
-
     login
     visit travel_todos_path(travels(:kyoto))
-  end
-
-  teardown do
-    Capybara.current_driver = Capybara.default_driver
   end
 
   test 'display todos that I registered in list' do
@@ -34,18 +25,25 @@ class TodoIntegrationTest < ActionDispatch::IntegrationTest
     assert_match Date.today.strftime("%m/%d"), page.text
   end
 
-  test 'finish todo', js: true do
-    todo = todos(:kyoto_todo)
-    assert_not todo.finished
 
-    page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).click
-    wait_for_ajax
-    assert todo.reload.finished
-  end
+  sub_test_case 'with JS' do
+    driven_by :selenium_chrome_headless
 
-  test 'destroy todo' do
-    first("a[title='削除']").click
+    test 'finish todo' do
+      todo = todos(:kyoto_todo)
+      assert_not todo.finished
 
-    assert_no_match '京都チケット予約', page.text
+      page.find(:xpath, %|//input[@id="todo_#{todo.id}"]/..|).click
+
+      wait_for_ajax
+      assert todo.reload.finished
+    end
+
+    test 'destroy todo' do
+      first("a[title='削除']").click
+      page.driver.browser.switch_to.alert.accept
+
+      assert_no_match '京都チケット予約', page.text
+    end
   end
 end

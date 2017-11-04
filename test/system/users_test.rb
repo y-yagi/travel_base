@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class UserIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class UsersTest < ApplicationSystemTestCase
+  setup do
     login
     first(:link, 'ユーザ設定').click
   end

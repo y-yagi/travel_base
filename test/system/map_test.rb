@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class MapIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class MapTest < ApplicationSystemTestCase
+  setup do
     login
   end
 

@@ -177,6 +177,7 @@ GEM
       minitest (>= 5.0)
     minitest-sound (0.0.8)
       minitest (>= 5.0)
+    minitest-sub_test_case (0.1.0)
     minitest-test_profile (0.2.1)
       coveralls
       minitest
@@ -389,6 +390,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   minitest-slow_test
   minitest-sound
+  minitest-sub_test_case
   minitest-test_profile
   nokogiri (>= 1.8.1)
   oauth2

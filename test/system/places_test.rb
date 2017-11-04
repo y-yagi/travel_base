@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'application_system_test_case'
 
-class PlaceIntegrationTest < ActionDispatch::IntegrationTest
-  def setup
+class PlacesTest < ApplicationSystemTestCase
+  setup do
     login
     visit places_path
   end
