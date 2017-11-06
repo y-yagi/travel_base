@@ -2,8 +2,6 @@ language: ruby
 sudo: false
 rvm:
   - 2.4.1
-env:
-  - DB=postgresql
 bundler_args: "--without production"
 cache:
   bundler: true
@@ -27,3 +25,4 @@ services:
   - elasticsearch
 addons:
   chrome: stable
+  postgresql: "9.6"
