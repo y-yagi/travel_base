@@ -67,5 +67,5 @@ group :test do
   gem 'webmock'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'screenshot_opener'
 end
-
