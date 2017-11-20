@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :set_page_js, only: [:new, :show, :edit, :update]
 
   def edit
-    @user.build_photo_service_user_info unless @user.photo_service_user_info
   end
 
   def update
@@ -26,8 +25,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :uid, :provider, :name, :email, :deleted_at, :auto_archive, :notification,
-        photo_service_user_info_attributes: [ :service_type, :photo_service_user_id, :user_id ]
+        :uid, :provider, :name, :email, :deleted_at, :auto_archive, :notification
       )
     end
 end

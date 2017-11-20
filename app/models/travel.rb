@@ -11,7 +11,7 @@ class Travel < ApplicationRecord
   accepts_nested_attributes_for :dropbox_files
 
   scope :schedules, -> do
-    eager_load(:travel_dates, :travel_photos, travel_dates: { schedules: [:place, :route] })
+    eager_load(:travel_dates, travel_dates: { schedules: [:place, :route] })
       .merge(TravelDate.order(:date)).merge(Schedule.order(:start_time))
   end
   scope :mine, ->(user) { where(owner_id: user.id) }
