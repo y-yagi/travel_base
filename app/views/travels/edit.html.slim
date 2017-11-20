@@ -17,10 +17,6 @@ section.page-block.user-account.space-bottom
             a href="#dropbox" role="tab" data-toggle="tab"
               | Dropbox連携
               span.line
-          li
-            a href="#photo" role="tab" data-toggle="tab"
-              | 写真管理
-              span.line
       .col-md-9.gray-bg
         .tab-content
           .tab-pane.fade.in.active id="basic"
@@ -34,6 +30,3 @@ section.page-block.user-account.space-bottom
           .tab-pane.fade.in id="dropbox"
             .col-sm-8.col-sm-offset-2
               = render 'dropbox'
-          .tab-pane.fade.in id="photo"
-            .col-sm-8.col-sm-offset-2
-              = render 'photo'

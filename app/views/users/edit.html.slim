@@ -10,15 +10,10 @@ section.page-block.user-account.space-bottom
               | 登録情報
               span.line
           li
-            a href="#photo-service" role="tab" data-toggle="tab"
-              | 写真サービス連携設定
-              span.line
-          li
             a href="#destroy" role="tab" data-toggle="tab"
               | アカウント削除
               span.line
       .col-md-9.gray-bg
         .tab-content
           = render 'form'
-          = render 'photo_service_form'
           = render 'destroy'

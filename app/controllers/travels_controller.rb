@@ -1,5 +1,4 @@
 class TravelsController < ApplicationController
-  before_action :set_travel, only: [:edit_photo]
   before_action :set_travel_by_owner, only: [:edit, :update, :destroy]
   before_action :set_page_js, only: [:new, :show, :edit, :update]
 
@@ -52,10 +51,6 @@ class TravelsController < ApplicationController
   end
 
   private
-    def set_travel
-      @travel = Travel.belong(current_user).find(params[:id])
-    end
-
     def set_travel_by_owner
       @travel = Travel.mine(current_user).find(params[:id])
     end
