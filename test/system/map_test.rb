@@ -27,8 +27,6 @@ class MapTest < ApplicationSystemTestCase
     travel = travels(:kyoto)
     visit map_schedule_path(travel_date_id: travel.travel_dates.first.id)
 
-    travel_dates.each do |travel_date|
-      assert_match travel_date.schedule.place.name, page.html
-    end
+    assert_match travel.travel_dates.first.schedules.first.place.name, page.html
   end
 end
