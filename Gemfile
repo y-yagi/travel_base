@@ -2,7 +2,7 @@ ruby '2.4.1'
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '5.2.0.beta1'
 
 gem 'active_decorator'
 gem 'array_form_helper'
