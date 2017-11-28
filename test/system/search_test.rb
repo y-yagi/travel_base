@@ -1,7 +1,7 @@
 require 'application_system_test_case'
 
 class SearchTest < ApplicationSystemTestCase
-  driven_by :selenium_chrome_headless
+  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
 
   setup do
     login
