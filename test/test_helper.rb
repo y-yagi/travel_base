@@ -81,3 +81,5 @@ VCR.configure do |config|
 end
 
 Capybara.server = :puma
+
+ScreenshotOpener.command = ""  if ENV["CI"]
