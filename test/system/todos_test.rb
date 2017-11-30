@@ -27,7 +27,7 @@ class TodosTest < ApplicationSystemTestCase
 
 
   sub_test_case 'with JS' do
-    driven_by :selenium_chrome_headless
+    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
 
     test 'finish todo' do
       todo = todos(:kyoto_todo)
