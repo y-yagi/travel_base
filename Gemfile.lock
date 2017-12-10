@@ -217,6 +217,10 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     pg (0.21.0)
+    pg_query (1.0.0)
+      json (>= 1.8, < 3)
+    pghero (2.1.0)
+      activerecord
     public_suffix (3.0.1)
     puma (3.11.0)
     rack (2.0.3)
@@ -402,6 +406,8 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   pg
+  pg_query (>= 0.9.0)
+  pghero
   puma
   rack-mini-profiler
   rails (= 5.2.0.beta2)
@@ -423,7 +429,6 @@ DEPENDENCIES
   vcr
   web-console (>= 2.1.3)
   webmock
-
 
 RUBY VERSION
    ruby 2.4.1p111

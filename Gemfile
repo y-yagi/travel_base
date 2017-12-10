@@ -37,6 +37,8 @@ gem 'puma'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5.0.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'pghero'
+gem 'pg_query', '>= 0.9.0'
 
 group :development do
   gem 'derailed_benchmarks'
