@@ -12,6 +12,7 @@ before_install:
   - nvm use 6
   - npm config set spin false
   - npm install -g yarn
+  - "travis_retry gem update --system"
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bin/rails test:all
