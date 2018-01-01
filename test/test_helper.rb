@@ -10,7 +10,7 @@ end
 $VERBOSE = true
 
 require 'coveralls'
-require 'support//wait_for_ajax'
+require 'support/wait_for_ajax'
 
 Coveralls.wear!('rails')
 
