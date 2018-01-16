@@ -60,6 +60,7 @@ group :test do
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'launchy'
+  gem "minitest", "~> 5.10.0"
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
