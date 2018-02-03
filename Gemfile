@@ -27,7 +27,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
-gem 'pg', '< 1.0.0'
+gem 'pg'
 gem 'rambulance'
 gem 'rollbar'
 gem 'sass-rails'
@@ -60,7 +60,6 @@ group :test do
   gem 'capybara'
   gem 'coveralls', require: false
   gem 'launchy'
-  gem "minitest", "~> 5.10.0"
   gem 'minitest-sound'
   gem 'minitest-slow_test'
   gem 'minitest-test_profile'
