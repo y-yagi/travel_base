@@ -398,7 +398,6 @@ DEPENDENCIES
   kaminari
   launchy
   listen (~> 3.0.5)
-  minitest (~> 5.10.0)
   minitest-slow_test
   minitest-sound
   minitest-sub_test_case
@@ -409,7 +408,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
-  pg (< 1.0.0)
+  pg
   pg_query (>= 0.9.0)
   pghero
   puma
