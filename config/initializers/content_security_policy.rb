@@ -7,7 +7,7 @@
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self
   policy.font_src    :self, :data, "fonts.gstatic.com", "netdna.bootstrapcdn.com"
-  policy.img_src     :self, :data, "www.google-analytics.com"
+  policy.img_src     :self, :data, "www.google-analytics.com", "maps.googleapis.com"
   policy.object_src  :none
   policy.script_src  :self, "www.dropbox.com", "maps.googleapis.com", "www.google-analytics.com", "cdnjs.cloudflare.com", :unsafe_inline
   policy.style_src   :self, "netdna.bootstrapcdn.com", "fonts.googleapis.com", :unsafe_inline
