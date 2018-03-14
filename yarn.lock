@@ -130,8 +130,8 @@ modernizr@*:
     yargs "3.31.0"
 
 moment@*, moment@>=2.9.0:
-  version "2.17.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
