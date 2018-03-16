@@ -82,11 +82,11 @@ find-up@^1.0.0:
     pinkie-promise "^2.0.0"
 
 fullcalendar@*:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/fullcalendar/-/fullcalendar-3.1.0.tgz#c81286ce00876294b2d3dba2d811ee33a8843917"
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/fullcalendar/-/fullcalendar-3.9.0.tgz#b608a9989f3416f0b1d526c6bdfeeaf2ac79eda5"
   dependencies:
-    jquery ">=2.0.0"
-    moment ">=2.9.0"
+    jquery "2 - 3"
+    moment "^2.20.1"
 
 get-caller-file@^1.0.1:
   version "1.0.2"
@@ -142,7 +142,11 @@ jquery.stellar@*:
   dependencies:
     jquery ">=1.4.3"
 
-jquery@>=1.4.3, jquery@>=2.0.0:
+"jquery@2 - 3":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+
+jquery@>=1.4.3:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 
@@ -189,7 +193,7 @@ modernizr@*:
     requirejs "2.1.22"
     yargs "7.0.2"
 
-moment@*, moment@>=2.9.0:
+moment@*, moment@^2.20.1:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
 
