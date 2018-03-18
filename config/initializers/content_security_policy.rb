@@ -4,12 +4,15 @@
 # For further information see the following documentation
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
+script_srcs = [:self, "www.dropbox.com", "maps.googleapis.com", "www.google-analytics.com", "cdnjs.cloudflare.com", :unsafe_inline]
+script_srcs << :unsafe_eval if Rails.env.development?
+
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self
   policy.font_src    :self, :data, "fonts.gstatic.com", "netdna.bootstrapcdn.com"
   policy.img_src     :self, :data, "www.google-analytics.com", "maps.googleapis.com"
   policy.object_src  :none
-  policy.script_src  :self, "www.dropbox.com", "maps.googleapis.com", "www.google-analytics.com", "cdnjs.cloudflare.com", :unsafe_inline
+  policy.script_src  *script_srcs
   policy.style_src   :self, "netdna.bootstrapcdn.com", "fonts.googleapis.com", :unsafe_inline
 
   # Specify URI for violation reports
