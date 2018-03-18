@@ -3,6 +3,7 @@ class CspReportsController < ActionController::Base
 
   def create
     Rails.logger.info(params["csp-report"])
+    Rollbar.error("CSP report", report: params["csp-report"])
     head :ok
   end
 end
