@@ -10,7 +10,7 @@ script_srcs << :unsafe_eval if Rails.env.development?
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self
   policy.font_src    :self, :data, "fonts.gstatic.com", "netdna.bootstrapcdn.com"
-  policy.img_src     :self, :data, "www.google-analytics.com", "maps.googleapis.com"
+  policy.img_src     :self, :data, "www.google-analytics.com", "maps.googleapis.com", "maps.gstatic.com", "chart.googleapis.com"
   policy.object_src  :none
   policy.script_src  *script_srcs
   policy.style_src   :self, "netdna.bootstrapcdn.com", "fonts.googleapis.com", :unsafe_inline
