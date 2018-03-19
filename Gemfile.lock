@@ -161,9 +161,10 @@ GEM
     kaminari-core (1.1.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.8)
+    listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -261,7 +262,7 @@ GEM
       actionpack
       activesupport
       railties
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
@@ -278,6 +279,7 @@ GEM
     ruby-pushbullet (0.1.4)
       json
       rest-client (~> 1.8.0)
+    ruby_dep (1.5.0)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.5.5)
@@ -396,7 +398,7 @@ DEPENDENCIES
   json (>= 2.0.0)
   kaminari
   launchy
-  listen (~> 3.0.5)
+  listen (~> 3.1.5)
   minitest-slow_test
   minitest-sound
   minitest-sub_test_case
