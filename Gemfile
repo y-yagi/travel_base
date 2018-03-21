@@ -49,7 +49,7 @@ end
 
 group :development, :test do
   gem 'brakeman'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.1.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'byebug'
