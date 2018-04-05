@@ -45,6 +45,7 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'stackprof'
   gem 'web-console', '>= 2.1.3'
+  gem 'licensed'
 end
 
 group :development, :test do
