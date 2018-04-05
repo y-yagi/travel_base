@@ -10,6 +10,10 @@ section.page-block.space-top.space-bottom
         = @place.name
         = link_to edit_place_path(@place), title: '編集' do
           i.fa.fa-edit.small.text-muted.left10
+        = link_to archive_place_path(@place), method: :patch, data: { confirm: 'アーカイブします。宜しいですか?' }, title: 'アーカイブ' do
+          i.fa.fa-archive.small.text-muted.left10
+        = link_to @place, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
+          i.fa.fa-trash-o.small.text-muted.left10
         span
     .row
       .col-md-6
