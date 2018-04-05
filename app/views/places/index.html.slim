@@ -22,7 +22,7 @@ section.page-block.space-top.space-bottom
               - else
                 = link_to edit_place_path(place), title: '編集' do
                   i.fa.fa-edit
-                = link_to archive_place_path(place), method: :patch, data: { confirm: 'アーカイブします。宜しいですか?' }, title: 'アーカイブ', remote: true do
+                = link_to archive_place_path(place), method: :patch, data: { confirm: 'アーカイブします。宜しいですか?' }, title: 'アーカイブ' do
                   i.fa.fa-archive
                 = link_to place, method: :delete, data: { confirm: '削除します。宜しいですか?' }, title: '削除' do
                   i.fa.fa-trash-o
