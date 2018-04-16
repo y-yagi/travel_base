@@ -221,7 +221,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     pg (1.0.0)
-    pg_query (1.0.1)
+    pg_query (1.0.2)
     pghero (2.1.0)
       activerecord
     public_suffix (3.0.2)
