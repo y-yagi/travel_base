@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "dependencies": {
     "bootstrap": "*",
+    "bootstrap-tagsinput": "*",
     "fullcalendar": "*",
     "jquery-placeholder": "*",
-    "jquery.stellar": "*",
     "jquery-validate": "*",
+    "jquery.stellar": "*",
     "modernizr": "*",
     "moment": "*",
-    "respond": "*",
-    "smoothscroll": "*",
-    "bootstrap-tagsinput": "*"
+    "respond": "*"
   },
   "license": "MIT",
   "engines": {
