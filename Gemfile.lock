@@ -137,7 +137,7 @@ GEM
     http-form_data (2.0.0)
     http_accept_language (2.1.1)
     http_parser.rb (0.6.0)
-    i18n (1.0.0)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     icalendar (2.4.1)
     io-like (0.3.0)
@@ -356,7 +356,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     vcr (4.0.0)
-    web-console (3.6.0)
+    web-console (3.6.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
