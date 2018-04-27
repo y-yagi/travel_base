@@ -14,6 +14,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  *script_srcs
   policy.style_src   :self, "netdna.bootstrapcdn.com", "fonts.googleapis.com", :unsafe_inline
+  policy.connect_src :self, "accounts.google.com", "api.twitter.com"
 
   # Specify URI for violation reports
   policy.report_uri "/csp_reports"
