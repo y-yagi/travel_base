@@ -226,7 +226,7 @@ GEM
       activerecord
     public_suffix (3.0.2)
     puma (3.11.4)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-accept-default (0.0.2)
       rack
     rack-mini-profiler (1.0.0)
@@ -356,7 +356,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     vcr (4.0.0)
-    web-console (3.6.1)
+    web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
