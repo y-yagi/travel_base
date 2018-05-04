@@ -99,9 +99,9 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     doorkeeper (4.3.2)
       railties (>= 4.2)
-    dotenv (2.3.0)
-    dotenv-rails (2.3.0)
-      dotenv (= 2.3.0)
+    dotenv (2.4.0)
+    dotenv-rails (2.4.0)
+      dotenv (= 2.4.0)
       railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     exception_notification (4.2.2)
@@ -226,7 +226,7 @@ GEM
       activerecord
     public_suffix (3.0.2)
     puma (3.11.4)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-accept-default (0.0.2)
       rack
     rack-mini-profiler (1.0.0)
