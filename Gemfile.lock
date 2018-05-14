@@ -296,7 +296,7 @@ GEM
     screenshot_opener (0.1.0)
       actionpack (>= 5.1.0)
       activesupport (>= 5.1.0)
-    selenium-webdriver (3.11.0)
+    selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simplecov (0.14.1)
