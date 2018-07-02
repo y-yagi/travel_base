@@ -327,7 +327,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.11)
+    stackprof (0.2.12)
     temple (0.8.0)
     term-ansicolor (1.6.0)
       tins (~> 1.0)
