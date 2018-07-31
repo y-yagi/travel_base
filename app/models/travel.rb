@@ -8,7 +8,7 @@ class Travel < ApplicationRecord
   has_many :todos, dependent: :destroy
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
-  accepts_nested_attributes_for :dropbox_files
+  accepts_nested_attributes_for :dropbox_files, :travel_dates
 
   scope :schedules, -> do
     eager_load(:travel_dates, travel_dates: { schedules: [:place, :route] })
