@@ -219,7 +219,7 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
-    pg (1.0.0)
+    pg (1.1.2)
     pg_query (1.0.2)
     pghero (2.1.1)
       activerecord
