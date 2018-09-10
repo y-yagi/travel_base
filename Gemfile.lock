@@ -221,7 +221,7 @@ GEM
       rack
     pg (1.0.0)
     pg_query (1.0.2)
-    pghero (2.1.1)
+    pghero (2.2.0)
       activerecord
     public_suffix (3.0.3)
     puma (3.12.0)
