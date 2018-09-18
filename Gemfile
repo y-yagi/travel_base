@@ -1,7 +1,5 @@
 ruby '2.5.1'
-
 source 'https://rubygems.org'
-
 gem 'rails', '5.2.1'
 
 gem 'active_decorator'
@@ -66,7 +64,7 @@ group :test do
   gem 'minitest-sub_test_case'
   gem 'vcr'
   gem 'webmock'
-  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'screenshot_opener'
 end
