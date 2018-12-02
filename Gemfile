@@ -1,6 +1,6 @@
 ruby '2.5.1'
 source 'https://rubygems.org'
-gem 'rails', '5.2.1.1'
+gem 'rails', '5.2.2.rc1'
 
 gem 'active_decorator'
 gem 'array_form_helper'
