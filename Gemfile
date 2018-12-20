@@ -63,7 +63,7 @@ group :test do
   gem 'minitest-test_profile'
   gem 'minitest-sub_test_case'
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock', github: 'bblimke/webmock'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'screenshot_opener'
