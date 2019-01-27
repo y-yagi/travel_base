@@ -14,9 +14,9 @@ class TodosTest < ApplicationSystemTestCase
 
   test 'create todo' do
     fill_in 'todo_detail', with: '行くところの整理'
-    select Date.today.year, from: 'todo_deadline_at_1i'
+    select Date.today.year.to_s, from: 'todo_deadline_at_1i'
     select "#{Date.today.month}月", from: 'todo_deadline_at_2i'
-    select Date.today.day, from: 'todo_deadline_at_3i'
+    select Date.today.day.to_s, from: 'todo_deadline_at_3i'
 
     assert_difference 'Todo.count' do
       click_button '登録'
