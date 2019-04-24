@@ -186,7 +186,7 @@ GEM
       minitest (>= 5.0)
     minitest-sound (0.0.8)
       minitest (>= 5.0)
-    minitest-sub_test_case (0.1.1)
+    minitest-sub_test_case (0.1.2)
     minitest-test_profile (0.2.2)
       minitest
     multi_json (1.13.1)
