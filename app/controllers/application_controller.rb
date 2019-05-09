@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_logged_in, :setup
-  force_ssl if: :ssl_configured?
   add_flash_types :info, :warning, :danger
 
   helper_method :current_user
@@ -20,10 +19,6 @@ class ApplicationController < ActionController::Base
 
   def setup
     @travels = Travel.belong(current_user).future
-  end
-
-  def ssl_configured?
-    Rails.env.production?
   end
 
   def set_page_js

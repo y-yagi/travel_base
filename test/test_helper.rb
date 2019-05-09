@@ -1,10 +1,8 @@
-module Warning
-  def warn(str)
-    return if str.match?("gems")
-    return if str.match?("warning: possibly useless use of a variable in void context")
+def Warning.warn(str)
+  return if str.match?("gems")
+  return if str.match?("warning: possibly useless use of a variable in void context")
 
-    super
-  end
+  super
 end
 
 $VERBOSE = true

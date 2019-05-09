@@ -104,7 +104,7 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test 'restore archived place' do
-    Place.order('updated_at DESC').first.update_attributes!(status: :already_went)
+    Place.order('updated_at DESC').first.update!(status: :already_went)
     find('.fa-history').click
 
     assert_match '大麻比古神社', page.text
