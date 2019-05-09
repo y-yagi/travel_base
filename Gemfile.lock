@@ -346,7 +346,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stackprof (0.2.12)
-    temple (0.8.0)
+    temple (0.8.1)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
     the_garage (2.4.3)
