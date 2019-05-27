@@ -298,7 +298,7 @@ GEM
       json
       rest-client (~> 1.8.0)
     ruby_dep (1.5.0)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -314,7 +314,7 @@ GEM
     screenshot_opener (0.1.0)
       actionpack (>= 5.1.0)
       activesupport (>= 5.1.0)
-    selenium-webdriver (3.142.0)
+    selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simplecov (0.16.1)
