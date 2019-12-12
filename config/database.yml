@@ -20,8 +20,9 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-  username: travel_base
-  password: travel_base
+  username: <%= ENV["POSTGRES_USERNAME"] || "travel_base" %>
+  password: <%= ENV["POSTGRES_PASSWORD"] || "travel_base" %>
+  host: <%= ENV["POSTGRES_HOST"] || "localhost" %>
 
 development:
   <<: *default

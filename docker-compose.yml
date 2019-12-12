@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    volumes:
+      - "postgresql-data:/var/lib/postgresql/"
+  web:
+    build: .
+    command: bin/rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD:
+      POSTGRES_HOST: db
+    tty: true
+    stdin_open: true
+
+volumes:
+  postgresql-data:
