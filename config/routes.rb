@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     end
   end
   resources :events
+  resources :csp_reports, only: [:create]
   mount PgHero::Engine, at: "pghero"
 
   draw :api
