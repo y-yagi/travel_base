@@ -139,7 +139,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashdiff (1.0.0)
-    hashie (3.6.0)
+    hashie (4.1.0)
     heapy (0.1.4)
     holiday_jp (0.7.1)
     http (4.1.1)
@@ -218,8 +218,8 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     oj (3.7.12)
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
     omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
@@ -243,7 +243,7 @@ GEM
     public_suffix (4.0.1)
     puma (4.1.0)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.2.2)
     rack-accept-default (0.0.2)
       rack
     rack-mini-profiler (1.0.2)
